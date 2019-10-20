@@ -1,0 +1,14 @@
+<div class="cover-page-header">
+    <div class="main-heading">
+        <div class="candidate-name">{{candidateName}}</div>
+        <div class="company-name">{{companyName}}</div>
+    </div>
+    <div class="role">{{role}}</div>
+    <div class="social" >
+        <div *ngFor=" let link of socialLinks" [matTooltip]="link.site">
+            <a [href]="link.link" class="link"><i [ngClass]="link.icon" class="fa"></i></a>
+            <span *ngIf="link.site === 'Resume'" class="resume-heading">RESUME</span>
+        </div>
+        
+    </div>
+</div>

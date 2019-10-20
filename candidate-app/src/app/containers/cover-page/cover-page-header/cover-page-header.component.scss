@@ -1,0 +1,54 @@
+.cover-page-header{
+
+    .main-heading{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        margin-bottom: 15px;
+        font-size: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        .candidate-name{
+            text-transform: uppercase;
+        }
+        .company-name{
+
+        }
+    }
+    .role{
+        text-transform: uppercase;
+        font-size: 30px;
+        font-weight: 500;
+        color: rgb(77, 175, 220);
+        margin-bottom: 20px;
+    }
+    .social{
+        display: flex;
+        align-items: center;
+        div{
+            font-size: 45px;
+            margin-right: 15px;
+            display: flex;
+            align-items: center;
+
+            .link{
+                text-decoration: none;
+                .fa-linkedin-square{
+                    color: rgb(57, 126, 177)
+                }
+                .fa-github{
+                    color: rgb(90, 90, 90)
+                }
+                .fa-id-card{
+                    color: rgb(83, 187, 221)
+                }
+            }
+            .resume-heading{
+                margin-left: 7px;
+                font-size: 20px;
+                color: rgb(83, 187, 221);
+            }
+        }
+    }
+}

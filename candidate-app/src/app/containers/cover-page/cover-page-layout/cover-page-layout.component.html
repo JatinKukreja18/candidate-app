@@ -1,0 +1,56 @@
+<div class="cover-page">
+    <div class="header">
+        <app-cover-page-header [candidateName]="candidateData.name" [role]="candidateData.role"
+            [companyName]="companyName" [socialLinks]="candidateData.socialLinks"></app-cover-page-header>
+    </div>
+    <div class="primary-skills">
+        <div class="heading">
+            <span>PRIMARY SKILLS AND EXPERIENCE EQUIVALENCY</span>
+        </div>
+        <div class="skills">
+
+        </div>
+    </div>
+    <div class="additional-skills">
+        <div class="heading">
+            <span>ADDITIONAL SKILLS AND EXPERIENCE</span>
+        </div>
+        <div class="skills">
+
+        </div>
+    </div>
+    <div class="other-info">
+        <div class="trained-on">
+            <div class="heading">
+                <span>Trained On</span>
+            </div>
+            <div class="training-list">
+                <div *ngFor="let training of candidateData.trainings">
+                    <div class="bullet"></div>
+                    <div class="item">{{training}}</div>
+                </div>
+            </div>
+        </div>
+        <div class="personal-video">
+            <div class="heading">
+                <span>Personal Video</span>
+            </div>
+        </div>
+        <div class="feedback">
+            <div class="heading">
+                <span>Jump Instructor Feedback</span>
+            </div>
+            <div class="content">
+                <span>" {{candidateData.feedback}} "</span>
+            </div>
+        </div>
+    </div>
+    <div class="personal-summary">
+        <div class="heading">
+            <span>Personal Summary</span>
+        </div>
+        <div class="content">
+            <span>{{candidateData.personalSummary}}</span>
+        </div>
+    </div>
+</div>

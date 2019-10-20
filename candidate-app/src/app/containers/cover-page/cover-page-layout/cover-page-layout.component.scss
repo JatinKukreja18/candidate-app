@@ -1,0 +1,79 @@
+.cover-page {
+  margin: 50px 100px 0 100px;
+  border-left: 10px;
+
+  .header {
+    margin-bottom: 80px;
+  }
+  .primary-skills,
+  .additional-skills {
+    margin-bottom: 50px;
+
+    .heading {
+      color: rgb(83, 187, 221);
+      font-weight: 500;
+    }
+  }
+  .other-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 50px;
+
+    & > div {
+      width: 30%;
+      .heading {
+        text-transform: uppercase;
+        color: rgb(83, 183, 186);
+        font-size: 20px;
+        font-weight: 500;
+        margin-bottom: 20px;
+      }
+      &.trained-on {
+        .training-list {
+          color: rgb(103, 99, 100);
+          font-size: 18px;
+          font-weight: 500;
+
+          div {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+
+            .bullet {
+              height: 7px;
+              width: 7px;
+              border-radius: 50%;
+              background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));
+              margin-right: 10px;
+            }
+          }
+        }
+      }
+      &.personal-video {
+      }
+      &.feedback {
+        .content {
+          font-style: italic;
+          color: rgb(103, 99, 100);
+          font-size: 20px;
+          line-height: 2;
+        }
+      }
+    }
+  }
+  .personal-summary {
+    .heading {
+      text-transform: uppercase;
+      color: rgb(83, 183, 186);
+      font-size: 20px;
+      font-weight: 500;
+      margin-bottom: 20px;
+    }
+    .content {
+      color: rgb(103, 99, 100);
+      font-size: 18px;
+      font-weight: 500;
+      line-height: 1.5;
+    }
+  }
+}
