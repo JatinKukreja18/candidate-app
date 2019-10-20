@@ -174,4 +174,24 @@ $heading-color-2: rgb(77, 175, 220);
       }
     }
   }
+  footer{
+    @include set-width();
+    margin-top: 250px;
+    .footer{
+        display: flex;
+        justify-content: space-between;
+        align-content: center;
+        margin-bottom: 15px;
+        font-size: 50px;
+        font-weight: 700;
+        text-transform: uppercase;
+
+        .candidate-name{
+            text-transform: uppercase;
+        }
+        .company-name{
+
+        }
+    }
+  }
 }
