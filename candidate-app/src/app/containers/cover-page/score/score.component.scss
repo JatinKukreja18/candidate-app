@@ -44,8 +44,15 @@ $circle-size: 120px;
         background-color: #ffffff;
 
         .icon{
-            width: 48px;
-            margin-top: 5px;
+            &.java{
+                width: 48px;
+                margin-top: 5px;
+            }
+            &.sql{
+                width: 85px;
+                margin-top: 15px;
+            }
+            
         }
     }
   }

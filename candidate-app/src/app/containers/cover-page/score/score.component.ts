@@ -20,6 +20,7 @@ export class ScoreComponent implements OnInit {
   @Input() rating = '7';
   @Input() months = '22';
   @Input() iconPath = '';
+  @Input() skill = '';
 
   state = 'default';
   fillRotation = 0;

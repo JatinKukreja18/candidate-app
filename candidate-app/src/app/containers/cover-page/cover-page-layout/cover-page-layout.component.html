@@ -10,7 +10,7 @@
         </div>
         <div class="skills">
             <div *ngFor="let skill of candidateData.mainSkills" class="skill-circle">
-                <app-score [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+                <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
             </div>
 
         </div>
@@ -21,7 +21,7 @@
         </div>
         <div class="skills">
             <div *ngFor="let skill of candidateData.additionalSkills" class="skill-circle">
-                <app-score [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+                <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
             </div>
 
         </div>
