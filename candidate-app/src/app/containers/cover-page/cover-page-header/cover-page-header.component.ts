@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
 
 interface SocialLinks {
   site: string;
@@ -9,7 +9,8 @@ interface SocialLinks {
 @Component({
   selector: 'app-cover-page-header',
   templateUrl: './cover-page-header.component.html',
-  styleUrls: ['./cover-page-header.component.scss']
+  styleUrls: ['./cover-page-header.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class CoverPageHeaderComponent implements OnInit {
 
@@ -17,11 +18,12 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() role: string;
   @Input() companyName: string;
   @Input() socialLinks: SocialLinks;
+  @Input() mobile: string;
+  @Input() email: string;
 
   constructor() { }
 
   ngOnInit() {
-    console.log(this);
   }
 
 }

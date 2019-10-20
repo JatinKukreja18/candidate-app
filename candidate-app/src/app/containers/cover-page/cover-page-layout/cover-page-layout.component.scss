@@ -1,32 +1,72 @@
+$margin-between-sections: 70px;
+$heading-color-1: rgb(83, 183, 186);
+$heading-color-2: rgb(77, 175, 220);
+
+@mixin heading-1 {
+  text-transform: uppercase;
+  color: $heading-color-1;
+  font-size: 20px;
+  font-weight: 500;
+  margin-bottom: 30px;
+}
+
+@mixin heading-2 {
+    text-transform: uppercase;
+    color: $heading-color-2;
+    font-size: 20px;
+    font-weight: 500;
+    margin-bottom: 30px;
+  }
+
+@mixin bullet {
+  height: 7px;
+  width: 7px;
+  border-radius: 50%;
+  background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));
+  margin-right: 10px;
+}
+
+@mixin set-width{
+    margin: 0 auto;
+    max-width: 1240px;
+}
+
 .cover-page {
-  margin: 50px 100px 0 100px;
+  // margin: 50px 100px 0 100px;
+  margin: 70px auto;
   border-left: 10px;
+  background-color: rgb(252, 253, 255);
 
   .header {
+    @include set-width();
     margin-bottom: 80px;
   }
   .primary-skills,
   .additional-skills {
-    margin-bottom: 50px;
+    @include set-width();
+    margin-bottom: $margin-between-sections;
 
     .heading {
-      color: rgb(83, 187, 221);
-      font-weight: 500;
+        @include heading-1();
+    }
+    .skills{
+        display: flex;
+        align-items: center;
+        .skill-circle:not(:first-child){
+            margin-left: 80px;
+        }
     }
   }
   .other-info {
     display: flex;
     justify-content: space-between;
-    margin-bottom: 50px;
+    @include set-width();
+    margin-bottom: $margin-between-sections;
 
     & > div {
       width: 30%;
       .heading {
-        text-transform: uppercase;
-        color: rgb(83, 183, 186);
-        font-size: 20px;
-        font-weight: 500;
-        margin-bottom: 20px;
+        @include heading-1();
       }
       &.trained-on {
         .training-list {
@@ -40,16 +80,15 @@
             margin-bottom: 8px;
 
             .bullet {
-              height: 7px;
-              width: 7px;
-              border-radius: 50%;
-              background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));
-              margin-right: 10px;
+              @include bullet();
             }
           }
         }
       }
       &.personal-video {
+          .video{
+              border: 10px solid $heading-color-1;
+          }
       }
       &.feedback {
         .content {
@@ -62,18 +101,77 @@
     }
   }
   .personal-summary {
+    @include set-width();
+    margin-bottom: $margin-between-sections;
+
     .heading {
-      text-transform: uppercase;
-      color: rgb(83, 183, 186);
-      font-size: 20px;
-      font-weight: 500;
-      margin-bottom: 20px;
+      @include heading-1();
     }
     .content {
       color: rgb(103, 99, 100);
       font-size: 18px;
       font-weight: 500;
       line-height: 1.5;
+    }
+  }
+  .additional-projects {
+    @include set-width();
+    margin-bottom: $margin-between-sections;
+
+    .heading {
+      @include heading-2();
+    }
+    .content {
+      display: grid;
+      grid-template-columns: 48% 48%;
+      column-gap: 50px;
+
+      .additional-project-card {
+        .card-content {
+          .items {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #676364;
+            line-height: 1.5;
+
+            .bullet {
+              @include bullet();
+            }
+          }
+        }
+      }
+    }
+  }
+  .education-certification {
+    @include set-width();
+    margin-bottom: $margin-between-sections;
+
+    .heading {
+      @include heading-2();
+    }
+    .content {
+      display: grid;
+      grid-template-columns: 48% 48%;
+      column-gap: 50px;
+
+      .education-certification-card {
+        .card-content {
+          .items {
+            display: flex;
+            align-items: center;
+            margin-bottom: 8px;
+            font-size: 18px;
+            color: #676364;
+            line-height: 1.5;
+
+            .bullet {
+              @include bullet();
+            }
+          }
+        }
+      }
     }
   }
 }

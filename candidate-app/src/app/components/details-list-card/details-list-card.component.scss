@@ -1,0 +1,39 @@
+.details-list-card.mat-card {
+    background: linear-gradient(rgb(108, 169, 248), rgb(122, 226, 202));;
+    padding: 0;
+    padding-left: 7px;
+    border-radius: 0;
+
+    .details-list-card-header.mat-card-header{
+        padding: 20px ;
+        padding-top: 30px;
+        background-color: #ffffff;
+
+        .mat-card-title {
+            margin: 0 -16px;
+        }
+    }
+
+    .details-list-card-content.mat-card-content{
+        background-color: #ffffff;
+        padding: 20px;
+        padding-top: 0;
+    }
+    
+  .items {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-size: 18px;
+    color: #676364;
+    line-height: 1.5;
+
+    .bullet {
+      height: 7px;
+      width: 7px;
+      border-radius: 50%;
+      background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));;
+      margin-right: 10px;
+    }
+  }
+}

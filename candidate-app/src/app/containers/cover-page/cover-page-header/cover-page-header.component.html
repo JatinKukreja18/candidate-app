@@ -3,6 +3,10 @@
         <div class="candidate-name">{{candidateName}}</div>
         <div class="company-name">{{companyName}}</div>
     </div>
+    <div class="contact-info">
+        <span class="mobile">{{mobile}}</span>
+        <span class="email">{{email}}</span>
+    </div>
     <div class="role">{{role}}</div>
     <div class="social" >
         <div *ngFor=" let link of socialLinks" [matTooltip]="link.site">

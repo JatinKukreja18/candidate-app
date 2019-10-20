@@ -1,0 +1,13 @@
+<mat-card class="details-list-card">
+    <mat-card-header class="details-list-card-header">
+        <mat-card-title>
+            <ng-content select="[title]"></ng-content>
+        </mat-card-title>
+        <mat-card-subtitle>
+            <ng-content select="[sub-title]"></ng-content>
+        </mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content class="details-list-card-content">
+        <ng-content select="[content]"></ng-content>
+    </mat-card-content>
+</mat-card>

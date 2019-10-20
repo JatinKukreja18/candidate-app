@@ -16,6 +16,8 @@ export class CoverPageLayoutComponent implements OnInit {
     this.candidateData = {
       name: 'John Willis',
       role: 'Software Developer',
+      contact: '9988776655',
+      email: 'johnwillis@abc.com',
       socialLinks: [
         {
           site: 'LinkedIn',
@@ -33,6 +35,82 @@ export class CoverPageLayoutComponent implements OnInit {
           icon: 'fa-id-card'
         },
       ],
+      mainSkills: [
+        {
+          skill: 'java',
+          rating: 7,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '22'
+        },
+        {
+          skill: 'sql',
+          rating: 5,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '11'
+        },
+        {
+          skill: 'java',
+          rating: 4,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '4'
+        },
+        {
+          skill: 'sql',
+          rating: 9,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '11'
+        },
+        {
+          skill: 'java',
+          rating: 6,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '5'
+        },
+        {
+          skill: 'sql',
+          rating: 2,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '3'
+        }
+      ],
+      additionalSkills: [
+        {
+          skill: 'java',
+          rating: 7,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '22'
+        },
+        {
+          skill: 'sql',
+          rating: 5,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '11'
+        },
+        {
+          skill: 'java',
+          rating: 4,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '4'
+        },
+        {
+          skill: 'sql',
+          rating: 9,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '11'
+        },
+        {
+          skill: 'java',
+          rating: 6,
+          iconPath: '../../../assets/images/java-logo.png',
+          months: '5'
+        },
+        {
+          skill: 'sql',
+          rating: 2,
+          iconPath: '../../../assets/images/sql-logo.png',
+          months: '3'
+        }
+      ],
       trainings: [
         'Animation Design',
         'Information Architecture',
@@ -48,7 +126,47 @@ export class CoverPageLayoutComponent implements OnInit {
                         proficient in Web Services, Spring Boot, React, MONGODB and Rabbit MQ. As a Computer
                         Science graduate I became comfortable with Object Oriented Programming Concepts and
                         programming languages such as Java and SQL. `,
-      
+      additionalProjects: [
+        {
+          name: 'Movie Theatre Seating',
+          keyPoints: [
+            'Java based project to display and set seating in a GUI application',
+            'GUI was built of the Swing library'
+          ]
+        },
+        {
+          name: 'Food Ordering App',
+          keyPoints: [
+            'Java based project to display and set seating in a GUI application',
+            'GUI was built of the Swing library'
+          ]
+        }
+      ],
+      educations: [
+        {
+          title: 'Lamar University',
+          year: '2017',
+          achievements: [
+            {
+              type: 'Major',
+              name: 'Bachelor of Computer Science'
+            },
+
+
+          ]
+        },
+        {
+          title: 'CDEC Institute',
+          year: '2017',
+          achievements: [
+            {
+              type: 'Certificate',
+              name: 'Multimedia Sciences & Graphics'
+            },
+          ]
+        }
+      ]
+
     };
 
   }
