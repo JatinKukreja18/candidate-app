@@ -1,13 +1,28 @@
-<mat-card class="details-list-card">
-    <mat-card-header class="details-list-card-header">
-        <mat-card-title>
-            <ng-content select="[title]"></ng-content>
-        </mat-card-title>
-        <mat-card-subtitle>
-            <ng-content select="[sub-title]"></ng-content>
-        </mat-card-subtitle>
-    </mat-card-header>
-    <mat-card-content class="details-list-card-content">
-        <ng-content select="[content]"></ng-content>
-    </mat-card-content>
-</mat-card>
+<div [ngClass]="isEdit? 'editing' : '' ">
+  <mat-card class="details-list-card ">
+      <mat-card-header class="details-list-card-header" [attr.contenteditable]="isEdit">
+          <mat-card-title>
+              <ng-content select="[title]"></ng-content>
+          </mat-card-title>
+          <mat-card-subtitle>
+              <ng-content select="[sub-title]"></ng-content>
+          </mat-card-subtitle>
+
+            <ul class="card-options">
+              <li (click)="activateEdit()" *ngIf="!isEdit">
+                  <i class="fa fa-edit"></i>
+              </li>
+
+              <li (click)="activateEdit()">
+                  <button class="theme-button-default" *ngIf="isEdit">Cancel</button>
+                </li>
+              <li (click)="activateEdit()">
+                <button class="theme-button-primary"*ngIf="isEdit" >Save</button>
+              </li>
+            </ul>
+      </mat-card-header>
+      <mat-card-content class="details-list-card-content" [attr.contenteditable]="isEdit">
+          <ng-content select="[content]"></ng-content>
+      </mat-card-content>
+  </mat-card>
+</div>

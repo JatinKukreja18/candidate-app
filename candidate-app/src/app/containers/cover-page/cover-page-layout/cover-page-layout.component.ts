@@ -65,12 +65,6 @@ export class CoverPageLayoutComponent implements OnInit {
           rating: 6,
           iconPath: '../../../assets/images/java-logo.png',
           months: '5'
-        },
-        {
-          skill: 'sql',
-          rating: 2,
-          iconPath: '../../../assets/images/sql-logo.png',
-          months: '3'
         }
       ],
       additionalSkills: [
@@ -103,12 +97,6 @@ export class CoverPageLayoutComponent implements OnInit {
           rating: 6,
           iconPath: '../../../assets/images/java-logo.png',
           months: '5'
-        },
-        {
-          skill: 'sql',
-          rating: 2,
-          iconPath: '../../../assets/images/sql-logo.png',
-          months: '3'
         }
       ],
       trainings: [

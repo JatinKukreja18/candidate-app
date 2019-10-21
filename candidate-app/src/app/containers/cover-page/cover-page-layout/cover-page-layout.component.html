@@ -1,118 +1,126 @@
+<div class="cover-page-wrapper">
 <div class="cover-page">
-    <div class="header">
-        <app-cover-page-header [candidateName]="candidateData.name" [role]="candidateData.role"
-            [companyName]="companyName" [socialLinks]="candidateData.socialLinks" [mobile]="candidateData.contact"
-            [email]="candidateData.email"></app-cover-page-header>
-    </div>
-    <div class="primary-skills">
-        <div class="heading">
-            <span>PRIMARY SKILLS AND EXPERIENCE EQUIVALENCY</span>
-        </div>
-        <div class="skills">
-            <div *ngFor="let skill of candidateData.mainSkills" class="skill-circle">
-                <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
-            </div>
+    <div class="page-section">
 
-        </div>
-    </div>
-    <div class="additional-skills">
-        <div class="heading">
-            <span>ADDITIONAL SKILLS AND EXPERIENCE</span>
-        </div>
-        <div class="skills">
-            <div *ngFor="let skill of candidateData.additionalSkills" class="skill-circle">
-                <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
-            </div>
+      <div class="header">
+          <app-cover-page-header [candidateName]="candidateData.name" [role]="candidateData.role"
+              [companyName]="companyName" [socialLinks]="candidateData.socialLinks" [mobile]="candidateData.contact"
+              [email]="candidateData.email"></app-cover-page-header>
+      </div>
+      <div class="primary-skills">
+          <div class="heading">
+              <span>PRIMARY SKILLS AND EXPERIENCE EQUIVALENCY</span>
+          </div>
+          <div class="skills">
+              <div *ngFor="let skill of candidateData.mainSkills" class="skill-circle">
+                  <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+              </div>
 
-        </div>
+          </div>
+      </div>
+      <div class="additional-skills">
+          <div class="heading">
+              <span>ADDITIONAL SKILLS AND EXPERIENCE</span>
+          </div>
+          <div class="skills">
+              <div *ngFor="let skill of candidateData.additionalSkills" class="skill-circle">
+                  <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+              </div>
+
+          </div>
+      </div>
+      <div class="other-info">
+          <div class="trained-on">
+              <div class="heading">
+                  <span>Trained On</span>
+              </div>
+              <div class="training-list">
+                  <div *ngFor="let training of candidateData.trainings">
+                      <div class="bullet"></div>
+                      <div class="item">{{training}}</div>
+                  </div>
+              </div>
+          </div>
+          <div class="personal-video">
+              <div class="heading">
+                  <span>Personal Video</span>
+              </div>
+              <div class="video">
+                  <iframe width="352" height="200" src="https://www.youtube.com/embed/l482T0yNkeo" frameborder="0"
+                      allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
+                      allowfullscreen></iframe>
+              </div>
+          </div>
+          <div class="feedback">
+              <div class="heading">
+                  <span>Jump Instructor Feedback</span>
+              </div>
+              <div class="content">
+                  <span>" {{candidateData.feedback}} "</span>
+              </div>
+          </div>
+      </div>
+      <div class="personal-summary">
+          <div class="heading">
+              <span>Personal Summary</span>
+          </div>
+          <div class="content">
+              <span>{{candidateData.personalSummary}}</span>
+          </div>
+      </div>
     </div>
-    <div class="other-info">
-        <div class="trained-on">
-            <div class="heading">
-                <span>Trained On</span>
-            </div>
-            <div class="training-list">
-                <div *ngFor="let training of candidateData.trainings">
-                    <div class="bullet"></div>
-                    <div class="item">{{training}}</div>
-                </div>
-            </div>
-        </div>
-        <div class="personal-video">
-            <div class="heading">
-                <span>Personal Video</span>
-            </div>
-            <div class="video">
-                <iframe width="352" height="200" src="https://www.youtube.com/embed/l482T0yNkeo" frameborder="0"
-                    allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
-                    allowfullscreen></iframe>
-            </div>
-        </div>
-        <div class="feedback">
-            <div class="heading">
-                <span>Jump Instructor Feedback</span>
-            </div>
-            <div class="content">
-                <span>" {{candidateData.feedback}} "</span>
-            </div>
-        </div>
+    <div class="page-section">
+
+      <div class="additional-projects">
+          <div class="heading">
+              <span>Additional Projects</span>
+          </div>
+          <div class="content">
+              <div *ngFor="let project of candidateData.additionalProjects">
+                  <app-details-list-card class="additional-project-card">
+                      <div title class="card-title">
+                          <span>{{project.name}}</span>
+                      </div>
+                      <div content class="card-content">
+                          <div *ngFor="let item of project.keyPoints" class="items">
+                              <div class="bullet"></div>
+                              <div class="item">{{item}}</div>
+                          </div>
+                      </div>
+                  </app-details-list-card>
+              </div>
+          </div>
+      </div>
+      <div class="education-certification">
+          <div class="heading">
+              <span>Education & Certification</span>
+          </div>
+          <div class="content">
+              <div *ngFor="let education of candidateData.educations">
+                  <app-details-list-card class="education-certification-card">
+                      <div title class="card-title">
+                          <span>{{education.title}}</span>
+                          <span style="font-weight: normal"> ({{education.year}})</span>
+                      </div>
+                      <div content class="card-content">
+                          <div *ngFor="let item of education.achievements" class="items">
+                              <div class="bullet"></div>
+                              <div class="item">
+                                  <span>{{item.type}}: </span>
+                                  <span>{{item.name}}</span>
+                              </div>
+                          </div>
+                      </div>
+                  </app-details-list-card>
+              </div>
+          </div>
+      </div>
+      <footer>
+          <div class="footer">
+              <div class="candidate-name">{{candidateData.name}}</div>
+              <div class="company-name">{{companyName}}</div>
+          </div>
+      </footer>
     </div>
-    <div class="personal-summary">
-        <div class="heading">
-            <span>Personal Summary</span>
-        </div>
-        <div class="content">
-            <span>{{candidateData.personalSummary}}</span>
-        </div>
-    </div>
-    <div class="additional-projects">
-        <div class="heading">
-            <span>Additional Projects</span>
-        </div>
-        <div class="content">
-            <div *ngFor="let project of candidateData.additionalProjects">
-                <app-details-list-card class="additional-project-card">
-                    <div title class="card-title">
-                        <span>{{project.name}}</span>
-                    </div>
-                    <div content class="card-content">
-                        <div *ngFor="let item of project.keyPoints" class="items">
-                            <div class="bullet"></div>
-                            <div class="item">{{item}}</div>
-                        </div>
-                    </div>
-                </app-details-list-card>
-            </div>
-        </div>
-    </div>
-    <div class="education-certification">
-        <div class="heading">
-            <span>Education & Certification</span>
-        </div>
-        <div class="content">
-            <div *ngFor="let education of candidateData.educations">
-                <app-details-list-card class="education-certification-card">
-                    <div title class="card-title">
-                        <span>{{education.title}}</span>
-                        <span style="font-weight: normal"> ({{education.year}})</span>
-                    </div>
-                    <div content class="card-content">
-                        <div *ngFor="let item of education.achievements" class="items">
-                            <div class="bullet"></div>
-                            <div class="item">
-                                <span>{{item.type}}: </span>
-                                <span>{{item.name}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </app-details-list-card>
-            </div>
-        </div>
-    </div>
-    <footer>
-        <div class="footer">
-            <div class="candidate-name">{{candidateData.name}}</div>
-            <div class="company-name">{{companyName}}</div>
-        </div>
-    </footer>
+</div>
 </div>

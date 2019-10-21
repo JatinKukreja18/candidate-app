@@ -9,10 +9,12 @@ export class DetailsListCardComponent implements OnInit {
 
   @Input() title = '';
   @Input() items = [];
-
+  isEdit: boolean = false;
   constructor() { }
 
   ngOnInit() {
   }
-
+  activateEdit(){
+    this.isEdit = !this.isEdit;
+  }
 }

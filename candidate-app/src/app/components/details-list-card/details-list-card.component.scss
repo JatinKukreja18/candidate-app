@@ -8,7 +8,7 @@
         padding: 20px ;
         padding-top: 30px;
         background-color: #ffffff;
-
+      outline: none;
         .mat-card-title {
             margin: 0 -16px;
         }
@@ -16,10 +16,11 @@
 
     .details-list-card-content.mat-card-content{
         background-color: #ffffff;
-        padding: 20px;
+      outline: none;
+      padding: 20px;
         padding-top: 0;
     }
-    
+
   .items {
     display: flex;
     align-items: center;
@@ -36,4 +37,36 @@
       margin-right: 10px;
     }
   }
+}
+.details-list-card:hover .card-options{
+  display: flex;
+}
+.card-options{
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  color: #484848;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+  display: none;
+
+  li{
+    padding: 0 4px;
+    cursor: pointer;
+  }
+}
+
+.editing:after{
+  position: fixed;
+  content: "";
+  top: 0;
+  left: 0;
+  background: #0808088a;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1;
+}
+.editing .details-list-card{
+  z-index: 2;
 }

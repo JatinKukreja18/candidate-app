@@ -4,6 +4,8 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { EntryComponent } from './components/entry/entry.component';
+import { CommonModule } from '@angular/common';
+import { MatButtonModule, MatIconModule } from '@angular/material';
 
 @NgModule({
   declarations: [
@@ -13,6 +15,9 @@ import { EntryComponent } from './components/entry/entry.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
+    MatButtonModule,
+    MatIconModule,
+    CommonModule,
     BrowserAnimationsModule,
   ],
   providers: [],

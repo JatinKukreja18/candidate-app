@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { MatTooltipModule } from '@angular/material';
+import { MatTooltipModule, MatButtonModule, MatIconModule } from '@angular/material';
 import { CoverPageLayoutComponent } from './cover-page-layout/cover-page-layout.component';
 import { CoverPageHeaderComponent } from './cover-page-header/cover-page-header.component';
 import { ComponentsModule } from 'src/app/components/components/components.module';
@@ -15,6 +15,8 @@ const routes: Routes = [
         CommonModule,
         MatTooltipModule,
         ComponentsModule,
+        MatButtonModule,
+        MatIconModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

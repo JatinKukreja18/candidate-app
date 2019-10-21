@@ -29,4 +29,32 @@ $candidate-app-theme: mat-light-theme($candidate-app-primary, $candidate-app-acc
 /* You can add global styles to this file, and also import other style files */
 
 html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+body { margin: 0; font-family:'Work Sans', sans-serif;}
+body { background-color: #f3f4f5; }
+.theme-button-primary{
+  background: #7ae1ca;
+  color: #fff;
+  padding: 5px 8px;
+  border: none;
+  border-radius: 4px;
+  border: 1px solid #6cacf6;
+  cursor: pointer;
+  outline: none;
+  &:hover{
+    background-color:#40c7a9;
+  }
+}
+
+.theme-button-default{
+  cursor: pointer;
+  background: #fff;
+    color: #484848;
+    padding: 5px 8px;
+  outline: none;
+    border: none;
+    border-radius: 4px;
+    border: 1px solid #484848;
+    &:hover{
+      background-color: #eaebec;
+    }
+}
