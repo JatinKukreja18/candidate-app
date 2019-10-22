@@ -1,0 +1,11 @@
+<div class="score-read-only">
+    <div class="pie" data-start="0"  data-value="180" [@rotatedState]="{value: state, params: { rotDeg: fixRotation}}">
+        <div class="pie-child" [@rotatedState]="{value: state, params: { rotDeg: rotation}}"></div>
+    </div>
+    <div class="pie big"  style=" --rotation: 242deg " data-start="180" data-value="180" style="position:relative"
+        [@rotatedState]="{value: state, params: { rotDeg: rotation}}">
+        <div class="pie-child" [@rotatedState]="{value: state, params: { rotDeg: restRotation}}"></div>
+        <div class="inset"><!-- <img class="icon" [ngClass]="skill" [src]="iconPath" /> --></div>
+    </div>
+    <div class="text"><span >{{months}} Months</span></div>
+</div>

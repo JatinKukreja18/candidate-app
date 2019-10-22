@@ -6,6 +6,8 @@ import { CoverPageHeaderComponent } from './cover-page-header/cover-page-header.
 import { ComponentsModule } from 'src/app/components/components/components.module';
 import { ScoreComponent } from './score/score.component';
 import { Routes, RouterModule } from '@angular/router';
+import { ExportAsModule } from 'ngx-export-as';
+import { ScoreReadOnlyComponent } from './export/score-read-only/score-read-only.component';
 
 const routes: Routes = [
     { path: '', component: CoverPageLayoutComponent }
@@ -17,12 +19,14 @@ const routes: Routes = [
         ComponentsModule,
         MatButtonModule,
         MatIconModule,
+        ExportAsModule,
         RouterModule.forChild(routes)
     ],
     declarations: [
         CoverPageLayoutComponent,
         CoverPageHeaderComponent,
-        ScoreComponent
+        ScoreComponent,
+        ScoreReadOnlyComponent
     ],
     providers: [],
     exports: [CoverPageLayoutComponent, CoverPageHeaderComponent]

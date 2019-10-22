@@ -17,8 +17,8 @@ import { trigger, state, style, transition, animate } from '@angular/animations'
   ]
 })
 export class ScoreComponent implements OnInit {
-  @Input() rating = '7';
-  @Input() months = '22';
+  @Input() rating = '0';
+  @Input() months = '0';
   @Input() iconPath = '';
   @Input() skill = '';
 

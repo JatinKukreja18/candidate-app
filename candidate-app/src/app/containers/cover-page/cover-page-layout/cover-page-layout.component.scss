@@ -56,6 +56,9 @@ $heading-color-2: rgb(77, 175, 220);
   .additional-skills {
     @include set-width();
     margin-bottom: $margin-between-sections;
+    &.export{
+        margin-bottom: 80px;
+    }
 
     .heading {
         @include heading-1();

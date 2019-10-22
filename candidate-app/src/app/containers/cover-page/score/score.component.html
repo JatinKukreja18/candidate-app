@@ -2,11 +2,13 @@
     <div class="radial-progress">
         <div class="circle">
             <div class="mask full" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}">
-                <div class="fill" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}"></div>
+                <div class="fill" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}"><div></div></div>
+                <div class="test"></div>
             </div>
             <div class="mask half">
-                <div class="fill" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}"></div>
-                <div class="fill fix" [@rotatedState]="{value: state, params: { rotDeg: fixRotation}}"></div>
+                <div class="fill" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}"><div></div></div>
+                <div class="fill fix" [@rotatedState]="{value: state, params: { rotDeg: fixRotation}}"><div></div></div>
+                <div class="test"></div>
             </div>
         </div>
         <div class="inset">

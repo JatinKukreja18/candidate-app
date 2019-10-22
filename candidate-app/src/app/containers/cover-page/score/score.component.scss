@@ -27,6 +27,14 @@ $circle-size: 120px;
           clip: rect(0px, $circle-size/2, $circle-size, 0px);
           background: linear-gradient(rgb(108, 169, 248), rgb(122, 226, 202));
           opacity: 0.8;
+          div{
+            position: absolute;
+            background: white;
+            left: 60px;
+            height: 120px;
+            width: 60px;
+            border-radius: 50%;
+          }
         }
       }
     }
