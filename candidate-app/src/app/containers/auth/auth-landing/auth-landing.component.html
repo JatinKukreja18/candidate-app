@@ -1,0 +1,39 @@
+<div class="auth-landing">
+	<div class="outer">
+			<div class="left-section">
+					<div class="left-section-inner">
+							<div class="content">
+							<img src="/assets/images/CS_new_logo_316x225.svg" class="mid-logo"  style="margin: 0 auto;"/>
+						  </div>
+			</div>
+			</div>
+				  <div class="right-section">
+					<span class="right-cross" *ngIf="sections.login || sections.register || sections.verifyOTP || sections.externalRegister" (click)="showSection(null, 'external')">
+						<img src="../../../assets/images/shape-cross.svg" alt="return to home">
+					</span>
+					<div *ngIf="sections.external" class="social-login" id="social-login">
+						<div class="padded-socials">
+							<div class="social-button" id="google" (click)="socialSignIn('google')">
+								<img src="../../../assets/images/google-login.svg" alt="">
+							</div>
+							<div class="social-button" id="linkedin">
+								<img src="../../../assets/images/linkedin-login.svg" alt="" (click)="signInWithLinkedIn()">
+							</div>
+							<div class="social-button" id="facebook">
+								<img src="../../../assets/images/facebook-login.svg" alt="" (click)="socialSignIn('facebook')">
+							</div>
+						</div>
+						<div class="row auth-buttons">
+							<button class="white" value="Login" id="login-btn" (click)="showSection(null, 'login')">Login</button>
+							<p class="big-light-text">OR</p>
+							<button class="white" value="Register" (click)="showSection(null, 'register')">Register</button>
+						</div>
+						<p class="text-center tnc-link">I Agree to <a href="https://www.cliksource.com/terms-of-use.html" target="_blank" rel="noreferrer" alt="terms and condition">Terms & Conditions</a></p>
+					</div>
+					<app-sidebar-register *ngIf="sections.register" (formSubmit)="showSection($event, 'verifyOTP')"></app-sidebar-register>
+					<app-sidebar-login *ngIf="sections.login"></app-sidebar-login>
+					<app-sidebar-otp-verify [email]="emailRegistered" *ngIf="sections.verifyOTP" (formSubmit)="showSection($event, 'login')"></app-sidebar-otp-verify>
+					<app-sidebar-external-register *ngIf="sections.externalRegister"></app-sidebar-external-register>
+				  </div>
+			</div>
+</div>

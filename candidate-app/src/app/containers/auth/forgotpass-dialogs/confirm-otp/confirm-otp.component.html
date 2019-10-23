@@ -1,0 +1,36 @@
+<div class="dialog">
+    <div class="dialog-header">
+        <p class="form-title">Forgot Password</p>      
+        <span class="form-cross" [routerLink]="['']"><img src="/assets/images/shape-cross.svg" alt="return to home"></span>
+    </div>
+    <div class="dialog-content">
+        <div class="non-editable-form-group">
+            <p class="label">EMAIL ID</p>
+            <p class="input">{{email}}</p>
+        </div>
+        <form class="re-otp-form" [formGroup]="confirmOTPForm" (ngSubmit)="onSubmit()">
+        <!-- <div class="form-group">
+            <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <label class="form-control-placeholder">EMAIL ID</label>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+            <div class="error" *ngIf="f.email.errors.required">Email is required</div>
+            <div class="error" *ngIf="f.email.errors.email">Email must be a valid email address</div>
+            </div>
+        </div> -->
+        <div class="form-group">
+            <input type="password" id="otp" formControlName="otp" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.otp.errors }" />
+            <label class="form-control-placeholder" [ngClass]="{'active': f.otp.value, 'inactive': !f.otp.value }">OTP<span class="required-star">*</span></label>
+            <div *ngIf="submitted && f.otp.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.otp.errors.required">{{validationMsgs.OTPRequired}}</div>
+                <div class="error" *ngIf="f.otp.errors.pattern || f.otp.errors.maxlength || f.otp.errors.minlength">{{validationMsgs.OTPInvalid}}</div>
+            </div>
+        </div>
+        <div class="form-group re-otp-submit">
+            <button class="orange-button" [disabled]="submitting">Confirm OTP</button>
+            <button class="white re-otp" [disabled]="reSending" (click)="resendOTP()">OTP Not Recieved?</button>
+            <!-- <app-form-button [isDisabled]="loading" [textButton]="'Login'"></app-form-button> -->
+        </div>
+        </form>
+    </div>
+</div>
+      

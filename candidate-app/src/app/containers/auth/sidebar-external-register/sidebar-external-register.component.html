@@ -1,0 +1,57 @@
+<div class="form-section" id="register">
+    <p class="form-title">Register</p>
+    <div class="horizontal-rule"></div>
+    <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+        <!-- First name -->
+        <div class="form-group">
+            <input type="text" id="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" />
+            <label for="firstName" class="form-control-placeholder" [ngClass]="{'active': f.firstName.value, 'inactive': !f.firstName.value }" >FIRST NAME<span class="required-star">*</span></label>
+            <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
+                <div class="error" *ngIf="f.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
+                <div class="error" *ngIf="f.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
+            </div>
+        </div>
+        <!-- Last name -->
+        <div class="form-group">
+            <input type="text" id="lastName" formControlName="lastName" class="form-control not-mandate" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+            <label for="lastName" class="form-control-placeholder" [ngClass]="{'active': f.lastName.value, 'inactive': !f.lastName.value }">LAST NAME</label>
+            <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.lastName.errors.maxlength">{{validationMsgs.LastNameMaxlength}}</div>
+            </div>
+        </div>
+        <!-- Email ID -->
+        <div class="form-group">
+            <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+            <label for="email" class="form-control-placeholder" [ngClass]="{'active': f.email.value, 'inactive': !f.email.value }">EMAIL<span class="required-star">*</span></label>
+            <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.email.errors.required">{{validationMsgs.EmailRequired}}</div>
+                <div class="error" *ngIf="f.email.errors.pattern">{{validationMsgs.EmailInvalid}}</div>
+                <div class="error" *ngIf="f.email.errors.maxlength">{{validationMsgs.EmailMaxlength}}</div>
+            </div>
+        </div>
+        <!-- Country -->
+        <div class="form-group">
+            <input type="text" id="country" list="countries" formControlName="country" class="form-control not-mandate" [ngClass]="{ 'is-invalid': submitted && f.country.errors }"/>
+            <label for="country" class="form-control-placeholder" [ngClass]="{'active': f.country.value, 'inactive': !f.country.value }">COUNTRY<span class="required-star">*</span></label>
+            <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.country.errors.required">{{validationMsgs.CountryRequired}}</div>
+            </div>
+            <datalist id="countries">
+                <option *ngFor="let country of countries">{{country.name}}(+{{country.phonecode}})</option>
+            </datalist>
+        </div>
+        <!-- Phone -->
+        <div class="form-group">
+            <input app-phone-field type="text" id="phone" formControlName="phone" class="form-control not-mandate" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+            <label for="phone" class="form-control-placeholder" [ngClass]="{'active': f.phone.value, 'inactive': !f.phone.value }">PHONE NO.</label>
+            <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+                <!-- <div class="error" *ngIf="f.phone.errors.required">{{validationMsgs.PhoneRequired}}</div> -->
+                <div class="error" *ngIf="f.phone.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+            </div>
+        </div>
+        <div class="form-group">
+            <button class="orange-button" [disabled]="submitting">Register</button>
+        </div>
+    </form>
+</div>

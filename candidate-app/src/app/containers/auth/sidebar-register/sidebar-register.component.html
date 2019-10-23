@@ -1,0 +1,90 @@
+<div class="form-section" id="register">
+  <p class="form-title">Register</p>
+  <div class="horizontal-rule"></div>
+  <form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <!-- First name -->
+    <div class="form-group">
+      <input tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.firstName.errors }" autofocus/>
+      <label for="firstName" class="form-control-placeholder" [ngClass]="{'active': f.firstName.value, 'inactive': !f.firstName.value }">FIRST NAME <span class="required-star">*</span></label>
+      <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
+        <div class="error" *ngIf="f.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
+        <div class="error" *ngIf="f.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
+      </div>
+    </div>
+    <!-- Last name -->
+    <div class="form-group">
+      <input tabindex="2" type="text" id="lastName" formControlName="lastName" class="form-control not-mandate" [ngClass]="{ 'is-invalid': submitted && f.lastName.errors }" />
+      <label for="lastName" class="form-control-placeholder" [ngClass]="{'active': f.lastName.value, 'inactive': !f.lastName.value }">LAST NAME</label>
+      <div *ngIf="submitted && f.lastName.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.lastName.errors.maxlength">{{validationMsgs.LastNameMaxlength}}</div>
+      </div>
+    </div>
+    <!-- Email Id -->
+    <div class="form-group">
+      <input tabindex="3" type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+      <label for="email" class="form-control-placeholder" [ngClass]="{'active': f.email.value, 'inactive': !f.email.value }">EMAIL ID<span class="required-star">*</span></label>
+      <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.email.errors.required">{{validationMsgs.EmailRequired}}</div>
+        <div class="error" *ngIf="f.email.errors.pattern">{{validationMsgs.EmailInvalid}}</div>
+        <div class="error" *ngIf="f.email.errors.maxlength">{{validationMsgs.EmailMaxlength}}</div>
+      </div>
+    </div>
+    <!-- Password -->
+    <div class="form-group">
+      <input tabindex="4" [type]=" showPassword.pass ? 'text' : 'password' " id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <label for="password" class="form-control-placeholder" [ngClass]="{'active': f.password.value, 'inactive': !f.password.value }">PASSWORD<span class="required-star">*</span></label>
+      <span class="showpass-btn" [ngClass]="showPassword.pass ? 'encrypt' : 'decrypt' " (click)="togglePass('pass');" theme="outline">
+        <span [ngClass]="{'cross-icon': !showPassword.pass}"><img src="../../../assets/images/eye.svg" alt="toggle pass" /></span>
+        <!-- <object type="image/svg+xml" data="../../../assets/images/eye.svg" class="eye-pass"></object> -->
+      </span>
+      <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.password.errors.required">{{validationMsgs.PasswordRequired}}</div>
+        <div class="error" *ngIf="f.password.errors.pattern">{{validationMsgs.PasswordInvalid}}</div>
+        <div class="error" *ngIf="f.password.errors.minlength">{{validationMsgs.PasswordMinlength}}</div>
+        <div class="error" *ngIf="f.password.errors.maxlength">{{validationMsgs.PasswordMaxlength}}</div>
+      </div>
+    </div>
+    <!-- Confirm Password -->
+    <div class="form-group">
+      <input tabindex="5" [type]=" showPassword.confirmPass ? 'text' : 'password' " id="repass" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
+      <label for="repass" class="form-control-placeholder" [ngClass]="{'active': f.confirmPassword.value, 'inactive': !f.confirmPassword.value }">CONFIRM PASSWORD<span class="required-star">*</span></label>
+      <span class="showpass-btn" [ngClass]="showPassword.confirmPass ? 'encrypt' : 'decrypt' " (click)="togglePass('confirmPass');" theme="outline">
+        <span [ngClass]="{'cross-icon': !showPassword.confirmPass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+      </span>
+      <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.confirmPassword.errors.required">{{validationMsgs.ConfirmPasswordRequired}}</div>
+        <div class="error" *ngIf="f.confirmPassword.errors.minlength">{{validationMsgs.ConfirmPasswordMinlength}}</div>
+        <div class="error" *ngIf="f.confirmPassword.errors.maxlength">{{validationMsgs.ConfirmPasswordMaxlength}}</div>
+      </div>
+      <div *ngIf="submitted && registerForm.value.confirmPassword != registerForm.value.password" class="invalid-feedback">
+        <div class="error" *ngIf="registerForm.value.confirmPassword != registerForm.value.password">{{validationMsgs.ConfirmPasswordMatch}}</div>
+      </div>
+    </div>
+    <!-- Country -->
+    <div class="form-group">
+      <input tabindex="6" type="text" id="country" list="countries" formControlName="country" class="form-control not-mandate" />
+      <label for="country" class="form-control-placeholder" [ngClass]="{'active': f.country.value, 'inactive': !f.country.value }">COUNTRY<span class="required-star">*</span></label>
+      <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
+        <div class="error" *ngIf="f.country.errors.required">{{validationMsgs.CountryRequired}}</div>
+      </div>
+      <datalist id="countries">
+        <option *ngFor="let country of countries">{{country.name}}(+{{country.phonecode}})</option>
+      </datalist>
+    </div>
+    <!-- Phone -->
+    <div class="form-group">
+      <input app-phone-field tabindex="7" type="number" id="phone" formControlName="phone" class="form-control not-mandate" [ngClass]="{ 'is-invalid': submitted && f.phone.errors }" />
+      <label for="phone" class="form-control-placeholder" [ngClass]="{'active': f.phone.value, 'inactive': !f.phone.value }">PHONE NO.</label>
+      <div *ngIf="submitted && f.phone.errors" class="invalid-feedback">
+        <!-- <div class="error" *ngIf="f.phone.errors.required">{{validationMsgs.PhoneRequired}}</div> -->
+        <div class="error" *ngIf="f.phone.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+      </div>
+    </div>
+    <!-- Submit Button -->
+    <div class="form-group">
+        <button tabindex="8" class="orange-button" [disabled]="submitting">Register</button>
+        <!-- <app-form-button [isDisabled]="loading" [textButton]="'Register'"></app-form-button> -->
+    </div>
+  </form>
+</div>

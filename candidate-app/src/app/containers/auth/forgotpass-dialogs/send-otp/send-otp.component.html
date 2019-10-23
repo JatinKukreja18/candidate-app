@@ -1,0 +1,22 @@
+<div class="dialog">
+    <div class="dialog-header">
+        <p class="form-title">Forgot Password</p>      
+        <span class="form-cross" [routerLink]="['']"><img src="/assets/images/shape-cross.svg" alt="return to home"></span>
+    </div>
+    <div class="dialog-content">
+        <form [formGroup]="sendOTPForm" (ngSubmit)="onSubmit()">
+            <div class="form-group">
+                <input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+                <label class="form-control-placeholder" [ngClass]="{'active': f.email.value, 'inactive': !f.email.value }">EMAIL ID<span class="required-star">*</span></label>
+                <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="f.email.errors.required">{{validationMsgs.EmailRequired}}</div>
+                    <div class="error" *ngIf="f.email.errors.pattern">{{validationMsgs.EmailInvalid}}</div>
+                    <div class="error" *ngIf="f.email.errors.maxlength">{{validationMsgs.EmailMaxlength}}</div>
+                </div>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="orange-button" [disabled]="submitting">Request OTP</button>
+            </div>
+        </form>
+    </div>
+</div>

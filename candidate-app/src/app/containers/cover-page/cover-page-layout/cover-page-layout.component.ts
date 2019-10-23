@@ -2,7 +2,6 @@ import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/cor
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import FileSaver from 'file-saver';
-import domtoimage from 'dom-to-image';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({
@@ -172,9 +171,9 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   }
 
   ngAfterViewInit() {
-    if(this.exporting){
+    if (this.exporting) {
       setTimeout(this.captureScreen.bind(this), 200);
-      //this.captureScreen();
+      // this.captureScreen();
     }
   }
 
@@ -187,7 +186,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
       const pageHeight = 300;  
       const imgHeight = canvas.height * imgWidth / canvas.width;
       let heightLeft = imgHeight;
-      //FileSaver.saveAs(contentDataURL, 'my-pdfimage.png');
+      // FileSaver.saveAs(contentDataURL, 'my-pdfimage.png');
       let doc = new jspdf('p', 'mm', 'a4');
       let position = 0;
 

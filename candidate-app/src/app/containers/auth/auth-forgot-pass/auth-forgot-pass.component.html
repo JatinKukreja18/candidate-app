@@ -1,0 +1,32 @@
+<div class="forgot-pass-container">
+	<section class="logo-symbol"><img src="/assets/images/CS_new_logo_105x106.svg" class="left-section-text" [routerLink]="['/']"></section>
+	<section class="forgot-pass-content">
+		<!-- <div class="dialog" *ngIf="request_otp">
+			<div class="dialog-header">
+				<p class="form-title">Forgot Password</p>      
+				<span class="form-cross" [routerLink]="['']"><img src="../../../assets/images/shape-cross.svg" alt="return to home"></span>
+			</div>
+			<div class="dialog-content">
+				<form [formGroup]="forgotFormA" (ngSubmit)="onSubmit()">
+					<div class="form-group">
+						<input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
+						<label class="form-control-placeholder">EMAIL ID</label>
+						<div *ngIf="submitted && f.email.errors" class="invalid-feedback">
+							<div class="error" *ngIf="f.email.errors.required">Email is required</div>
+							<div class="error" *ngIf="f.email.errors.email">Email must be a valid email address</div>
+						</div>
+					</div>
+					<div class="form-group">
+						<button class="orange-button">Request OTP</button>
+					</div>
+				</form>
+			</div>
+		</div> -->
+		<!-- <app-dialog-confirm-otp *ngIf="confirm_otp"></app-dialog-confirm-otp> -->
+		<app-send-otp *ngIf="forms.sendOTP" (formSubmit)="otpSent($event, 'confirmOTP')"></app-send-otp>
+		<app-confirm-otp *ngIf="forms.confirmOTP" [email]="email" (formSubmit)="otpConfrimed($event, 'newPassword')"></app-confirm-otp>
+		<app-new-password *ngIf="forms.newPassword" [email]="confirmOTPSubmittedValue.email" [otp]="confirmOTPSubmittedValue.otp" (formSubmit)="passwordChanged()"></app-new-password>
+	</section>
+	<section class="company">
+	</section>
+</div>
