@@ -1,13 +1,21 @@
 .score-read-only{
     position: relative;
-    left: -30px;
+    .circle{
+        //background: #ffb2c8;
+        border-radius: 50%;
+        height: 120px;
+        margin: 0 auto;
+        position: relative;
+        width: 120px;
+    }
     .pie {
+        display: none;
         position:absolute;
         width:60px;
         height:120px;
         overflow:hidden;
-        left:90px;
-    
+        left:50%;
+        transform:rotate(0);
         transform-origin:left center;
 
         .pie-child{
@@ -17,25 +25,26 @@
             left:-60px;
             border-radius:60px 0 0 60px;
             transform-origin:right center;
-            /* background-color:rgb(94, 137, 218);	 */
             background: linear-gradient( rgb(108, 169, 248),rgb( 122, 226, 202));
-            /* transform:rotate(119deg); */
+        }
+        &:after{
+            background: linear-gradient( rgb(108, 169, 248),rgb( 122, 226, 202));
         }
     }
     .pie.big {
         width:120px;
         height:120px;
-        left:30px;
+        left:0;
         transform-origin:center center;
 
-        &:AFTER {
+        &:after {
             content:"";
             position:absolute;
             width:60px;
             height:120px;
             left:60px;
             border-radius:0 60px 60px 0;
-            
+            background: linear-gradient( rgb(108, 169, 248),rgb( 122, 226, 202));
         }
 
         .pie-child{
@@ -45,8 +54,7 @@
             left:0px;
             border-radius:60px 0 0 60px;
             transform-origin: right center;
-            background:rgb(255, 255, 255);
-            /* transform:rotate(242deg); */
+            background: linear-gradient( rgb(108, 169, 248),rgb( 122, 226, 202));
         }
     }
     .inset{
@@ -66,10 +74,12 @@
             &.java{
                 width: 48px;
                 margin-top: 5px;
+                margin-left: 30px;
             }
             &.sql{
                 width: 85px;
                 margin-top: 15px;
+                margin-left: 12px
             }
             
         }
@@ -81,8 +91,6 @@
         font-weight: 500;
         color: rgb(80, 75, 77);
         font-size: 18px;
-        position: absolute;
-        left: 30px;
       }
 }
 

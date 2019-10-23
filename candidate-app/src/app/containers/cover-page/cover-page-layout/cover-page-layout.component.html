@@ -7,13 +7,14 @@
               [companyName]="companyName" [socialLinks]="candidateData.socialLinks" [mobile]="candidateData.contact"
               [email]="candidateData.email"></app-cover-page-header>
       </div>
-      <div class="primary-skills" ngClass="exporting?'export':''">
+      <div class="primary-skills">
           <div class="heading" (click)="captureScreen()">
               <span>PRIMARY SKILLS AND EXPERIENCE EQUIVALENCY</span>
           </div>
           <div class="skills">
               <div *ngFor="let skill of candidateData.mainSkills" class="skill-circle">
-                  <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+                  <app-score *ngIf="!exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+                  <app-score-read-only *ngIf="exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
               </div>
 
           </div>
@@ -24,8 +25,8 @@
           </div>
           <div class="skills">
               <div *ngFor="let skill of candidateData.additionalSkills" class="skill-circle" >
-                  <!-- <app-score [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score> -->
-                   <app-score-read-only [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
+                   <app-score *ngIf="!exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
+                   <app-score-read-only *ngIf="exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
               </div>
               
 

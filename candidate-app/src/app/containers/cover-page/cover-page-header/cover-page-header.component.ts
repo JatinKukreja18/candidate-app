@@ -1,4 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Router } from '@angular/router';
 
 interface SocialLinks {
   site: string;
@@ -21,7 +22,7 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() mobile: string;
   @Input() email: string;
 
-  constructor() { }
+  constructor( private router: Router) { }
 
   ngOnInit() {
   }
