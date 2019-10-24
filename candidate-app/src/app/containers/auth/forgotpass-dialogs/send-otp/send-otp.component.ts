@@ -63,7 +63,7 @@ export class SendOTPComponent implements OnInit {
                 this.message.remove(loading); // Remove loading message
                 if (response.code && response.code === 200) {
                     this.formSubmit.emit(this.sendOTPForm.value.email);
-                    this.analyticsService.eventEmitter('ForgotPasswordRequestOtpScreen', 'Forgot Password Request Otp', 'Forgot Password Request Otp');
+                    // this.analyticsService.eventEmitter('ForgotPasswordRequestOtpScreen', 'Forgot Password Request Otp', 'Forgot Password Request Otp');
                 }
             }, (error) => {
                 this.submitting = false;

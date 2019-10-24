@@ -59,7 +59,7 @@ export class ConfirmOTPComponent implements OnInit {
             this.message.remove(loading); // Remove loading message
             if (response && response.code === 200){
                 this.message.success(FeedbackMessages.success.OTPResent, {nzDuration: 1500});
-                this.analyticsService.eventEmitter('ForgotPasswordConfirmOtpScreen', 'Forgot Password Otp Not Received', 'Forgot Password Otp Not Received');
+                // this.analyticsService.eventEmitter('ForgotPasswordConfirmOtpScreen', 'Forgot Password Otp Not Received', 'Forgot Password Otp Not Received');
             }
         }, (error) => {
             this.reSending = false;
@@ -90,7 +90,7 @@ export class ConfirmOTPComponent implements OnInit {
                 this.submitting = false;
                 if (response.code && response.code === 200) {
                     this.formSubmit.emit({email: this.email, otp: this.confirmOTPForm.value.otp});
-                    this.analyticsService.eventEmitter('ForgotPasswordConfirmOtpScreen', 'Forgot Password Confirm Otp', 'Forgot Password Confirm Otp');
+                    // this.analyticsService.eventEmitter('ForgotPasswordConfirmOtpScreen', 'Forgot Password Confirm Otp', 'Forgot Password Confirm Otp');
                 }
             }, (error) => {
                 this.submitting = false;

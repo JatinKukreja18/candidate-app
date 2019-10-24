@@ -84,7 +84,7 @@ export class NewPasswordComponent implements OnInit {
           this.message.remove(loading);
           if (response.code && response.code === 200) {
             this.formSubmit.emit(true);
-            this.analyticsService.eventEmitter('ForgotPasswordNewPasswordOtpScreen', 'Forgot Password Set New Password', 'Forgot Password Set New Password');
+            // this.analyticsService.eventEmitter('ForgotPasswordNewPasswordOtpScreen', 'Forgot Password Set New Password', 'Forgot Password Set New Password');
           }
         }, (error) => {
           this.submitting = false;

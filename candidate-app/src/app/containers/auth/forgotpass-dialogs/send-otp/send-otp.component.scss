@@ -29,6 +29,11 @@
     background: #fff;
     form {
       margin: 0;
+
+      .error {
+        font-size: 12px;
+        color: red;
+      }
       .form-group {
         position: relative;
         input {
