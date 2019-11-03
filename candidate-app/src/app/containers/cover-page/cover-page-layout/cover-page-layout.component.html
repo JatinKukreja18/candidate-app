@@ -3,18 +3,25 @@
     <div class="page-section">
 
       <div class="header">
-          <app-cover-page-header [candidateName]="candidateData.name" [role]="candidateData.role"
-              [companyName]="companyName" [socialLinks]="candidateData.socialLinks" [mobile]="candidateData.contact"
-              [email]="candidateData.email"></app-cover-page-header>
+          <app-cover-page-header
+            [candidateName]="candidateData.FullName"
+            [role]="candidateData.JobTitle"
+            [companyName]="'Cognixia'"
+            [socialLinks]="candidateData.CandidateSocialProfileDetails"
+            [mobile]="candidateData.MobileNumber"
+            [email]="candidateData.EmailId">
+          </app-cover-page-header>
       </div>
       <div class="primary-skills">
           <div class="heading">
               <span>PRIMARY SKILLS AND EXPERIENCE EQUIVALENCY</span>
           </div>
           <div class="skills">
-              <div *ngFor="let skill of candidateData.mainSkills" class="skill-circle">
-                  <app-score *ngIf="!exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
-                  <app-score-read-only *ngIf="exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
+              <div class="skills-row">
+                <div *ngFor="let skill of filteredSkills" class="skill-circle">
+                    <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score>
+                    <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score-read-only>
+                </div>
               </div>
 
           </div>
@@ -28,7 +35,7 @@
                    <app-score *ngIf="!exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
                    <app-score-read-only *ngIf="exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
               </div>
-              
+
 
           </div>
       </div>
@@ -38,9 +45,9 @@
                   <span>Trained On</span>
               </div>
               <div class="training-list">
-                  <div *ngFor="let training of candidateData.trainings">
+                  <div *ngFor="let training of candidateData.Trainings">
                       <div class="bullet"></div>
-                      <div class="item">{{training}}</div>
+                      <div class="item">{{training.Training}}</div>
                   </div>
               </div>
           </div>
@@ -49,7 +56,7 @@
                   <span>Personal Video</span>
               </div>
               <div class="video">
-                  <iframe width="352" height="200" src="https://www.youtube.com/embed/l482T0yNkeo" frameborder="0"
+                  <iframe width="352" height="200" [src]="candidateData?.PersonalVideoUrl" frameborder="0"
                       allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture"
                       allowfullscreen></iframe>
               </div>
@@ -59,7 +66,7 @@
                   <span>Jump Instructor Feedback</span>
               </div>
               <div class="content">
-                  <span>" {{candidateData.feedback}} "</span>
+                  <span>" {{candidateData.InstructorFeedback}} "</span>
               </div>
           </div>
       </div>
@@ -68,7 +75,7 @@
               <span>Personal Summary</span>
           </div>
           <div class="content">
-              <span>{{candidateData.personalSummary}}</span>
+              <span>{{candidateData.Summary}}</span>
           </div>
       </div>
     </div>
@@ -79,16 +86,17 @@
               <span>Additional Projects</span>
           </div>
           <div class="content">
-              <div *ngFor="let project of candidateData.additionalProjects">
+              <div *ngFor="let project of candidateData.ProjectDetails">
                   <app-details-list-card class="additional-project-card">
                       <div title class="card-title">
-                          <span>{{project.name}}</span>
+                          <span>{{project.Project_Title}}</span>
                       </div>
                       <div content class="card-content">
-                          <div *ngFor="let item of project.keyPoints" class="items">
+                          <!-- <div *ngFor="let item of project.keyPoints" class="items">
                               <div class="bullet"></div>
                               <div class="item">{{item}}</div>
-                          </div>
+                          </div> -->
+                          {{project.Project_Description}}
                       </div>
                   </app-details-list-card>
               </div>
@@ -99,18 +107,19 @@
               <span>Education & Certification</span>
           </div>
           <div class="content">
-              <div *ngFor="let education of candidateData.educations">
+
+              <div *ngFor="let education of candidateData.EducationDetails.InstituteDetails">
                   <app-details-list-card class="education-certification-card">
                       <div title class="card-title">
-                          <span>{{education.title}}</span>
-                          <span style="font-weight: normal"> ({{education.year}})</span>
+                          <span>{{education.SchoolName}}</span>
+                          <span style="font-weight: normal"> ({{education.Degree[0].DegreeDate[0]}})</span>
                       </div>
                       <div content class="card-content">
-                          <div *ngFor="let item of education.achievements" class="items">
+                          <div *ngFor="let item of education.Degree" class="items">
                               <div class="bullet"></div>
                               <div class="item">
-                                  <span>{{item.type}}: </span>
-                                  <span>{{item.name}}</span>
+                                  <span>{{item.DegreeType}}: </span>
+                                  <span>{{item.DegreeName}}</span>
                               </div>
                           </div>
                       </div>
@@ -120,8 +129,8 @@
       </div>
       <footer>
           <div class="footer">
-              <div class="candidate-name">{{candidateData.name}}</div>
-              <div class="company-name">{{companyName}}</div>
+              <div class="candidate-name">{{candidateData.FullName}}</div>
+              <div class="company-name">Cognixia</div>
           </div>
       </footer>
     </div>

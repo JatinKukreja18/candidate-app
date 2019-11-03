@@ -1,3 +1,4 @@
+import { UserDataService } from './../../core/services/userdata.service';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule, MatButtonModule, MatIconModule } from '@angular/material';
@@ -26,7 +27,7 @@ const routes: Routes = [
         ScoreComponent,
         ScoreReadOnlyComponent
     ],
-    providers: [],
+    providers: [UserDataService],
     exports: [CoverPageLayoutComponent, CoverPageHeaderComponent]
 })
 export class CoverPageModule { }

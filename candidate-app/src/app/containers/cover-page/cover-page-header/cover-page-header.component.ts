@@ -18,13 +18,36 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() candidateName: string;
   @Input() role: string;
   @Input() companyName: string;
-  @Input() socialLinks: SocialLinks;
+  @Input() socialLinks;
   @Input() mobile: string;
   @Input() email: string;
 
   constructor( private router: Router) { }
 
   ngOnInit() {
-  }
 
+
+  }
+  ngOnChanges(){
+    let a;
+    if(this.socialLinks){
+      a = this.socialLinks.map( function(item, index){
+        switch (item.SocialSiteId) {
+          case 3:
+                item.icon = 'fa-linkedin-square';
+                item.site = 'Linkedin';
+                break;
+          case 2:
+              item.icon = 'fa fa-github';
+              item.site = 'Github';
+              break;
+          default:
+
+            break;
+        }
+        return item;
+      });
+    }
+    console.log(a);
+  }
 }

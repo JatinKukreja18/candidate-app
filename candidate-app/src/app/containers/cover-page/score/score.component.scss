@@ -52,15 +52,16 @@ $circle-size: 120px;
         background-color: #ffffff;
 
         .icon{
-            &.java{
-                width: 48px;
-                margin-top: 5px;
-            }
-            &.sql{
-                width: 85px;
-                margin-top: 15px;
-            }
-            
+            height: 80%;
+            // &.java{
+            //     width: 48px;
+            //     margin-top: 5px;
+            // }
+            // &.sql{
+            //     width: 85px;
+            //     margin-top: 15px;
+            // }
+
         }
     }
   }

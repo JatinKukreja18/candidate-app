@@ -1,6 +1,6 @@
 $margin-between-sections: 60px;
 $heading-color-1: rgb(83, 183, 186);
-$heading-color-2: rgb(77, 175, 220);
+$heading-color-2: rgb(43, 189, 225);
 
 @mixin heading-1 {
   text-transform: uppercase;
@@ -55,20 +55,35 @@ $heading-color-2: rgb(77, 175, 220);
   .primary-skills,
   .additional-skills {
     @include set-width();
-    margin-bottom: $margin-between-sections;
+    // margin-bottom: $margin-between-sections;
     &.export{
         margin-bottom: 80px;
     }
 
     .heading {
-        @include heading-1();
+        @include heading-2();
     }
     .skills{
         display: flex;
         align-items: center;
-        .skill-circle:not(:first-child){
-            margin-left: 80px;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+        width: 100%;
+        padding-right: 0;
+        padding-left: 0;
+        margin-right: auto;
+        margin-left: auto;
+        .skill-circle{
+            padding: 0 32px;
+            margin-bottom: 60px;
         }
+    }
+    .skills-row{
+      display: flex;
+      -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+      margin-right: -40px;
+      margin-left: -40px;
     }
   }
   .other-info {
@@ -146,6 +161,8 @@ $heading-color-2: rgb(77, 175, 220);
 
       .additional-project-card {
         .card-content {
+          font-size: 18px;
+          color: #676364;
           .items {
             display: flex;
             align-items: flex-start;

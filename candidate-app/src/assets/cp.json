@@ -1,0 +1,209 @@
+{
+  "CandidateId": 40538,
+  "CandidateCode": null,
+  "FullName": "Testing Jump Candidate",
+  "JobTitle": "Technical Lead",
+  "Summary": "Tech-savvy, Physics college graduate with 3+ years of experience, measurably increasing profit margins over costs for businesses. Pursuing opportunities as a full stack java developer role in a corporate community.",
+  "PersonalVideoThumbUrl": null,
+  "PersonalVideoUrl": null,
+  "InstructorFeedback": "Proficient Candidate in mentioned skills",
+  "MobileNumber": "9876543210",
+  "EmailId": "testing@gmail.com",
+  "PrimarySkills": [
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "ASP.Net",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 3,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "Java",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 2,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": ".NET",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 10,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "SQL Server",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 2,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "Oracle",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 4,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "Entity Framework",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 4,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "LINQ",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 8,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "HTML",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 5,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "JQUERY",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 9,
+          "IsPrimarySkill": null
+      },
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Skill": "JAVASCRIPT",
+          "Experience": null,
+          "CreatedOn": null,
+          "IsActive": null,
+          "Proficiency": 9,
+          "IsPrimarySkill": null
+      }
+  ],
+  "Trainings": [
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Training": "Animation Design",
+          "CreatedOn": "2019-10-31T00:00:00",
+          "CreatedBy": null,
+          "UpdatedOn": "2019-10-31T00:00:00",
+          "UpdatedBy": null,
+          "IsActive": true
+      }
+  ],
+  "ExperienceDetails": [],
+  "ProjectDetails": [
+      {
+          "ID": 0,
+          "CandidateID": 0,
+          "Project_Title": "Console Employee Managment system ",
+          "Project_Description": "Created a console Employee managment system using Core Java technologies. Timeline was a week in class as a learning activity. My  Roles and Responsibilities included: Keeping the team organized, created Menu classes and Add Employee Menu Functions, combining the teams code into one application.",
+          "Project_Technology": "Core Java ",
+          "OutComes": null,
+          "Project_Link": "https://github.com/David-Michael-Sprinkle/ems",
+          "CreatedOn": null,
+          "IsActive": 1
+      }
+  ],
+  "EducationDetails": {
+      "Id": 0,
+      "CandidateId": 0,
+      "Resume": "",
+      "ResumeName": null,
+      "ResumeType": null,
+      "InstituteDetails": [
+          {
+              "Id": null,
+              "SchoolName": "Virginia Commonwealth UniversityRichmondVAUSBachelor of Physics2016",
+              "SchoolType": "university",
+              "LocationSummary": [
+                  {
+                      "Id": null,
+                      "Municipality": "Richmond",
+                      "Region": "VA",
+                      "CountryCode": "US"
+                  }
+              ],
+              "Degree": [
+                  {
+                      "Id": null,
+                      "DegreeType": "bachelors",
+                      "DegreeName": "Bachelor of Physics",
+                      "DegreeDate": [ "2016" ]
+                  }
+              ]
+          },
+          {
+              "Id": null,
+              "SchoolName": "Homer L. Hines Middle SchoolNewport NewsVAUS201820172018",
+              "SchoolType": "highschool",
+              "LocationSummary": [
+                  {
+                      "Id": null,
+                      "Municipality": "Newport News",
+                      "Region": "VA",
+                      "CountryCode": "US"
+                  }
+              ],
+              "Degree": [
+                  {
+                      "Id": null,
+                      "DegreeType": "some high school or equivalent",
+                      "DegreeName": null,
+                      "DegreeDate": [ "2018" ]
+                  }
+              ]
+          }
+      ],
+      "ParsedSkills": null,
+      "CompanyId": null,
+      "UpdatedAt": null,
+      "UpdatedBy": null,
+      "CreatedAt": "0001-01-01T00:00:00",
+      "CreatedBy": null,
+      "IsActive": null,
+      "CandidateProfile": null
+  },
+  "CandidateSocialProfileDetails": [
+      {
+          "Id": 0,
+          "SocialSiteId": 3,
+          "CandidateId": 0.0,
+          "ProfileLink": "Https://www.linkedin.com/in/blykes",
+          "created_stamp": null,
+          "updated_stamp": null
+      }
+  ]
+}

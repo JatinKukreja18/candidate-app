@@ -29,9 +29,11 @@ export class ScoreComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
-    setTimeout(this.changeState.bind(this), 200);
   }
+  ngOnChanges(){
+    setTimeout(this.changeState.bind(this), 200);
 
+  }
   changeState() {
     const degree = Number(this.rating) / 10 * 180;
     this.fillRotation = degree;

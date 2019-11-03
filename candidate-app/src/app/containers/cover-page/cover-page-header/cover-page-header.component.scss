@@ -8,18 +8,20 @@
         font-size: 50px;
         font-weight: 700;
         text-transform: uppercase;
-
+        color: #000;
+        line-height: 1;
         .candidate-name{
             text-transform: uppercase;
         }
-        .company-name{
-
+        .company-name img{
+          width: 230px;
+          height: auto;
         }
     }
     .contact-info{
         font-size: 18px;
-        color: rgb(83, 183, 186);
-        margin-bottom: 20px;
+        color: rgb(43, 189, 225);
+        margin-bottom: 6px;
 
         .email{
             margin-left: 40px;
@@ -29,7 +31,7 @@
         text-transform: uppercase;
         font-size: 26px;
         font-weight: 500;
-        color: rgb(77, 175, 220);
+        color: rgb(43, 189, 225);
         margin-bottom: 18px;
     }
     .social{
@@ -43,6 +45,8 @@
 
             .link{
                 text-decoration: none;
+                display: flex;
+                margin-right: 21px;
                 .fa-linkedin-square{
                     color: rgb(57, 126, 177)
                 }

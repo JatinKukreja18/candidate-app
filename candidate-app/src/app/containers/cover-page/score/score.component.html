@@ -12,9 +12,9 @@
             </div>
         </div>
         <div class="inset">
-            <img class="icon" [ngClass]="skill" [src]="iconPath" />
+            <img class="icon" [alt]="skill" [src]="iconPath" />
         </div>
 
     </div>
-    <div class="text"><span >{{months}} Months</span></div>
+    <div class="text" *ngIf="months"><span >{{months}} Months</span></div>
 </div>
