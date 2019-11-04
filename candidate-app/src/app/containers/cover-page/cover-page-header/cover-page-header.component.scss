@@ -23,6 +23,12 @@
         color: rgb(43, 189, 225);
         margin-bottom: 6px;
 
+        a{
+          color: rgb(43, 189, 225);
+          &:hover{
+            text-decoration: underline;
+          }
+        }
         .email{
             margin-left: 40px;
         }

@@ -13,8 +13,11 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
 
   candidateData:any = {};
   companyName = 'Cognixia';
+  zoomValue = 1.0;
   exporting = false;
-  filteredSkills: [];
+  primarySkills: [];
+  additionalSkills: [];
+  isEditable = false;
   constructor( private activatedRoute: ActivatedRoute,
                 private userDataService: UserDataService ) {
   }
@@ -23,11 +26,9 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     // Get Data from API
     this.userDataService.getUserData().subscribe(res=> {
-      console.log(res);
-      this.candidateData = res;
-      this.handleSkills(this.candidateData.PrimarySkills);
-      console.log(this.candidateData.EducationDetails);
 
+      this.candidateData = res;
+      this.handleSkills(this.candidateData.CandidateSkills);
     }, err => console.log(err.message));
 
 
@@ -183,18 +184,31 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
     // };
 
   }
-  handleSkills(skills){
-      const sortedSkills =  skills.sort((a, b) => {
-            return parseFloat(b.Proficiency) - parseFloat(a.Proficiency);
-        }).map(item => {
-          item.iconPath = "'../../../assets/images/java-logo.png";
-          return item;
-        });
+  handleSkills(allSkills){
+      // const sortedSkills =  allSkills.sort((a, b) => {
+      //       return parseFloat(b.Proficiency) - parseFloat(a.Proficiency);
+      //   }).map(item => {
+      //     item.iconPath = "'../../../assets/images/java-logo.png";
+      //     return item;
+      //   });
 
-      console.log(sortedSkills);
-      console.log(skills);
+      const PS =  allSkills.filter(item => {
+            item.iconPath = "'../../../assets/images/java-logo.png";
+            return item.SkillType === 'Primary';
+            });
+      const AS =  allSkills.filter(item => {
+            item.iconPath = "'../../../assets/images/java-logo.png";
+            return item.SkillType === 'Additional';
+            });
 
-      this.filteredSkills = sortedSkills;
+      this.primarySkills = PS;
+      this.additionalSkills = AS;
+
+      // this.filteredSkills = sortedSkills;
+  }
+  zoomIt(v) {
+    document.body.style.zoom = v;
+    this.zoomValue = v;
   }
   ngAfterViewInit() {
     if (this.exporting) {

@@ -9,7 +9,7 @@
   "InstructorFeedback": "Proficient Candidate in mentioned skills",
   "MobileNumber": "9876543210",
   "EmailId": "testing@gmail.com",
-  "PrimarySkills": [
+  "CandidateSkills": [
       {
           "ID": 0,
           "CandidateID": 0,
@@ -18,7 +18,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 3,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": false,
+          "SkillType": "Additional"
       },
       {
           "ID": 0,
@@ -28,7 +29,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 2,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": false,
+          "SkillType": "Additional"
       },
       {
           "ID": 0,
@@ -38,7 +40,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 10,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": true,
+          "SkillType": "Primary"
       },
       {
           "ID": 0,
@@ -48,7 +51,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 2,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": false,
+          "SkillType": "Additional"
       },
       {
           "ID": 0,
@@ -58,7 +62,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 4,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": true,
+          "SkillType": "Primary"
       },
       {
           "ID": 0,
@@ -68,7 +73,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 4,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": true,
+          "SkillType": "Primary"
       },
       {
           "ID": 0,
@@ -78,7 +84,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 8,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": true,
+          "SkillType": "Primary"
       },
       {
           "ID": 0,
@@ -88,7 +95,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 5,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": true,
+          "SkillType": "Primary"
       },
       {
           "ID": 0,
@@ -98,7 +106,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 9,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": false,
+          "SkillType": "Additional"
       },
       {
           "ID": 0,
@@ -108,7 +117,8 @@
           "CreatedOn": null,
           "IsActive": null,
           "Proficiency": 9,
-          "IsPrimarySkill": null
+          "IsPrimarySkill": false,
+          "SkillType": "Additional"
       }
   ],
   "Trainings": [
@@ -123,7 +133,86 @@
           "IsActive": true
       }
   ],
-  "ExperienceDetails": [],
+  "EmploymentHistory": {
+      "Id": 0,
+      "EmployerOrg": [
+          {
+              "ID": 0,
+              "employerOrgType": "soleEmployer",
+              "EmployerOrgName": "COLLABERA",
+              "LocationSummary": [
+                  {
+                      "Id": null,
+                      "Municipality": "BASKING RIDGE",
+                      "Region": "NJ",
+                      "CountryCode": "US"
+                  }
+              ],
+              "PositionHistories": [
+                  {
+                      "positionType": null,
+                      "Title": "Full Stack JAVA Developer",
+                      "OrgName": "COLLABERA",
+                      "Description": "*    Trained by established Full Stack JAVA Developers in JAVA, Spring Boot, Angular and React.\n    *    Proficient utilizing web services to create dynamic applications.\n    *    Analyzed, Designed, Developed and Tested software to applying the best practices of Software Development at every phase of the development process.",
+                      "StartDate": null,
+                      "EndDate": null,
+                      "JobCategories": [],
+                      "DaxPositions": []
+                  }
+              ]
+          },
+          {
+              "ID": 0,
+              "employerOrgType": "soleEmployer",
+              "EmployerOrgName": "TELL THE BEES LLC",
+              "LocationSummary": [
+                  {
+                      "Id": null,
+                      "Municipality": "WILLIAMSBURG",
+                      "Region": "VA",
+                      "CountryCode": "US"
+                  }
+              ],
+              "PositionHistories": [
+                  {
+                      "positionType": null,
+                      "Title": "Pricing and Logistics Analyst",
+                      "OrgName": "TELL THE BEES LLC",
+                      "Description": "Pricing and Logistics Analyst\n    *    Led marketing, sales and product placement for more than $750,000/year in sales, representing 53,000 seasonal, market trending, antique and other products, for an online retailer based in the Tidewater area\n    *    Utilized Amazon dynamic pricing system, researched market and seasonal trends, and monitored historical pricing data, to adjust and set prices, maximizing profits to 200% over cost\n    *    Exclusive provider of IT/technical support to the business owner, troubleshooting typical PC problems and providing IT maintenance on an as needed basis \nHomer L. Hines Middle School- Newport News, VA    2017-2018\n\n6th/8th Grade Science Teacher\n    *    Teacher for students in 6th and 8th grades, responsible for lesson planning, curriculum content, classroom management and achievement in standardized testing for Physics, Physical Sciences, Weather and Chemistry classes\n    *    Analyzed standardized testing data (SOL-8/Science) to detect trends in student answers and eventually modify and reinforce concepts in the classroom for future testing success",
+                      "StartDate": null,
+                      "EndDate": null,
+                      "JobCategories": [],
+                      "DaxPositions": []
+                  }
+              ]
+          },
+          {
+              "ID": 0,
+              "employerOrgType": "soleEmployer",
+              "EmployerOrgName": "Book Exchange of Williamsburg",
+              "LocationSummary": [
+                  {
+                      "Id": null,
+                      "Municipality": "Williamsburg",
+                      "Region": "VA",
+                      "CountryCode": "US"
+                  }
+              ],
+              "PositionHistories": [
+                  {
+                      "positionType": null,
+                      "Title": "Retail Store Manager",
+                      "OrgName": "Book Exchange of Williamsburg",
+                      "Description": "*    Researched and implemented online store, creating an alternative revenue stream, utilizing Amazon Web Store to cross-list products, maximizing profits for store owner\n    *    Managed four employees, executing payroll and training for staff, as well as store maintenance and care\n\nPROGRAMMING LANGUAGES\n\n-JAVA    -React.js    -Spring Boot    -DevOps    -RDBMS    -RESTful\n-HTML5    -SQL    -Angular 7    -Typescript    -GITHUB    -Spring MVC\n-CSS3    -JavaScript    -Mongo DB    -AWS    -SOA    -Hibernate",
+                      "StartDate": null,
+                      "EndDate": null,
+                      "JobCategories": [],
+                      "DaxPositions": []
+                  }
+              ]
+          }
+      ]
+  },
   "ProjectDetails": [
       {
           "ID": 0,

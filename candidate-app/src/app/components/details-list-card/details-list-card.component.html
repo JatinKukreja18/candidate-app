@@ -4,11 +4,11 @@
           <mat-card-title>
               <ng-content select="[title]"></ng-content>
           </mat-card-title>
-          <mat-card-subtitle>
-              <ng-content select="[sub-title]"></ng-content>
-          </mat-card-subtitle>
+          <ng-content select="[sub-title]"></ng-content>
+          <!-- <mat-card-subtitle>
+          </mat-card-subtitle> -->
 
-            <ul class="card-options">
+            <ul class="card-options" *ngIf='isEditable'>
               <li (click)="activateEdit()" *ngIf="!isEdit">
                   <i class="fa fa-edit"></i>
               </li>

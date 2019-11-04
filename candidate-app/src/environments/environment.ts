@@ -2,6 +2,7 @@
 // `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 
+
 export const environment = {
   production: false,
   apiUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/',
@@ -17,8 +18,12 @@ export const environment = {
   vimeo: {
     access_token: '52e07bfd53f8588d9322ab89787009b2'
   },
-  shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com'
+  shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com',
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
+
+  apiPaths: {
+    coverPage: './assets/cp.json'
+  }
 };
 
 /*

@@ -35,6 +35,7 @@ $heading-color-2: rgb(43, 189, 225);
   margin: auto;
   max-width: 1120px;
   padding: 40px;
+  position: relative;
 }
 .page-section{
   padding: 72px 96px;
@@ -42,6 +43,30 @@ $heading-color-2: rgb(43, 189, 225);
   margin-bottom: 20px;
   background-color: rgb(252, 253, 255);
   box-shadow: 2px 2px 13px -4px #bbb;
+}
+.zoom-buttons{
+  position: absolute;
+  display: flex;
+  right: 0;
+  flex-direction: column;
+  width: 60px;
+  right: -50px;
+  font-size: 16px;
+}
+.zoom-buttons button{
+  border: none;
+  background: #fff;
+  color: $heading-color-2;
+  margin-bottom: 10px;
+  border-radius: 4px;
+  padding: 4px 10px;
+  line-height: 1.2;
+  border: 2px solid transparent;
+  outline: none;
+  cursor: pointer;
+}
+.zoom-buttons button.active{
+      border: 2px solid $heading-color-2;
 }
 .cover-page {
   // margin: 50px 100px 0 100px;
@@ -147,6 +172,24 @@ $heading-color-2: rgb(43, 189, 225);
       line-height: 1.5;
     }
   }
+  .prof-experience{
+
+    &.additional-projects{
+      .content{
+        display: block;
+        >div {
+          margin-bottom: 40px;
+          width: 100%;
+          &:nth-child(even){
+            margin-left: 0;
+          }
+          &:last-child{
+            margin-bottom: 0;
+          }
+      }
+    }
+  }
+}
   .additional-projects {
     @include set-width();
     margin-bottom: $margin-between-sections;
@@ -155,10 +198,25 @@ $heading-color-2: rgb(43, 189, 225);
       @include heading-2();
     }
     .content {
-      display: grid;
-      grid-template-columns: 48% 48%;
-      column-gap: 50px;
+      display: flex;
+      // grid-template-columns: 48% 48%;
+      // column-gap: 50px;
+      justify-content: space-between;
+      width: 100%;
+      flex-wrap: wrap;
+      >div{
+        // width: calc(50% - 20px);
+        min-width: calc(50% - 40px);
+        flex: 1;
+        margin-bottom: 40px;
 
+        &:last-child{
+          margin-bottom: 0;
+        }
+        &:nth-child(even){
+          margin-left: 40px;
+        }
+      }
       .additional-project-card {
         .card-content {
           font-size: 18px;
@@ -216,20 +274,36 @@ $heading-color-2: rgb(43, 189, 225);
     @include set-width();
     margin-top: 250px;
     .footer{
-        display: flex;
-        justify-content: space-between;
-        align-content: center;
-        margin-bottom: 15px;
-        font-size: 50px;
-        font-weight: 700;
-        text-transform: uppercase;
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-end;
+      margin-bottom: 0px;
+      font-size: 30px;
+      font-weight: 600;
+      text-transform: uppercase;
+      color: #000;
+      line-height: 1;
 
         .candidate-name{
             text-transform: uppercase;
         }
-        .company-name{
+        .company-name img{
+          width: 230px;
+          height: auto;
 
         }
     }
   }
+}
+.card-title .light{
+  font-weight: 400;
+}
+.card-sub-title{
+  width: 100%;
+  font-size: 16px;
+  color: #676364;
+  font-weight: 600;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
 }

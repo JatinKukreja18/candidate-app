@@ -2,13 +2,13 @@
     <div class="main-heading">
         <div class="candidate-name">{{candidateName}}</div>
         <div class="company-name">
-          <img src="../../../../assets/images/logo-sample.png" alt="" srcset="">
+          <img src="../../../../assets/images/Cog_logo.png" alt="" srcset="">
         </div>
 
     </div>
     <div class="contact-info">
-        <span class="mobile">{{mobile}}</span>
-        <span class="email">{{email}}</span>
+        <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
+        <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
     </div>
     <div class="role">{{role}}</div>
     <div class="social" >

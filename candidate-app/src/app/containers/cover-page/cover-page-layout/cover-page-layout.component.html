@@ -1,4 +1,10 @@
 <div class="cover-page-wrapper">
+  <div class="zoom-buttons">
+      Zoom
+      <button (click)="zoomIt(0.5)" [ngClass]="zoomValue == 0.5 ?'active':''" >50%</button>
+      <button (click)="zoomIt(0.75)" [ngClass]="zoomValue == 0.75?'active':''" >75%</button>
+      <button (click)="zoomIt(1.0)" [ngClass]="zoomValue == 1.0?'active':''">100%</button>
+  </div>
 <div class="cover-page" id="cover-page">
     <div class="page-section">
 
@@ -18,7 +24,7 @@
           </div>
           <div class="skills">
               <div class="skills-row">
-                <div *ngFor="let skill of filteredSkills" class="skill-circle">
+                <div *ngFor="let skill of primarySkills" class="skill-circle">
                     <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score>
                     <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score-read-only>
                 </div>
@@ -31,11 +37,12 @@
               <span>ADDITIONAL SKILLS AND EXPERIENCE</span>
           </div>
           <div class="skills">
-              <div *ngFor="let skill of candidateData.additionalSkills" class="skill-circle" >
-                   <app-score *ngIf="!exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score>
-                   <app-score-read-only *ngIf="exporting" [skill]="skill.skill" [months]="skill.months" [rating]="skill.rating" [iconPath]="skill.iconPath"></app-score-read-only>
+              <div class="skills-row">
+                <div *ngFor="let skill of additionalSkills" class="skill-circle" >
+                      <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score>
+                      <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score-read-only>
+                </div>
               </div>
-
 
           </div>
       </div>
@@ -80,14 +87,38 @@
       </div>
     </div>
     <div class="page-section">
-
+        <div class="additional-projects prof-experience">
+            <div class="heading">
+                <span>Experience</span>
+            </div>
+            <div class="content">
+                <div *ngFor="let org of candidateData?.EmploymentHistory?.EmployerOrg">
+                    <app-details-list-card class="additional-project-card" [is-editable]="isEditable">
+                        <div title class="card-title">
+                            <span>{{org.EmployerOrgName}} <span class="light">- {{org.LocationSummary[0].Municipality}},{{org.LocationSummary[0].Region}}</span></span>
+                        </div>
+                        <div sub-title class="card-sub-title">
+                            <span class="emp-role">{{org.PositionHistories[0].Title}}</span>
+                            <span class="duration">{{org.PositionHistories[0].StartDate}} <span *ngIf='org.PositionHistories[0].EndDate'> - </span>{{org.PositionHistories[0].EndDate}}</span>
+                        </div>
+                        <div content class="card-content" [innerHtml]="org.PositionHistories[0].Description">
+                            <!-- <div *ngFor="let item of project.keyPoints" class="items">
+                                <div class="bullet"></div>
+                                <div class="item">{{item}}</div>
+                            </div> -->
+                            <!-- {{org.PositionHistories[0].Description}} -->
+                        </div>
+                    </app-details-list-card>
+                </div>
+            </div>
+        </div>
       <div class="additional-projects">
           <div class="heading">
               <span>Additional Projects</span>
           </div>
           <div class="content">
               <div *ngFor="let project of candidateData.ProjectDetails">
-                  <app-details-list-card class="additional-project-card">
+                  <app-details-list-card [is-editable]="isEditable" class="additional-project-card">
                       <div title class="card-title">
                           <span>{{project.Project_Title}}</span>
                       </div>
@@ -108,8 +139,8 @@
           </div>
           <div class="content">
 
-              <div *ngFor="let education of candidateData.EducationDetails.InstituteDetails">
-                  <app-details-list-card class="education-certification-card">
+              <div *ngFor="let education of candidateData.EducationDetails?.InstituteDetails">
+                  <app-details-list-card [is-editable]="isEditable" class="education-certification-card">
                       <div title class="card-title">
                           <span>{{education.SchoolName}}</span>
                           <span style="font-weight: normal"> ({{education.Degree[0].DegreeDate[0]}})</span>
@@ -130,7 +161,9 @@
       <footer>
           <div class="footer">
               <div class="candidate-name">{{candidateData.FullName}}</div>
-              <div class="company-name">Cognixia</div>
+              <div class="company-name">
+                <img src="../../../../assets/images/Cog_logo.png" alt="" srcset="">
+              </div>
           </div>
       </footer>
     </div>
