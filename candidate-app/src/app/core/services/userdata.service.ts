@@ -11,8 +11,8 @@ export class UserDataService {
 
    constructor( private httpService: HttpClient) { }
 
-   getUserData(): Observable<any> {
-    return this.httpService.get(environment.apiPaths.coverPage);
+   getUserData(id): Observable<any> {
+    return this.httpService.get(environment.apiPaths.coverPage + id);
    }
 
 }

@@ -6,7 +6,7 @@ import { PageNotFoundComponent } from './components/page-not-found/page-not-foun
 
 
 const routes: Routes = [
-  { path: 'coverPage', loadChildren: () => import('./containers/cover-page/cover-page.module').then(mod => mod.CoverPageModule),
+  { path: 'coverPage/:id', loadChildren: () => import('./containers/cover-page/cover-page.module').then(mod => mod.CoverPageModule),
   canActivate: [AuthGuard] },
   // { path: '', loadChildren: () => import('./containers/auth/auth.module').then(mod => mod.AuthModule) },
   { path: '',

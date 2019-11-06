@@ -14,5 +14,8 @@ export const environment = {
   vimeo: {
     access_token: '52e07bfd53f8588d9322ab89787009b2'
   },
-  shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com' // URL encoded URL of server application is hosted on
+  shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com', // URL encoded URL of server application is hosted on
+  apiPaths: {
+    coverPage: 'http://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+  }
 };

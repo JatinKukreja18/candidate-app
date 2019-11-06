@@ -22,10 +22,11 @@ export const environment = {
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 
   apiPaths: {
-    coverPage: './assets/cp.json'
+    coverPage: 'http://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
   }
 };
-
+// http://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/cliksource_40519
+// http://appst.cliksource.com/jumpprofessional/
 /*
  * For easier debugging in development mode, you can import the following file
  * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.

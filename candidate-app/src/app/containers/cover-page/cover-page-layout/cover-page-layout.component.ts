@@ -2,7 +2,7 @@ import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/cor
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 import FileSaver from 'file-saver';
-import { ActivatedRoute } from '@angular/router';
+import  {Router, ActivatedRoute } from '@angular/router';
 import {UserDataService} from "../../../core/services/userdata.service";
 @Component({
   selector: 'app-cover-page-layout',
@@ -19,13 +19,16 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   additionalSkills: [];
   isEditable = false;
   constructor( private activatedRoute: ActivatedRoute,
-                private userDataService: UserDataService ) {
+                private userDataService: UserDataService,
+                private router: Router ) {
   }
   arrBirds: string [];
 
   ngOnInit() {
+    console.log(this.activatedRoute.snapshot.params.id)
     // Get Data from API
-    this.userDataService.getUserData().subscribe(res=> {
+    this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res=> {
+      console.log(res);
 
       this.candidateData = res;
       this.handleSkills(this.candidateData.CandidateSkills);
