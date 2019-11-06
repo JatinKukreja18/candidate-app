@@ -16,6 +16,6 @@ export const environment = {
   },
   shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com', // URL encoded URL of server application is hosted on
   apiPaths: {
-    coverPage: 'http://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+    coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
   }
 };
