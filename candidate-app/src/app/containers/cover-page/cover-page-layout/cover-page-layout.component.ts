@@ -1,7 +1,7 @@
 import { Component, OnInit, AfterViewChecked, AfterViewInit } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
-import FileSaver from 'file-saver';
+// import FileSaver from 'file-saver';
 import  {Router, ActivatedRoute } from '@angular/router';
 import {UserDataService} from "../../../core/services/userdata.service";
 @Component({
