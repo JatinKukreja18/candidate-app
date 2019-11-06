@@ -25,11 +25,9 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   arrBirds: string [];
 
   ngOnInit() {
-    console.log(this.activatedRoute.snapshot.params.id)
-    // Get Data from API
-    this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res=> {
-      console.log(res);
-
+    console.log('loading content for ' + this.activatedRoute.snapshot.params.id)
+    // Get Data from API for current profile
+    this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.candidateData = res;
       this.handleSkills(this.candidateData.CandidateSkills);
     }, err => console.log(err.message));
@@ -188,26 +186,17 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
 
   }
   handleSkills(allSkills){
-      // const sortedSkills =  allSkills.sort((a, b) => {
-      //       return parseFloat(b.Proficiency) - parseFloat(a.Proficiency);
-      //   }).map(item => {
-      //     item.iconPath = "'../../../assets/images/java-logo.png";
-      //     return item;
-      //   });
-
       const PS =  allSkills.filter(item => {
             item.iconPath = "'../../../assets/images/java-logo.png";
             return item.SkillType === 'Primary';
             });
+
       const AS =  allSkills.filter(item => {
             item.iconPath = "'../../../assets/images/java-logo.png";
             return item.SkillType === 'Additional';
             });
-
-      this.primarySkills = PS;
-      this.additionalSkills = AS;
-
-      // this.filteredSkills = sortedSkills;
+      PS ?  this.primarySkills = PS : this.primarySkills = [];
+      AS ?  this.additionalSkills = AS : this.additionalSkills = [];
   }
   zoomIt(v) {
     document.body.style.zoom = v;

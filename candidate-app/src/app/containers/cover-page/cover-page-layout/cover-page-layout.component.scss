@@ -119,7 +119,7 @@ $heading-color-2: rgb(43, 189, 225);
     margin-bottom: $margin-between-sections;
 
     & > div {
-      width: 33.33%;
+      flex: 1;
       padding: 0 30px;
       .heading {
         @include heading-1();

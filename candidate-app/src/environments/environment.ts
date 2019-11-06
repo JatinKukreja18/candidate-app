@@ -22,7 +22,8 @@ export const environment = {
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 
   apiPaths: {
-    coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+    // coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+    coverPage: '../assets/dummy.json'
   }
 };
 // http://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/cliksource_40519
