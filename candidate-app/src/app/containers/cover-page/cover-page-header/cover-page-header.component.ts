@@ -16,16 +16,18 @@ interface SocialLinks {
 export class CoverPageHeaderComponent implements OnInit {
 
   @Input() candidateName: string;
+  @Input() candidateId: number = null;
   @Input() role: string;
   @Input() companyName: string;
   @Input() socialLinks;
   @Input() mobile: string;
   @Input() email: string;
+  exportLink = '';
 
   constructor( private router: Router) { }
 
   ngOnInit() {
-
+    this.exportLink = `/coverPage/${this.candidateId}`;
 
   }
   ngOnChanges(){

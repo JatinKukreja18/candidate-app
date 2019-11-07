@@ -1,5 +1,8 @@
-<div class="cover-page-wrapper">
-  <div class="zoom-buttons">
+<div class="loader" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" class="cover-page-wrapper">
+  <div class="zoom-buttons" *ngIf="!exporting">
       Zoom
       <button (click)="zoomIt(0.5)" [ngClass]="zoomValue == 0.5 ?'active':''" >50%</button>
       <button (click)="zoomIt(0.75)" [ngClass]="zoomValue == 0.75?'active':''" >75%</button>
@@ -11,6 +14,7 @@
       <div class="header">
           <app-cover-page-header
             [candidateName]="candidateData.FullName"
+            [candidateId]="candidateData.CandidateId"
             [role]="candidateData.JobTitle"
             [companyName]="'Cognixia'"
             [socialLinks]="candidateData.CandidateSocialProfileDetails"

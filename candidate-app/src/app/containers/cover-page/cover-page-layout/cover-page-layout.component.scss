@@ -319,3 +319,13 @@ $heading-color-2: rgb(43, 189, 225);
   align-items: center;
   justify-content: space-between;
 }
+.loader{
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+  height: 100px;
+  width: 100px;
+}

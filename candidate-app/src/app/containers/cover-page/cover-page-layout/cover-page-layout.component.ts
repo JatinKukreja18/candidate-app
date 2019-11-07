@@ -18,6 +18,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   primarySkills: [];
   additionalSkills: [];
   isEditable = false;
+  loading = true;
   constructor( private activatedRoute: ActivatedRoute,
                 private userDataService: UserDataService,
                 private router: Router ) {
@@ -30,7 +31,11 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
     this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.candidateData = res;
       this.handleSkills(this.candidateData.CandidateSkills);
-    }, err => console.log(err.message));
+      this.loading = false;
+    }, err => {
+      console.log(err.message);
+      this.router.navigate(['pageNotFound']);
+    });
 
 
     this.activatedRoute.params.subscribe(params => {
@@ -198,10 +203,12 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
       PS ?  this.primarySkills = PS : this.primarySkills = [];
       AS ?  this.additionalSkills = AS : this.additionalSkills = [];
   }
+
   zoomIt(v) {
     document.body.style.zoom = v;
     this.zoomValue = v;
   }
+
   ngAfterViewInit() {
     if (this.exporting) {
       setTimeout(this.captureScreen.bind(this), 200);
