@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { AnalyticsService } from 'src/app/core/services/analytics.service';
+import { AnalyticsService } from '../../../core/services/analytics.service';
 
 
 @Component({

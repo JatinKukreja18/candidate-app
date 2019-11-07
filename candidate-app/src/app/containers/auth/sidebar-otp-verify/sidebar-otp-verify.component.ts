@@ -1,9 +1,9 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { ValidationMessages } from 'src/app/core/messages/validation.messages';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../../app/core/services/auth.service';
+import { ValidationMessages } from '../../../../app/core/messages/validation.messages';
+import { FeedbackMessages } from '../../../../app/core/messages/feedback.messages';
 
 @Component({
   selector: 'app-sidebar-otp-verify',
@@ -22,7 +22,7 @@ export class SidebarOTPVerifyComponent implements OnInit {
         private formBuilder: FormBuilder,
         private authService: AuthenticationService,
         private message: NzMessageService
-    ) { 
+    ) {
         this.validationMsgs = ValidationMessages
     }
 

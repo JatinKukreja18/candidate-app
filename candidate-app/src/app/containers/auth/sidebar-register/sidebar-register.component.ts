@@ -1,11 +1,11 @@
 import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { ValidationMessages } from 'src/app/core/messages/validation.messages';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { AnalyticsService } from 'src/app/core/services/analytics.service';
-import { CommonService } from 'src/app/core/services/common.service';
+import { ValidationMessages } from '../../../../app/core/messages/validation.messages';
+import { FeedbackMessages } from '../../../../app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../../app/core/services/auth.service';
+import { AnalyticsService } from '../../../../app/core/services/analytics.service';
+import { CommonService } from '../../../../app/core/services/common.service';
 import { Response } from './../../../core/models/response.model';
 
 @Component({
@@ -33,7 +33,7 @@ export class SidebarRegisterComponent implements OnInit {
         private commonService: CommonService,
         private message: NzMessageService,
         private analyticsService: AnalyticsService
-    ) { 
+    ) {
         this.validationMsgs = ValidationMessages;
     }
 
@@ -62,7 +62,7 @@ export class SidebarRegisterComponent implements OnInit {
     }
 
     /**
-    * toggle funtion to show/hide password 
+    * toggle funtion to show/hide password
     */
     togglePass(fieldName: string) {
         if (this.showPassword[fieldName]) this.showPassword[fieldName] = false;

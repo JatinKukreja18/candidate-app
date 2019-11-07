@@ -44,6 +44,18 @@ $heading-color-2: rgb(43, 189, 225);
   background-color: rgb(252, 253, 255);
   box-shadow: 2px 2px 13px -4px #bbb;
 }
+.page-section.page-1{
+  position: relative;
+}
+.page-section.page-1::before{
+  position: absolute;
+  top:0;
+  content:"";
+  width: 10px;
+  height: 100%;
+  left: 0;
+  background: linear-gradient(#6ca9f8,#7ae2ca);
+}
 .zoom-buttons{
   position: absolute;
   display: flex;
@@ -72,7 +84,7 @@ $heading-color-2: rgb(43, 189, 225);
   // margin: 50px 100px 0 100px;
   // margin: 70px auto;
   background-color: transparent;
-
+  // position: relative;
   .header {
     @include set-width();
     margin-bottom: 80px;

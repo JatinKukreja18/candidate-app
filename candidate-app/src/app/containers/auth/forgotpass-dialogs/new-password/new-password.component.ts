@@ -1,10 +1,10 @@
 import { Component, OnInit, EventEmitter, Output, Input } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { AnalyticsService } from 'src/app/core/services/analytics.service';
-import { ValidationMessages } from 'src/app/core/messages/validation.messages';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../../core/services/auth.service';
+import { AnalyticsService } from '../../../../core/services/analytics.service';
+import { ValidationMessages } from '../../../../core/messages/validation.messages';
+import { FeedbackMessages } from '../../../../core/messages/feedback.messages';
 
 @Component({
   selector: 'app-new-password',

@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Response } from 'src/app/core/models/response.model';
+import { Response } from '../models/response.model';
 
 import * as SecureLS from 'secure-ls';
 
@@ -33,7 +33,7 @@ export class CommonService {
 
     /**
      * Get the list of skills from the local storage(if available) and make http request if not in localstorage
-     * @returns 
+     * @returns
      */
     getSkillsList(): Observable<Response> {
         // const skills = JSON.parse(localStorage.getItem('skills'));

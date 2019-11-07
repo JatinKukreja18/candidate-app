@@ -2,10 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { NzMessageService } from 'ng-zorro-antd';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { AnalyticsService } from 'src/app/core/services/analytics.service';
-import { ValidationMessages } from 'src/app/core/messages/validation.messages';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../../app/core/services/auth.service';
+import { AnalyticsService } from '../../../../app/core/services/analytics.service';
+import { ValidationMessages } from '../../../../app/core/messages/validation.messages';
+import { FeedbackMessages } from '../../../../app/core/messages/feedback.messages';
 
 @Component({
   selector: 'app-sidebar-login',
@@ -55,7 +55,7 @@ export class SidebarLoginComponent implements OnInit {
     }
 
     /**
-    * toggle funtion to show/hide password 
+    * toggle funtion to show/hide password
     */
     togglePass() {
         this.showpass = !this.showpass;

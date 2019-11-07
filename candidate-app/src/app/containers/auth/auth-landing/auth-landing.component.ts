@@ -6,9 +6,9 @@ import { Component, OnInit, ViewEncapsulation } from '@angular/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { GoogleLoginProvider, FacebookLoginProvider, AuthService } from 'angularx-social-login';
 import { Router } from '@angular/router';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { LinkedInService } from 'src/app/core/services/linkedin.service';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../core/services/auth.service';
+import { LinkedInService } from '../../../core/services/linkedin.service';
+import { FeedbackMessages } from '../../../core/messages/feedback.messages';
 
 @Component({
     selector: 'app-auth-landing',
@@ -38,8 +38,8 @@ export class AuthLandingComponent implements OnInit {
     ngOnInit() { }
 
     /**
-     * Open consent screen for linkedIn login and 
-     * Fetch user details after successfull login and 
+     * Open consent screen for linkedIn login and
+     * Fetch user details after successfull login and
      * Call 'externalLoginLinkedIn' method
      */
     signInWithLinkedIn() {

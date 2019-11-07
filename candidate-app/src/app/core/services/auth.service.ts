@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpResponse } from '@angular/common/http';
 import { Observable, BehaviorSubject } from 'rxjs';
 import { tap } from 'rxjs/operators';
-import { Response } from 'src/app/core/models/response.model';
+import { Response } from '../models/response.model';
 import {
     RegisterForm,
     LoginForm,
@@ -13,7 +13,7 @@ import {
     ChangePasswordForm,
     ExternalLoginForm,
     RefreshTokenForm
-} from 'src/app/core/models/auth-form.model';
+} from '../models/auth-form.model';
 
 import * as SecureLS from 'secure-ls';
 
@@ -86,7 +86,7 @@ export class AuthenticationService {
             }
             if (res.headers.get('expires_in')) {
                 currentUser['expires_in'] = res.headers.get('expires_in');
-            }            
+            }
             this.currentUserSubject.next(currentUser);
             // Set current user into the local storage
             this.ls.set('currentUser', currentUser)
@@ -209,10 +209,10 @@ export class AuthenticationService {
         }
         return '';
     }
-    
+
     /**
      * Save current user in the local storage
-     * @param userData user object 
+     * @param userData user object
      */
     saveUserData(userData?: LoginForm) {
         if (userData) {
@@ -220,7 +220,7 @@ export class AuthenticationService {
         } else {
             this.ls.remove('user');
         }
-        
+
     }
 
     /**
@@ -232,7 +232,7 @@ export class AuthenticationService {
 
     /**
      * Set external user into the Local Storage
-     * @param userData 
+     * @param userData
      */
     setExternalRegisterUser(userData) {
         this.ls.set('externalUser', userData);
@@ -251,7 +251,7 @@ export class AuthenticationService {
     getCurrentUser() {
         return this.ls.get('currentUser');
     }
-    
+
     /**
      * Update notification setting
      * @param settingEnabled boolean value
@@ -269,7 +269,7 @@ export class AuthenticationService {
     }
 
     /**
-     * 
+     *
      * @param routeHistoryArray Array of routes previously visited
      */
     routeHistory(routeHistoryArray?: string[]) {

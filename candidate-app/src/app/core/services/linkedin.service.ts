@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
-import { environment } from 'src/environments/environment';
+import { environment } from '../../../environments/environment';
 
 @Injectable()
 export class LinkedInService {
@@ -8,7 +8,7 @@ export class LinkedInService {
     constructor(
         private http: HttpClient,
     ) {}
-    
+
     /**
      * Construct and Return linkedin consent screen url
      */
@@ -27,7 +27,7 @@ export class LinkedInService {
                 grant_type: 'authorization_code',
                 code: code,
                 redirect_uri: environment.linkedIn.redirect_uri,
-                client_id: environment.linkedIn.client_id            
+                client_id: environment.linkedIn.client_id
             }
         }
         return this.http.post(url, {}, httpOptions);

@@ -2,10 +2,10 @@ import { Component, OnInit, Output, EventEmitter} from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
-import { AuthenticationService } from 'src/app/core/services/auth.service';
-import { CommonService } from 'src/app/core/services/common.service';
-import { ValidationMessages } from 'src/app/core/messages/validation.messages';
-import { FeedbackMessages } from 'src/app/core/messages/feedback.messages';
+import { AuthenticationService } from '../../../../app/core/services/auth.service';
+import { CommonService } from '../../../../app/core/services/common.service';
+import { ValidationMessages } from '../../../../app/core/messages/validation.messages';
+import { FeedbackMessages } from '../../../../app/core/messages/feedback.messages';
 import { Response } from './../../../core/models/response.model';
 
 @Component({

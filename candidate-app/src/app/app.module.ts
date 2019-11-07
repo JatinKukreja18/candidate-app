@@ -15,7 +15,7 @@ import { LinkedInService } from './core/services/linkedin.service';
 import { AnalyticsService } from './core/services/analytics.service';
 import { AuthenticationService } from './core/services/auth.service';
 import { AuthService, AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider } from 'angularx-social-login';
-import { environment } from 'src/environments/environment';
+import { environment } from '../environments/environment';
 import { CommonService } from './core/services/common.service';
 
 let config = new AuthServiceConfig([
@@ -60,7 +60,7 @@ registerLocaleData(en);
         nzDuration: 1000,
         nzMaxStack: 1,
         nzPauseOnHover: true,
-        nzAnimate: true 
+        nzAnimate: true
       }
     },
     AnalyticsService,
