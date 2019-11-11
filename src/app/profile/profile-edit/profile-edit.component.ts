@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ProfileEditComponent implements OnInit {
 
+  disabledDate;
   constructor() { }
 
   ngOnInit() {
@@ -14,14 +15,14 @@ export class ProfileEditComponent implements OnInit {
   //   $('a[href^="#"]').on('click', function(event) {
 
   //     var target = $(this.getAttribute('href'));
-  
+
   //     if( target.length ) {
   //         event.preventDefault();
   //         $('html, body').stop().animate({
   //             scrollTop: target.offset().top
   //         }, 1000);
   //     }
-  
+
   // });
 
   }

@@ -18,17 +18,17 @@
           <div class="error" *ngIf="f.city.errors.required">Please select city</div>
         </div>
         <span class="input-icon after"><img src="/assets/images/ic-location.svg"></span>
-      </div> 
+      </div>
 
       <div class="form-group col-2">
       <div class="form-check us_search">
           <input type="checkbox" class="form-check-input" id="exampleCheck1"  name="searchus" (click)="Searchus(true)">
           <label class="form-check-label" for="exampleCheck1">Search All US Locations</label>
         </div>
-        
-        </div> 
-  
-        
+
+        </div>
+
+
       <div class="form-group">
         <button class="orange-button">Search {{f.skills.value && f.city.value ? 'Jobs' : ''}}</button>
       </div>
@@ -91,7 +91,7 @@
 
 
 
-<!-- 
+<!--
 <nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <div class="confirmation-modal">
         <div class="flex confirmation-modal-body">
@@ -132,7 +132,7 @@
 
 
 
- 
+
 <nz-modal
  [(nzVisible)]="isVisibleresume"
  [nzFooter]="modalFooter1"
@@ -140,7 +140,7 @@
     <div class="confirmation-modal">
       <h2>View Resume</h2>
         <div class="flex confirmation-modal-body">
-            <ngx-doc-viewer [url]="'https://apiredep.collabera.com/uatcandidateapi/ProfileResource.ashx?resourceId=607&resourceTypeId=201'" viewer="google" style="width:100%;height:80vh;"></ngx-doc-viewer>       
+            <!-- <ngx-doc-viewer [url]="'https://apiredep.collabera.com/uatcandidateapi/ProfileResource.ashx?resourceId=607&resourceTypeId=201'" viewer="google" style="width:100%;height:80vh;"></ngx-doc-viewer>        -->
           </div>
     </div>
     <div class="modal_footer">
@@ -178,5 +178,5 @@
 <nz-modal [(nzVisible)]="showPreInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Pre Interview" (nzOnCancel)="handlePreInterviewCancel()" (nzOnOk)="handlePreInterviewOk()">
   <app-pre-inteview></app-pre-inteview>
 </nz-modal>
-  
+
 

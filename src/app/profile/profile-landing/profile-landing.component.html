@@ -28,7 +28,7 @@
       <div class="profile-card" id="personal" [ngClass]="{'active': activeSection.personal}" (click)="highlightSectionOnClick(1)">
         <div class="card-title">Personal Details
           <span class="card-status">
-            <img 
+            <img
               [src]="profile && profile.basicInfo && profile.basicInfo.firstName && profile.basicInfo.lastName && profile.basicInfo.dob ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
           </span>
         </div>
@@ -69,7 +69,7 @@
                   </select> -->
 
                   <ngx-select-dropdown (change)="selectionChanged($event,'one')" formControlName="countryPhoneCode" [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
-<!--                                   
+<!--
                   <nz-select tabindex="7" id="work-permit" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" [nzShowSearch]="true" [nzFilterOption]="countrycodeFilter" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                     <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
                   </nz-select>  -->
@@ -91,10 +91,10 @@
       <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}" (click)="highlightSectionOnClick(2)">
         <div class="card-title">Professional Details
           <span class="card-status">
-            <img 
+            <img
             [src]="profile && profile.professionalInfo && profile.professionalInfo.designation && profile.professionalInfo.expectedpay && profile.professionalInfo.preferredJobTypeId ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
           </span>
-        </div>  
+        </div>
         <div class="card-content">
           <form [formGroup]="profileForm" (ngSubmit)="onSubmit(false)">
             <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('DESIRED_DESIGNATION') >= 0 }">
@@ -120,7 +120,7 @@
 
 
 
-            <div class="form-group" id="job-type-group" [ngClass]="{'missing': missingFields.indexOf('EMPLOYMENT_TYPE') >= 0 }"> 
+            <div class="form-group" id="job-type-group" [ngClass]="{'missing': missingFields.indexOf('EMPLOYMENT_TYPE') >= 0 }">
               <nz-radio-group class="choose-slot not-mandate flex" id="job-type" formControlName="preferredJobTypeId">
                 <label nz-radio nzValue="1"><span class="radio-label" tabindex="12">Full Time</span></label>
                 <label nz-radio nzValue="2"><span class="radio-label" tabindex="13">Contract</span></label>
@@ -164,7 +164,7 @@
       <div class="profile-card" id="resume" [ngClass]="{'active': activeSection.resume}" (click)="highlightSectionOnClick(3)">
           <div class="card-title">Resume
             <span class="card-status">
-                <img 
+                <img
                 [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
             </span>
             <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply for jobs.</i></p>
@@ -174,7 +174,9 @@
               <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
 
                 <!-- -->
-             <a>   <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer></a>
+             <a>
+               <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
+              </a>
               <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
               <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(201)"/>
               <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the original resume by clicking on it.</i></p>
@@ -196,7 +198,7 @@
       <div class="profile-card" id="social" [ngClass]="{'active': activeSection.social}" (click)="highlightSectionOnClick(4)">
           <div class="card-title">Social Profiles
             <span class="card-status">
-                <img 
+                <img
                 [src]="f.linkedin.value && f.github.value && f.stack.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
             </span>
           </div>
@@ -227,7 +229,7 @@
                   <input tabindex="19" type="text" id="others" formControlName="others" class="form-control not-mandate"/>
                   <label for="others" class="form-control-placeholder">Others</label>
                 </div> -->
-                
+
               </form>
           </div>
       </div>
@@ -235,7 +237,7 @@
       <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}" (click)="highlightSectionOnClick(5)">
           <div class="card-title">Video Profile
             <span class="card-status">
-                <img 
+                <img
                 [src]="profile && profile.videoLink && profile.videoLinkTypeId != 0 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
             </span>
           </div>
@@ -259,9 +261,9 @@
                 <input tabindex="22" type="text" id="videoCaption" formControlName="VideoLinkCaption" class="form-control not-mandate"/>
                 <label for="videoCaption" class="form-control-placeholder" [ngClass]="{'active': f.VideoLinkCaption.value, 'inactive': !f.VideoLinkCaption.value }">Video Caption</label>
               </div>
-              
+
               <div class="row flex video-box" *ngIf="f.videoLinkTypeId.value == 2 && profile && profile.videoLink && !testYoutubeUrl(profile.videoLink) ">
-                <p class="video-transcoding note" *ngIf="videoData?.status == 'transcoding'">Note: Please wait while video is getting ready.</p>  
+                <p class="video-transcoding note" *ngIf="videoData?.status == 'transcoding'">Note: Please wait while video is getting ready.</p>
                 <div class="video-col">
                   <!-- <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(203)"/> -->
                   <div class="vid-clip" *ngIf="videoData?.pictures" (click)="openPlayVideoModal()">
@@ -286,7 +288,7 @@
       <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}" (click)="highlightSectionOnClick(6)">
           <div class="card-title">References
             <span class="card-status">
-                <img 
+                <img
                 [src]="profile && profile.referenceList && profile.referenceList.length == 2 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
             </span>
           </div>
@@ -333,15 +335,15 @@
 
                   <div class="form-group">
                     <label for="countryCode" class="form-control-placeholder country-code-placeholder" [ngClass]="{'active': f.referenceList.controls.one.value.countryPhoneCode, 'inactive': !f.referenceList.controls.one.value.countryPhoneCode }">Country Code</label>
-                   
+
                     <ngx-select-dropdown (change)="selectionChanged($event,'two')" formControlName="countryPhoneCode" [multiple]="false" formControlName="countryPhoneCode" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
 
-                   <!-- 
+                   <!--
                    <nz-select nzShowArrow="true" tabindex="26" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                       <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
                     </nz-select>  -->
                   </div>
-                  
+
 
                   <div class="form-group">
                     <input app-phone-field tabindex="27" type="text" id="firstRefContact" formControlName="mobilenumber" class="form-control not-mandate"/>
@@ -397,9 +399,9 @@
 
                   <div class="form-group">
                     <label for="countryCode" class="form-control-placeholder country-code-placeholder" [ngClass]="{'active': f.referenceList.controls.two.value.countryPhoneCode, 'inactive': !f.referenceList.controls.two.value.countryPhoneCode }">Country Code</label>
-                    
+
                     <ngx-select-dropdown (change)="selectionChanged($event,'three')" formControlName="countryPhoneCode" [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
-                    
+
                     <!-- <nz-select tabindex="31" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                       <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
                     </nz-select> -->

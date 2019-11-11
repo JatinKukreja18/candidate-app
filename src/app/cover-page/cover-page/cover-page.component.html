@@ -1,0 +1,18 @@
+<div class="loader" *ngIf="loading">
+    <mat-spinner></mat-spinner>
+</div>
+<div *ngIf="!loading" [ngClass]="exporting?'':'cover-page-wrapper'" >
+  <div class="zoom-buttons" *ngIf="!exporting">
+      Zoom
+      <button (click)="zoomIt(0.5)" [ngClass]="zoomValue == 0.5 ?'active':''" >50%</button>
+      <button (click)="zoomIt(0.75)" [ngClass]="zoomValue == 0.75?'active':''" >75%</button>
+      <button (click)="zoomIt(1.0)" [ngClass]="zoomValue == 1.0?'active':''">100%</button>
+  </div>
+    <app-cover-page-layout
+        [candidateData]="candidateData"
+        [primarySkills]="primarySkills"
+        [additionalSkills]='additionalSkills'
+        [exporting]='exporting'
+          >
+    </app-cover-page-layout>
+</div>

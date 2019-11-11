@@ -1,15 +1,6 @@
-<div class="loader" *ngIf="loading">
-    <mat-spinner></mat-spinner>
-</div>
-<div *ngIf="!loading" class="cover-page-wrapper">
-  <div class="zoom-buttons" *ngIf="!exporting">
-      Zoom
-      <button (click)="zoomIt(0.5)" [ngClass]="zoomValue == 0.5 ?'active':''" >50%</button>
-      <button (click)="zoomIt(0.75)" [ngClass]="zoomValue == 0.75?'active':''" >75%</button>
-      <button (click)="zoomIt(1.0)" [ngClass]="zoomValue == 1.0?'active':''">100%</button>
-  </div>
+
 <div class="cover-page" id="cover-page">
-    <div class="page-section page-1">
+    <div class="page-section page-1" [ngClass]="exporting?'page-section page-1': 'is-paged page-section page-1'">
 
       <div class="header">
           <app-cover-page-header
@@ -36,7 +27,7 @@
 
           </div>
       </div>
-      <div class="additional-skills" *ngIf="primarySkills?.length" ngClass="exporting?'export':''">
+      <div class="additional-skills" *ngIf="additionalSkills?.length" ngClass="exporting?'export':''">
           <div class="heading">
               <span>ADDITIONAL SKILLS AND EXPERIENCE</span>
           </div>
@@ -90,14 +81,14 @@
           </div>
       </div>
     </div>
-    <div class="page-section" *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length">
+    <div [ngClass]="exporting?'page-section ': 'is-paged page-section '" *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length">
         <div class="additional-projects prof-experience" >
             <div class="heading">
                 <span>Experience</span>
             </div>
             <div class="content">
                 <div *ngFor="let org of candidateData?.EmploymentHistory?.EmployerOrg">
-                    <app-details-list-card class="additional-project-card" [is-editable]="isEditable">
+                    <app-details-list-card class="additional-project-card" [is-editable]="isEditable && !exporting">
                         <div title class="card-title">
                             <span>{{org.EmployerOrgName}} <span class="light">- {{org.LocationSummary[0].Municipality}},{{org.LocationSummary[0].Region}}</span></span>
                         </div>
@@ -171,5 +162,4 @@
           </div>
       </footer>
     </div>
-</div>
 </div>

@@ -1,3 +1,4 @@
+import { CoverPageComponent } from './cover-page/cover-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { MatTooltipModule, MatButtonModule, MatIconModule, MatProgressSpinnerModule } from '@angular/material';
@@ -10,7 +11,7 @@ import { SharedModule } from '@app/shared';
 import { UserDataService } from '@app/core/services/userdata.service';
 
 const routes: Routes = [
-    { path: '', component: CoverPageLayoutComponent }
+    { path: '', component: CoverPageComponent }
 ];
 @NgModule({
     imports: [
@@ -26,9 +27,10 @@ const routes: Routes = [
         CoverPageLayoutComponent,
         CoverPageHeaderComponent,
         ScoreComponent,
-        ScoreReadOnlyComponent
+        ScoreReadOnlyComponent,
+        CoverPageComponent
     ],
     providers: [UserDataService],
-    exports: [CoverPageLayoutComponent, CoverPageHeaderComponent]
+    exports: [CoverPageLayoutComponent, CoverPageHeaderComponent, CoverPageComponent]
 })
 export class CoverPageModule { }

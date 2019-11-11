@@ -40,11 +40,9 @@ $heading-color-2: rgb(43, 189, 225);
 .page-section{
   padding: 72px 96px;
   border-left: 10px;
-  background-color: rgb(252, 253, 255);
-}
-.page-section.is-paged{
-  box-shadow: 2px 2px 13px -4px #bbb;
   margin-bottom: 20px;
+  background-color: rgb(252, 253, 255);
+  box-shadow: 2px 2px 13px -4px #bbb;
 }
 .page-section.page-1{
   position: relative;
@@ -113,7 +111,7 @@ $heading-color-2: rgb(43, 189, 225);
         margin-right: auto;
         margin-left: auto;
         .skill-circle{
-            // padding: 0 32px;
+            padding: 0 32px;
             margin-bottom: 60px;
         }
     }
@@ -121,16 +119,8 @@ $heading-color-2: rgb(43, 189, 225);
       display: flex;
       -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-      justify-content: space-between;
-      width: 100%;
-      // margin-right: -40px;
-      // margin-left: -40px;
-      &:first-child{
-        padding-left: 0;
-      }
-      &:last-child{
-        padding-right: 0;
-      }
+      margin-right: -40px;
+      margin-left: -40px;
     }
   }
   .other-info {
