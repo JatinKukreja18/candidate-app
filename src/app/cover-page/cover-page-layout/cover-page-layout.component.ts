@@ -32,7 +32,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
     });
   }
   ngOnChanges(){
-    console.log(this.primarySkills);
+    // console.log(this.primarySkills);
   }
   ngAfterViewInit() {
     if (this.exporting) {
@@ -42,7 +42,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
 
   captureScreen() {
     const page = document.getElementById('cover-page');
-    html2canvas(page, { y:0, height: page.offsetHeight}).then(canvas => {
+    html2canvas(page, { y: 140, width: 1120, height: page.offsetHeight + 40}).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/jpeg');
       const dataHeight = page.offsetHeight;
       const imgWidth = 210;
@@ -53,7 +53,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
       let doc = new jspdf('p', 'mm', 'a4');
       let position = 0;
 
-      doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight, );
+      doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight );
       heightLeft -= pageHeight;
 
       while (heightLeft >= 0) {
