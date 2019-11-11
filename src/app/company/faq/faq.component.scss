@@ -1,0 +1,26 @@
+.tabs-container {
+    width: 100%;
+}
+
+.tabsContentSec {
+    & .tabsCross {
+        padding-right: 20px;
+    }
+    & .tabsContent {
+        padding: 0px 100px 0px 20px;
+        & h3 {
+            font-family: SourceSansPro;
+            font-size: 18px;
+            font-weight: 600;
+            color: #4855b5;
+            padding-bottom: 24px;
+            margin-bottom: 0px;
+        }
+        & p {
+            color: #9b9b9b;
+            font-family: SourceSansPro;
+            font-size: 16px;
+            margin-bottom: 0;
+        }
+    }
+}

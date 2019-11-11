@@ -1,0 +1,73 @@
+.bg-grey-image{
+    background: url('/assets/images/background-grey.svg');
+    background-repeat: repeat;
+   }
+.right-section{
+    #social-login .padded-socials{
+        padding: 140px 65px 0;
+    }
+    .social-button{
+        margin:0 auto 25px;
+        width: 160px;
+        font-size: 18px;
+        color: #fff;
+        img{
+            border-radius: 2px;
+            cursor: pointer;
+            &:hover{
+                box-shadow: none;
+                transition:all 0.2s linear;
+            }
+        }
+    }
+    .auth-buttons{
+        display: flex;
+        flex-wrap: nowrap;
+        margin: 0 auto 100px;
+        width: 225px;
+        
+        #login-btn{
+            width: 75px;
+        }
+        button.white{
+            float: left;
+        }
+        .big-light-text{
+            margin: 9px 24px;
+            float: left;
+            font-family: SourceSansProLight;
+            font-size: 18px;
+            font-weight: 300;
+            font-style: normal;
+            font-stretch: normal;
+            line-height: normal;
+            letter-spacing: 0.1px;
+            text-align: center;
+            color: #606060;
+        }
+    }
+    .tnc-link{
+        font-size: 16px;
+        a{
+            color: #606060;
+            text-decoration: underline;
+        }
+    }
+}
+@media screen and (max-width: 1023px){
+    .right-section{
+        #social-login .padded-socials{
+            padding: 140px 30px 0; 
+        }
+    }
+}
+@media screen and (max-width: 767px){
+    .right-section{
+        #social-login .padded-socials{
+            display: flex;
+            flex-wrap: wrap;
+            padding: 30px 10px; 
+
+        }
+    }
+}

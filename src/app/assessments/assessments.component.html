@@ -1,0 +1,135 @@
+<div class="flex fullWidth horiTabsHeade">
+    <div [ngClass]="tabActive.assessment ? 'horiTabsText sixteenFont activeHori' : 'horiTabsText sixteenFont'" (click)="showTab('assessment')">
+        <span>My Assessments</span>
+    </div>
+    <div [ngClass]="tabActive.browseAll ? 'horiTabsText sixteenFont activeHori' : 'horiTabsText sixteenFont'" (click)="showTab('browseAll')">
+        <span>Browse All</span>
+    </div>
+</div>
+<div class="fullWidth flex tabs-container">
+    <div class="tabCont noHeight relative assesTabs">
+        <div class="serceInputMainCont" *ngIf="tabActive.browseAll">
+            <div class="searchInputCont relative">
+                <input class="fullWidth searchInput" placeholder="Search Assessment" type="text" (keyup)="searchResults($event)" (keydown)="onKeyDown($event)">
+                <span class="serachIcon">
+                    <img alt="" src="assets/images/search.svg">
+                </span>
+            </div>
+        </div>
+        <!-- Jobs lists -->
+        <div [ngClass]="tabActive.browseAll ? 'tabsList all-assessments' : 'tabsList my-assessments'" (scroll)="onWindowScroll($event)">
+            <div [ngClass]="selectedAssessment && assessment.assessmentId == selectedAssessment.assessmentId ? 'borderTabs tabsLink active' :'tabsLink borderTabs'" *ngFor="let assessment of assessmentsList" (click)="selectAssessment(assessment)">
+                <span>
+                        {{assessment?.assessmentName}}
+                </span>
+            </div>
+            <div *ngIf="!loading && (!assessmentsList || (assessmentsList && assessmentsList.length == 0))">
+                <p class="no-records">No Records Found</p>
+            </div>
+        </div>
+        <!-- Filter Buttton -->
+        <div class="filterBtn relative" [hidden]="tabActive.browseAll">
+            <span class="active-filter" *ngIf="filterApplied"></span>
+            <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 224 224" style="fill: #000000;transform: rotateY(180deg);width: 20px;height: 24px;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,224v-224h224v224z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M17.08,8.96c-2.135,0.4025 -3.675,2.2925 -3.64,4.48v13.44c0.0175,1.155 0.455,2.2575 1.26,3.08l70.42,74.76v78.96c0.035,1.5575 0.8925,2.9925 2.24,3.78l44.8,26.88c1.365,0.7875 3.0625,0.805 4.445,0.0175c1.365,-0.77 2.24,-2.2225 2.275,-3.7975v-105.84l69.72,-74.06c0.0525,-0.0525 0.0875,-0.0875 0.14,-0.14l0.56,-0.56c0.21,-0.21 0.4025,-0.455 0.56,-0.7c0.105,-0.0875 0.1925,-0.175 0.28,-0.28c0.2625,-0.5775 0.4025,-1.19 0.42,-1.82c0,-0.0875 0,-0.1925 0,-0.28c0.0175,-0.2275 0.0175,-0.4725 0,-0.7v-12.74c0,-2.4675 -2.0125,-4.48 -4.48,-4.48h-188.16c-0.14,0 -0.28,0 -0.42,0c-0.14,0 -0.28,0 -0.42,0zM22.4,17.92h179.2v7.28l-69.16,73.36h-40.88l-69.16,-73.36zM94.08,107.52h35.84v95.2l-35.84,-21.42z"></path></g></g></g></svg>
+        </div>
+        <div class="filterCont">
+            <div class="crossFilter">
+                <img src="/assets/images/closeFilter.svg" alt="">
+            </div>
+            <form [formGroup]="filterForm">
+                <div class="relative">
+                    <!-- <input type="text" /> -->
+                    <!-- <label class="form-control-placeholder">Status</label>
+                    <nz-select [nzMaxMultipleCount]="1" nzMode="multiple" nzPlaceHolder="Select Status" formControlName="FilterStatus">
+                        <nz-option nzLabel="Completed" nzValue="1"></nz-option>
+                        <nz-option nzLabel="Pending" nzValue="2"></nz-option>
+                        <nz-option nzLabel="Expired" nzValue="3"></nz-option>
+                    </nz-select> -->
+                    <div class="form-group">
+                        <label for="assessment-status" class="form-control-placeholder label-for-radiogroup">Assessment Status</label>
+                        <nz-radio-group class="choose-slot not-mandate flex" id="assessment-status" formControlName="FilterStatus">
+                          <label tabindex="12" nz-radio nzValue="1"><span class="radio-label">Completed</span></label>
+                          <label tabindex="13" nz-radio nzValue="2"><span class="radio-label">Pending</span></label>
+                          <label tabindex="13" nz-radio nzValue="3"><span class="radio-label">Expired</span></label>
+                        </nz-radio-group>
+                    </div>
+                </div>
+            </form>
+            <div class="flex flexEnd filterBtnsCont">
+                <div>
+                    <button class="resetBtn filterBtns sixteenFont" (click)="resetFilter()">Reset</button>
+                </div>
+                <div>
+                    <button class="applyBtn filterBtns sixteenFont" (click)="applyFilter()">Apply</button>
+                </div>
+            </div>
+        </div>
+        <div class="filterOverlay"></div>
+    </div>
+    <!-- Assessment Details -->
+    <div class="assesRightCont noPadding fullHeightPercent flex tabsContentSec noShadow">
+        <div class="backCont fullWidth">
+            <div class="fullWidth progressCont" *ngIf="selectedAssessment">
+                <div class="twentyTwenty noMargin">
+                    <h4 class="eighteenFont">{{selectedAssessment.assessmentName}}</h4>
+                    <div class="questionMinsCont flex noMargin">
+                        <p>
+                            <span class="leftFivePix">
+                                <img src="/assets/images/questions.svg" alt="">
+                            </span>
+                            <span class="sixteenFont questions">{{selectedAssessment.questionCount}} Questions</span>
+                        </p>
+                        <p>
+                            <span>
+                                <img src="/assets/images/timer.svg" alt="">
+                            </span>
+                            <span class="sixteenFont timer">
+                                {{selectedAssessment.duration}}
+                            </span>
+                        </p>
+                    </div>
+                </div>
+                <div class="relative" *ngIf="selectedAssessment.score">
+                    <div class="greenLine"></div>
+                    <div class="circleCont">
+                        <div class="circle">
+                            <span class="assessment-score">
+                                {{selectedAssessment.score}}
+                            </span>
+                            <span class="assessment-percent">%</span>
+                        </div>
+                        <p class="textCenter noMargin score twelveFont">
+                            Score
+                        </p>
+                    </div>
+                </div>
+                <div class="twentyTwenty" *ngIf="selectedAssessment.statusTypeId != 2">
+                    <button class="twelveFont status completed" *ngIf="selectedAssessment.statusTypeId == 1">
+                        {{selectedAssessment.status}}
+                    </button>
+                    <button class="twelveFont status expired" *ngIf="selectedAssessment.statusTypeId == 3">
+                        {{selectedAssessment.status}}
+                    </button>
+                </div>
+                <div class="scheduledCont" *ngIf="selectedAssessment.statusTypeId == 2">
+                    <span class="appliedIcon">
+                        <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="">
+                    </span>
+                    <span class="sixteenFont scheduled">Scheduled</span>
+                </div>
+                <div class="schedule-test" *ngIf="selectedAssessment.statusTypeId == 0">
+                    <!-- <span class="appliedIcon">
+                        <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="">
+                    </span> -->
+                    <span class="sixteenFont" (click)="scheduleTest()">Schedule Test</span>
+                </div>
+            </div>
+            <div class="no-content flex" *ngIf="!selectedAssessment">
+                <div class="no-content-circle" *ngIf="!loading && !selectedAssessment">
+                  <p *ngIf="assessmentsList && assessmentsList.length > 0">Select any assessment to see details</p>
+                  <p *ngIf="!assessmentsList || assessmentsList.length == 0">No Records Found</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

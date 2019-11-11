@@ -1,0 +1,127 @@
+/**
+* Style for sidemenu
+*/
+
+.sidemenu {
+    width: 100%;
+    height: 100vh;
+    background: #4855b5;
+    z-index: 99;
+    transition: 0.5s linear all;
+    // overflow-y: scroll;
+    .user-profile {
+        padding: 30px 46px;
+        color: #fff;
+        font-size: 16px;
+        .profile-pic{
+            width: 128px;
+            height: 128px;
+            border-radius: 100%;
+            margin-bottom: 20px;
+            background-color: gray;
+        }
+        img {
+          width: 128px;
+          height: 128px;
+          border-radius: 50%;
+        }
+        p {
+            padding-left: 6%;
+        }
+    }
+   
+    ul {
+      padding: 0;
+    }
+   
+    li {
+      width: 100%;
+      padding: 0 25px;
+      font-size: 18px;
+      list-style: none;
+      color: #fff;
+   
+      img {
+        margin-right: 20px;
+      }
+   
+      a {
+        display: block;
+        padding: 22px 0 22px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        font-family: SourceSansProLight;
+        text-decoration: none !important;
+      }
+   
+      &.active,
+      &:hover {
+        background: #3a4491;
+      }
+    }
+}
+
+// .share-img-count {
+//   position: relative;
+//   height: max-content;
+//   margin-right: 12px;
+//   .sharing-numbers {
+//     position: absolute;
+//     bottom: 14px;
+//     width: 100%;
+//     font-size: 15px;
+//     line-height: 1.4;
+//     text-align: center;
+//     color: #ffffff;
+//   }
+//   .socials-icons {
+//     transition: 0.5s;
+//   }
+//   &:hover {
+//     .socials-icons {
+//       transform: scale(1.1);
+//     }
+//   }
+//   &:last-child{
+//     margin: 0px;
+//   }
+// }
+
+// .share-img-count :hover .socials-icons {
+//   transform: scale(1.1);
+// }
+
+
+
+#comment-box {
+  margin-top: 20px;
+  width: 100%;
+  min-height: 100px;
+  border: 1px solid #d8d4d4;
+  outline: none;
+}
+
+.orange-button {
+  margin-top: 20px;
+}
+
+.title-feedback {
+  opacity: 1;
+  font-size: 14px;
+  color: #4855b5;
+}
+
+@media screen and (max-width:767px){
+  .sidemenu {
+    .user-profile {
+      padding: 30px;
+    }
+    li{
+      padding: 0 15px;
+      font-size: 16px;
+      img{
+          width: 18px;
+      }
+    }
+  }
+}

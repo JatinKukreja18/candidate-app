@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>ClikSource</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <link rel="manifest" href="manifest.json">
+  <meta name="theme-color" content="#1976d2">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    /* Auth landing CSS */
+    .bg-grey-image {
+      background: url('/assets/images/background-grey.svg');
+      background-repeat: repeat;
+    }
+    .right-section #social-login .padded-socials {
+      padding: 140px 65px 0;
+    }
+    .right-section .social-button {
+      margin: 0 auto 25px;
+      width: 160px;
+      font-size: 18px;
+      color: #fff;
+    }
+    .right-section .social-button img {
+      border-radius: 2px;
+      cursor: pointer;
+    }
+    .right-section .social-button img:hover {
+      box-shadow: none;
+      transition: all 0.2s linear;
+    }
+    .right-section .auth-buttons {
+      margin: 0 auto 100px;
+      width: 225px;
+    }
+    .right-section .auth-buttons #login-btn {
+      width: 70px;
+    }
+    .right-section .auth-buttons button.white {
+      float: left;
+    }
+    .right-section .auth-buttons .big-light-text {
+      margin: 9px 24px;
+      float: left;
+      font-family: SourceSansProLight;
+      font-size: 18px;
+      font-weight: 300;
+      font-style: normal;
+      font-stretch: normal;
+      line-height: normal;
+      letter-spacing: 0.1px;
+      text-align: center;
+      color: #606060;
+    }
+    .right-section .tnc-link {
+      font-size: 16px;
+    }
+    .right-section .tnc-link a {
+      color: #606060;
+      text-decoration: underline;
+    }
+    @media screen and (max-width: 1023px) {
+      .right-section #social-login .padded-socials {
+        padding: 140px 30px 0;
+      }
+    }
+    @media screen and (max-width: 767px) {
+      .right-section #social-login .padded-socials {
+        display: flex;
+        flex-wrap: wrap;
+        padding: 30px 10px;
+      }
+    }
+    /* Forgot password CSS */
+    .forgot-pass-container {
+      width: 100%;
+      height: 100vh;
+      background: url('../../../assets/images/background-grey.svg');
+      background-repeat: repeat;
+    }
+    .forgot-pass-container .logo-symbol {
+      margin-bottom: 24px;
+      padding-top: 50px;
+      text-align: center;
+      cursor: pointer;
+    }
+    .forgot-pass-container .forgot-pass-content {
+      width: 360px;
+      height: 400px;
+      margin: 0 auto;
+    }
+    .forgot-pass-container .company {
+      text-align: center;
+    }
+    .forgot-pass-container .company img {
+      max-width: 180px;
+      margin-top: 50px;
+    }
+
+
+  </style>
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDxHRGL9P-kTxGvGcKfy0yMbGbWsKLx_Nw&amp;&amp;libraries=places" async="" defer=""></script>
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-134869289-1"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag(){dataLayer.push(arguments);}
+    gtag('js', new Date());
+  </script>
+  <link href="https://fonts.googleapis.com/css?family=Roboto:300,400,500" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+  <app-root></app-root>
+  <noscript>Please enable JavaScript to continue using this application.</noscript>
+</body>
+</html>

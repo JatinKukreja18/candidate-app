@@ -1,0 +1,266 @@
+.horiTabsHeade {
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    background-color: #ffffff;
+    position: relative;
+    z-index: 99;
+    flex-wrap: nowrap;
+    overflow-x: auto;
+    white-space: nowrap;
+}
+
+.no-records {
+    color: #242c6b;
+    font-size: 18px;
+    font-weight: 600;
+    text-align: center;
+    padding: 18px 20px 10px;
+}
+
+.no-content {
+    background-color: #f5f5fc;
+    min-height: 83vh;
+    justify-content: center;
+    align-items: center;
+    .no-content-circle {
+      width: 200px;
+      height: 200px;
+      /* text-align: center; */
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      border-radius: 50% 50%;
+      background-color: #cecee2;
+      p {
+        font-weight: 800;
+        color: #6c6cab;
+        margin:0;
+      }
+    }
+}
+
+.horiTabsText {
+    color: #606060;
+    opacity: 0.5;
+    padding: 15px 20px;
+    cursor: pointer;
+}
+
+.activeHori {
+    border-bottom: 3px solid #f9683d;
+    color: #606060;
+    opacity: 1;
+}
+
+.greenLine {
+    width: 95%;
+    height: 1px;
+    background-color: #3ec82c;
+    margin: 0 auto;
+}
+
+.circleCont {
+    position: absolute;
+    right: 0;
+    transform: translate(-50%, -42%);
+}
+
+.circle {
+    width: 80px;
+    height: 80px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #3ec82c;
+    border-radius: 50%;
+    background-color: #fff;
+}
+.assessment-score {
+    font-size: 24px;
+    color: #3ec82c;
+}
+
+.assessment-percent {
+    font-size: 16px;
+    color: #3ec82c;
+}
+
+.questions {
+    color: #363636;
+}
+
+.timer {
+    color: #7e7e7e;
+}
+
+.noMargin,
+.noMargin p,
+h4 {
+    margin-bottom: 0;
+}
+
+.questions {
+    padding-right: 30px;
+}
+
+.questions,
+.timer {
+    padding-left: 5px;
+}
+
+.score {
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+.questionMinsCont {
+    padding-top: 20px;
+}
+
+.backCont {
+    background-color: #fff;
+    height: max-content;
+}
+
+.progressCont {
+    padding-bottom: 10px;
+    border-bottom: 1px solid #e8e6e6;
+}
+
+.status {
+    color: #fff;
+    border-radius: 2px;
+    cursor: default;
+    border: none;
+    padding: 1px 11px;
+    &.completed {
+        background-color: #3ec82c;
+    }
+    // &.pending {
+    //     background-color: #f9683d;
+    // }
+    &.expired {
+        background-color: #f9683d;
+    }
+}
+
+.assesTabs {
+    width: 320px;
+}
+
+.assesRightCont {
+    width: calc(100% - 320px);
+    height: auto;
+    background-color: #f5f5fc;
+    padding-bottom: 60px;
+}
+
+.assesTabs .tabsList {
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+
+.scheduled {
+    color: #6fad26;
+}
+
+.vieAllRightCont {
+    height: max-content;
+}
+
+.scheduledCont {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 20px;
+    border-top: 1px solid #bababa;
+}
+
+.schedule-test {
+    margin-bottom: 0;
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px 20px;
+    border-top: 1px solid #bababa;
+    span {
+        color: #f9683d;
+        font-size: 14px;
+        font-weight: normal;
+        cursor: pointer;
+    }
+
+}
+.label-for-radiogroup{
+    top: 10px;
+    opacity: 0.5;
+    position: relative;
+}
+
+.filter-input {
+    nz-select {
+        border-bottom: 1px solid #5050e2;
+    }
+    .form-control-placeholder {
+        top: -25px;
+    }
+}
+
+.appliedIcon {
+    padding-right: 8px;
+}
+
+.serceInputMainCont {
+    box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.09);
+    background-color: #fafafd;
+    padding: 0px 10px;
+}
+
+.searchInputCont {
+    padding: 22px 0px;
+}
+
+.searchInput {
+    background-color: unset;
+    padding: 13px 16px;
+    border-radius: 2px;
+    border: 1px solid #dad5d5;
+    outline: none;
+}
+
+.searchInput::placeholder {
+    font-family: SourceSansPro;
+    font-size: 16px;
+    color: #606060;
+}
+
+.serachIcon {
+    position: absolute;
+    right: 0;
+    transform: translate(-50%, -50%);
+    top: 50%;
+}
+
+.tabsList {
+    padding-bottom: 50px;
+    &.all-assessments {
+        height: calc(100vh - 210px);
+    }
+    &.my-assessments {
+        height: calc(100vh - 117px);
+    }
+}
+
+@media screen and (max-width: 767px) {
+    .assesTabs {
+        .tabsList {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 0px;
+
+            .tabsLink{
+                display: flex;
+                align-items: center;
+            }
+        }
+    }
+}

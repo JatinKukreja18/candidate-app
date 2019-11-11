@@ -1,0 +1,16 @@
+<div class="main-left-sidebar">
+  <div class="title">
+    <p>
+      Recent Search
+    </p>
+  </div>
+  <div class="recent-search row" *ngFor="let entry of recentSearches" (click)="searchJobs(entry)">
+    <div class="search-icon">
+      <img src="../../../assets/images/ic-search.svg" alt="recent search" />
+    </div>
+    <div class="recent-content">
+      <p class="search-title">{{entry.jobTitle}}</p>
+      <p class="search-city">{{entry.location}}</p>
+    </div>
+  </div>
+</div>

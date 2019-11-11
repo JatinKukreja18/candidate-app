@@ -1,0 +1,44 @@
+.main-left-sidebar{
+    width: 100%;
+    background-color: #fafafd;
+    p{
+        margin: 0;
+    }
+    .title{
+        padding: 15px 20px;
+        border-bottom: 1px solid #ececec;
+        color: #242c6b;
+        font-size: 18px;
+        font-weight: 600;
+    }
+    .recent-search{
+        padding: 15px 20px;
+        border-bottom: 1px solid #ececec;
+        cursor: pointer;
+        .search-icon{
+            float: left;
+            width: 7.5%;
+            padding-top: 12px;
+        }
+        .recent-content{
+            float: right;
+            width: 92%;
+            padding-left: 10px;
+            word-break: break-word;
+
+            .search-title{     
+                margin-bottom: 8px; 
+                font-size: 16px;
+                font-weight: 600;
+                color: #4855b5;
+            }
+            .search-city{
+                margin-bottom: 0; 
+                font-size: 14px;
+                font-weight: 400;
+                color: #4855b5;
+                opacity: 0.5;
+            }
+        }
+    }
+}

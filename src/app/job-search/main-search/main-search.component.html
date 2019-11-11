@@ -1,0 +1,46 @@
+<section class="main-section">
+  <div class="search-bar">
+      <form class="inlineForm row" id="main-search" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <span class="input-icon before"><img src="/assets/images/ic-search.svg"></span>
+          <nz-select (ngModelChange)="onMultiSelectChange($event)" class="main-search-input" nzMode="multiple" nzPlaceHolder="Search Skills:For E.g. Machine Learning, Al etc." formControlName="skills" [ngClass]="{'invalid-input':submitted && f.skills.errors}">
+            <nz-option *ngFor="let option of skills" [nzLabel]="option" [nzValue]="option"></nz-option>
+          </nz-select>
+          <!-- <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
+            <div class="error" *ngIf="f.skills.errors.required">Please select skills</div>
+          </div> -->
+          <span class="editable-tag input-icon after" (click)="toggleSkillsDropdown()"><img src="/assets/images/ic-add-skill.svg"></span>
+        </div>
+
+        <div class="form-group">
+            <span class="input-icon before"><img src="/assets/images/ic-location.svg"></span>
+            <input [ngClass]="{'invalid-input':submitted && f.city.errors}" formControlName="city" type="text" placeholder="Search in City" #city/>
+            <!-- <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+              <div class="error" *ngIf="f.city.errors.required">Please select city</div>
+            </div> -->
+        </div>
+
+        <div class="form-group">
+            <button class="orange-button" >Search {{ f.skills.value && f.city.value ? 'Jobs' : ''}}</button>
+            <!-- <button class="orange-button" *ngIf="f.skills.value && f.city.value">Search Jobs</button> -->
+          </div>
+          
+        <div class="search_us">
+            <div class="search_sec">
+            <label nz-checkbox (click)="checksearch('searchus')" value="searchus" name="searchus">Search All US Locations</label>
+          </div>
+        </div>
+
+      </form>
+  </div>
+  <div class="matching-jobs-icon" [routerLink]="['/search/matching']" routerLinkActive="active" (click)="gotoMatchingJobs()"><a><img src="/assets/images/ic-matching-jobs.svg" alt="Matching Jobs"></a></div>
+  <!-- <div class="map" #map></div> -->
+  <app-common-map></app-common-map>
+  
+</section>
+<div class="recent-sidebar" [ngClass]="recent_active ? 'active' : '' ">
+  <app-recent-search></app-recent-search>
+  <span class="recent-arrow" [ngClass]="recent_active ? 'active' : '' " (click)="recent_active = !recent_active">
+    <img src="/assets/images/ic-right-arrow.svg" alt="click for recent searches" />
+  </span>
+</div>

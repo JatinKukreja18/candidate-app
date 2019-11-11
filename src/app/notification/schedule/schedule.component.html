@@ -1,0 +1,141 @@
+<section class="main-header blue row">
+    <div class="left-subheader">
+      <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-close.svg"></span>
+      <p class="page-title">Interview Schedule</p>
+    </div>
+</section>
+<section class="main-section">
+  <div class="grey-bg-content">
+    <div class="schedule-content">
+        <p class="title">Allocated Interview Time <sup>*</sup></p>
+        <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" *ngIf="interviewDetail">
+          <nz-radio-group formControlName="interviewSlot" (ngModelChange)="onSlotSelect($event)">  
+            <div class="form-group interview-slot">
+              <p class="flex">
+                <span class="label">Slot 1: Date </span>
+                <span class="label">Time</span>
+              </p>
+              <p class="flex">
+                <label nz-radio tabindex="1" [nzValue]="interviewDetail?.slot1" (click)="selectInterviewSlot1($event, interviewDetail?.slot1)" (ngModelChange)="selectInterviewSlot1($event)">{{interviewDetail?.slot1 | date: 'dd, MMM yyyy' : 'GMT'}}</label>
+                <span class="interview-time" *ngIf="interviewDetail?.isSlot1AvailableAllDay">All Day ({{interviewDetail?.timeZone}})</span>
+                <span class="interview-time" *ngIf="!interviewDetail?.isSlot1AvailableAllDay">{{interviewDetail?.slot1 | date: 'shortTime' : 'GMT'}} ({{interviewDetail?.timeZone}})</span>
+              </p>
+            </div>
+            <div class="form-group interview-slot">
+              <p class="flex">
+                <span class="label">Slot 2: Date </span>
+                <span class="label">Time</span>
+              </p>
+              <p class="flex">
+                <label nz-radio tabindex="2" [nzValue]="interviewDetail?.slot2" (click)="selectInterviewSlot2($event, interviewDetail?.slot2)" (ngModelChange)="selectInterviewSlot2($event)">{{interviewDetail?.slot2 | date: 'dd, MMM yyyy' : 'GMT'}}</label>
+                <span class="interview-time" *ngIf="interviewDetail?.isSlot2AvailableAllDay">All Day ({{interviewDetail?.timeZone}})</span>
+                <span class="interview-time" *ngIf="!interviewDetail?.isSlot2AvailableAllDay">{{interviewDetail?.slot2 | date: 'shortTime' : 'GMT'}} ({{interviewDetail?.timeZone}})</span>
+              </p>
+            </div>
+            <div *ngIf="submitted && f.interviewSlot.errors" class="invalid-feedback">
+              <div class="error" *ngIf="f.interviewSlot.errors.required">{{validationMsgs.InterviewSlotRequired}}</div>
+            </div>
+          </nz-radio-group>
+          
+          <div class="interview-type">
+            <p class="title">Interview Type <sup>*</sup></p>
+            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 1">F2F Video Interview</p>
+            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 2">F2F Interview</p>
+            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 3">Telephonic Interview</p>
+            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 1">Interview link will be sent via email</p>
+            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 2">{{interviewDetail?.interviewLocation}}</p>
+            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 3">{{interviewDetail?.clientPhoneCode}} {{interviewDetail?.clientPhone}}</p>
+          </div>
+          <div class="flex">
+            <div class="form-group" id="phoneCode">
+              <nz-select id="phoneCode" class="form-control not-mandate" [nzDropdownMatchSelectWidth]="false" formControlName="countryPhoneCode" style="padding-top: 21px;">
+                <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
+              </nz-select>
+              <!-- <input type="text" tabindex="3" id="phoneCode" formControlName="countryPhoneCode" class="form-control"/> -->
+              <label for="phoneCode" class="form-control-placeholder" [ngClass]="{'active': f.countryPhoneCode.value, 'inactive': !f.countryPhoneCode.value }">Country Code</label>
+              <div *ngIf="f.countryPhoneCode.errors" class="invalid-feedback">
+                <div class="error" *ngIf="f.countryPhoneCode.errors.required">{{validationMsgs.PhoneRequired}}</div>
+              </div>
+            </div>
+            <div class="form-group" id="phone">
+                <input app-phone-field type="number" tabindex="3" id="phoneNumber" formControlName="mobile" class="form-control"/>
+                <label for="phoneNumber" class="form-control-placeholder" [ngClass]="{'active': f.mobile.value, 'inactive': !f.mobile.value }">Candidate Phone Number</label>
+                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="f.mobile.errors.required">{{validationMsgs.PhoneRequired}}</div>
+                  <div class="error" *ngIf="f.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+                </div>
+            </div>
+          </div>
+          <p class="phone-update-note">When you sumbit this phone number, it will be updated in profile</p>
+          <p class="horizontal-ruler-light"></p>
+          
+        </form>
+        <div class="flex scheduling-btns">
+          <button class="link-btn" (click)="goBack()"><span><img src="../../../assets/images/ic-myjobs-rejected-grey.svg"></span>Cancel</button>
+          <button class="link-btn" type="submit" id="submit" (click)="onSubmit()"><span><img src="../../../assets/images/ic-matchingjobsforyou-apply-green.svg"></span>Submit</button>
+        </div>
+    </div>
+  </div>
+</section>
+
+<!-- All day slot choose modal -->
+<nz-modal [nzVisible]="showSlotConfirmationModal" [nzMaskClosable]="false" [nzClosable]="false" [nzKeyboard]="false" [nzFooter]="null"
+  nzTitle="Select a Time Slot" (nzOnCancel)="cancelInterviewModal()" (nzOnOk)="confirmInterviewModal()">
+  <div class="interview-confirmation-modal">
+    <!-- <p>Schedule Interview</p> -->
+    <!-- <div class="row">
+      <p>1st Half of the Day</p>
+      <div class="dateslot">
+        <div [ngClass]="slot?.active ? 'active' : ''"
+          *ngFor="let slot of cronofyResponse?.available_periods;let idx = index" (click)="selectDateSlot(slot, idx)">
+          <span class="dayslot">{{slot?.start | date:'EEE'}}</span>
+          <span class="date">{{slot?.start | date:'dd'}}</span>
+          <span class="month">{{slot?.start | date:'LLL'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row time-slot-list">
+      <p>2nd Half of the Day</p>
+      <div class="timeslot">
+        <div *ngFor="let slot of selectedDateSlot?.timeSlots; let timeSlotidx = index"
+          (click)="selectTimeSlot(slot, timeSlotidx)">
+          <span [ngClass]="slot?.active ? 'active' : ''">{{slot?.startDate | date: 'shortTime'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="interviewtype">
+      <div>
+        <span>Interview Type</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 1" class="value">F2F Video Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 2" class="value">F2F Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 3" class="value">Telephonic Interview</span>
+      </div>
+      <div>
+        <span style="padding-left: 58px">Interview Duration</span>
+        <span class="value" style="padding-left: 55px"
+          *ngIf="cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Hours}} Hours
+          {{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+        <span class="value" style="padding-left: 55px"
+          *ngIf="!cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+      </div>
+    </div> -->
+    <p class="title">1st half of the Day</p>
+    <div class="timeslot">
+      <div *ngFor="let slot of selectedDateSlot?.firstHalf; let timeSlotidx = index"
+        (click)="selectTimeSlot(slot, 'firstHalf', timeSlotidx)">
+        <span [ngClass]="slot?.active ? 'active' : ''">{{slot?.startDate | date: 'shortTime'}}</span>
+      </div>
+    </div>
+    <p class="title">2nd half of the Day</p>
+    <div class="timeslot flex">
+      <div *ngFor="let slot of selectedDateSlot?.secondHalf; let timeSlotidx = index"
+        (click)="selectTimeSlot(slot, 'secondHalf', timeSlotidx)">
+        <span [ngClass]="slot?.active ? 'active' : ''">{{slot?.startDate | date: 'shortTime'}}</span>
+      </div>
+    </div>
+  </div>
+  <div class="buttn">
+    <button (click)="cancelInterviewModal()">Cancel</button>
+    <button [disabled]="!selectedDateSlot || !selectedTimeSlot" (click)="confirmInterviewModal()">Submit</button>
+  </div>
+</nz-modal>

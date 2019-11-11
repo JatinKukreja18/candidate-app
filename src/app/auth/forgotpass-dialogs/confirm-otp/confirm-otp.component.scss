@@ -1,0 +1,25 @@
+.non-editable-form-group {
+    .label {
+        opacity: 0.5;
+        font-family: SourceSansPro;
+        font-size: 14px;
+        font-weight: normal;
+        color: #4855b5;
+        margin-bottom: 10px;
+    }
+    .input {
+        font-family: SourceSansPro;
+        font-size: 16px;
+        font-weight: 600;
+        color: #4855b5;
+        margin-bottom: 35px;
+    }
+}
+
+form {
+    .form-group {
+        input {
+            font-size: 17px;
+        }
+    }
+}

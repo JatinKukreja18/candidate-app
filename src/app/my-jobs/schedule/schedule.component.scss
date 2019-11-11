@@ -1,0 +1,182 @@
+.page-title{
+    color: #fff;
+    margin-top: 10px;
+}
+.main-section {
+    background: #f5f5fc;
+    .grey-bg-content{
+        // padding: 20px;
+        margin: 0 auto;
+        width: 64%;
+        background: #fff;
+        .schedule-content{
+            height: calc(100vh - 56px);
+            padding: 20px;
+            box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.07);
+            nz-radio-group, .interview-type {
+                border-bottom: 1px solid #a4a9dc;
+            }
+            nz-radio-group {
+                margin-bottom: 20px;
+            }
+            p{
+                &.title{
+                    margin-bottom: 10px;
+                    color: #4855b5;
+                    opacity: 0.5;
+                    font-size: 12px;
+                }
+            }
+            .label{
+                margin-bottom: 10px;
+                color: #4855b5;
+                opacity: 0.5;
+                &:first-child {
+                    padding-left: 25px;
+                }
+            }
+            .form-group{
+                margin-bottom: 10px;
+                input, nz-select {
+                    border-bottom: 1px solid #a4a9dc;
+                }
+                #phoneCode .ant-select-selection-selected-value {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #4855b5;
+                }
+            }
+            .interview-slot .label,
+            .interview-slot label.ant-radio-wrapper{
+                float: left;
+                width: 50%;
+                margin: 0
+            }
+            .interview-time, .type-of-interview{
+                color: #4855b5;
+                font-size: 14px;
+            }
+            .interview-link{
+                color: #4855b5;
+                font-size: 14px;
+                font-weight: 600; 
+            }
+            .interview-link-help {
+                opacity: 0.5;
+                font-size: 14px;
+            }
+            #phone.form-group{
+                width: 80%;
+            }
+            #phoneCode.form-group {
+                width: calc(20% - 15px);
+                margin-right: 10px;
+            }
+            .phone-update-note{
+                font-size: 12px;
+                font-style: italic;
+            }
+            .horizontal-ruler-light{
+                height: 1px;
+                width: 100%;
+                background: #999;
+            }
+            .scheduling-btns{
+                justify-content: flex-end;
+            }
+        }
+        #phone {
+            .scroll-controller-overlay {
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                background-color: #fff;
+                top: calc(0px + 25px);
+                right: calc(0px + 12px);
+            }
+        }
+    }
+}
+
+.interview-confirmation-modal {
+    .title {
+        font-size: 14px;
+        font-weight: 600;
+        text-align: left;
+        margin-top: 20px;
+        margin-bottom: 15px;
+    }
+    .timeslot{
+        display: flex;
+        justify-content: flex-start;
+        flex-wrap: wrap;
+    }
+    .timeslot > div{
+        display: flex;
+        cursor: pointer;
+        padding: 5px 6px;
+        span {
+            display: block;
+            justify-content: center;
+            text-align: center;
+            margin: auto;
+            font-size: 18px;
+            width: 100px;
+            height: 31px;
+            border-radius: 35px;
+            padding: 2px 9px;
+            border: 1px solid #c7ceff;
+            &:hover {
+                background-color: #f9683d;
+                border: 1px solid #f9683d;;
+                color: #ffffff; 
+            }
+            &.active {
+                background-color: #f9683d;
+                border: 1px solid #f9683d;;
+                color: #ffffff; 
+            }
+        }
+    }
+}
+
+.buttn{
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 45px;
+    padding-top: 21px;
+    border-top: 0.5px solid #bababa;
+    button{
+        border: 1px solid #979797;
+        width: 97px;
+        height: 39px;
+        margin-left: 19px;
+        border-radius: 2px;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 1.33;
+        text-align: center;
+        color: #4a4a4a;
+        &:hover {
+            border-radius: 2px;
+            font-size: 18px;
+            font-weight: 600;
+            box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.15);
+            background-color: #f9683d;
+            color: #ffffff;
+            border: 1px solid #f9683d;
+        }
+        &:disabled {
+            border: 1px solid lightgray;
+            color: lightgray;
+            pointer-events: none;
+            cursor: not-allowed;
+        }
+    }
+}
+
+@media screen and (max-width: 767px){
+    .grey-bg-content {
+        width: 100% !important;
+    }
+}

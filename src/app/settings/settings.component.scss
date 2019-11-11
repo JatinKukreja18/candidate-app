@@ -1,0 +1,176 @@
+.noShadow {
+    box-shadow: unset;
+}
+
+.inputBoxShad {
+    border-radius: 4px;
+    box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.16);
+    background-color: #ffffff;
+}
+
+.formCont {
+    width: 360px;
+}
+
+.twentySevenThirty {
+    padding: 27px 30px;
+}
+
+.changePassText {
+    font-family: SourceSansPro;
+    font-size: 20px;
+    font-weight: 600;
+    color: #606060;
+    margin-bottom: 0;
+}
+
+.changePassCont form .floatingInput:nth-last-child(2) {
+    padding-bottom: 0;
+}
+
+.changePassCont {
+    padding-top: 50px;
+    label {
+        pointer-events: none;
+    }
+}
+
+.turnOff {
+    color: #4855b5;
+    font-family: SourceSansPro;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.notiEnable {
+    font-family: SourceSansPro;
+    font-size: 12px;
+    color: red;
+}
+.enabled {
+    font-family: SourceSansPro;
+    font-size: 12px;
+    color: #6fad26;
+}
+
+
+/* The switch - the box around the slider */
+
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 35px;
+    height: 13px;
+}
+
+
+/* Hide default HTML checkbox */
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+
+/* The slider */
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+}
+
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 20px;
+    width: 20px;
+    left: 0px;
+    bottom: calc(0px - 3px);
+    background-color: #5757d2;
+    transition: .4s;
+}
+
+input:checked+.slider {
+    background-color: #2196F3;
+}
+
+input:focus+.slider {
+    box-shadow: 0 0 1px #2196F3;
+}
+
+input:checked+.slider:before {
+    -webkit-transform: translateX(15px);
+    -ms-transform: translateX(15px);
+    transform: translateX(15px);
+    background-color: blue;
+}
+
+
+/* Rounded sliders */
+
+.slider.round {
+    border-radius: 34px;
+    box-shadow: unset;
+}
+
+.slider.round:before {
+    border-radius: 50%;
+    background-color: red;
+}
+
+button.orange-button{
+    font-weight: 600;
+}
+
+input {
+    &:focus~.form-control-placeholder {
+        display: block;
+        position: absolute;
+        top: 10px !important;
+        opacity: .5;
+        font-size: 12px;
+        color: #4855b5;
+        transition: 0.3s ease;
+        z-index: 1;
+        outline: none !important;
+    }
+}
+
+.form-control-placeholder {
+    display: block;
+    position: absolute;
+    color: #4855b5;
+    transition: 0.3s ease;
+    z-index: 1;
+    outline: none !important;
+    &.active {
+        top: 10px;
+        opacity: 0.5;
+        font-size: 12px;
+    }
+    &.inactive {
+        top: 25px;
+        opacity: 1;
+        font-size: 14px;
+    }
+}
+
+
+
+
+@media screen and (max-width: 767px){
+    .bg-grey-image{
+        height: 86vh !important;
+    }
+    .tabs-container {
+        height: auto !important;
+    }
+}

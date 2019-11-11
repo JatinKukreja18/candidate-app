@@ -1,0 +1,14 @@
+<section class="main-header blue row">
+  <div class="left-subheader">
+    <span (click)="goBack()" class="back-button"><img src="/assets/images/ic-arrow-back.svg"></span>
+    <p class="search-title" title="{{location?.query.split(',').join(', ')}}">{{location?.query.split(',').join(', ')}}</p>
+    <p class="search-city">{{location?.fullAddress}}</p>
+  </div>
+  <div class="right-subheader row">
+    <span (click)="editSearchPage()"><img src="/assets/images/ic-edit.svg"></span>
+  </div>
+</section>
+<section class="main-section">
+  <app-common-map [jobs]="jobs?.results"></app-common-map>
+</section>
+<app-results-sidebar (selected)="onSelect($event)" (fetched)="onJobsFetch($event)"></app-results-sidebar>

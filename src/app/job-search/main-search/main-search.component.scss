@@ -1,0 +1,224 @@
+.main-header{
+    .hamburger{
+        margin-top: 6px;
+        margin-right: 24px;
+        float: left;
+        cursor: pointer;
+      }
+      .page-title{
+        margin: 0;
+        font-family: SourceSansPro;
+        font-size: 24px;
+        font-weight: 600;
+        color: #f9683d;
+      }
+    }
+    .notification-icon  {
+      position: relative;
+    
+      strong {
+        position: absolute;
+        right: -9px;
+        background: #f46a30;
+        border-radius: 100%;
+        color: #fff;
+        padding: 0px 6px;
+        font-size: 12px;
+      }
+}
+.main-section{
+    .search-bar{
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        z-index: 2;
+
+        .inlineForm .form-group {
+            position: relative;
+            float: left;
+            margin-right: 14px;
+            
+            .input-icon.before{                    
+                display: block;
+                position: absolute;
+                top: 8px;
+                left: 10px;
+                width: 32px;
+                height: 32px;
+                z-index: 3;
+                img{
+                    width: 32px;
+                    height: 32px;
+                }
+            }
+            input {
+                font-size: 17px;
+                font-weight: 400;
+                font-family: 'Source Sans Pro', sans-serif;
+                opacity: 1;
+                color: #aaafcc;
+                &::placeholder {
+                    font-weight: 400;
+                    font-family: 'Source Sans Pro', sans-serif;
+                    opacity: 1;
+                    font-size: 17px;
+                    color: #aaafcc;
+                }
+            }
+            input, nz-select{
+                position: relative;
+                margin: 0;
+                height: 51px;
+                padding-left: 50px;
+                border-radius: 2px;
+                box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+                background-color: #ffffff;
+                border: none;
+                &::placeholder{
+                    color: #2c377a;
+                    opacity: 0.4;
+                }
+                &.invalid-input{
+                    border: 1px solid red;
+                }
+                padding-right: 10px;
+            }
+            &:first-child input{
+                width: 230px;
+                height: 52px;
+            }
+            &:nth-child(1) {
+                nz-select{
+                    width: 345px;
+                    padding-top: 14px;
+                    height: 51px;
+                    &:focus{
+                        border: none;
+                        outline: none;
+                    }
+                }
+                .input-icon.before img{
+                    width: 24px;
+                }
+                .input-icon.after{
+                    display: block;
+                    position: absolute;
+                    top: 8px;
+                    right: 10px;
+                    width: 32px;
+                    height: 32px;
+                    z-index: 3;
+                }
+            }
+            button{
+                margin: 0;
+                height: 48px;
+                padding: 12px 27px 14px;
+            }
+              
+            &:last-child{
+                margin-right: 0;
+            }
+        }
+    }
+    .matching-jobs-icon {
+        background-color: #fff;
+        position: fixed;
+        right: 20px;
+        bottom: 20px;
+        padding: 10px;
+        border-radius: 50%;
+        box-shadow: 0 2px 6px 0 rgba(0, 0, 0, 0.5);
+        z-index: 3;
+        outline: none;
+        cursor: pointer;
+    }
+}
+
+.recent-sidebar{
+    left: -300px;
+    height: 92%;
+    app-recent-search{
+        float: left;
+        width: 93%;
+        height: 92vh;
+        box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.2);
+        background-color: #fafafd;
+    }
+    .recent-arrow {
+        float: left;
+        margin-top: 10px;
+        width: 22px;
+        padding: 12px 0;
+        background-color: #fafafd;
+        box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.2);
+        z-index: 2;
+        cursor: pointer;
+    }
+  
+    &.active{
+        left: 0;
+        transition: left 0.6s linear; 
+        .recent-arrow img{
+            transform: rotateY(-180deg);
+        }
+    }
+}
+.editable-tag ::ng-deep .ant-tag {
+    background: rgb(255, 255, 255);
+    border-style: dashed;
+}
+@media screen and (min-width: 768px) and (max-width: 1023px){
+    .recent-sidebar {
+        left: -39%;
+    }
+}
+@media screen and (max-width: 767px){
+    // .recent-sidebar{
+    //     left: -94%;
+    // }
+    .main-section{
+        .search-bar{
+            position: absolute;
+            top: 10px;
+            left: 22px;
+            z-index: 2;
+            .inlineForm{
+                .form-group {
+                    width: 100%;
+
+                    &:first-child input,
+                    &:nth-child(1) nz-select{
+                        width: 100%;
+                    }
+                    &:nth-child(2) {
+                        margin-bottom: 10px;
+                    }
+
+                }
+            }
+        }
+    }
+}
+@media screen and (min-width: 1440){
+    .recent-sidebar{
+        left: -31%;
+        height: 96%;
+        app-recent-search{
+            float: left;
+            width: 94%;
+            height: 96vh;
+        }
+    }
+}
+
+.search_sec label.ant-checkbox-wrapper {
+    margin-top: 30px;
+    background-color: #fff;
+    padding: 5px;
+}
+
+.search_us {
+    display: inline-block;
+    width: 100%;
+}

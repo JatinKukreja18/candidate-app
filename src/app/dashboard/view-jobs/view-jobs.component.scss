@@ -1,0 +1,212 @@
+/*
+** mixin to basic set font properties
+*/
+@mixin used-font($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+  
+.main-header .left-subheader{
+    display: flex;
+    height: 40px;
+    width: 100%;
+    p{
+        margin-top: 10px;
+        padding-left: 5px;
+        color: #fff;
+    }
+}
+.content-menu {
+    display: flex;
+    padding: 0 30px;
+    height: auto;
+    justify-content: space-between;
+}
+.main-section{
+    padding: 20px;
+    background: #f5f5fc;
+    .job-content {
+        margin: 0 auto;
+        width: 64%;
+        padding: 20px 0;
+        background-color: #f5f5fc;
+      
+        .content-box {
+            margin-bottom: 20px;
+            padding: 12px 16px 24px 16px;
+            background: #fff;
+            border-radius: 2px;
+            box-shadow: 0 0 17px 0 rgba(0, 0, 0, 0.07);
+            
+            &#info {
+                .base-font {
+                    padding: 0 20px;
+                }
+            }
+
+            .details-intro {
+                margin-bottom: 0px;
+            }
+
+            .base-font{
+                white-space: pre-wrap;
+                white-space: -moz-pre-wrap;
+                white-space: -pre-wrap;
+                white-space: -o-pre-wrap;
+                word-wrap: break-word;
+                font-family: SourceSansPro;
+                line-height: 2;
+            }
+        
+            &:last-child {
+                margin-bottom: 0;
+            }
+        
+            .job-title {
+                margin-bottom: 8px;
+                @include used-font(16px, 600, #4855b5);
+            }
+        
+            .job-match {
+                float: left;
+                padding: 2px 10px;
+                background-color: #3ec82c;
+                border-radius: 2px;
+                @include used-font(12px, 400, #fff);
+        
+                &.yellow {
+                background-color: #e4c60e;
+                }
+            }
+        
+            .detail-right-links {
+                float: right;
+                margin-bottom: 0;
+                width: 80%;
+                text-align: right;
+                @include used-font(14px, 400, #f9683d);
+                
+                span{
+                    cursor: pointer;
+                    &:last-child {
+                        display: inline;
+                        margin-left: 20px;
+            
+                    }
+                    img {
+                        margin-right: 5px;
+                        width: 24px;
+                        height: 24px;
+                    }
+                }
+                .green-text {
+                    color: #6dae12;
+                }
+            }
+                
+            .company {
+                margin-right: 8px;
+                @include used-font(14px, 400, #363636);
+            }
+        
+            .location {
+                @include used-font(12px, 400, #7e7e7e);
+            }
+        
+            .sub-title {
+                @include used-font(16px, 400, #242c6b);
+            }
+        
+            .ruler {
+                margin-top: 20px;
+                margin-bottom: 20px;
+                width: 100%;
+                height: 1px;
+                background: #c9c9c9;
+            }
+            .opt{
+                @include used-font(14px, 400, #242c6b);
+                opacity: 0.5;
+            }
+            .record-text {
+                @include used-font(14px, 400, #888888);
+            }
+        
+            .video-col {
+                float: left;
+                width: 181px;
+                margin-right: 16px;
+        
+                .vid-clip {
+                    display: block;
+                    width: 181px;
+                    height: 127px;
+                    background: #404040;
+                }
+            }
+        
+            .video-details-col {
+                float: left;
+                width: 280px;
+        
+                .video-title {
+                    @include used-font(18px, 600, #4c4c4c);
+                    line-height: 1.22;
+                }
+        
+                .video-time {
+                    @include used-font(16px, 400, #7e7e7e);
+                    letter-spacing: 0px;
+                }
+        
+                img {
+                    width: 77px;
+                    height: 22px;
+                }
+            }
+        }
+    }
+        
+        .start-duration{
+            margin-bottom: 24px;
+            border-bottom: 1px solid #c9c9c9;
+            border-top: none;
+            
+            > div{
+                width: 50%;
+                padding: 16px 0;
+                font-size: 14px;
+                color: #8f8f8f;
+                text-align: center;
+                span{
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #4b4b4b;
+                }
+                &:first-child{border-right: 1px solid #c9c9c9;}
+            }
+        }
+            
+        form {
+            margin: 0;
+        
+            label {
+                position: relative;
+                top: 0;
+                font-size: 18px;
+                margin-bottom: 10px;
+            }
+        }
+        #info{
+            padding: 20px 0;
+            .sub-title, .job-title, .company, .match-row{
+                padding: 0 20px;
+            }
+        }
+}
+@media screen and (max-width: 767px){
+    .job-content {
+        width: 100% !important;
+    }
+}

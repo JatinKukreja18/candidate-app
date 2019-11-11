@@ -1,0 +1,242 @@
+@mixin used-font($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+.main-left-sidebar {
+  background: #fff;
+  padding: 20px 0;
+  min-height: 100%;
+  .title {
+    padding: 0 20px 20px;
+    border-bottom: 1px solid #ececec;
+    color: #242c6b;
+    font-size: 18px;
+    font-weight: 600;
+  }
+}
+
+.result-search {
+  padding: 18px 20px 10px;
+  border-bottom: 1px solid #ececec;
+  cursor: pointer;
+  a {
+    display: block;
+  }
+
+  .row {
+    margin-bottom: 5px;
+  }
+
+  span {
+    display: inline;
+
+    &.job-title {
+      float: left;
+      width: 66%;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      @include used-font(16px, 600, #4855b5);
+    }
+
+    &.job-match {
+      float: right;
+      padding: 2px 10px;
+      background-color: #3ec82c;
+      border-radius: 2px;
+      @include used-font(12px, 400, #fff);
+
+      &.yellow {
+        background-color: #e4c60e;
+      }
+      &.red {
+        background-color: #f44c4d;
+      }
+      &.dark-green {
+        background-color: #2c921e;
+      }
+      &.light-green {
+        background-color: #3ec82c;
+      }
+    }
+
+    &.company {
+      margin-right: 8px;
+      @include used-font(14px, 400, #363636);
+    }
+
+    &.location {
+      @include used-font(12px, 400, #7e7e7e);
+    }
+
+    &.pay {
+      margin-right: 8px;
+      padding-right: 8px;
+      border-right: 1px solid #979797;
+      @include used-font(14px, 600, #4b4b4b);
+    }
+
+    &.exp {
+      margin-right: 8px;
+      padding-right: 8px;
+      border-right: 1px solid #979797;
+      @include used-font(14px, 600, #4b4b4b);
+    }
+
+    &.posted {
+      @include used-font(12px, 600, #7e7e7e);
+    }
+  }
+
+  .status-icon{
+    float: right;
+    img{
+      width: 24px;
+      height: 24px;
+    }
+  }
+
+  &.active,
+  &:hover {
+    background-color: #e5e7f5;
+    a {
+      background-color: #e5e7f5;
+    }
+  }
+}
+
+.filterCont {
+  width: 320px;
+  
+  .filter-inner {
+    height: auto;
+    width: 100%;
+    box-shadow: 0 -2px 8px 0 rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    form,.sort-by {
+      width: 100%;
+      padding: 30px 10px;
+      span.domain-filter-plus {
+        position: absolute;
+        top: 0px;
+        right: 5px;
+        font-size: 25px;
+        width: 12px;
+        cursor: pointer;
+      }
+      p {
+        width: 100%;
+        font-size: 16px;
+        font-weight: 600;
+        color: #4855b5;
+        padding-bottom: 6.5px;
+        border-bottom: 1px solid #4855b5;
+        cursor: pointer;
+      }
+    }
+  }
+
+  .filterBtnsCont {
+    padding-top: 0px;
+  }
+
+  #pay-rate-group {
+    margin-top: 25px;
+  }
+  .pay-rate-type {
+    position: absolute;
+    right: 2px;
+    top: 30px;
+    color: #545fbd;
+  }
+  .pay-rate-contract {
+    display: inline-block;
+    width: 48%;
+    &:first-child {
+      margin-right: 10px;
+    }
+  }
+}
+.filter-input {
+  margin-top: 10px;
+  nz-select {
+    border-bottom: 1px solid #5050e2;
+    .ant-select-selection--multiple {
+      .ant-select-selection__choice {
+        border-radius: 2px;
+        .ant-select-selection__choice__content {
+          font-size: 14px;
+          color: #4855b5;
+          opacity: 0.53;
+        }
+      }
+    }
+  }
+  .form-control-placeholder {
+    top: -25px;
+    // opacity: 0.5;
+  }
+  .select-all {
+    position: absolute;
+    top: -45px;
+    right: 0px;
+    color: #4855b5;
+  }
+}
+
+form.filter-form{
+  input, nz-radio-group, nz-date-picker, nz-select {
+    font-size: 14px;
+    font-weight: 600;
+    &:focus {
+        outline: none;
+    }
+
+    &:focus~.form-control-placeholder,
+    &.ng-valid~.form-control-placeholder,
+    &.ng-touched~.form-control-placeholder {
+        font-size: 12px;
+    }
+    &.not-mandate{
+        &.ng-untouched~.form-control-placeholder {
+            top: 25px;
+            opacity: 1;
+        }
+        &:focus~.form-control-placeholder,
+        &.ng-dirty~.form-control-placeholder,
+        &.ng-valid~.form-control-placeholder,
+        &.ng-touched~.form-control-placeholder{
+            top: 10px;
+            // opacity: 0.5;
+            transition: 0.3s ease;
+        }
+    }
+  }
+}
+.filter-close-icon{
+  width: 80%;
+}
+.main-section {
+  float: right;
+  width: 66%;
+}
+@media screen and (max-width: 767px){
+  .result-list{
+    white-space: nowrap;
+    overflow-x: auto;
+    width: 100%;
+
+    .result-search{
+      width: 90%;
+      display: inline-block;
+      padding-bottom: 30px;
+      border-right: 1px solid #ececec;
+      max-width: 400px;
+    }
+  }
+  .main-left-sidebar {
+    padding: 20px 0 0;
+  }
+}

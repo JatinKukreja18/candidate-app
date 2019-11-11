@@ -1,0 +1,157 @@
+<div class="notifbackCont noHeight main-header blue">
+  <div class="bottomEighteenSpace flex itemCenter">
+    <div class="back-button" (click)="goBack()">
+      <img src="/assets/images/ic-arrow-back.svg">
+    </div>
+    <div class="noMargin notTextCont">
+      <p class="sixteenFont">
+        Notifications
+      </p>
+    </div>
+  </div>
+  <div class="flex flexSpaceBetween">
+    <div class="flex itemCenter">
+      <div>
+        <img src="/assets/images/notificationBell.svg" alt="">
+      </div>
+      <div class="sixteenFont notifCount notFontW">
+        You have {{notificationResponse ? notificationResponse.totalCount : 0}} total notifications
+      </div>
+    </div>
+    <div>
+      <button class="notFontW radiusBtn sixteenFont" (click)="clearAllNotifications()">Clear All</button>
+    </div>
+  </div>
+</div>
+
+<div class="flex justifyCenter">
+  <div class="notfCenterBox" (scroll)="onWindowScroll($event)">
+    <div
+      [ngClass]="notification.isRead ? 'flex flexSpaceBetween notiBox bottomBorder' : 'flex flexSpaceBetween notiBox bottomBorder pendingResponse' "
+      *ngFor="let notification of notifications">
+      <div class="noMargin fullWidth notification-details" (click)="navigateToPage(notification)">
+        <p class="sixteenFont title green-text" *ngIf="notification?.deeplinkScreen == 11">{{notification.title}}</p>
+        <p class="sixteenFont title red-text"
+          *ngIf="notification?.deeplinkScreen == 15 || notification?.deeplinkScreen == 17 || notification?.deeplinkScreen == 21">
+          {{notification.title}}</p>
+        <p class="sixteenFont title blue-text"
+          *ngIf="notification?.deeplinkScreen != 11 && notification?.deeplinkScreen != 15 && notification?.deeplinkScreen != 17 && notification?.deeplinkScreen != 21">
+          {{notification.title}}</p>
+        <p class="fourteenFont">{{notification.descriptions}}</p>
+        <div class="flex flexSpaceBetween">
+          <div>
+            <p class="twelveFont">{{notification.timestamp | timeago}}</p>
+          </div>
+          <div
+            *ngIf="(notification?.deeplinkScreen == '11' || notification?.deeplinkScreen == '26') && notification?.status >= 3">
+            <button class="twelveFont status interBtn">Interview Scheduled</button>
+          </div>
+          <div *ngIf="(notification.deeplinkScreen == 18) && notification?.status == 2">
+            <button class="twelveFont status interBtn">Job Applied</button>
+          </div>
+        </div>
+      </div>
+      <!-- <div class="dropDownCont relative">
+                <span class="dropDownIcon">
+                    <img src="/assets/images/dropDown.svg" (click)="toggleNotificationMenu(notification.id)">
+                </span>
+                <ul class="dropDownMenu" [ngClass]="{'open': notification.isOpen}">
+                    <li (click)="markNotificationAsRead(notification.id)">Mark as read</li>
+                </ul>
+            </div> -->
+    </div>
+    <!-- <p *ngIf="loading" class="text-center">Loading please wait...</p> -->
+    <!-- <p *ngIf="lastPageNumber" class="text-center">No more results</p> -->
+    <!-- <p *ngIf="!loading && notifications && notifications.length >= 0 && notificationCurrentPageNumber != notificationResponse?.totalPage" class="text-center">Loaded {{notificationCurrentPageNumber}} out of {{notificationResponse?.totalPage}}</p> -->
+    <p *ngIf="!loading && !notifications" class="text-center">No records found</p>
+  </div>
+</div>
+
+<nz-modal [(nzVisible)]="showConfirmInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null"
+  nzTitle="Schedule Interview" (nzOnCancel)="cancelInterviewModal()" (nzOnOk)="confirmInterviewModal()">
+  <div class="interview-confirmation-modal">
+    <!-- <p>Schedule Interview</p> -->
+    <div class="row">
+      <h3>Choose Interview Date</h3>
+      <div class="dateslot">
+        <div [ngClass]="slot?.active ? 'active' : ''"
+          *ngFor="let slot of cronofyResponse?.available_periods;let idx = index" (click)="selectDateSlot(slot, idx)">
+          <span class="dayslot">{{slot?.start | date:'EEE'}}</span>
+          <span class="date">{{slot?.start | date:'dd'}}</span>
+          <span class="month">{{slot?.start | date:'LLL'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row time-slot-list">
+      <h3>Choose Interview Slot</h3>
+      <div class="timeslot">
+        <div *ngFor="let slot of selectedDateSlot?.timeSlots; let timeSlotidx = index"
+          (click)="selectTimeSlot(slot, timeSlotidx)">
+          <span [ngClass]="slot?.active ? 'active' : ''">{{slot?.startDate | date: 'shortTime'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="interviewtype">
+      <div>
+        <span>Interview Type</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 1" class="value">F2F Video Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 2" class="value">F2F Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 3" class="value">Telephonic Interview</span>
+      </div>
+      <div>
+        <span style="padding-left: 58px">Interview Duration</span>
+        <span class="value" style="padding-left: 55px"
+          *ngIf="cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Hours}} Hours
+          {{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+        <span class="value" style="padding-left: 55px"
+          *ngIf="!cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+      </div>
+    </div>
+    <form [formGroup]="scheduleForm" *ngIf="cronofyResponse">
+        <div class="flex" id="interview-form">
+            <div class="form-group" id="phoneCode">
+                <nz-select id="phoneCode" class="form-control not-mandate" [nzDropdownMatchSelectWidth]="false"
+                formControlName="countryPhoneCode" style="padding-top: 21px;">
+                <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'"
+                    *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
+                </nz-select>
+                <!-- <input type="text" tabindex="3" id="phoneCode" formControlName="countryPhoneCode" class="form-control"/> -->
+                <label for="phoneCode" class="form-control-placeholder"
+                [ngClass]="{'active': f.countryPhoneCode.value, 'inactive': !f.countryPhoneCode.value }">Country Code</label>
+                <div *ngIf="f.countryPhoneCode.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="f.countryPhoneCode.errors.required">{{validationMsgs.PhoneRequired}}</div>
+                </div>
+            </div>
+            <div class="form-group" id="phone">
+                <input app-phone-field type="number" tabindex="3" id="phoneNumber" formControlName="mobile"
+                class="form-control" />
+                <label for="phoneNumber" class="form-control-placeholder"
+                [ngClass]="{'active': f.mobile.value, 'inactive': !f.mobile.value }">Candidate Phone Number</label>
+                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="f.mobile.errors.required && cronofyResponse?.interviewDetails?.InterviewTypeId == 3">{{validationMsgs.PhoneRequired}}</div>
+                    <div class="error" *ngIf="f.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="buttn">
+    <button (click)="cancelInterviewModal()">Cancel</button>
+    <button [disabled]="!selectedDateSlot || !selectedTimeSlot" (click)="confirmInterviewModal()">Submit</button>
+  </div>
+</nz-modal>
+
+<nz-modal [(nzVisible)]="showConfirmationModal" [nzStyle]="{top: '150px', width: '475px'}" nzWidth="475px" [nzMaskClosable]="false"
+  [nzFooter]="null" (nzOnCancel)="cancelConfirmationModal()" (nzOnOk)="submitConfirmationModal()">
+  <div class="confirmation-modal">
+    <div class="flex confirmation-modal-body">
+      <div class="flex">
+        <p class="text-explanation">Are you sure you want to share the selected slot with Hiring Manager?</p>
+      </div>
+    </div>
+    <div class="flex button-row">
+      <button class="cancel" (click)="cancelConfirmationModal()">No</button>
+      <button class="update" (click)="submitConfirmationModal()">Yes</button>
+    </div>
+  </div>
+</nz-modal>

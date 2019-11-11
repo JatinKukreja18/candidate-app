@@ -1,0 +1,99 @@
+<!-- <section class="main-header blue row">
+    <div class="left-subheader">
+        <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-close.svg"></span>
+        <p class="page-title">Pre Interview</p>
+    </div>
+</section> -->
+<section class="main-section">
+    <div class="grey-bg-content">
+        <!-- <div class="content-box" id="slot" #slot>
+            <p class="sub-title">Preferred Interview Time <span class="opt"> (Optional)</span></p>
+         <app-choose-slot [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId"></app-choose-slot> 
+            <div class="row">
+                <div class="flex choose-slots">
+                    <nz-radio-group class="choose-slot" [(ngModel)]="slots.preferredinterviewtype">
+                        <label nz-radio [nzValue]="1"><span class="radio-label">Available all the time</span></label>
+                        <label nz-radio [nzValue]="2"><span class="radio-label">Choose preferred slot</span></label>
+                    </nz-radio-group>
+                </div>
+                <div class="flex slot-row" *ngIf="slots.preferredinterviewtype == 2">
+                    <div class="select-date">  
+                        <div class="form-group">
+                            <label for="slot-date-1">Select Slot 1 Date</label>
+                            <nz-date-picker tabindex="1" id="slot-date-1" class="form-control" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Select Date'" (ngModelChange)="onChangeDate($event, 1)" [ngModel]="slots.date_slot1" [nzDisabledDate]="disabledDateSlot1"></nz-date-picker>
+                        </div>
+                    </div>
+                    <div class="flex pick-time">
+                        <div class="form-group">
+                            <label for="slot1-from">Select From Time</label>
+                            <nz-time-picker tabindex="2" id="slot1-from" [nzPlaceHolder]="'Start Time'" [nzFormat]="'HH:mm'" [ngModel]="slots.slot1_from_time" (ngModelChange)="onChange($event, 1)" [nzDisabledHours]="disabledFromTimeSlot1"></nz-time-picker>
+                        </div>
+                        <div class="form-group">
+                            <label for="slot1-to">Select To Time</label>
+                            <nz-time-picker tabindex="3" id="slot1-to" [nzPlaceHolder]="'End Time'" [nzFormat]="'HH:mm'" [ngModel]="slots.slot1_to_time" (ngModelChange)="onChange($event, 2)" [nzDisabledHours]="disabledToTimeSlot1"></nz-time-picker>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex slot-row" *ngIf="slots.preferredinterviewtype == 2">
+                    <div class="select-date"> 
+                        <div class="form-group">
+                            <label for="slot-date-2">Select Slot 2 Date</label> 
+                            <nz-date-picker tabindex="4" id="slot-date-2" class="form-control" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Select Date'" (ngModelChange)="onChangeDate($event, 2)" [ngModel]="slots.date_slot2" [nzDisabledDate]="disabledDateSlot2"></nz-date-picker>
+                        </div>
+                    </div>
+                    <div class="flex pick-time">
+                        <div class="form-group">
+                            <label for="slot2-from">Select From Time</label>
+                            <nz-time-picker tabindex="5" id="slot2-from" [nzPlaceHolder]="'Start Time'" [nzFormat]="'HH:mm'" (ngModelChange)="onChange($event, 3)" [ngModel]="slots.slot2_from_time" [nzDisabledHours]="disabledFromTimeSlot2"></nz-time-picker>
+                        </div>
+                        <div class="form-group">
+                            <label for="slot2-to">Select To Time</label>
+                            <nz-time-picker tabindex="6" id="slot2-to" [nzPlaceHolder]="'End Time'" [nzFormat]="'HH:mm'" (ngModelChange)="onChange($event, 4)" [ngModel]="slots.slot2_to_time" [nzDisabledHours]="disabledToTimeSlot2"></nz-time-picker>
+                        </div>
+                    </div>
+                </div>
+                 <div class="flex">
+                    <div class="button-col">
+                        <button class="orange-button" (click)="onSubmit()">Apply</button>
+                    </div>
+                </div> 
+            </div>
+        </div> -->
+
+
+        <div class="content-box" id="assessment" #assesment>
+            <p class="sub-title">Technical assessment <span class="opt">(Optional)</span> </p>
+            <p class="recod-text">Technical Assessment is not required</p> 
+        </div>
+
+
+        <div class="content-box" id="record" #intro>
+            <p class="sub-title">Add Introduction Video <span class="opt"> (Optional)</span></p>
+            <p class="record-text" *ngIf="!videoData || !videoData?.pictures">Add a brief introduction of why you are suited for this job.</p>
+            <p class="record-text" *ngIf="!videoData || !videoData?.pictures">This will enhance your chances of getting selected.</p>
+            <!-- <app-upload-intro [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId" [redirectUri]="'search/preinterview'"></app-upload-intro> -->
+            <!-- <p class="note" *ngIf="videoData?.pictures">Note: This video will take some time to load, please wait.</p> -->
+            <p class="note" *ngIf="videoData && videoData?.status != 'available'">Note: This video will take some time to load, please wait.</p>
+            <div class="vid-clip" *ngIf="videoData?.pictures && (!videoData.files || !videoData.files[0])">
+                <img [src]="videoData?.pictures?.sizes[0]['link']" alt="">
+            </div>
+            <div class="video-modal-body" id="iframeBody">
+                <!-- <p class="note" *ngIf="videoData?.status == 'transcoding'">Note: Your video has been successfully uploaded.</p> -->
+                <!-- <div class="flex">
+                    <iframe [src]="safeUrl(videoData?.files[0]['link'])" allow="fullscreen" allowfullscreen width="320" frameBorder="0"></iframe>
+                </div> -->
+            </div>
+            <div class="row" id="video" *ngIf="!videoData || !videoData?.pictures">
+                <p class="detail-right-links">
+                <span (click)="prepareVideoUpload()" *ngIf="!uploadVideoDiv">
+                    <img src="/assets/images/video (1).svg" alt="">Add Video
+                </span>
+                </p>
+            </div>
+        </div>
+        <div class="flex scheduling-btns">
+            <button class="link-btn" (click)="skip()"><span><img src="../../../assets/images/ic-myjobs-rejected-grey.svg"></span>Skip</button>
+            <button class="link-btn" type="submit" id="submit" (click)="preInterviewProcess()"><span><img src="../../../assets/images/ic-matchingjobsforyou-apply-green.svg"></span>Submit</button>
+        </div>
+    </div>
+</section>

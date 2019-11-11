@@ -1,0 +1,122 @@
+<div class="result-sidebar" (scroll)="onWindowScroll($event)">
+  <div class="main-left-sidebar" >
+    <div class="title" *ngIf="jobsResponse?.results">
+        Top {{jobsResponse?.results?.length}} of {{jobsResponse?.totalResult}} {{currentSearchType === 1 ? 'Jobs': 'Matching Jobs'}}
+    </div>
+    <div class="title" *ngIf="(!jobsResponse?.results || jobsResponse?.results.length == 0) && !loading">
+      No jobs found
+    </div>
+    <!-- <div class="title" *ngIf="!jobsResponse?.results && currentSearchType == 1">
+        Search Results
+    </div>
+    <div class="title" *ngIf="!jobsResponse?.results && currentSearchType == 2">
+        Matching Jobs
+    </div> -->
+    <div class="result-list" (scroll)="onHorizontalScroll($event)">
+      <div class="result-search" *ngFor="let job of jobsResponse?.results" [ngClass]="{'active': selectedJob?.referrenceId == job?.referrenceId}" (click)="listClick($event, job)">
+        <a>
+          <p class="row">
+            <span class="job-title"  title="{{job?.jobTitle}}">{{job?.jobTitle}}</span>
+            <span class="job-match" [ngClass]="{'red': job.score <= 30, 'yellow': job.score <= 50 && job.score >30, 'light-green': job.score <= 80 && job.score >50, 'dark-green': job.score > 80}">{{job.score}}% Match</span>
+          </p>
+          <p class="row">
+            <span class="company">{{job?.companyName}}</span>
+            <span class="location">{{job?.location}}</span>
+          </p>
+          <p class="row">
+            <span class="pay">{{jobs?.payRateUnitSymbol ? jobs?.payRateUnitSymbol : '$' }}{{job?.payRate}}/{{job?.payRateType}}</span>
+            <span class="exp">{{job?.experience ? job?.experience : 'NA' }}</span>
+            <span class="posted">{{job?.postedDate | timeago}}</span>
+            <span class="status-icon">
+              <img src="/assets/images/ic-matchingjobsforyou-shortlisted.svg" alt="shortlisted" *ngIf="job?.isShortlisted"/>
+              <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="applied" *ngIf="job?.isApplyed"/>
+              <img src="/assets/images/ic-cancelled.svg" alt="cancelled" *ngIf="job?.isCancelled"/>
+              <img src="/assets/images/ic-start-interview.svg" alt="start" *ngIf="job?.isStart"/>
+              <img src="/assets/images/ic-collabera-applied-offline.svg" alt="applied offline" *ngIf="job?.isAppliedOffline"/>
+            </span>
+          </p>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="filterBtn" *ngIf="currentSearchType === 1" (click)="showFilters()">
+      <span class="active-filter" *ngIf="filterApplied"></span>
+      <svg xmlns="http://www.w3.org/2000/svg" x="0px" y="0px" width="50" height="50" viewBox="0 0 224 224" style="fill: #000000;transform: rotateY(180deg);width: 20px;height: 24px;"><g fill="none" fill-rule="nonzero" stroke="none" stroke-width="1" stroke-linecap="butt" stroke-linejoin="miter" stroke-miterlimit="10" stroke-dasharray="" stroke-dashoffset="0" font-family="none" font-weight="none" font-size="none" text-anchor="none" style="mix-blend-mode: normal"><path d="M0,224v-224h224v224z" fill="none"></path><g fill="#ffffff"><g id="surface1"><path d="M17.08,8.96c-2.135,0.4025 -3.675,2.2925 -3.64,4.48v13.44c0.0175,1.155 0.455,2.2575 1.26,3.08l70.42,74.76v78.96c0.035,1.5575 0.8925,2.9925 2.24,3.78l44.8,26.88c1.365,0.7875 3.0625,0.805 4.445,0.0175c1.365,-0.77 2.24,-2.2225 2.275,-3.7975v-105.84l69.72,-74.06c0.0525,-0.0525 0.0875,-0.0875 0.14,-0.14l0.56,-0.56c0.21,-0.21 0.4025,-0.455 0.56,-0.7c0.105,-0.0875 0.1925,-0.175 0.28,-0.28c0.2625,-0.5775 0.4025,-1.19 0.42,-1.82c0,-0.0875 0,-0.1925 0,-0.28c0.0175,-0.2275 0.0175,-0.4725 0,-0.7v-12.74c0,-2.4675 -2.0125,-4.48 -4.48,-4.48h-188.16c-0.14,0 -0.28,0 -0.42,0c-0.14,0 -0.28,0 -0.42,0zM22.4,17.92h179.2v7.28l-69.16,73.36h-40.88l-69.16,-73.36zM94.08,107.52h35.84v95.2l-35.84,-21.42z"></path></g></g></g></svg>
+  </div>
+  <div class="filterCont" *ngIf="currentSearchType === 1">
+      <div class="crossFilter" (click)="hideFilters()">
+          <img src="/assets/images/closeFilter.svg" class="filter-close-icon" alt="">
+      </div>
+      <div class="filter-inner flex">
+        <div class="sort-by">
+          <p (click)="applyFilter(1)">Job Title (A - Z)</p>
+          <p (click)="applyFilter(0)">Job Title (Z - A)</p>
+          <p (click)="applyFilter(2)">Company Name (A - Z)</p>
+          <p (click)="applyFilter(3)">Company Name (Z - A)</p>
+        </div>
+      </div>
+      <div class="filter-inner flex">
+        <form [formGroup]="filterForm" class="filter-form">
+            <div class="relative filter-input" id="domain">
+                <label class="form-control-placeholder">Domain</label>
+                <span class="select-all"><input type="checkbox" (change)="selectAllDomain($event)"> Select All</span>
+                <nz-select nzMode="multiple" nzPlaceHolder="Select Domain" formControlName="domain" (ngModelChange)="onMultiSelectChange($event)">
+                  <!-- <nz-option nzLabel="ALL" nzValue="0">ALL</nz-option> -->
+                  <nz-option *ngFor="let option of domains" [nzLabel]="option" [nzValue]="option"></nz-option>
+                </nz-select>
+                <span class="domain-filter-plus" (click)="toggleSkillsDropdown()">+</span>
+            </div>
+            <div class="form-group" id="job-type-group">
+              <nz-radio-group class="choose-slot not-mandate flex" id="job-type" formControlName="employmentType">
+                <label tabindex="12" nz-radio nzValue="Full Time"><span class="radio-label">Full Time</span></label>
+                <label tabindex="13" nz-radio nzValue="Contract"><span class="radio-label">Contract</span></label>
+              </nz-radio-group>
+              <label for="job-type" class="form-control-placeholder">Type of Job</label>
+            </div>
+            <div class="form-group" id="pay-rate-group" *ngIf="filterForm?.controls?.employmentType?.value == 'Full Time'">
+              <span class="pay-rate-type">$/annum</span>
+              <input tabindex="10" type="text" id="payRate" formControlName="payrate" class="form-control not-mandate" (keydown)="onKeyDown($event, 7, 9999999)"/>
+              <label for="payRate" class="form-control-placeholder">Annual Salary</label>
+              <div *ngIf="filterForm?.controls?.payrate.errors" class="invalid-feedback">
+                <div class="error" *ngIf="filterForm?.controls?.payrate.errors.pattern">{{validationMsgs.PayrateAnnualMaxLength}}</div>
+              </div>
+            </div>
+            <div class="form-group flex" id="pay-rate-group" *ngIf="filterForm?.controls?.employmentType?.value == 'Contract'">
+              <div class="form-group pay-rate-contract">
+                <span class="pay-rate-type">$/hr</span>
+                <input tabindex="11" type="text" id="minRate" formControlName="minPayRate" class="form-control not-mandate" (keydown)="onKeyDown($event, 4, 1000)"/>
+                <label for="minRate" class="form-control-placeholder">Pay rate(min)</label>
+                <div *ngIf="filterForm?.controls?.minPayRate.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="filterForm?.controls?.minPayRate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
+                  <div class="error" *ngIf="filterForm?.controls?.minPayRate.errors.min">{{validationMsgs.PayrateMinLength}}</div>
+                </div>
+              </div>
+              <div class="form-group pay-rate-contract">
+                <span class="pay-rate-type">$/hr</span>
+                <input tabindex="12" type="text" id="minRate" formControlName="maxPayRate" class="form-control not-mandate" (keydown)="onKeyDown($event, 4, 1000)"/>
+                <label for="minRate" class="form-control-placeholder">Pay rate(max)</label>
+                <div *ngIf="filterForm?.controls?.maxPayRate.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="filterForm?.controls?.maxPayRate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
+                  <div class="error" *ngIf="filterForm?.controls?.maxPayRate.errors.min">{{validationMsgs.PayrateMinLength}}</div>
+                </div>
+              </div>
+            </div>
+            <!-- <div *ngIf="filterForm?.controls?.minPayRate.errors" class="invalid-feedback">
+              <div class="error" *ngIf="filterForm?.controls?.minPayRate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
+            </div>
+            <div *ngIf="filterForm?.controls?.maxPayRate.errors" class="invalid-feedback">
+              <div class="error" *ngIf="filterForm?.controls?.maxPayRate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
+            </div> -->
+        </form>
+      </div>
+      <div class="flex flexEnd filterBtnsCont">
+          <div>
+              <button class="resetBtn filterBtns sixteenFont" (click)="resetFilter()">Reset</button>
+          </div>
+          <div>
+              <button class="applyBtn filterBtns sixteenFont" (click)="applyFilter()">Apply</button>
+          </div>
+      </div>
+  </div>
+  <div class="filterOverlay" *ngIf="currentSearchType === 1"></div>
+</div>

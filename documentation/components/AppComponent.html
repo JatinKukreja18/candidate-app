@@ -1,0 +1,1356 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cliksource documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cliksource documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AppComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/app.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-root</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./app.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./app.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentActivePage">currentActivePage</a>
+                            </li>
+                            <li>
+                                <a href="#fixPageHeight">fixPageHeight</a>
+                            </li>
+                            <li>
+                                <a href="#showHeader">showHeader</a>
+                            </li>
+                            <li>
+                                <a href="#sideMenu">sideMenu</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#clearSearchJobSession">clearSearchJobSession</a>
+                            </li>
+                            <li>
+                                <a href="#toggleHeader">toggleHeader</a>
+                            </li>
+                            <li>
+                                <a href="#toggleSidemenu">toggleSidemenu</a>
+                            </li>
+                            <li>
+                                <a href="#updateHeaderTitle">updateHeaderTitle</a>
+                            </li>
+                            <li>
+                                <a href="#updatePageheight">updatePageheight</a>
+                            </li>
+                            <li>
+                                <a href="#updateRouteHistory">updateRouteHistory</a>
+                            </li>
+                            <li>
+                                <a href="#updateSearchPageRouteHistory">updateSearchPageRouteHistory</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, authService: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, searchJobService: <a href="../injectables/SearchJobService.html">SearchJobService</a>, notificationService: <a href="../injectables/NotificationsService.html">NotificationsService</a>, swUpdate: <a href="https://angular.io/api/service-worker/SwUpdate" target="_blank">SwUpdate</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/app.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>searchJobService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchJobService.html" target="_self" >SearchJobService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>notificationService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/NotificationsService.html" target="_self" >NotificationsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>swUpdate</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/service-worker/SwUpdate" target="_blank" >SwUpdate</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="clearSearchJobSession"></a>
+                    <span class="name">
+                        <b>
+                            clearSearchJobSession
+                        </b>
+                        <a href="#clearSearchJobSession"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>clearSearchJobSession(currentUrl)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="125"
+                            class="link-to-prism">src/app/app.component.ts:125</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Clear search results</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentUrl</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleHeader"></a>
+                    <span class="name">
+                        <b>
+                            toggleHeader
+                        </b>
+                        <a href="#toggleHeader"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleHeader(currentUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">src/app/app.component.ts:103</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle header based on the url</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>current active url</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleSidemenu"></a>
+                    <span class="name">
+                        <b>
+                            toggleSidemenu
+                        </b>
+                        <a href="#toggleSidemenu"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleSidemenu()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="117"
+                            class="link-to-prism">src/app/app.component.ts:117</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle Side menu</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateHeaderTitle"></a>
+                    <span class="name">
+                        <b>
+                            updateHeaderTitle
+                        </b>
+                        <a href="#updateHeaderTitle"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateHeaderTitle(url: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="69"
+                            class="link-to-prism">src/app/app.component.ts:69</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update header page title</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>url</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>current page url</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updatePageheight"></a>
+                    <span class="name">
+                        <b>
+                            updatePageheight
+                        </b>
+                        <a href="#updatePageheight"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updatePageheight(currentUrl)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="136"
+                            class="link-to-prism">src/app/app.component.ts:136</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update the page height</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentUrl</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateRouteHistory"></a>
+                    <span class="name">
+                        <b>
+                            updateRouteHistory
+                        </b>
+                        <a href="#updateRouteHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateRouteHistory(currentUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="149"
+                            class="link-to-prism">src/app/app.component.ts:149</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create/Update navigation history without query params</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>current route url</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="updateSearchPageRouteHistory"></a>
+                    <span class="name">
+                        <b>
+                            updateSearchPageRouteHistory
+                        </b>
+                        <a href="#updateSearchPageRouteHistory"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>updateSearchPageRouteHistory(currentUrl: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="164"
+                            class="link-to-prism">src/app/app.component.ts:164</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create/Update navigation history only for Search pages without query params</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>currentUrl</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>current route url</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentActivePage"></a>
+                        <span class="name">
+                            <b>
+                            currentActivePage</b>
+                            <a href="#currentActivePage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>&#x27;&#x27;</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/app.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="fixPageHeight"></a>
+                        <span class="name">
+                            <b>
+                            fixPageHeight</b>
+                            <a href="#fixPageHeight"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/app.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showHeader"></a>
+                        <span class="name">
+                            <b>
+                            showHeader</b>
+                            <a href="#showHeader"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>true</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/app.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="sideMenu"></a>
+                        <span class="name">
+                            <b>
+                            sideMenu</b>
+                            <a href="#sideMenu"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/app.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &#x27;@angular/core&#x27;;
+import { Router, NavigationStart, NavigationEnd } from &#x27;@angular/router&#x27;;
+import { AuthenticationService, SearchJobService, NotificationsService } from &#x27;@app/core&#x27;;
+import { SwUpdate } from &#x27;@angular/service-worker&#x27;;
+
+// declare ga as a function to set and sent the events
+// declare let ga: Function;
+declare let gtag: Function;
+
+@Component({
+  selector: &#x27;app-root&#x27;,
+  templateUrl: &#x27;./app.component.html&#x27;,
+  styleUrls: [&#x27;./app.component.scss&#x27;]
+})
+export class AppComponent {
+  sideMenu &#x3D; false;
+  showHeader &#x3D; true;
+  currentActivePage: string &#x3D; &#x27;&#x27;;
+  fixPageHeight &#x3D; false;
+
+  constructor(
+    private router: Router,
+    private authService: AuthenticationService,
+    private searchJobService: SearchJobService,
+    private notificationService: NotificationsService,
+    private swUpdate: SwUpdate
+  ) {
+    this.router.events.subscribe((event) &#x3D;&gt; {
+      if (event instanceof NavigationStart) {
+        if (this.authService.getAccessToken()) {
+          this.showHeader &#x3D; true;
+          if (event.url &#x3D;&#x3D; &#x27;/&#x27; || event.url &#x3D;&#x3D; &#x27;/forgotpassword&#x27;) {
+            this.router.navigate([&#x27;/dashboard&#x27;]);
+          }
+        } else {
+          this.showHeader &#x3D; false;
+        }
+        this.notificationService.refreshNotificationCounts.next(true);
+      } 
+      if (event instanceof NavigationEnd) {
+        this.sideMenu &#x3D; false;
+        this.toggleHeader(event.url);
+        this.updateHeaderTitle(event.url);
+        this.clearSearchJobSession(event.url);
+        this.updatePageheight(event.url);
+        this.updateRouteHistory(event.url);
+        this.updateSearchPageRouteHistory(event.url);
+        // gtag(&#x27;config&#x27;, &#x27;UA-134869289-1&#x27;);
+        // ga(&#x27;set&#x27;, &#x27;page&#x27;, event.urlAfterRedirects);
+        // ga(&#x27;send&#x27;, &#x27;pageview&#x27;);
+        gtag(&#x27;config&#x27;, &#x27;UA-134869289-1&#x27;, {
+          &#x27;page_title&#x27; : event.urlAfterRedirects.split(&#x27;/&#x27;)[1],
+          &#x27;page_path&#x27;: event.urlAfterRedirects
+        });
+      }
+    });
+    this.swUpdate.available.subscribe(event &#x3D;&gt; {
+      this.swUpdate.checkForUpdate();
+      this.swUpdate.activateUpdate().then(() &#x3D;&gt; {
+        document.location.reload();
+      });
+    });
+  }
+
+  /**
+   * Update header page title
+   * @param url current page url
+   */
+  updateHeaderTitle(url: string) {
+    let currentUrlSegments &#x3D; url.split(&#x27;/&#x27;);
+    let currentUrl &#x3D; currentUrlSegments[currentUrlSegments.length - 1];
+    if (currentUrl.includes(&#x27;?&#x27;)) {
+      currentUrl &#x3D; currentUrl.split(&#x27;?&#x27;)[0];
+    }
+    switch(currentUrl) {
+      case &#x27;search&#x27;: this.currentActivePage &#x3D; &#x27;Search Jobs&#x27;;
+        break;
+      case &#x27;dashboard&#x27;: this.currentActivePage &#x3D; &#x27;Dashboard&#x27;;
+        break;
+      case &#x27;aboutus&#x27;: this.currentActivePage &#x3D; &#x27;About Us&#x27;;
+        break;
+      case &#x27;faq&#x27;: this.currentActivePage &#x3D; &#x27;FAQ&#x27;;
+        break;
+      case &#x27;results&#x27;: this.currentActivePage &#x3D; &#x27;Search Results&#x27;;
+        break;
+      case &#x27;settings&#x27;: this.currentActivePage &#x3D; &#x27;Settings&#x27;;
+        break;
+      case &#x27;profile&#x27;: this.currentActivePage &#x3D; &#x27;My Profile&#x27;;
+        break;
+      case &#x27;assessments&#x27;: this.currentActivePage &#x3D; &#x27;Assessments&#x27;;
+        break;
+      case &#x27;myjobs&#x27;: this.currentActivePage &#x3D; &#x27;My Jobs&#x27;;
+        break;
+      default: this.currentActivePage &#x3D; &#x27;&#x27;;
+        break;
+    }
+  }
+
+  /**
+   * Toggle header based on the url
+   * @param currentUrl current active url
+   */
+  toggleHeader(currentUrl: string) {
+    let showHeaderRegex &#x3D; new RegExp(&#x27;(dashboard|profile|settings|aboutus|assessments|myjobs|search)&#x27;, &#x27;i&#x27;);
+    let hideHeaderRegex &#x3D; new RegExp(&#x27;(forgotpassword|search/results|search/details|notification|dashboard/job|search/matching|myjobs/schedule|job/preinterview)&#x27;, &#x27;i&#x27;);
+    if (currentUrl &amp;&amp; showHeaderRegex.test(currentUrl)) {
+      this.showHeader &#x3D; true;
+    } 
+    if (currentUrl &amp;&amp; hideHeaderRegex.test(currentUrl)) {
+      this.showHeader &#x3D; false;
+    }
+  }
+
+  /**
+   * Toggle Side menu
+   */
+  toggleSidemenu() {
+    this.sideMenu &#x3D; !this.sideMenu;
+  }
+
+  /**
+   * Clear search results
+   * @param currentUrl 
+   */
+  clearSearchJobSession(currentUrl) {
+    let clearSessionRegex &#x3D; new RegExp(&#x27;(search/details|job/preinterview|schedule)&#x27;, &#x27;i&#x27;);
+    if (currentUrl &amp;&amp; !clearSessionRegex.test(currentUrl)) {
+      this.searchJobService.removeJobResultSession();
+    }
+  }
+
+  /**
+   * Update the page height
+   * @param currentUrl  
+   */
+  updatePageheight(currentUrl) {
+    let clearSessionRegex &#x3D; new RegExp(&#x27;(myjobs|search/details)&#x27;, &#x27;i&#x27;);
+    if (currentUrl &amp;&amp; clearSessionRegex.test(currentUrl)) {
+      document.querySelector(&quot;.page-content&quot;).classList.add(&#x27;fix-height&#x27;);
+    } else {
+      document.querySelector(&quot;.page-content&quot;).classList.remove(&#x27;fix-height&#x27;);
+    }
+  }
+
+  /**
+   * Create/Update navigation history without query params
+   * @param currentUrl current route url
+   */
+  updateRouteHistory(currentUrl: string) {
+    let routeHistory: string[] &#x3D; this.authService.routeHistory() ? this.authService.routeHistory() : [];
+    if (routeHistory[routeHistory.length - 1] !&#x3D; currentUrl.split(&#x27;?&#x27;)[0]) {
+      let notUsedRoutes &#x3D; new RegExp(&#x27;(search/results|search/details|search/matching|job/preinterview)&#x27;, &#x27;i&#x27;);
+      if (!notUsedRoutes.test(currentUrl)) {
+        routeHistory.push(currentUrl.split(&#x27;?&#x27;)[0]);
+      }
+    }
+    this.authService.routeHistory(routeHistory);
+  }
+
+  /**
+   * Create/Update navigation history only for Search pages without query params
+   * @param currentUrl current route url
+   */
+  updateSearchPageRouteHistory(currentUrl: string) {
+    let routeHistory: string[] &#x3D; this.authService.searchPageRouteHistory() ? this.authService.searchPageRouteHistory() : [];
+    if (routeHistory[routeHistory.length - 1] !&#x3D; currentUrl.split(&#x27;?&#x27;)[0]) {
+      let usedRoutes &#x3D; new RegExp(&#x27;(search/results|search/details|search/matching|dashboard/job)&#x27;, &#x27;i&#x27;);
+      if (usedRoutes.test(currentUrl)) {
+        routeHistory.push(currentUrl.split(&#x27;?&#x27;)[0]);
+      }
+    }
+    this.authService.searchPageRouteHistory(routeHistory);
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;row outer-container&quot;&gt;
+    &lt;app-common-sidemenu [hidden]&#x3D;&quot;!showHeader&quot; [ngClass]&#x3D;&quot;sideMenu ? &#x27;open&#x27; : &#x27;&#x27; &quot; (toggle)&#x3D;&quot;toggleSidemenu()&quot;&gt;&lt;/app-common-sidemenu&gt;
+    &lt;div class&#x3D;&quot;page-content&quot; [ngClass]&#x3D;&quot;sideMenu ? &#x27;shift&#x27; : &#x27;&#x27; &quot; &gt;
+        &lt;app-common-header [hidden]&#x3D;&quot;!showHeader&quot; [pageTitle]&#x3D;&quot;currentActivePage&quot; (toggle)&#x3D;&quot;toggleSidemenu()&quot;&gt;&lt;/app-common-header&gt;
+        &lt;router-outlet&gt;&lt;/router-outlet&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./app.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.row{
+    width: 100%;
+    &amp;:after{
+        display: block;
+        clear: both;
+        content: &quot;&quot;;   
+    }
+    .col{
+        float: left;
+    }
+    .col-3{
+        width: 25%;
+    }
+    .col-4{
+        width: 33%;
+    }
+    .col-6{
+        width: 50%;
+    }
+    .col-8{
+        width: 66%;
+    }
+    .col-10{
+        width: 75%;
+    }
+    .col-12{
+        width: 100%;
+    }
+}
+
+/*
+** Style for main header
+*/
+
+   
+.outer-container {
+    width: 100%;
+    display: block;
+    overflow-x: hidden;
+    height: 100vh;
+}
+
+/**
+* Style for sidemenu
+*/
+
+.sidemenu {
+    position: relative;
+    float: left;
+    top: 0;
+    left: -20%;
+    width: 0;
+    height: 100vh;
+    background: #4855b5;
+    z-index: 99;
+    transition: 0.5s linear all;
+    overflow-y: scroll;
+    .user-profile {
+        padding: 30px 46px;
+        color: #fff;
+        font-size: 16px;
+        .profile-pic{
+            width: 128px;
+            height: 128px;
+            border-radius: 100%;
+            margin-bottom: 20px;
+            background-color: gray;
+        }
+        img {
+          width: 128px;
+          height: 128px;
+          border-radius: 50%;
+        }
+        p {
+            padding-left: 6%;
+        }
+    }
+   
+    ul {
+      padding: 0;
+    }
+   
+    li {
+      width: 100%;
+      padding: 0 25px;
+      font-size: 18px;
+      list-style: none;
+      color: #fff;
+   
+      img {
+        margin-right: 20px;
+      }
+   
+      a {
+        display: block;
+        padding: 22px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.3);
+        color: #fff;
+        font-family: SourceSansProLight;
+        text-decoration: none !important;
+      }
+   
+      &amp;.active,
+      &amp;:hover {
+        background: #3a4491;
+      }
+    }
+   
+}
+.page-content {
+    position: fixed;
+    float: left;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    transition: 0.3s linear left;
+
+    &amp;.fix-height {
+        height: 100vh;
+        overflow-y: hidden;
+    }
+
+    &amp;.shift{
+        left: 342px;
+        transition: 0.3s linear left;
+    }
+}
+
+.outer-container {
+    width: 100%;
+    left: 0;
+    display: block;
+    overflow-x: hidden;
+    height: 100vh;
+}
+app-common-sidemenu {
+    position: relative;
+    float: left;
+    top: 0;
+    left: -342px;
+    width: 342px;
+    height: 100vh;
+    background: #4855b5;
+    z-index: 99;
+    transition: 0.3s linear left;
+    overflow-y: scroll;
+    
+    &amp;.open{
+        left: 0;
+        transition: 0.3s linear left;
+    }
+}
+@media screen and (max-width: 767px){
+    app-common-sidemenu { 
+        position: relative;
+        float: left;
+        top: 0;
+        left: -55%;
+        width: 55%;
+        
+    }
+    .page-content {
+        &amp;.shift{
+            left: 55%;
+        }
+        &amp;.fix-height {
+            height: 100%;
+            overflow-y: auto;
+        }
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="row outer-container">    <app-common-sidemenu [hidden]="!showHeader" [ngClass]="sideMenu ? \'open\' : \'\' " (toggle)="toggleSidemenu()"></app-common-sidemenu>    <div class="page-content" [ngClass]="sideMenu ? \'shift\' : \'\' " >        <app-common-header [hidden]="!showHeader" [pageTitle]="currentActivePage" (toggle)="toggleSidemenu()"></app-common-header>        <router-outlet></router-outlet>    </div></div></div>'
+    var COMPONENTS = [{'name': 'AboutusComponent', 'selector': 'app-about-us'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentsComponent', 'selector': 'app-assessments'},{'name': 'AuthForgotPassComponent', 'selector': 'app-auth-forgot-pass'},{'name': 'AuthLandingComponent', 'selector': 'app-auth-landing'},{'name': 'AuthLeftSectionComponent', 'selector': 'app-auth-left-section'},{'name': 'AuthRightSidebarComponent', 'selector': 'app-auth-right-sidebar'},{'name': 'ChooseSlotComponent', 'selector': 'app-choose-slot'},{'name': 'CommonHeaderComponent', 'selector': 'app-common-header'},{'name': 'CommonJobDetailsComponent', 'selector': 'app-common-job-details'},{'name': 'CommonMapComponent', 'selector': 'app-common-map'},{'name': 'CommonSidemenuComponent', 'selector': 'app-common-sidemenu'},{'name': 'ConfirmOTPComponent', 'selector': 'app-confirm-otp'},{'name': 'DashboardLandingComponent', 'selector': 'app-dashboard-landing'},{'name': 'FaqComponent', 'selector': 'app-faq'},{'name': 'FormButtonComponent', 'selector': 'app-form-button'},{'name': 'JobDetailsComponent', 'selector': 'app-job-details'},{'name': 'MainSearchComponent', 'selector': 'app-main-search'},{'name': 'MatchingJobsComponent', 'selector': 'app-matching-jobs'},{'name': 'MyJobsComponent', 'selector': 'app-my-jobs'},{'name': 'NewPasswordComponent', 'selector': 'app-new-password'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PreInterviewComponent', 'selector': 'app-pre-inteview'},{'name': 'ProfileLandingComponent', 'selector': 'app-profile-landing'},{'name': 'RecentSearchComponent', 'selector': 'app-recent-search'},{'name': 'ResultsSidebarComponent', 'selector': 'app-results-sidebar'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SendOTPComponent', 'selector': 'app-send-otp'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidebarExternalRegisterComponent', 'selector': 'app-sidebar-external-register'},{'name': 'SidebarLoginComponent', 'selector': 'app-sidebar-login'},{'name': 'SidebarOTPVerifyComponent', 'selector': 'app-sidebar-otp-verify'},{'name': 'SidebarRegisterComponent', 'selector': 'app-sidebar-register'},{'name': 'UploadVideoComponent', 'selector': 'app-upload-intro'},{'name': 'ViewJobsComponent', 'selector': 'app-view-jobs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AppComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AppComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

@@ -1,0 +1,95 @@
+<div class="fullWidth flex tabs-container fullWinHeight">
+    <div class="tabCont">
+        <div class="tabsList bottomBorder">
+            <div [ngClass]="sections.changePassword ? 'flexSpaceBetween flex tabsLink active' : 'flexSpaceBetween flex tabsLink'" (click)="showSection('changePassword')">
+                <span>
+                    Change Password
+                </span>
+                <span class="aeroIcon">
+                    <img src="/assets/images/rightAero.svg" alt="">
+                </span>
+            </div>
+            <div [ngClass]="sections.notifications ? 'flexSpaceBetween flex tabsLink active' : 'flexSpaceBetween flex tabsLink'" (click)="showSection('notifications')">
+                <span>
+                    Notification
+                </span>
+                <span class="aeroIcon">
+                    <img src="/assets/images/rightAero.svg" alt="">
+                </span>
+            </div>
+        </div>
+    </div>
+    <div class="bg-grey-image noPadding fullHeightPercent flex itemCenter tabsContentSec noShadow justifyCenter">
+        <div class="formCont inputBoxShad" *ngIf="sections.changePassword">
+            <h4 class="changePassText bottomBorder twentySevenThirty">Change Password</h4>
+            <div class="twentySevenThirty changePassCont">
+                <form [formGroup]="newPasswordForm" (ngSubmit)="changePassword()">
+                    <div class="relative">
+                        <input [type]=" showPassword.currentPass ? 'text' : 'password' " id="pass" formControlName="currentPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.currentPassword.errors }" />
+                        <label class="form-control-placeholder" [ngClass]="{'active': f.currentPassword.value, 'inactive': !f.currentPassword.value }">Current Password<span class="required-star">*</span></label>
+                        <span class="showpass-btn" [ngClass]="showPassword.currentPass ? 'encrypt' : 'decrypt' " (click)="togglePass('currentPass');" theme="outline">
+                        <span [ngClass]="{'cross-icon': !showPassword.currentPass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+                        </span>
+                        <div *ngIf="submitted && f.currentPassword.errors" class="invalid-feedback">
+                            <div class="error" *ngIf="f.currentPassword.errors.required">{{validationMsgs.PasswordRequired}}</div>
+                            <div class="error" *ngIf="f.currentPassword.errors.minlength">{{validationMsgs.PasswordMinlength}}</div>
+                            <div class="error" *ngIf="f.currentPassword.errors.maxlength">{{validationMsgs.PasswordMaxlength}}</div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <input [type]=" showPassword.rePass ? 'text' : 'password' " id="newpass" formControlName="newPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.newPassword.errors }" />
+                        <label class="form-control-placeholder" [ngClass]="{'active': f.newPassword.value, 'inactive': !f.newPassword.value }">New Password<span class="required-star">*</span></label>
+                        <span class="showpass-btn" [ngClass]="showpass ? 'encrypt' : 'decrypt' " (click)="togglePass('rePass');" theme="outline">
+                        <span [ngClass]="{'cross-icon': !showPassword.rePass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+                        </span>
+                        <div *ngIf="submitted && f.newPassword.errors" class="invalid-feedback">
+                            <div class="error" *ngIf="f.newPassword.errors.required">{{validationMsgs.PasswordRequired}}</div>
+                            <div class="error" *ngIf="f.newPassword.errors.minlength">{{validationMsgs.PasswordMinlength}}</div>
+                            <div class="error" *ngIf="f.newPassword.errors.maxlength">{{validationMsgs.PasswordMaxlength}}</div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <input [type]=" showPassword.confirmPass ? 'text' : 'password' " id="repass" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.confirmPassword.errors }" />
+                        <label class="form-control-placeholder" [ngClass]="{'active': f.confirmPassword.value, 'inactive': !f.confirmPassword.value }">Confirm New Password<span class="required-star">*</span></label>
+                        <span class="showpass-btn" [ngClass]="showpass ? 'encrypt' : 'decrypt' " (click)="togglePass('confirmPass');" theme="outline">
+                            <span [ngClass]="{'cross-icon': !showPassword.confirmPass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+                        </span>
+                        <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
+                            <div class="error" *ngIf="f.confirmPassword.errors.required">{{validationMsgs.ConfirmPasswordRequired}}</div>
+                            <div class="error" *ngIf="f.confirmPassword.errors.minlength">{{validationMsgs.ConfirmPasswordMinlength}}</div>
+                            <div class="error" *ngIf="f.confirmPassword.errors.maxlength">{{validationMsgs.ConfirmPasswordMaxlength}}</div>
+                        </div>
+                        <div *ngIf="submitted && newPasswordForm.value.newPassword != newPasswordForm.value.confirmPassword" class="invalid-feedback">
+                            <div class="error" *ngIf="newPasswordForm.value.newPassword != newPasswordForm.value.confirmPassword">{{validationMsgs.ConfirmPasswordMatch}}</div>
+                        </div>
+                    </div>
+                    <div class="relative">
+                        <button class="orange-button" [disabled]="submitting">Change Password</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div class="formCont inputBoxShad" *ngIf="sections.notifications">
+            <h4 class="changePassText bottomBorder twentySevenThirty">Notification Settings</h4>
+            <div class="twentySevenThirty">
+                <div>
+                    <div class="flex flexSpaceBetween">
+                        <span class="turnOff">Turn On/Off</span>
+                        <label class="switch w3-margin-right">
+                        <form [formGroup]="settingsForm">
+                            <!-- <input type="checkbox" class="inputdemo" formControlName="enable" (change)="changeSetting($event)" [checked]="receiveNotifications"> -->
+                            <nz-switch formControlName="enable" (ngModelChange)="changeSetting($event)"></nz-switch>
+                        </form>
+                        <!-- <div class="slider round"></div> -->
+                        <!-- <nz-switch [(ngModel)]="receiveNotifications"></nz-switch> -->
+                        
+                    </label>
+                    </div>
+                    <span class="enabled" *ngIf="settingsForm.value.enable">Notifications enabled. You will get notifications.</span>
+                    <span class="notiEnable" *ngIf="!settingsForm.value.enable">Notifications disabled. You will not get notification.</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
