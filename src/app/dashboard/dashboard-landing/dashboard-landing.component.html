@@ -1,0 +1,182 @@
+<section class="row">
+  <!-- Search Header -->
+  <div class="blue-search-header">
+    <form class="inlineForm row" id="dashboard-search" [formGroup]="searchForm" (ngSubmit)="onSubmit()">
+      <div class="form-group col-5">
+        <nz-select  nzMode="multiple" nzPlaceHolder="Search Skills:For E.g. Machine Learning, Al etc." formControlName="skills" [ngClass]="{'invalid-input':submitted && f.skills.errors}" (ngModelChange)="onMultiSelectChange($event)">
+          <nz-option *ngFor="let option of skills" [nzLabel]="option" [nzValue]="option"></nz-option>
+        </nz-select>
+        <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
+          <div class="error" *ngIf="f.skills.errors.required">Please select skills</div>
+        </div>
+        <span class="editable-tag input-icon after"><img src="/assets/images/ic-search.svg"></span>
+        <span class="editable-tag input-icon before"><img src="/assets/images/ic-add-skill.svg" (click)="toggleSkillsDropdown()"></span>
+      </div>
+      <div class="form-group col-3">
+        <input [ngClass]="{'invalid-input':submitted && f.city.errors}" formControlName="city" type="text" placeholder="Search in City" #city/>
+        <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
+          <div class="error" *ngIf="f.city.errors.required">Please select city</div>
+        </div>
+        <span class="input-icon after"><img src="/assets/images/ic-location.svg"></span>
+      </div> 
+
+      <div class="form-group col-2">
+      <div class="form-check us_search">
+          <input type="checkbox" class="form-check-input" id="exampleCheck1"  name="searchus" (click)="Searchus(true)">
+          <label class="form-check-label" for="exampleCheck1">Search All US Locations</label>
+        </div>
+        
+        </div> 
+  
+        
+      <div class="form-group">
+        <button class="orange-button">Search {{f.skills.value && f.city.value ? 'Jobs' : ''}}</button>
+      </div>
+    </form>
+  </div>
+  <!-- Dashboard main section -->
+  <div class="dashboard-container">
+    <div class="row flex">
+      <!-- Profile section side div -->
+      <aside class="profile-progress">
+        <p class="section-title">Profile {{ candidate?.overallprofilestatus ? candidate.overallprofilestatus: 0}}% Completed</p>
+        <div class="progress">
+          <div class="max-content" (click)="gotoProfile(1)">
+            <img [src]="candidate?.profile?.basicinfo == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /><span [ngClass]="{'completed': candidate?.profile?.basicinfo == 100}">Basic Info</span>
+            <p class="progress-pc">{{candidate?.profile?.basicinfo ? candidate.profile.basicinfo : 0}}%</p>
+          </div>
+        </div>
+        <p class="vertical-ruler"></p>
+        <div class="progress">
+          <div class="max-content" (click)="gotoProfile(2)">
+            <img [src]="candidate?.profile?.professionalinfo == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.professionalinfo == 100}">Professional Info</span>
+            <p class="progress-pc">{{candidate?.profile?.professionalinfo ? candidate.profile.professionalinfo : 0}}%</p>
+          </div>
+        </div>
+        <p class="vertical-ruler"></p>
+        <div class="progress">
+          <div class="max-content" (click)="gotoProfile(3)">
+            <img [src]="candidate?.profile?.resumeupload == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.resumeupload == 100}">Resume Upload</span>
+            <p class="progress-pc">{{candidate?.profile?.resumeupload ? candidate.profile.resumeupload : 0}}%</p>
+          </div>
+        </div>
+        <p class="vertical-ruler"></p>
+        <div class="progress">
+          <div class="max-content" (click)="gotoProfile(4)">
+            <img [src]="candidate?.profile?.sociallinks == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.sociallinks == 100}">Social Profiles</span>
+            <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p>
+          </div>
+        </div>
+        <p class="vertical-ruler"></p>
+        <div class="progress">
+          <div class="max-content" (click)="gotoProfile(5)">
+            <img [src]="candidate?.profile?.videoprofile == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.videoprofile == 100}">Video Profile</span>
+            <p class="progress-pc">{{candidate?.profile?.videoprofile ? candidate.profile.videoprofile : 0}}%</p>
+          </div>
+          <button class="orange-button" [routerLink]="['/profile']" *ngIf="candidate && candidate?.overallprofilestatus != 100" (click)="completeProfileNavigation()">Complete Profile</button>
+          <div class="row profile-tips">
+            <p class="tip-icon"><img src="/assets/images/tip-icon.svg" alt="" /></p>
+            <p class="tip-text" title="{{candidate?.profileTips[0]['tips']}}">{{candidate?.profileTips[0]['tips']}}</p>
+          </div>
+          <!-- <p class="tip-text">Having updated Resumes will fetch you better jobs</p> -->
+        </div>
+      </aside>
+      <section class="dash-sections row">
+       <!-- Cover Page -->
+       <router-outlet></router-outlet>
+      </section>
+    </div>
+  </div>
+</section>
+
+
+
+<!-- 
+<nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
+    <div class="confirmation-modal">
+        <div class="flex confirmation-modal-body">
+          <img src="/assets/images/popimg.png"/>
+          </div>
+    </div>
+</nz-modal> -->
+
+<div class="outmodal_con">
+<nz-modal
+[(nzVisible)]="isVisible"
+[nzFooter]="modalFooter"
+(nzOnCancel)="handleCancel()"
+>
+
+
+<div class="resume-modal">
+<div class="modal_img">
+    <img src="/assets/images/popimg.png"/>
+</div>
+
+  <div class="modal_content">
+    <h1>AUTO FILL</h1>
+    <h2>YOUR CLIKSOURCE PROFILE</h2>
+    <h3>Just Upload Your Resume Document </h3><h3>& we will do the rest for you</h3>
+  </div>
+</div>
+
+
+<div class="modal_footer">
+<ng-template  #modalFooter>
+  <button nz-button class="upload_resume" (click)="handleOk()" [nzLoading]="isConfirmLoading">Upload Resume</button>
+  <button nz-button class="enter_man" nzType="default" (click)="handleCancel()">ENTER MANUALLY</button>
+</ng-template>
+</div>
+</nz-modal>
+</div>
+
+
+
+ 
+<nz-modal
+ [(nzVisible)]="isVisibleresume"
+ [nzFooter]="modalFooter1"
+ (nzOnCancel)="handleCancel()">
+    <div class="confirmation-modal">
+      <h2>View Resume</h2>
+        <div class="flex confirmation-modal-body">
+            <ngx-doc-viewer [url]="'https://apiredep.collabera.com/uatcandidateapi/ProfileResource.ashx?resourceId=607&resourceTypeId=201'" viewer="google" style="width:100%;height:80vh;"></ngx-doc-viewer>       
+          </div>
+    </div>
+    <div class="modal_footer">
+        <ng-template  #modalFooter1>
+          <button nz-button class="upload_confirm" (click)="handleOkres()" [nzLoading]="isConfirmLoading">Confirm</button>
+        </ng-template>
+        </div>
+</nz-modal>
+
+
+
+<!-- Confirmation Modal -->
+<nz-modal [(nzVisible)]="showConfirmationModal" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleConfirmCancel()" (nzOnOk)="handleConfirmOk()">
+  <div class="confirmation-modal">
+    <div class="flex confirmation-modal-body">
+      <div class="flex">
+        <p class="text-explanation">Please update the missing fields if you want to apply for this job.</p>
+        <p class="text-explanation">Missing field(s) are</p>
+      </div>
+      <!-- <span class="confirmation-text">Missing Fields:</span> -->
+      <div class="flex fields-row">
+        <span class="field" *ngFor="let field of missingFields">{{field | format}}</span>
+      </div>
+    </div>
+    <div class="flex button-row">
+      <button class="cancel" (click)="handleConfirmCancel()">Cancel</button>
+      <button class="update" (click)="handleConfirmOk()">Update</button>
+    </div>
+  </div>
+</nz-modal>
+
+
+
+<!-- Pre-Interview Modal -->
+<nz-modal [(nzVisible)]="showPreInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Pre Interview" (nzOnCancel)="handlePreInterviewCancel()" (nzOnOk)="handlePreInterviewOk()">
+  <app-pre-inteview></app-pre-inteview>
+</nz-modal>
+  
+

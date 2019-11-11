@@ -1,0 +1,31 @@
+.main-header {
+  padding: 7px 20px;
+
+  .search-title {
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #fff;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 65%;
+  }
+
+  .search-city {
+    margin-bottom: 0;
+    font-size: 14px;
+    color: #fff;
+  }
+
+  .right-subheader {
+    padding-top: 8px;
+  }
+}
+
+.result-sidebar {
+  box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.2);  
+  p {
+    margin: 0;
+  }
+  
+}

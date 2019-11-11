@@ -1,0 +1,13 @@
+<section class="main-header blue row">
+    <div class="left-subheader">
+      <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-arrow-back.svg"></span>
+      <p class="search-title">Matching Jobs</p>
+    </div>
+    <div class="right-subheader row">
+       <span [routerLink]="['/profile']" routerLinkActive="active" class="edit-profile-btn" (click)="editProfileHandler()">Edit Profile</span>
+    </div>
+  </section>
+  <section class="main-section">
+    <app-common-map [jobs]="jobs?.results"></app-common-map>
+  </section> 
+  <app-results-sidebar (selected)="onSelect()" (fetched)="onJobsFetch($event)"></app-results-sidebar>

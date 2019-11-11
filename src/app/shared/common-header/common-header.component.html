@@ -1,0 +1,17 @@
+<!-- <section class="main-header row" [ngClass]="showHeader ? 'main-header row' : 'main-header row hidden'"> -->
+<section class="main-header row">
+  <div class="left-subheader">
+    <span class="hamburger" (click)="toggleSidebar()">
+      <img src="/assets/images/ic-hamburger-copy-4.svg" alt="hamburger menu" />
+    </span>
+    <h3 class="page-title">{{pageTitle}}</h3>
+  </div>
+  <div class="right-subheader row">
+    <!-- <span><img src="../../../assets/images/helpline-copy-4.svg"></span> -->
+    <span class="notification-icon relative" [routerLink]="['/notification']" (click)="openNavigationPage()">
+      <span *ngIf="notificationsCount >= 99" class="notification-count">99+</span>
+      <span *ngIf="notificationsCount > 0 && notificationsCount < 99" class="notification-count">{{notificationsCount}}</span>
+      <img src="/assets/images/bell-notification-copy-4.svg">
+    </span>
+  </div>
+</section>

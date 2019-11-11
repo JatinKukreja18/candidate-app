@@ -1,0 +1,281 @@
+<section class="main-header blue row">
+  <div class="left-subheader">
+    <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-arrow-back.svg"></span>
+    <p class="">Job Details</p>
+    <p class="job-status" *ngIf="selectedJobDetails?.quickInfo?.isshortlisted"> | Shortlisted</p>
+    <p class="job-status" *ngIf="selectedJobDetails?.quickInfo?.isApplyed"> | Applied</p>
+  </div>
+</section>
+<section class="content-menu">
+  <ul class="scroll-to-header">
+    <li class="active" (click)="gotoSection('info', $event)"><a alt="">Quick Info</a></li>
+    <li (click)="gotoSection('desc', $event)"><a alt="">Description</a></li>
+    <li (click)="gotoSection('videos', $event)"><a alt="">Videos</a></li>
+    <li (click)="gotoSection('timeline', $event)"><a alt="">Timeline</a></li>
+  </ul>
+  <div class="action-buttons">
+    <!-- <button class="orange-button" *ngIf="!selectedJobDetails?.quickInfo?.isshortlisted && !selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(false, selectedJobDetails.quickInfo.referrenceId)">Shortlist</button> -->
+    <button class="orange-button" *ngIf="selectedJob && !selectedJob.isApplyed && selectedJobDetails && !selectedJobDetails.quickInfo?.isApplyed" (click)="takeAction(true, selectedJobDetails.quickInfo.referrenceId)">Apply</button>
+  </div>
+</section>
+<section class="main-section">
+  <div class="job-content" *ngIf="selectedJobDetails">
+    <!-- Quick Info section -->
+    <div class="content-box" id="info" #info>
+      <p class="job-title">{{selectedJobDetails?.quickInfo?.jobTitle}}</p>
+      <p class="company">{{selectedJobDetails?.quickInfo?.companyName}} <span class="location">{{selectedJobDetails?.quickInfo?.Location}}</span></p>
+      <div class="details-intro row flex">
+        <div class="exp-col">
+          <img src="/assets/images/ic-experience.svg" alt="">
+          <p class="font-bold">{{selectedJobDetails?.quickInfo?.experience ? selectedJobDetails?.quickInfo?.experience : 'Not Available'}}</p>
+        </div>
+        <div class="pay-col">
+            <img src="/assets/images/ic-bill-rate.svg" alt="">
+            <p class="font-bold" *ngIf="selectedJobDetails?.quickInfo?.payRate">{{selectedJobDetails?.quickInfo?.payRateUnitSymbol}}{{selectedJobDetails?.quickInfo?.payRate}}{{selectedJobDetails?.quickInfo?.payRateUnit}}</p>
+            <p class="font-bold" *ngIf="!selectedJobDetails?.quickInfo?.payRate">Not Available</p>
+        </div>
+        <div class="post-col">
+            <img src="/assets/images/ic-calendar.svg" alt="">
+            <p class="font-bold" *ngIf="selectedJobDetails?.quickInfo?.postedDate">{{selectedJobDetails?.quickInfo?.postedDate | timeago}}</p>
+            <p class="font-bold" *ngIf="!selectedJobDetails?.quickInfo?.postedDate">Not Available</p>
+        </div>
+        <div class="pos-col">
+            <img src="/assets/images/drawermenu-ic-myjobs.svg" alt="">
+            <p>{{selectedJobDetails?.quickInfo?.jobtype? selectedJobDetails?.quickInfo?.jobtype  + ' Position' : 'Not Available'}}</p>
+        </div>
+        <div class="assess-col">
+            <img src="/assets/images/dashboard-ic-assessments-completed.svg" alt="">
+            <p *ngIf="selectedJobDetails?.includeTechAssessment">Assessment Required</p>
+            <p *ngIf="!selectedJobDetails?.includeTechAssessment">Assessment Not Required</p>
+        </div>
+      </div>
+      <div class="start-duration flex">
+        <div class="start-date" *ngIf="selectedJobDetails?.quickInfo?.projectStartDate">Start Date: <span>{{selectedJobDetails?.quickInfo?.projectStartDate | date: 'dd, MMM. yyyy'}}</span></div>
+        <div class="start-date" *ngIf="!selectedJobDetails?.quickInfo?.projectStartDate">Start Date: <span>Not Available</span></div>
+        <div class="duration">Duration: <span>{{selectedJobDetails?.quickInfo?.projectDurationMonths ? selectedJobDetails?.quickInfo?.projectDurationMonths : 'Not Available'}}</span></div>
+      </div>
+      <p class="sub-title">Job Requirements</p>
+      <pre class="base-font">{{selectedJobDetails?.quickInfo?.requirement}}</pre>
+      <!-- <ul>
+        <li>{{selectedJobDetails?.quickInfo?.requirement}}</li>
+      </ul> -->
+      <div class="ruler"></div>
+      <div class="row match-row">
+          <span class="job-match" [ngClass]="{'red': selectedJobDetails?.quickInfo?.score <= 30, 'yellow': selectedJobDetails?.quickInfo?.score <= 50 && selectedJobDetails?.quickInfo?.score >30, 'light-green': selectedJobDetails?.quickInfo?.score <= 80 && selectedJobDetails?.quickInfo?.score >50, 'dark-green': selectedJobDetails?.quickInfo?.score > 80}">{{selectedJobDetails?.quickInfo?.score}} % Match</span>
+          <p class="detail-right-links">
+            <span *ngIf="selectedJob && !selectedJob.isShortlisted && !selectedJob.isApplyed && selectedJobDetails && selectedJobDetails?.quickInfo && !selectedJobDetails?.quickInfo?.isshortlisted && !selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(false, selectedJobDetails?.quickInfo?.referrenceId)">
+              <img src="/assets/images/ic-matchingjobsforyou-shortlist.svg" alt="">Shortlist
+            </span>
+            <span class="green-text" *ngIf="(selectedJob && selectedJob.isShortlisted && !selectedJob.isApplyed) || (selectedJobDetails && selectedJobDetails?.quickInfo && selectedJobDetails?.quickInfo?.isShortlisted && !selectedJobDetails?.quickInfo?.isApplyed)">
+              <img src="/assets/images/ic-matchingjobsforyou-shortlisted.svg" alt="">Shortlisted
+            </span>
+            <span class="green-text" *ngIf="(selectedJob && selectedJob.isApplyed) || (selectedJobDetails && selectedJobDetails?.quickInfo && selectedJobDetails?.quickInfo?.isApplyed)">
+              <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="">Applied
+            </span>
+            <!-- <span>
+              <img src="/assets/images/ic-matchingjobsforyou-shortlist.svg" alt="">Shortlist
+            </span> -->
+            <span (click)="toggleShareJobModal()">
+              <img src="/assets/images/ic-job-details-share.svg" alt="">Share
+            </span>
+          </p>
+      </div>
+    </div>
+    <!-- Description section -->
+    <div class="content-box" id="desc" #desc>
+      <p class="sub-title">Job Description</p>
+      <pre class="base-font">{{selectedJobDetails?.description}}</pre>
+      <!-- <ul>
+        <li>Design, build and configure applications to meet business process and application requirements.</li>
+        <li>Looking for someone with 5-7 years hands-on development experience on Core Java, J2EE, Spring, Hibernate,
+          Oracle. </li>
+        <li>Some experience on UI Technology stack with AngularJS, JavaScript, HTML5 is preferred, but not mandatory.</li>
+      </ul> -->
+    </div>
+    <!-- Video section -->
+    <div class="content-box" id="videos" #videos>
+      <div>
+        <p class="sub-title">Videos</p>
+        <div class="ruler"></div>
+        <div class="row">
+          <!-- <div class="video-col" *ngFor="let video of selectedJobDetails?.JobVideo">
+            <div class="vid-clip" *ngIf="video.url">
+              <video [src]="video.url" controls></video>
+              <iframe [src]="video.url"></iframe>
+            </div>
+          </div> -->
+          <!-- <div class="video-details-col">
+            <p class="video-title">{{selectedJobDetails?.preInterviewProcess?.introduction_video_caption}}</p>
+            <p class="video-time">03:30 mins</p>
+            <img src="/assets/images/YT-icon.jpg" alt="youtube logo">
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- Choose Interview Slot Section -->
+    <!-- <div class="content-box" id="slot" #slot>
+      <p class="sub-title">Preferred Interview Time <span class="opt"> (Optional)</span></p>
+      <app-choose-slot *ngIf="selectedJobDetails?.quickInfo?.referrenceId" [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId"></app-choose-slot>
+    </div> -->
+    <!-- Record Interview Slot Section -->
+    <!-- <div class="content-box" id="record" #intro>
+      <p class="sub-title">Record Introduction Video <span class="opt"> (Optional)</span></p>
+      <p class="record-text">Record a brief introduction of why you are suited for this job.</p>
+      <p class="record-text">This will enhance your chances of getting selected.</p>
+      <app-upload-intro *ngIf="selectedJobDetails?.quickInfo?.referrenceId" [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId" [redirectUri]="'dashboard/job'"></app-upload-intro>
+    </div> -->
+    <!-- Timeline section -->
+    <div class="content-box" id="timeline" #timeline>
+      <p class="sub-title">Timeline</p>
+      <div class="timline-progress" *ngIf="selectedJobDetails?.TimeLine">
+          <div  class="tl-status" id="tl-shortlisted" *ngIf="selectedJobDetails?.TimeLine?.shortlistedDate">
+            <img src="/assets/images/ic-myjobs-shortlisted.svg" alt="Shortlisted On" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.shortlistedDate | date : 'dd MMM, yyyy'}}</span>
+            <p class="timeline-status">Shortlisted</p>
+          </div>
+          <div class="tl-status" id="tl-applied" *ngIf="selectedJobDetails?.TimeLine?.appliedDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.appliedDate"></p>
+              <img src="/assets/images/ic-matchingjobsforyou-apply-white.svg" alt="Applied On" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.appliedDate | date : 'dd MMM, yyyy'}}</span>
+            <p class="timeline-status">Applied</p>
+          </div>
+          <div class="tl-status" id="tl-interview" *ngIf="selectedJobDetails?.TimeLine?.interviewDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.interviewDate"></p>
+              <img src="/assets/images/ic-myjobs-interivew-copy-2.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.interviewDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Interview</p>
+          </div>
+          <div class="tl-status" id="tl-hire" *ngIf="selectedJobDetails?.TimeLine?.hireDate">
+            <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.hireDate"></p>
+            <img src="/assets/images/ic-myjobs-good-to-hire.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.hireDate | date : 'dd MMM, yyyy'}}</span>
+            <p class="timeline-status">Good To Hire</p>
+          </div>
+          <div class="tl-status" id="tl-rejected" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate">
+            <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate"></p>
+            <img src="/assets/images/ic-myjobs-rejected.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.rejectedDate | date : 'dd MMM, yyyy'}}</span>
+            <p class="timeline-status">Rejected</p>
+          </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Job Share Modal -->
+<nz-modal [nzWidth]="400" [nzKeyboard]="false" [nzClosable]="true" [(nzVisible)]="showShareJobModal" nzTitle="Share Application" [nzFooter]="null" [nzMaskClosable]="true" (nzOnCancel)="toggleShareJobModal()">
+    <!-- <nz-rate [ngModel]="0" (ngModelChange)="onRateChange($event)"></nz-rate> -->
+    <div class="flex share-app">
+        <!-- Sharingbutton Facebook -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.facebook" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton Twitter -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.twitter" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton E-Mail -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.email" target="_self" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton LinkedIn -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.linkedin" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--small"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+            </div>
+            </div>
+        </a> -->
+
+        <div class="share-img-count">
+          <a [href]="shareLink.twitter" target="_blank">
+            <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+                <g fill="none" fill-rule="evenodd">
+                    <!-- <rect width="95" height="93" fill="#00A9F2" rx="2"/> -->
+                    <circle cx="47.5" cy="32.5" r="22.5" fill="#0096DC"/>
+                    <path fill="#FFF" d="M57 26.844c-.707.313-1.46.52-2.244.621a3.903 3.903 0 0 0 1.713-2.173 7.741 7.741 0 0 1-2.47.952A3.887 3.887 0 0 0 51.154 25c-2.157 0-3.893 1.767-3.893 3.932 0 .312.026.611.09.897-3.238-.16-6.103-1.726-8.028-4.112a3.986 3.986 0 0 0-.533 1.987c0 1.361.694 2.568 1.73 3.267a3.82 3.82 0 0 1-1.76-.484v.043a3.94 3.94 0 0 0 3.12 3.862c-.316.088-.662.13-1.02.13-.25 0-.502-.015-.738-.067.505 1.556 1.937 2.701 3.64 2.738a7.781 7.781 0 0 1-4.83 1.677 7.23 7.23 0 0 1-.932-.054 10.894 10.894 0 0 0 5.975 1.764c7.168 0 11.087-5.992 11.087-11.186 0-.174-.006-.342-.014-.509A7.811 7.811 0 0 0 57 26.845"/>
+                </g>
+              </svg>
+            <div class="sharing-numbers">
+                <span>Twitter</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="share-img-count">
+          <a [href]="shareLink.linkedin" target="_blank">
+            <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+              <g fill="none" fill-rule="evenodd">
+                  <!-- <rect width="95" height="93" fill="#1776B5" rx="2"/> -->
+                  <circle cx="47.5" cy="32.5" r="22.5" fill="#166BA3"/>
+                  <g fill="#FFF">
+                      <path d="M38.233 40.962h4.052V28.865h-4.052zM55.581 29.97c-.85-.923-1.977-1.385-3.376-1.385-.516 0-.984.063-1.406.19a3.197 3.197 0 0 0-1.068.53c-.29.228-.522.44-.694.635a5.24 5.24 0 0 0-.479.646v-1.72H44.52l.012.585c.009.391.013 1.595.013 3.614 0 2.018-.008 4.65-.025 7.897h4.04v-6.75c0-.415.044-.745.134-.989.172-.415.432-.763.78-1.043.348-.281.78-.422 1.296-.422.703 0 1.221.242 1.553.726.331.485.497 1.154.497 2.009v6.47h4.04v-6.934c-.001-1.782-.427-3.135-1.278-4.059M40.284 23.043c-.68 0-1.23.197-1.652.592-.421.395-.632.893-.632 1.495 0 .594.205 1.09.614 1.49.409.398.95.597 1.62.597h.025c.688 0 1.242-.199 1.664-.598.421-.398.628-.895.62-1.489-.009-.602-.217-1.1-.627-1.495-.409-.395-.953-.592-1.632-.592"/>
+                  </g>
+              </g>
+            </svg>
+            <div class="sharing-numbers">
+                <span>LinkedIn</span>
+            </div>
+          </a>
+        </div>
+
+        <div class="share-img-count">
+          <a [href]="shareLink.facebook" target="_blank">
+              <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95" height="93" viewBox="0 0 95 93">
+                  <defs>
+                      <path id="a" d="M0 0h9.946v18.697H0z"/>
+                  </defs>
+                  <g fill="none" fill-rule="evenodd">
+                      <!-- <rect width="95" height="93" fill="#39559C" rx="2"/> -->
+                      <circle cx="47.5" cy="32.5" r="22.5" fill="#324B8B"/>
+                      <g transform="translate(42.5 23)">
+                          <mask id="b" fill="#fff">
+                              <use xlink:href="#a"/>
+                          </mask>
+                          <path fill="#FFF" d="M6.456 18.697v-8.528h2.931l.44-3.325H6.456V4.722c0-.962.273-1.618 1.688-1.618h1.802V.13C9.634.09 8.564 0 7.319 0 4.72 0 2.94 1.549 2.94 4.393v2.451H0v3.325h2.94v8.528h3.516z" mask="url(#b)"/>
+                      </g>
+                  </g>
+                </svg>
+              <div class="sharing-numbers">
+                  <span>Facebook</span>
+              </div>
+          </a>
+        </div>
+
+    </div>
+    <!-- <button (click)="handleOk()" class="orange-button">Submit Rating </button> -->
+</nz-modal>
+
+<!-- Confirmation Modal -->
+<nz-modal [(nzVisible)]="showConfirmationModal" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleConfirmCancel()" (nzOnOk)="handleConfirmOk()">
+  <div class="confirmation-modal">
+    <div class="flex confirmation-modal-body">
+      <div class="flex">
+        <p class="text-explanation">Please update the missing fields if you want to apply for this job.</p>
+        <p class="text-explanation">Missing field(s) are</p>
+      </div>
+      <!-- <span class="confirmation-text">Missing Fields:</span> -->
+      <div class="flex fields-row">
+        <span class="field" *ngFor="let field of missingFields">{{field | format}}</span>
+        <!-- <span class="field">Field 2</span>
+        <span class="field">Field 3</span>
+        <span class="field">Field 4</span> -->
+      </div>
+    </div>
+    <div class="flex button-row">
+      <button class="cancel" (click)="handleConfirmCancel()">Cancel</button>
+      <button class="update" (click)="handleConfirmOk()">Update</button>
+    </div>
+  </div>
+</nz-modal>
+
+<!-- Pre-Interview Modal -->
+<nz-modal [(nzVisible)]="showPreInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Pre Interview" (nzOnCancel)="handlePreInterviewCancel()" (nzOnOk)="handlePreInterviewOk()">
+  <app-pre-inteview (success)="handlePreInterviewOk()" (cancel)="handlePreInterviewCancel()"></app-pre-inteview>
+</nz-modal>

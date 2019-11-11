@@ -1,0 +1,181 @@
+<div class="sidemenu">
+    <div class="user-profile">
+        <div class="profile-pic">
+            <img *ngIf="socialUserDetails" [src]="socialUserDetails?.image ? socialUserDetails?.image : '/assets/images/profile-image.png'" alt="">
+            <img *ngIf="currentUserDetails && !socialUserDetails" [src]="currentUserDetails?.image ? currentUserDetails?.image : '/assets/images/profile-image.png'" alt="">
+        </div>
+        <p *ngIf="currentUserDetails && currentUserDetails.firstname">{{currentUserDetails.firstname}} {{currentUserDetails.lastname}}</p>
+        <p *ngIf="currentUserDetails && currentUserDetails.firstName">{{currentUserDetails.firstName}} {{currentUserDetails.lastName}}</p>
+        <p *ngIf="!currentUserDetails && socialUserDetails && socialUserDetails.name">{{currentUserDetails.name}}</p>
+    </div>
+    <ul>
+        <li [routerLink]="['/dashboard']" routerLinkActive="active" (click)="toggleSideMenu(1)">
+            <a><img src="/assets/images/drawermenu-ic-dashboard.svg" alt="">Dashboard</a>
+        </li>
+        <li [routerLink]="['/search']" routerLinkActive="active" (click)="toggleSideMenu(2)">
+            <a><img src="/assets/images/drawermenu-ic-search.svg" alt="">Search Jobs</a>
+        </li>
+        <li [routerLink]="['/search/matching']" routerLinkActive="active" (click)="toggleSideMenu(3)"><a><img src="/assets/images/ic-matching-jobs-white.svg" alt="">Matching Jobs</a></li>
+        <li [routerLink]="['/myjobs']" routerLinkActive="active" (click)="toggleSideMenu(4)"><a><img src="/assets/images/drawermenu-ic-myjobs-white.svg" alt="">My Jobs</a></li>
+        <li [routerLink]="['/assessments']" routerLinkActive="active" (click)="toggleSideMenu(5)">
+            <a><img src="/assets/images/drawermenu-ic-assessments.svg" alt="">Assessments</a>
+        </li>
+        <li [routerLink]="['/profile/view']" routerLinkActive="active" (click)="toggleSideMenu(6)">
+            <a><img src="/assets/images/drawermenu-ic-myprofile.svg" alt="">My Profile</a>
+        </li>
+        <li (click)="showModal()" routerLinkActive="active">
+            <a><img src="/assets/images/drawermenu-ic-feedback.svg" alt="">Feedback</a>
+        </li>
+        <li [routerLink]="['/settings']" routerLinkActive="active" (click)="toggleSideMenu(7)">
+            <a><img src="/assets/images/ic-settings.svg" alt="">Settings</a>
+        </li>
+        <li [routerLink]="['/company/aboutus']" routerLinkActive="active" (click)="toggleSideMenu(8)">
+            <a><img src="/assets/images/ic-drawermenu-aboutus.svg" alt="">About Us</a>
+        </li>
+        <li (click)="openShareModal()">
+            <a><img src="/assets/images/ic-drawermenu-share.svg" alt="">Share</a>
+        </li>
+        <li (click)="openLogoutConfirmationModal()">
+            <a><img src="/assets/images/drawermenu-ic-logout.svg" alt="">Logout</a>
+        </li>
+
+    </ul>
+</div>
+<!-- Feedback Modal -->
+<nz-modal [nzWidth]="400" [nzKeyboard]="false" [nzClosable]="true" [(nzVisible)]="isVisible" nzTitle="Feedback" [nzFooter]="null" [nzMaskClosable]="true" (nzOnCancel)="handleCancel()">
+    <nz-rate [ngModel]="rating" (ngModelChange)="onRateChange($event)"></nz-rate>
+    <textarea id="comment-box" maxlength="150" [(ngModel)]="comment" placeholder="Describe your Experience"></textarea>
+    <button (click)="handleOk()" [disabled]="rating === 0 || !comment" class="orange-button">Submit Feedback</button>
+</nz-modal>
+<!-- Share app Modal -->
+<nz-modal [nzWidth]="380" [nzClosable]="true" [(nzVisible)]="showShareAppModal" nzTitle="Share Application" [nzFooter]="null" [nzClosable]="true" [nzMaskClosable]="true" (nzOnCancel)="handleCancel()">
+    <!-- <nz-rate [ngModel]="0" (ngModelChange)="onRateChange($event)"></nz-rate> -->
+    <div class="flex share-app">
+        <!-- Sharingbutton Facebook -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.facebook" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.46H14.5v-1.9c0-.9.6-1.1 1-1.1h3V.5h-4.33C10.24.5 9.5 3.44 9.5 5.32v2.15h-3v4h3v12h5v-12h3.85l.42-4z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton Twitter -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.twitter" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.44 4.83c-.8.37-1.5.38-2.22.02.93-.56.98-.96 1.32-2.02-.88.52-1.86.9-2.9 1.1-.82-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.03.7.1 1.04-3.77-.2-7.12-2-9.36-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.74-.03-1.44-.23-2.05-.57v.06c0 2.2 1.56 4.03 3.64 4.44-.67.2-1.37.2-2.06.08.58 1.8 2.26 3.12 4.25 3.16C5.78 18.1 3.37 18.74 1 18.46c2 1.3 4.4 2.04 6.97 2.04 8.35 0 12.92-6.92 12.92-12.93 0-.2 0-.4-.02-.6.9-.63 1.96-1.22 2.56-2.14z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton E-Mail -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.email" target="_self" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M22 4H2C.9 4 0 4.9 0 6v12c0 1.1.9 2 2 2h20c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zM7.25 14.43l-3.5 2c-.08.05-.17.07-.25.07-.17 0-.34-.1-.43-.25-.14-.24-.06-.55.18-.68l3.5-2c.24-.14.55-.06.68.18.14.24.06.55-.18.68zm4.75.07c-.1 0-.2-.03-.27-.08l-8.5-5.5c-.23-.15-.3-.46-.15-.7.15-.22.46-.3.7-.14L12 13.4l8.23-5.32c.23-.15.54-.08.7.15.14.23.07.54-.16.7l-8.5 5.5c-.08.04-.17.07-.27.07zm8.93 1.75c-.1.16-.26.25-.43.25-.08 0-.17-.02-.25-.07l-3.5-2c-.24-.13-.32-.44-.18-.68s.44-.32.68-.18l3.5 2c.24.13.32.44.18.68z"/></svg>
+            </div>
+            </div>
+        </a> -->
+        
+        <!-- Sharingbutton LinkedIn -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.linkedin" target="_blank" rel="noopener" aria-label="">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--solid">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5C2.5 6.5 1.5 5.3 1.5 4s1-2.4 2.5-2.4c1.6 0 2.5 1 2.6 2.5 0 1.4-1 2.5-2.6 2.5zm11.5 6c-1 0-2 1-2 2v7h-5v-13h5V10s1.6-1.5 4-1.5c3 0 5 2.2 5 6.3v6.7h-5v-7c0-1-1-2-2-2z"/></svg>
+            </div>
+            </div>
+        </a> -->
+
+        <!-- Sharingbutton Facebook -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.facebook" target="_blank" rel="noopener" aria-label="Facebook">
+            <div class="resp-sharing-button resp-sharing-button--facebook resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.77 7.5H14.5V5.6c0-.9.6-1.1 1-1.1h3V.54L14.17.53C10.24.54 9.5 3.48 9.5 5.37V7.5h-3v4h3v12h5v-12h3.85l.42-4z"/></svg></div>Facebook</div>
+        </a> -->
+    
+        <!-- Sharingbutton Twitter -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.twitter" target="_blank" rel="noopener" aria-label="Twitter">
+            <div class="resp-sharing-button resp-sharing-button--twitter resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.4 4.83c-.8.37-1.5.38-2.22.02.94-.56.98-.96 1.32-2.02-.88.52-1.85.9-2.9 1.1-.8-.88-2-1.43-3.3-1.43-2.5 0-4.55 2.04-4.55 4.54 0 .36.04.7.12 1.04-3.78-.2-7.12-2-9.37-4.75-.4.67-.6 1.45-.6 2.3 0 1.56.8 2.95 2 3.77-.73-.03-1.43-.23-2.05-.57v.06c0 2.2 1.57 4.03 3.65 4.44-.67.18-1.37.2-2.05.08.57 1.8 2.25 3.12 4.24 3.16-1.95 1.52-4.36 2.16-6.74 1.88 2 1.3 4.4 2.04 6.97 2.04 8.36 0 12.93-6.92 12.93-12.93l-.02-.6c.9-.63 1.96-1.22 2.57-2.14z"/></svg></div>Twitter</div>
+        </a> -->
+    
+        <!-- Sharingbutton E-Mail -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.email" target="_self" rel="noopener" aria-label="E-Mail">
+            <div class="resp-sharing-button resp-sharing-button--email resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M23.5 18c0 .8-.7 1.5-1.5 1.5H2c-.8 0-1.5-.7-1.5-1.5V6c0-.8.7-1.5 1.5-1.5h20c.8 0 1.5.7 1.5 1.5v12zm-3-9.5L12 14 3.5 8.5m0 7.5L7 14m13.5 2L17 14"/></svg></div>E-Mail</div>
+        </a> -->
+    
+        <!-- Sharingbutton LinkedIn -->
+        <!-- <a class="resp-sharing-button__link" [href]="shareLink.linkedin" target="_blank" rel="noopener" aria-label="LinkedIn">
+            <div class="resp-sharing-button resp-sharing-button--linkedin resp-sharing-button--medium"><div aria-hidden="true" class="resp-sharing-button__icon resp-sharing-button__icon--normal">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.5 21.5h-5v-13h5v13zM4 6.5h-.04c-1.5 0-2.5-1.18-2.5-2.48 0-1.33 1.02-2.4 2.56-2.4s2.5 1.1 2.52 2.43c0 1.3-.98 2.45-2.55 2.45zm11.5 6c-1.1 0-2 .9-2 2v7h-5s.06-12 0-13h5V10s1.55-1.46 3.94-1.46c2.96 0 5.06 2.15 5.06 6.3v6.66h-5v-7c0-1.1-.9-2-2-2z"/></svg></div>LinkedIn</div>
+        </a> -->
+
+        <div class="share-img-count">
+            <a [href]="shareLink.twitter" target="_blank">
+                <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+                    <g fill="none" fill-rule="evenodd">
+                        <!-- <rect width="95" height="93" fill="#00A9F2" rx="2"/> -->
+                        <circle cx="47.5" cy="32.5" r="22.5" fill="#0096DC"/>
+                        <path fill="#FFF" d="M57 26.844c-.707.313-1.46.52-2.244.621a3.903 3.903 0 0 0 1.713-2.173 7.741 7.741 0 0 1-2.47.952A3.887 3.887 0 0 0 51.154 25c-2.157 0-3.893 1.767-3.893 3.932 0 .312.026.611.09.897-3.238-.16-6.103-1.726-8.028-4.112a3.986 3.986 0 0 0-.533 1.987c0 1.361.694 2.568 1.73 3.267a3.82 3.82 0 0 1-1.76-.484v.043a3.94 3.94 0 0 0 3.12 3.862c-.316.088-.662.13-1.02.13-.25 0-.502-.015-.738-.067.505 1.556 1.937 2.701 3.64 2.738a7.781 7.781 0 0 1-4.83 1.677 7.23 7.23 0 0 1-.932-.054 10.894 10.894 0 0 0 5.975 1.764c7.168 0 11.087-5.992 11.087-11.186 0-.174-.006-.342-.014-.509A7.811 7.811 0 0 0 57 26.845"/>
+                    </g>
+                    </svg>
+                <div class="sharing-numbers">
+                    <span>Twitter</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="share-img-count">
+            <a [href]="shareLink.linkedin" target="_blank">
+                <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+                    <g fill="none" fill-rule="evenodd">
+                        <!-- <rect width="95" height="93" fill="#1776B5" rx="2"/> -->
+                        <circle cx="47.5" cy="32.5" r="22.5" fill="#166BA3"/>
+                        <g fill="#FFF">
+                            <path d="M38.233 40.962h4.052V28.865h-4.052zM55.581 29.97c-.85-.923-1.977-1.385-3.376-1.385-.516 0-.984.063-1.406.19a3.197 3.197 0 0 0-1.068.53c-.29.228-.522.44-.694.635a5.24 5.24 0 0 0-.479.646v-1.72H44.52l.012.585c.009.391.013 1.595.013 3.614 0 2.018-.008 4.65-.025 7.897h4.04v-6.75c0-.415.044-.745.134-.989.172-.415.432-.763.78-1.043.348-.281.78-.422 1.296-.422.703 0 1.221.242 1.553.726.331.485.497 1.154.497 2.009v6.47h4.04v-6.934c-.001-1.782-.427-3.135-1.278-4.059M40.284 23.043c-.68 0-1.23.197-1.652.592-.421.395-.632.893-.632 1.495 0 .594.205 1.09.614 1.49.409.398.95.597 1.62.597h.025c.688 0 1.242-.199 1.664-.598.421-.398.628-.895.62-1.489-.009-.602-.217-1.1-.627-1.495-.409-.395-.953-.592-1.632-.592"/>
+                        </g>
+                    </g>
+                    </svg>
+                <div class="sharing-numbers">
+                    <span>LinkedIn</span>
+                </div>
+            </a>
+        </div>
+
+        <div class="share-img-count">
+            <a [href]="shareLink.facebook" target="_blank">
+                <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95" height="93" viewBox="0 0 95 93">
+                    <defs>
+                        <path id="a" d="M0 0h9.946v18.697H0z"/>
+                    </defs>
+                    <g fill="none" fill-rule="evenodd">
+                        <!-- <rect width="95" height="93" fill="#39559C" rx="2"/> -->
+                        <circle cx="47.5" cy="32.5" r="22.5" fill="#324B8B"/>
+                        <g transform="translate(42.5 23)">
+                            <mask id="b" fill="#fff">
+                                <use xlink:href="#a"/>
+                            </mask>
+                            <path fill="#FFF" d="M6.456 18.697v-8.528h2.931l.44-3.325H6.456V4.722c0-.962.273-1.618 1.688-1.618h1.802V.13C9.634.09 8.564 0 7.319 0 4.72 0 2.94 1.549 2.94 4.393v2.451H0v3.325h2.94v8.528h3.516z" mask="url(#b)"/>
+                        </g>
+                    </g>
+                 </svg>
+                <div class="sharing-numbers">
+                    <span>Facebook</span>
+                </div>
+            </a>
+        </div>
+    </div>
+    <!-- <button (click)="handleOk()" class="orange-button">Submit Rating </button> -->
+</nz-modal>
+<!-- Logout confirmation Modal -->
+<nz-modal [(nzVisible)]="showLogoutConfirmationModal" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleLogoutCancel()" (nzOnOk)="handleLogoutOk()">
+    <div class="confirmation-modal">
+        <div class="flex confirmation-modal-body">
+            <div class="flex">
+                <p class="text-explanation">Are you sure you want to logout?</p>
+            </div>
+        </div>
+        <div class="flex button-row">
+        <button class="cancel" (click)="handleLogoutCancel()">Cancel</button>
+        <button class="update" (click)="handleLogoutOk()">Logout</button>
+        </div>
+    </div>
+</nz-modal>
+

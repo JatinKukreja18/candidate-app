@@ -1,0 +1,914 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cliksource documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cliksource documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>AuthForgotPassComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-auth-forgot-pass</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./auth-forgot-pass.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./auth-forgot-pass.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#confirmOTPSubmittedValue">confirmOTPSubmittedValue</a>
+                            </li>
+                            <li>
+                                <a href="#email">email</a>
+                            </li>
+                            <li>
+                                <a href="#forms">forms</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#otpConfrimed">otpConfrimed</a>
+                            </li>
+                            <li>
+                                <a href="#otpSent">otpSent</a>
+                            </li>
+                            <li>
+                                <a href="#passwordChanged">passwordChanged</a>
+                            </li>
+                            <li>
+                                <a href="#showForm">showForm</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, analyticsService: <a href="../injectables/AnalyticsService.html">AnalyticsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="27"
+                            class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:27</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="otpConfrimed"></a>
+                    <span class="name">
+                        <b>
+                            otpConfrimed
+                        </b>
+                        <a href="#otpConfrimed"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>otpConfrimed(submittedValue, formName)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:59</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Matches entered OTP sent to registerer</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>submittedValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>sent OTP</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>formName</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>form name to show</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="otpSent"></a>
+                    <span class="name">
+                        <b>
+                            otpSent
+                        </b>
+                        <a href="#otpSent"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>otpSent(submittedValue, formName)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="49"
+                            class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:49</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Sends OTP to registerer email</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>submittedValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>email of resgisterer</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>formName</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>form name to show</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="passwordChanged"></a>
+                    <span class="name">
+                        <b>
+                            passwordChanged
+                        </b>
+                        <a href="#passwordChanged"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>passwordChanged()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="67"
+                            class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:67</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Redirect user to homepage</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="showForm"></a>
+                    <span class="name">
+                        <b>
+                            showForm
+                        </b>
+                        <a href="#showForm"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>showForm(formName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:35</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Shows the form respective to provided form name in forgot password</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>formName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>form name to show</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="confirmOTPSubmittedValue"></a>
+                        <span class="name">
+                            <b>
+                            confirmOTPSubmittedValue</b>
+                            <a href="#confirmOTPSubmittedValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{ email: &#x27;&#x27;, otp: &#x27;&#x27;}</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:12</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="email"></a>
+                        <span class="name">
+                            <b>
+                            email</b>
+                            <a href="#email"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="11" class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:11</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="forms"></a>
+                        <span class="name">
+                            <b>
+                            forms</b>
+                            <a href="#forms"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{ sendOTP: true, confirmOTP: false, newPassword: false }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/auth/auth-forgot-pass/auth-forgot-pass.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { Router } from &#x27;@angular/router&#x27;;
+import { AnalyticsService } from &#x27;@app/core&#x27;;
+
+@Component({
+    selector: &#x27;app-auth-forgot-pass&#x27;,
+    templateUrl: &#x27;./auth-forgot-pass.component.html&#x27;,
+    styleUrls: [&#x27;./auth-forgot-pass.component.scss&#x27;]
+})
+export class AuthForgotPassComponent implements OnInit {
+    email: string;
+    confirmOTPSubmittedValue: {
+        email: string,
+        otp: string
+    } &#x3D; { email: &#x27;&#x27;, otp: &#x27;&#x27;};
+    forms: {
+        sendOTP: boolean,
+        confirmOTP: boolean,
+        newPassword: boolean
+    } &#x3D; { sendOTP: true, confirmOTP: false, newPassword: false };
+
+    constructor (
+        private router: Router,
+        private analyticsService: AnalyticsService
+    ) { }
+
+    ngOnInit () {
+        this.analyticsService.eventEmitter(&#x27;LoginScreen&#x27;, &#x27;ForgotPassword&#x27;, &#x27;ForgotPassword&#x27;);
+    }
+
+    /**
+    * Shows the form respective to provided form name in forgot password
+    * @param formName form name to show
+    */
+    showForm (formName: string) {
+        for (const key in this.forms) {
+            if (this.forms[key]) {
+                this.forms[key] &#x3D; false;
+            }
+        }
+        this.forms[formName] &#x3D; true;
+    }
+
+    /**
+    * Sends OTP to registerer email
+    * @param submittedValue email of resgisterer
+    * @param formName form name to show
+    */
+    otpSent (submittedValue, formName) {
+        if (submittedValue) this.email &#x3D; submittedValue;
+        this.showForm(formName);
+    }
+
+    /**
+    * Matches entered OTP sent to registerer
+    * @param submittedValue sent OTP
+    * @param formName form name to show
+    */
+    otpConfrimed(submittedValue, formName) {
+        if (submittedValue) this.confirmOTPSubmittedValue &#x3D; submittedValue;
+        this.showForm(formName);
+    }
+
+    /**
+    * Redirect user to homepage
+    */
+    passwordChanged() {
+        this.router.navigateByUrl(&#x27;/&#x27;);
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;forgot-pass-container&quot;&gt;
+	&lt;section class&#x3D;&quot;logo-symbol&quot;&gt;&lt;img src&#x3D;&quot;/assets/images/logo-symbol.svg&quot; class&#x3D;&quot;left-section-text&quot; [routerLink]&#x3D;&quot;[&#x27;/&#x27;]&quot;&gt;&lt;/section&gt;
+	&lt;section class&#x3D;&quot;forgot-pass-content&quot;&gt;
+		&lt;!-- &lt;div class&#x3D;&quot;dialog&quot; *ngIf&#x3D;&quot;request_otp&quot;&gt;
+			&lt;div class&#x3D;&quot;dialog-header&quot;&gt;
+				&lt;p class&#x3D;&quot;form-title&quot;&gt;Forgot Password&lt;/p&gt;      
+				&lt;span class&#x3D;&quot;form-cross&quot; [routerLink]&#x3D;&quot;[&#x27;&#x27;]&quot;&gt;&lt;img src&#x3D;&quot;../../../assets/images/shape-cross.svg&quot; alt&#x3D;&quot;return to home&quot;&gt;&lt;/span&gt;
+			&lt;/div&gt;
+			&lt;div class&#x3D;&quot;dialog-content&quot;&gt;
+				&lt;form [formGroup]&#x3D;&quot;forgotFormA&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot;&gt;
+					&lt;div class&#x3D;&quot;form-group&quot;&gt;
+						&lt;input type&#x3D;&quot;email&quot; id&#x3D;&quot;email&quot; formControlName&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; [ngClass]&#x3D;&quot;{ &#x27;is-invalid&#x27;: submitted &amp;&amp; f.email.errors }&quot; /&gt;
+						&lt;label class&#x3D;&quot;form-control-placeholder&quot;&gt;EMAIL ID&lt;/label&gt;
+						&lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; f.email.errors&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+							&lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.email.errors.required&quot;&gt;Email is required&lt;/div&gt;
+							&lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.email.errors.email&quot;&gt;Email must be a valid email address&lt;/div&gt;
+						&lt;/div&gt;
+					&lt;/div&gt;
+					&lt;div class&#x3D;&quot;form-group&quot;&gt;
+						&lt;button class&#x3D;&quot;orange-button&quot;&gt;Request OTP&lt;/button&gt;
+					&lt;/div&gt;
+				&lt;/form&gt;
+			&lt;/div&gt;
+		&lt;/div&gt; --&gt;
+		&lt;!-- &lt;app-dialog-confirm-otp *ngIf&#x3D;&quot;confirm_otp&quot;&gt;&lt;/app-dialog-confirm-otp&gt; --&gt;
+		&lt;app-send-otp *ngIf&#x3D;&quot;forms.sendOTP&quot; (formSubmit)&#x3D;&quot;otpSent($event, &#x27;confirmOTP&#x27;)&quot;&gt;&lt;/app-send-otp&gt;
+		&lt;app-confirm-otp *ngIf&#x3D;&quot;forms.confirmOTP&quot; [email]&#x3D;&quot;email&quot; (formSubmit)&#x3D;&quot;otpConfrimed($event, &#x27;newPassword&#x27;)&quot;&gt;&lt;/app-confirm-otp&gt;
+		&lt;app-new-password *ngIf&#x3D;&quot;forms.newPassword&quot; [email]&#x3D;&quot;confirmOTPSubmittedValue.email&quot; [otp]&#x3D;&quot;confirmOTPSubmittedValue.otp&quot; (formSubmit)&#x3D;&quot;passwordChanged()&quot;&gt;&lt;/app-new-password&gt;
+	&lt;/section&gt;
+	&lt;section class&#x3D;&quot;company&quot;&gt;
+	&lt;/section&gt;
+&lt;/div&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./auth-forgot-pass.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.forgot-pass-container{
+    width: 100%;
+    height: 100vh;
+    background: url(&#x27;../../../assets/images/background-grey.svg&#x27;);
+    background-repeat: repeat;
+
+    .logo-symbol{
+        margin-bottom: 24px;
+        padding-top: 50px;
+        text-align: center;
+        cursor: pointer;
+    }
+    .forgot-pass-content{
+        width: 360px;
+        height: 400px;
+        margin: 0 auto;
+    }
+    .company{
+        text-align: center;
+        img{
+            max-width: 180px;
+            margin-top: 50px;
+        }
+    }
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div class="forgot-pass-container">	<section class="logo-symbol"><img src="/assets/images/logo-symbol.svg" class="left-section-text" [routerLink]="[\'/\']"></section>	<section class="forgot-pass-content">		<!-- <div class="dialog" *ngIf="request_otp">			<div class="dialog-header">				<p class="form-title">Forgot Password</p>      				<span class="form-cross" [routerLink]="[\'\']"><img src="../../../assets/images/shape-cross.svg" alt="return to home"></span>			</div>			<div class="dialog-content">				<form [formGroup]="forgotFormA" (ngSubmit)="onSubmit()">					<div class="form-group">						<input type="email" id="email" formControlName="email" class="form-control" [ngClass]="{ \'is-invalid\': submitted && f.email.errors }" />						<label class="form-control-placeholder">EMAIL ID</label>						<div *ngIf="submitted && f.email.errors" class="invalid-feedback">							<div class="error" *ngIf="f.email.errors.required">Email is required</div>							<div class="error" *ngIf="f.email.errors.email">Email must be a valid email address</div>						</div>					</div>					<div class="form-group">						<button class="orange-button">Request OTP</button>					</div>				</form>			</div>		</div> -->		<!-- <app-dialog-confirm-otp *ngIf="confirm_otp"></app-dialog-confirm-otp> -->		<app-send-otp *ngIf="forms.sendOTP" (formSubmit)="otpSent($event, \'confirmOTP\')"></app-send-otp>		<app-confirm-otp *ngIf="forms.confirmOTP" [email]="email" (formSubmit)="otpConfrimed($event, \'newPassword\')"></app-confirm-otp>		<app-new-password *ngIf="forms.newPassword" [email]="confirmOTPSubmittedValue.email" [otp]="confirmOTPSubmittedValue.otp" (formSubmit)="passwordChanged()"></app-new-password>	</section>	<section class="company">	</section></div></div>'
+    var COMPONENTS = [{'name': 'AboutusComponent', 'selector': 'app-about-us'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentsComponent', 'selector': 'app-assessments'},{'name': 'AuthForgotPassComponent', 'selector': 'app-auth-forgot-pass'},{'name': 'AuthLandingComponent', 'selector': 'app-auth-landing'},{'name': 'AuthLeftSectionComponent', 'selector': 'app-auth-left-section'},{'name': 'AuthRightSidebarComponent', 'selector': 'app-auth-right-sidebar'},{'name': 'ChooseSlotComponent', 'selector': 'app-choose-slot'},{'name': 'CommonHeaderComponent', 'selector': 'app-common-header'},{'name': 'CommonJobDetailsComponent', 'selector': 'app-common-job-details'},{'name': 'CommonMapComponent', 'selector': 'app-common-map'},{'name': 'CommonSidemenuComponent', 'selector': 'app-common-sidemenu'},{'name': 'ConfirmOTPComponent', 'selector': 'app-confirm-otp'},{'name': 'DashboardLandingComponent', 'selector': 'app-dashboard-landing'},{'name': 'FaqComponent', 'selector': 'app-faq'},{'name': 'FormButtonComponent', 'selector': 'app-form-button'},{'name': 'JobDetailsComponent', 'selector': 'app-job-details'},{'name': 'MainSearchComponent', 'selector': 'app-main-search'},{'name': 'MatchingJobsComponent', 'selector': 'app-matching-jobs'},{'name': 'MyJobsComponent', 'selector': 'app-my-jobs'},{'name': 'NewPasswordComponent', 'selector': 'app-new-password'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PreInterviewComponent', 'selector': 'app-pre-inteview'},{'name': 'ProfileLandingComponent', 'selector': 'app-profile-landing'},{'name': 'RecentSearchComponent', 'selector': 'app-recent-search'},{'name': 'ResultsSidebarComponent', 'selector': 'app-results-sidebar'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SendOTPComponent', 'selector': 'app-send-otp'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidebarExternalRegisterComponent', 'selector': 'app-sidebar-external-register'},{'name': 'SidebarLoginComponent', 'selector': 'app-sidebar-login'},{'name': 'SidebarOTPVerifyComponent', 'selector': 'app-sidebar-otp-verify'},{'name': 'SidebarRegisterComponent', 'selector': 'app-sidebar-register'},{'name': 'UploadVideoComponent', 'selector': 'app-upload-intro'},{'name': 'ViewJobsComponent', 'selector': 'app-view-jobs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'AuthForgotPassComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'AuthForgotPassComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

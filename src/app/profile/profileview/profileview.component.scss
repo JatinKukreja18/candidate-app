@@ -1,0 +1,226 @@
+
+.container-fluid {
+    padding-right: 15px;
+    padding-left: 15px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 95%;
+}
+
+span, li, h3, p, button, td, .ant-tabs-tab
+{
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h3
+{
+    margin: 0px;
+}
+
+.profile_tab {
+    margin: 20px 0px;
+    font-family: arial;
+}
+
+.profile_tab tr td {
+    padding: 5px;
+}
+
+.img-responsive {
+    /* height: auto; */
+    float: left;
+    margin-right: 15px;
+    border-radius: 100px;
+    height: auto;
+    width: 30%;
+}
+
+.brief {
+    float: left;
+    margin: 0px 10px;
+}
+
+.fa-facebook {
+    background-color: #4855b5;
+    padding: 6px 0px 2px 8px;
+}
+.fa-github {
+    background-color: #4855b5;
+    padding: 5px 0px 2px 6px;
+}
+
+.fa-twitter {
+    background-color: #4855b5;
+    padding: 6px 0px 2px 6px;
+}
+
+.fa-linkedin {
+    background-color: #4855b5;
+    padding: 4px 0px 2px 6px;
+}
+
+.brief ul li .fa {
+    color: #fff;
+    border-radius: 50px;
+    height: 25px;
+    width: 25px;
+}
+
+.back_section h3 {
+    margin: 0px;
+    color: #fff;
+}
+
+.back_section span{
+    color: #f7f7f7;
+    font-size: 12px;
+}
+
+
+.back_section {
+      color: #fff;
+}
+
+.brief ul li {
+    float: left;
+    margin: 5px 5px;
+}
+
+.left_sec.avail span {
+    display: block;
+}
+
+.left_sec.avail {
+    text-align: right;
+    padding: 5px 20px;
+}
+
+.refer_sec h3 {
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.fa-envelope-o {
+    margin-right: 10px;
+    color: #f9683d;
+}
+
+.fa-map-marker {
+    margin-right: 10px;
+}
+
+.card {
+    padding: 10px;
+    border: 1px solid #ccc;
+    display: inline-block;
+    width: 100%;
+    border-radius: 5px;
+}
+
+.work_exp h4, .educational_history h4, .reference h4 {
+    background-color: #ecedef;
+    padding: 5px 10px;
+}
+
+.video_assessment {
+    padding: 15px 0px;
+}
+
+.left_sec.tech_ass {
+    text-align: right;
+}
+
+h4{
+    color: #4855b5;
+    font-weight: 600;
+    letter-spacing: 0.1px;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.profile_section {
+    padding-top: 35px;
+}
+
+.description .img{
+padding: 10px;
+text-align: center;
+background-color: #4855b5;
+}
+
+.it_skills {
+    padding: 10px 0px 10px 0px;
+    width: 100%;
+    display: inline-block;
+}
+
+
+
+.left_profile_sec {
+    display: inline-block;
+    /* width: 100%; */
+    margin: 0px 20px;
+    border-right: 1px solid #ccc;
+}
+
+hr {
+    border: 1px solid #efeaea;
+    /* height: 1px; */
+    /* background-color: #ccc; */
+    width: 90%;
+    text-align: center;
+    margin: auto;
+    margin: 15px;
+}
+
+.profile_img, .work_exp, .educational_history, .word_card, .edu_sec, .reference, .refer_sec, .profile_tab {
+    display: inline-block;
+    width: 100%;
+}
+
+.it_skills ul, .brief ul{
+    list-style-type: none;
+    padding: 0px;
+}
+
+.share_prof
+{
+    float:right;
+    margin-top: 8px;
+}
+
+.share_prof button
+{
+    background: no-repeat;
+    border: 1px solid #fff;
+    color: #fff;
+    margin: 0px 10px;
+    padding: 3px 10px;
+    border-radius: 5px;
+}
+
+.left_sec {
+    float: left;
+    width: 50%;
+}
+
+.card ul
+    {
+    list-style-type: none;
+    padding: 0px;
+    margin: 0px;
+}
+
+.it_skills ul li {
+    padding: 5px 10px;
+    float: left;
+    border: 1px solid #ccc;
+    margin: 0px 10px;
+    border-radius: 5px;
+}
+
+
+.back_section
+{
+    padding: 10px;
+  background-color: #4855b5;
+}

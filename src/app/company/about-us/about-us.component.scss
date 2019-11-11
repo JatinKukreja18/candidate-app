@@ -1,0 +1,135 @@
+%spaceFourtFourty {
+    padding: 0px 40px;
+}
+
+.spaceFourtFourty {
+    @extend %spaceFourtFourty
+}
+
+.aboutLogoCont {
+    flex-basis: unset;
+}
+
+.aboutCurentV {
+    flex-basis: 55%;
+}
+
+.updateBtn {
+    width: auto;
+}
+
+.aboutClHead {
+    padding-top: 16px;
+    padding-bottom: 16px;
+    box-shadow: 0 0 4px 0 rgba(0, 0, 0, 0.2);
+    width: 100%;
+    justify-content: center;
+}
+
+.aboutCurentV {
+    span {
+        font-size: 16px;
+        font-family: SourceSansPro;
+        &:first-child {
+            color: #4a4a4a;
+            width: 114px;
+            padding-bottom: 6px;
+        }
+        &:last-child {
+            color: #4855b5;
+            font-weight: 600;
+        }
+    }
+    .currentVrowCont {
+        &:last-child {
+            span {
+                &:first-child {
+                    padding-bottom: 0px;
+                }
+            }
+        }
+    }
+}
+
+.aboutHeadContUl {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.headings {
+    font-family: SourceSansPro;
+    padding-bottom: 24px;
+    h3,
+    p {
+        margin-bottom: 0;
+        text-align: justify;
+    }
+    h3 {
+        color: #4a4a4a;
+        font-size: 22px;
+        font-weight: 600;
+        padding-bottom: 10px;
+    }
+    p,
+    .noPaddingUl {
+        color: #9b9b9b;
+        font-size: 18px;
+    }
+    .noPaddingUl {
+        list-style-type: none;
+        padding: 0;
+        .subUl {
+            & ul li::before {
+                color: #9b9b9b;
+            }
+            & ul {
+                list-style-type: none;
+                padding-left: 30px;
+            }
+        }
+    }
+    .noPaddingUl {
+        li::before {
+            content: "• ";
+            color: black;
+            font-size: 23px;
+            padding-right: 20px;
+        }
+    }
+}
+
+// For responsivness
+@media(max-width: 830px) {
+    .aboutCurentV {
+        flex-basis: 100%;
+    }
+    .aboutLogoCont {
+        flex-basis: 100%;
+        text-align: center;
+        // padding-bottom: 20px;
+    }
+    .aboutClHead {
+        flex-wrap: wrap;
+        position: relative;
+    }
+    .updateBtn {
+        position: absolute;
+        right: 40px;
+        bottom: calc(0px + 18%);
+    }
+}
+
+@media(max-width: 534px) {
+    .aboutClHead,
+    .updateBtn {
+        position: unset;
+    }
+    .aboutCurentV {
+        padding-bottom: 20px;
+    }
+    // .spaceFourtFourty {
+    //     padding: 0px 30px;
+    // }
+}
+
+// For responsivness (End)

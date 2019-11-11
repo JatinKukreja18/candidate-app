@@ -1,0 +1,1411 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cliksource documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cliksource documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>ScheduleComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/notification/schedule/schedule.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-schedule</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./schedule.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./schedule.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#countryList">countryList</a>
+                            </li>
+                            <li>
+                                <a href="#currentUser">currentUser</a>
+                            </li>
+                            <li>
+                                <a href="#interviewDetail">interviewDetail</a>
+                            </li>
+                            <li>
+                                <a href="#loading">loading</a>
+                            </li>
+                            <li>
+                                <a href="#scheduleForm">scheduleForm</a>
+                            </li>
+                            <li>
+                                <a href="#submitted">submitted</a>
+                            </li>
+                            <li>
+                                <a href="#validationMsgs">validationMsgs</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getCountryList">getCountryList</a>
+                            </li>
+                            <li>
+                                <a href="#getInterviewDetail">getInterviewDetail</a>
+                            </li>
+                            <li>
+                                <a href="#goBack">goBack</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onSubmit">onSubmit</a>
+                            </li>
+                            <li>
+                                <a href="#selectInterviewSlot1">selectInterviewSlot1</a>
+                            </li>
+                            <li>
+                                <a href="#selectInterviewSlot2">selectInterviewSlot2</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+                    <tr>
+                        <td class="col-md-4">
+                            <h6><b>Accessors</b></h6>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <ul class="index-list">
+                                <li>
+                                    <a href="#f">f</a>
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(formBuilder: <a href="https://angular.io/api/forms/FormBuilder" target="_blank">FormBuilder</a>, jobService: <a href="../injectables/JobService.html">JobService</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, commonService: <a href="../injectables/CommonService.html">CommonService</a>, profileService: <a href="../injectables/ProfileService.html">ProfileService</a>, message: NzMessageService, analyticsService: <a href="../injectables/AnalyticsService.html">AnalyticsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>formBuilder</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/forms/FormBuilder" target="_blank" >FormBuilder</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>jobService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/JobService.html" target="_self" >JobService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>commonService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/CommonService.html" target="_self" >CommonService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>profileService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/ProfileService.html" target="_self" >ProfileService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>message</td>
+                                                  
+                                                        <td>
+                                                                    <code>NzMessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getCountryList"></a>
+                    <span class="name">
+                        <b>
+                            getCountryList
+                        </b>
+                        <a href="#getCountryList"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getCountryList()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="60"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:60</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get the list of country codes</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getInterviewDetail"></a>
+                    <span class="name">
+                        <b>
+                            getInterviewDetail
+                        </b>
+                        <a href="#getInterviewDetail"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getInterviewDetail(interviewId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="72"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:72</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get current interview details</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>interviewId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Interview Id</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <b>
+                            goBack
+                        </b>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:87</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to the previous page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSubmit"></a>
+                    <span class="name">
+                        <b>
+                            onSubmit
+                        </b>
+                        <a href="#onSubmit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSubmit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="119"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:119</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Schedule Interview</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectInterviewSlot1"></a>
+                    <span class="name">
+                        <b>
+                            selectInterviewSlot1
+                        </b>
+                        <a href="#selectInterviewSlot1"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectInterviewSlot1($event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:104</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Select interview slot 1 </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="selectInterviewSlot2"></a>
+                    <span class="name">
+                        <b>
+                            selectInterviewSlot2
+                        </b>
+                        <a href="#selectInterviewSlot2"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>selectInterviewSlot2($event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="112"
+                            class="link-to-prism">src/app/notification/schedule/schedule.component.ts:112</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Select interview slot 2 </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>$event</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="countryList"></a>
+                        <span class="name">
+                            <b>
+                            countryList</b>
+                            <a href="#countryList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>[]</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentUser"></a>
+                        <span class="name">
+                            <b>
+                            currentUser</b>
+                            <a href="#currentUser"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="interviewDetail"></a>
+                        <span class="name">
+                            <b>
+                            interviewDetail</b>
+                            <a href="#interviewDetail"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loading"></a>
+                        <span class="name">
+                            <b>
+                            loading</b>
+                            <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="scheduleForm"></a>
+                        <span class="name">
+                            <b>
+                            scheduleForm</b>
+                            <a href="#scheduleForm"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/forms/FormGroup" target="_blank" >FormGroup</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="14" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:14</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="submitted"></a>
+                        <span class="name">
+                            <b>
+                            submitted</b>
+                            <a href="#submitted"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="validationMsgs"></a>
+                        <span class="name">
+                            <b>
+                            validationMsgs</b>
+                            <a href="#validationMsgs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+    <section>
+    <h3 id="accessors">
+        Accessors
+    </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="f"></a>
+                        <span class="name"><b>f</b><a href="#f"><span class="icon ion-ios-link"></span></a></span>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <span class="accessor"><b>get</b><code>f()</code></span>
+                    </td>
+                </tr>
+                            <tr>
+                                <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="96" class="link-to-prism">src/app/notification/schedule/schedule.component.ts:96</a></div>
+                                </td>
+                            </tr>
+                    <tr>
+                        <td class="col-md-4">
+                                <div class="io-description"><p>getter funtion for easy form controls</p>
+</div>
+
+                                <div>
+                                </div>
+                        </td>
+                    </tr>
+
+            </tbody>
+        </table>
+</section>
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import { FormBuilder, FormGroup, Validators } from &#x27;@angular/forms&#x27;;
+import { ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { CommonService, JobService, ProfileService, AnalyticsService } from &#x27;@app/core&#x27;;
+import { NzMessageService } from &#x27;ng-zorro-antd&#x27;;
+import { ValidationMessages, FeedbackMessages } from &#x27;@app/core/messages&#x27;;
+
+@Component({
+  selector: &#x27;app-schedule&#x27;,
+  templateUrl: &#x27;./schedule.component.html&#x27;,
+  styleUrls: [&#x27;./schedule.component.scss&#x27;]
+})
+export class ScheduleComponent implements OnInit {
+  scheduleForm: FormGroup;
+  validationMsgs: any;
+  interviewDetail: any;
+  countryList: any &#x3D; [];
+  currentUser: any;
+  submitted &#x3D; false;
+  loading &#x3D; false;
+
+  constructor( 
+    private formBuilder: FormBuilder,
+    private jobService: JobService,
+    private route: ActivatedRoute,
+    private commonService: CommonService,
+    private profileService: ProfileService,
+    private message: NzMessageService,
+    private analyticsService: AnalyticsService
+  ) { 
+    this.validationMsgs &#x3D; ValidationMessages;
+  }
+
+  ngOnInit() {
+    this.getCountryList();
+    this.scheduleForm &#x3D; this.formBuilder.group({
+      countryPhoneCode: [&#x27;&#x27;],
+      mobile: [&#x27;&#x27;, [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)]],
+      interviewSlot: [&#x27;&#x27;, Validators.required],
+    });
+    this.profileService.getProfileDetails().subscribe((response) &#x3D;&gt; {
+      if (response &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 200 &amp;&amp; response.data) {
+        this.currentUser &#x3D; response.data;
+        if (this.currentUser[&#x27;basicInfo&#x27;]){
+          this.scheduleForm.get(&#x27;countryPhoneCode&#x27;).setValue(parseInt(this.currentUser[&#x27;basicInfo&#x27;][&#x27;countryPhoneCode&#x27;]));
+          this.scheduleForm.get(&#x27;mobile&#x27;).setValue(this.currentUser[&#x27;basicInfo&#x27;][&#x27;mobile&#x27;]);
+        }
+      }
+    });
+    this.route.queryParamMap.subscribe(result &#x3D;&gt; {
+      if (result &amp;&amp; result[&#x27;params&#x27;] &amp;&amp; result[&#x27;params&#x27;][&#x27;id&#x27;]) {
+        this.getInterviewDetail(result[&#x27;params&#x27;][&#x27;id&#x27;]);
+      }
+    });
+  }
+
+  /**
+   * Get the list of country codes
+   */
+  getCountryList() {
+    this.commonService.getCountryList().subscribe((response) &#x3D;&gt; {
+      if (response.code &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 200 ) {
+        this.countryList &#x3D; response.data;
+      }
+    });
+  }
+
+  /**
+   * Get current interview details
+   * @param interviewId Interview Id
+   */
+  getInterviewDetail(interviewId: string) {
+    const loading &#x3D; this.message.loading(FeedbackMessages.loading.JobInterviewDetailFetch, { nzDuration: 0 }).messageId;
+    this.jobService.getInterviewDetail(interviewId).subscribe(response &#x3D;&gt; {
+      this.message.remove(loading);
+      if (response &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 200 &amp;&amp; response.data) {
+        this.interviewDetail &#x3D; response.data;
+      }
+    }, () &#x3D;&gt; {
+      this.message.remove(loading);
+    });
+  }
+
+  /**
+   * Go to the previous page
+   */
+  goBack(){
+    this.analyticsService.eventEmitter(&#x27;ScheduleInterviewScreen&#x27;, &#x27;ScheduleInterviewCancel&#x27;, &#x27;ScheduleInterviewCancel&#x27;);
+    window.history.back();
+  }
+
+  /**
+  * getter funtion for easy form controls
+  * @return form control values
+  */
+  get f() {
+    return this.scheduleForm.controls;
+  }
+
+  /**
+   * Select interview slot 1 
+   * @param $event 
+   */
+  selectInterviewSlot1($event) {
+    this.analyticsService.eventEmitter(&#x27;ScheduleInterviewScreen&#x27;, &#x27;ScheduleInterviewSlot1&#x27;, &#x27;ScheduleInterviewSlot1&#x27;);
+  }
+
+  /**
+   * Select interview slot 2 
+   * @param $event 
+   */
+  selectInterviewSlot2($event) {
+    this.analyticsService.eventEmitter(&#x27;ScheduleInterviewScreen&#x27;, &#x27;ScheduleInterviewSlot2&#x27;, &#x27;ScheduleInterviewSlot2&#x27;);
+  }
+
+  /**
+   * Schedule Interview
+   */
+  onSubmit() {
+    this.submitted &#x3D; true;
+    if(this.scheduleForm.invalid) {
+      return;
+    } else {
+      if (!this.loading) {
+        let reqBody &#x3D; {
+          &quot;interviewId&quot;: this.interviewDetail.interviewId,
+          &quot;scheduleDate&quot;: this.scheduleForm.value.interviewSlot,
+          &quot;timeZone&quot;: this.interviewDetail.timeZone,
+          &quot;candidatePhone&quot;: this.scheduleForm.value.mobile.toString(),
+          &quot;countryPhoneCode&quot;: this.interviewDetail.clientPhoneCode,
+        }
+        this.loading &#x3D; true;
+        const loading &#x3D; this.message.loading(FeedbackMessages.loading.JobInterviewSchedule, { nzDuration: 0 }).messageId;
+        this.jobService.scheduleInterview(reqBody).subscribe(response &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.message.remove(loading);
+          if (response &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 200) {
+            this.message.success(response.message, {nzDuration: 1500});
+            this.analyticsService.eventEmitter(&#x27;ScheduleInterviewScreen&#x27;, &#x27;ScheduleInterviewSubmit&#x27;, &#x27;ScheduleInterviewSubmit&#x27;);
+            window.history.back();
+          }
+        }, () &#x3D;&gt; {
+          this.loading &#x3D; false;
+          this.message.remove(loading);
+        });
+      }
+    }
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;main-header blue row&quot;&gt;
+    &lt;div class&#x3D;&quot;left-subheader&quot;&gt;
+      &lt;span class&#x3D;&quot;back-button&quot; (click)&#x3D;&quot;goBack()&quot;&gt;&lt;img src&#x3D;&quot;/assets/images/ic-close.svg&quot;&gt;&lt;/span&gt;
+      &lt;p class&#x3D;&quot;page-title&quot;&gt;Interview Schedule&lt;/p&gt;
+    &lt;/div&gt;
+&lt;/section&gt;
+&lt;section class&#x3D;&quot;main-section&quot;&gt;
+  &lt;div class&#x3D;&quot;grey-bg-content&quot;&gt;
+    &lt;div class&#x3D;&quot;schedule-content&quot;&gt;
+        &lt;p class&#x3D;&quot;title&quot;&gt;Allocated Interview Time &lt;sup&gt;*&lt;/sup&gt;&lt;/p&gt;
+        &lt;form [formGroup]&#x3D;&quot;scheduleForm&quot; (ngSubmit)&#x3D;&quot;onSubmit()&quot; *ngIf&#x3D;&quot;interviewDetail&quot;&gt;
+          &lt;nz-radio-group formControlName&#x3D;&quot;interviewSlot&quot;&gt;  
+            &lt;div class&#x3D;&quot;form-group interview-slot&quot;&gt;
+              &lt;p class&#x3D;&quot;flex&quot;&gt;
+                &lt;span class&#x3D;&quot;label&quot;&gt;Slot 1: Date &lt;/span&gt;
+                &lt;span class&#x3D;&quot;label&quot;&gt;Time&lt;/span&gt;
+              &lt;/p&gt;
+              &lt;p class&#x3D;&quot;flex&quot;&gt;
+                &lt;label nz-radio tabindex&#x3D;&quot;1&quot; nz-radio [nzValue]&#x3D;&quot;interviewDetail?.slot1&quot; (ngModelChange)&#x3D;&quot;selectInterviewSlot1($event)&quot;&gt;{{interviewDetail?.slot1 | date: &#x27;dd, MMM yyyy&#x27; : &#x27;GMT&#x27;}}&lt;/label&gt;
+                &lt;span class&#x3D;&quot;interview-time&quot; *ngIf&#x3D;&quot;interviewDetail?.isSlot1AvailableAllDay&quot;&gt;All Day ({{interviewDetail?.timeZone}})&lt;/span&gt;
+                &lt;span class&#x3D;&quot;interview-time&quot; *ngIf&#x3D;&quot;!interviewDetail?.isSlot1AvailableAllDay&quot;&gt;{{interviewDetail?.slot1 | date: &#x27;shortTime&#x27; : &#x27;GMT&#x27;}} ({{interviewDetail?.timeZone}})&lt;/span&gt;
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;form-group interview-slot&quot;&gt;
+              &lt;p class&#x3D;&quot;flex&quot;&gt;
+                &lt;span class&#x3D;&quot;label&quot;&gt;Slot 2: Date &lt;/span&gt;
+                &lt;span class&#x3D;&quot;label&quot;&gt;Time&lt;/span&gt;
+              &lt;/p&gt;
+              &lt;p class&#x3D;&quot;flex&quot;&gt;
+                &lt;label nz-radio tabindex&#x3D;&quot;2&quot; nz-radio [nzValue]&#x3D;&quot;interviewDetail?.slot2&quot; (ngModelChange)&#x3D;&quot;selectInterviewSlot2($event)&quot;&gt;{{interviewDetail?.slot2 | date: &#x27;dd, MMM yyyy&#x27; : &#x27;GMT&#x27;}}&lt;/label&gt;
+                &lt;span class&#x3D;&quot;interview-time&quot; *ngIf&#x3D;&quot;interviewDetail?.isSlot2AvailableAllDay&quot;&gt;All Day ({{interviewDetail?.timeZone}})&lt;/span&gt;
+                &lt;span class&#x3D;&quot;interview-time&quot; *ngIf&#x3D;&quot;!interviewDetail?.isSlot2AvailableAllDay&quot;&gt;{{interviewDetail?.slot2 | date: &#x27;shortTime&#x27; : &#x27;GMT&#x27;}} ({{interviewDetail?.timeZone}})&lt;/span&gt;
+              &lt;/p&gt;
+            &lt;/div&gt;
+            &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; f.interviewSlot.errors&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+              &lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.interviewSlot.errors.required&quot;&gt;{{validationMsgs.InterviewSlotRequired}}&lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/nz-radio-group&gt;
+          
+          &lt;div class&#x3D;&quot;interview-type&quot;&gt;
+            &lt;p class&#x3D;&quot;title&quot;&gt;Interview Type &lt;sup&gt;*&lt;/sup&gt;&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 1&quot;&gt;F2F Video Interview&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 2&quot;&gt;F2F Interview&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 3&quot;&gt;Telephonic Interview&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link-help&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 1&quot;&gt;Interview link will be sent via email&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link-help&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 2&quot;&gt;{{interviewDetail?.interviewLocation}}&lt;/p&gt;
+            &lt;p class&#x3D;&quot;interview-link-help&quot; *ngIf&#x3D;&quot;interviewDetail?.InterviewTypeId &#x3D;&#x3D; 3&quot;&gt;{{interviewDetail?.clientPhoneCode}} {{interviewDetail?.clientPhone}}&lt;/p&gt;
+          &lt;/div&gt;
+          &lt;div class&#x3D;&quot;flex&quot;&gt;
+            &lt;div class&#x3D;&quot;form-group&quot; id&#x3D;&quot;phoneCode&quot;&gt;
+              &lt;nz-select id&#x3D;&quot;phoneCode&quot; class&#x3D;&quot;form-control not-mandate&quot; [nzDropdownMatchSelectWidth]&#x3D;&quot;false&quot; formControlName&#x3D;&quot;countryPhoneCode&quot; style&#x3D;&quot;padding-top: 21px;&quot;&gt;
+                &lt;nz-option nzCustomContent [nzValue]&#x3D;&quot;country.phonecode&quot; [nzLabel]&#x3D;&quot;&#x27;(+&#x27;+country.phonecode+&#x27;)&#x27;&quot; *ngFor&#x3D;&quot;let country of countryList&quot;&gt;{{country.name}}(+{{country.phonecode}})&lt;/nz-option&gt;
+              &lt;/nz-select&gt;
+              &lt;!-- &lt;input type&#x3D;&quot;text&quot; tabindex&#x3D;&quot;3&quot; id&#x3D;&quot;phoneCode&quot; formControlName&#x3D;&quot;countryPhoneCode&quot; class&#x3D;&quot;form-control&quot;/&gt; --&gt;
+              &lt;label for&#x3D;&quot;phoneCode&quot; class&#x3D;&quot;form-control-placeholder&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: f.countryPhoneCode.value, &#x27;inactive&#x27;: !f.countryPhoneCode.value }&quot;&gt;Country Code&lt;/label&gt;
+              &lt;div *ngIf&#x3D;&quot;f.countryPhoneCode.errors&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+                &lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.countryPhoneCode.errors.required&quot;&gt;{{validationMsgs.PhoneRequired}}&lt;/div&gt;
+              &lt;/div&gt;
+            &lt;/div&gt;
+            &lt;div class&#x3D;&quot;form-group&quot; id&#x3D;&quot;phone&quot;&gt;
+                &lt;input type&#x3D;&quot;number&quot; tabindex&#x3D;&quot;3&quot; id&#x3D;&quot;phoneNumber&quot; formControlName&#x3D;&quot;mobile&quot; class&#x3D;&quot;form-control&quot;/&gt;
+                &lt;label for&#x3D;&quot;phoneNumber&quot; class&#x3D;&quot;form-control-placeholder&quot; [ngClass]&#x3D;&quot;{&#x27;active&#x27;: f.mobile.value, &#x27;inactive&#x27;: !f.mobile.value }&quot;&gt;Candidate Phone Number&lt;/label&gt;
+                &lt;div *ngIf&#x3D;&quot;submitted &amp;&amp; f.mobile.errors&quot; class&#x3D;&quot;invalid-feedback&quot;&gt;
+                  &lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.mobile.errors.required&quot;&gt;{{validationMsgs.PhoneRequired}}&lt;/div&gt;
+                  &lt;div class&#x3D;&quot;error&quot; *ngIf&#x3D;&quot;f.mobile.errors.pattern&quot;&gt;{{validationMsgs.PhoneInvalid}}&lt;/div&gt;
+                &lt;/div&gt;
+            &lt;/div&gt;
+          &lt;/div&gt;
+          &lt;p class&#x3D;&quot;phone-update-note&quot;&gt;When you sumbit this phone number, it will be updated in profile&lt;/p&gt;
+          &lt;p class&#x3D;&quot;horizontal-ruler-light&quot;&gt;&lt;/p&gt;
+          
+        &lt;/form&gt;
+        &lt;div class&#x3D;&quot;flex scheduling-btns&quot;&gt;
+          &lt;button class&#x3D;&quot;link-btn&quot; (click)&#x3D;&quot;goBack()&quot;&gt;&lt;span&gt;&lt;img src&#x3D;&quot;../../../assets/images/ic-myjobs-rejected-grey.svg&quot;&gt;&lt;/span&gt;Cancel&lt;/button&gt;
+          &lt;button class&#x3D;&quot;link-btn&quot; type&#x3D;&quot;submit&quot; id&#x3D;&quot;submit&quot; (click)&#x3D;&quot;onSubmit()&quot;&gt;&lt;span&gt;&lt;img src&#x3D;&quot;../../../assets/images/ic-matchingjobsforyou-apply-green.svg&quot;&gt;&lt;/span&gt;Submit&lt;/button&gt;
+        &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./schedule.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.page-title{
+    color: #fff;
+    margin-top: 10px;
+}
+.main-section {
+    background: #f5f5fc;
+    .grey-bg-content{
+        // padding: 20px;
+        margin: 0 auto;
+        width: 64%;
+        background: #fff;
+        .schedule-content{
+            height: calc(100vh - 56px);
+            padding: 20px;
+            box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.07);
+            nz-radio-group, .interview-type {
+                border-bottom: 1px solid #a4a9dc;
+            }
+            nz-radio-group {
+                margin-bottom: 20px;
+            }
+            p{
+                &amp;.title{
+                    margin-bottom: 10px;
+                    color: #4855b5;
+                    opacity: 0.5;
+                    font-size: 12px;
+                }
+            }
+            .label{
+                margin-bottom: 10px;
+                color: #4855b5;
+                opacity: 0.5;
+                &amp;:first-child {
+                    padding-left: 25px;
+                }
+            }
+            .form-group{
+                margin-bottom: 10px;
+                input, nz-select {
+                    border-bottom: 1px solid #a4a9dc;
+                }
+                #phoneCode .ant-select-selection-selected-value {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #4855b5;
+                }
+            }
+            .interview-slot .label,
+            .interview-slot label.ant-radio-wrapper{
+                float: left;
+                width: 50%;
+                margin: 0
+            }
+            .interview-time, .type-of-interview{
+                color: #4855b5;
+                font-size: 14px;
+            }
+            .interview-link{
+                color: #4855b5;
+                font-size: 14px;
+                font-weight: 600; 
+            }
+            .interview-link-help {
+                opacity: 0.5;
+                font-size: 14px;
+            }
+            #phone.form-group{
+                width: 80%;
+            }
+            #phoneCode.form-group {
+                width: calc(20% - 15px);
+                margin-right: 10px;
+            }
+            .phone-update-note{
+                font-size: 12px;
+                font-style: italic;
+            }
+            .horizontal-ruler-light{
+                height: 1px;
+                width: 100%;
+                background: #999;
+            }
+            .scheduling-btns{
+                justify-content: flex-end;
+            }
+        }
+        #phone {
+            .scroll-controller-overlay {
+                width: 32px;
+                height: 32px;
+                position: absolute;
+                background-color: #fff;
+                top: calc(0px + 25px);
+                right: calc(0px + 12px);
+            }
+        }
+    }
+}
+@media screen and (min-width:768px) and (max-width:1000px){
+    #phone{
+        justify-content: space-between;
+        &gt; div{
+            &amp;:first-child{
+                width:36% !important;
+                pointer-events: none;
+            }
+            &amp;:last-child{
+                width:58% !important;
+            }
+
+        }
+    }
+}
+@media screen and (max-width: 767px){
+    .grey-bg-content {
+        width: 100% !important;
+    }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="main-header blue row">    <div class="left-subheader">      <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-close.svg"></span>      <p class="page-title">Interview Schedule</p>    </div></section><section class="main-section">  <div class="grey-bg-content">    <div class="schedule-content">        <p class="title">Allocated Interview Time <sup>*</sup></p>        <form [formGroup]="scheduleForm" (ngSubmit)="onSubmit()" *ngIf="interviewDetail">          <nz-radio-group formControlName="interviewSlot">              <div class="form-group interview-slot">              <p class="flex">                <span class="label">Slot 1: Date </span>                <span class="label">Time</span>              </p>              <p class="flex">                <label nz-radio tabindex="1" nz-radio [nzValue]="interviewDetail?.slot1" (ngModelChange)="selectInterviewSlot1($event)">{{interviewDetail?.slot1 | date: \'dd, MMM yyyy\' : \'GMT\'}}</label>                <span class="interview-time" *ngIf="interviewDetail?.isSlot1AvailableAllDay">All Day ({{interviewDetail?.timeZone}})</span>                <span class="interview-time" *ngIf="!interviewDetail?.isSlot1AvailableAllDay">{{interviewDetail?.slot1 | date: \'shortTime\' : \'GMT\'}} ({{interviewDetail?.timeZone}})</span>              </p>            </div>            <div class="form-group interview-slot">              <p class="flex">                <span class="label">Slot 2: Date </span>                <span class="label">Time</span>              </p>              <p class="flex">                <label nz-radio tabindex="2" nz-radio [nzValue]="interviewDetail?.slot2" (ngModelChange)="selectInterviewSlot2($event)">{{interviewDetail?.slot2 | date: \'dd, MMM yyyy\' : \'GMT\'}}</label>                <span class="interview-time" *ngIf="interviewDetail?.isSlot2AvailableAllDay">All Day ({{interviewDetail?.timeZone}})</span>                <span class="interview-time" *ngIf="!interviewDetail?.isSlot2AvailableAllDay">{{interviewDetail?.slot2 | date: \'shortTime\' : \'GMT\'}} ({{interviewDetail?.timeZone}})</span>              </p>            </div>            <div *ngIf="submitted && f.interviewSlot.errors" class="invalid-feedback">              <div class="error" *ngIf="f.interviewSlot.errors.required">{{validationMsgs.InterviewSlotRequired}}</div>            </div>          </nz-radio-group>                    <div class="interview-type">            <p class="title">Interview Type <sup>*</sup></p>            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 1">F2F Video Interview</p>            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 2">F2F Interview</p>            <p class="interview-link" *ngIf="interviewDetail?.InterviewTypeId == 3">Telephonic Interview</p>            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 1">Interview link will be sent via email</p>            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 2">{{interviewDetail?.interviewLocation}}</p>            <p class="interview-link-help" *ngIf="interviewDetail?.InterviewTypeId == 3">{{interviewDetail?.clientPhoneCode}} {{interviewDetail?.clientPhone}}</p>          </div>          <div class="flex">            <div class="form-group" id="phoneCode">              <nz-select id="phoneCode" class="form-control not-mandate" [nzDropdownMatchSelectWidth]="false" formControlName="countryPhoneCode" style="padding-top: 21px;">                <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="\'(+\'+country.phonecode+\')\'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>              </nz-select>              <!-- <input type="text" tabindex="3" id="phoneCode" formControlName="countryPhoneCode" class="form-control"/> -->              <label for="phoneCode" class="form-control-placeholder" [ngClass]="{\'active\': f.countryPhoneCode.value, \'inactive\': !f.countryPhoneCode.value }">Country Code</label>              <div *ngIf="f.countryPhoneCode.errors" class="invalid-feedback">                <div class="error" *ngIf="f.countryPhoneCode.errors.required">{{validationMsgs.PhoneRequired}}</div>              </div>            </div>            <div class="form-group" id="phone">                <input type="number" tabindex="3" id="phoneNumber" formControlName="mobile" class="form-control"/>                <label for="phoneNumber" class="form-control-placeholder" [ngClass]="{\'active\': f.mobile.value, \'inactive\': !f.mobile.value }">Candidate Phone Number</label>                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">                  <div class="error" *ngIf="f.mobile.errors.required">{{validationMsgs.PhoneRequired}}</div>                  <div class="error" *ngIf="f.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>                </div>            </div>          </div>          <p class="phone-update-note">When you sumbit this phone number, it will be updated in profile</p>          <p class="horizontal-ruler-light"></p>                  </form>        <div class="flex scheduling-btns">          <button class="link-btn" (click)="goBack()"><span><img src="../../../assets/images/ic-myjobs-rejected-grey.svg"></span>Cancel</button>          <button class="link-btn" type="submit" id="submit" (click)="onSubmit()"><span><img src="../../../assets/images/ic-matchingjobsforyou-apply-green.svg"></span>Submit</button>        </div>    </div>  </div></section></div>'
+    var COMPONENTS = [{'name': 'AboutusComponent', 'selector': 'app-about-us'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentsComponent', 'selector': 'app-assessments'},{'name': 'AuthForgotPassComponent', 'selector': 'app-auth-forgot-pass'},{'name': 'AuthLandingComponent', 'selector': 'app-auth-landing'},{'name': 'AuthLeftSectionComponent', 'selector': 'app-auth-left-section'},{'name': 'AuthRightSidebarComponent', 'selector': 'app-auth-right-sidebar'},{'name': 'ChooseSlotComponent', 'selector': 'app-choose-slot'},{'name': 'CommonHeaderComponent', 'selector': 'app-common-header'},{'name': 'CommonJobDetailsComponent', 'selector': 'app-common-job-details'},{'name': 'CommonMapComponent', 'selector': 'app-common-map'},{'name': 'CommonSidemenuComponent', 'selector': 'app-common-sidemenu'},{'name': 'ConfirmOTPComponent', 'selector': 'app-confirm-otp'},{'name': 'DashboardLandingComponent', 'selector': 'app-dashboard-landing'},{'name': 'FaqComponent', 'selector': 'app-faq'},{'name': 'FormButtonComponent', 'selector': 'app-form-button'},{'name': 'JobDetailsComponent', 'selector': 'app-job-details'},{'name': 'MainSearchComponent', 'selector': 'app-main-search'},{'name': 'MatchingJobsComponent', 'selector': 'app-matching-jobs'},{'name': 'MyJobsComponent', 'selector': 'app-my-jobs'},{'name': 'NewPasswordComponent', 'selector': 'app-new-password'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PreInterviewComponent', 'selector': 'app-pre-inteview'},{'name': 'ProfileLandingComponent', 'selector': 'app-profile-landing'},{'name': 'RecentSearchComponent', 'selector': 'app-recent-search'},{'name': 'ResultsSidebarComponent', 'selector': 'app-results-sidebar'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SendOTPComponent', 'selector': 'app-send-otp'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidebarExternalRegisterComponent', 'selector': 'app-sidebar-external-register'},{'name': 'SidebarLoginComponent', 'selector': 'app-sidebar-login'},{'name': 'SidebarOTPVerifyComponent', 'selector': 'app-sidebar-otp-verify'},{'name': 'SidebarRegisterComponent', 'selector': 'app-sidebar-register'},{'name': 'UploadVideoComponent', 'selector': 'app-upload-intro'},{'name': 'ViewJobsComponent', 'selector': 'app-view-jobs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'ScheduleComponent-1'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'ScheduleComponent-1.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

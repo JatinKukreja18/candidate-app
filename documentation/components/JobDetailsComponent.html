@@ -1,0 +1,2861 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>cliksource documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">cliksource documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>JobDetailsComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/job-search/job-details/job-details.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-job-details</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>./job-details.component.scss</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./job-details.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#currentSearchType">currentSearchType</a>
+                            </li>
+                            <li>
+                                <a href="#descSection">descSection</a>
+                            </li>
+                            <li>
+                                <a href="#infoSection">infoSection</a>
+                            </li>
+                            <li>
+                                <a href="#isEmbedVideo">isEmbedVideo</a>
+                            </li>
+                            <li>
+                                <a href="#jobContent">jobContent</a>
+                            </li>
+                            <li>
+                                <a href="#jobs">jobs</a>
+                            </li>
+                            <li>
+                                <a href="#lastPage">lastPage</a>
+                            </li>
+                            <li>
+                                <a href="#loading">loading</a>
+                            </li>
+                            <li>
+                                <a href="#missingFields">missingFields</a>
+                            </li>
+                            <li>
+                                <a href="#radioValue">radioValue</a>
+                            </li>
+                            <li>
+                                <a href="#refreshResultList">refreshResultList</a>
+                            </li>
+                            <li>
+                                <a href="#resultSidebarTitle">resultSidebarTitle</a>
+                            </li>
+                            <li>
+                                <a href="#searchLocation">searchLocation</a>
+                            </li>
+                            <li>
+                                <a href="#selectedJob">selectedJob</a>
+                            </li>
+                            <li>
+                                <a href="#selectedJobDetails">selectedJobDetails</a>
+                            </li>
+                            <li>
+                                <a href="#shareLink">shareLink</a>
+                            </li>
+                            <li>
+                                <a href="#showConfirmationModal">showConfirmationModal</a>
+                            </li>
+                            <li>
+                                <a href="#showPreInterviewModal">showPreInterviewModal</a>
+                            </li>
+                            <li>
+                                <a href="#showShareJobModal">showShareJobModal</a>
+                            </li>
+                            <li>
+                                <a href="#timelineSection">timelineSection</a>
+                            </li>
+                            <li>
+                                <a href="#videosSection">videosSection</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#createShareLink">createShareLink</a>
+                            </li>
+                            <li>
+                                <a href="#editSearchPage">editSearchPage</a>
+                            </li>
+                            <li>
+                                <a href="#getJobDetails">getJobDetails</a>
+                            </li>
+                            <li>
+                                <a href="#getVideoData">getVideoData</a>
+                            </li>
+                            <li>
+                                <a href="#goBack">goBack</a>
+                            </li>
+                            <li>
+                                <a href="#goBackLastPage">goBackLastPage</a>
+                            </li>
+                            <li>
+                                <a href="#gotoSection">gotoSection</a>
+                            </li>
+                            <li>
+                                <a href="#handleConfirmCancel">handleConfirmCancel</a>
+                            </li>
+                            <li>
+                                <a href="#handleConfirmOk">handleConfirmOk</a>
+                            </li>
+                            <li>
+                                <a href="#handlePreInterviewCancel">handlePreInterviewCancel</a>
+                            </li>
+                            <li>
+                                <a href="#handlePreInterviewOk">handlePreInterviewOk</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                            <li>
+                                <a href="#onJobSelect">onJobSelect</a>
+                            </li>
+                            <li>
+                                <a href="#onSelect">onSelect</a>
+                            </li>
+                            <li>
+                                <a href="#takeAction">takeAction</a>
+                            </li>
+                            <li>
+                                <a href="#toggleShareJobModal">toggleShareJobModal</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(searchJobService: <a href="../injectables/SearchJobService.html">SearchJobService</a>, jobService: <a href="../injectables/JobService.html">JobService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, route: <a href="https://angular.io/api/router/ActivatedRoute" target="_blank">ActivatedRoute</a>, message: NzMessageService, authService: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, vimeoService: <a href="../injectables/VimeoService.html">VimeoService</a>, sanitizer: <a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank">DomSanitizer</a>, analyticsService: <a href="../injectables/AnalyticsService.html">AnalyticsService</a>)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>searchJobService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/SearchJobService.html" target="_self" >SearchJobService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>jobService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/JobService.html" target="_self" >JobService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>route</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/ActivatedRoute" target="_blank" >ActivatedRoute</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>message</td>
+                                                  
+                                                        <td>
+                                                                    <code>NzMessageService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>authService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>vimeoService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/VimeoService.html" target="_self" >VimeoService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>sanitizer</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/platform-browser/DomSanitizer" target="_blank" >DomSanitizer</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>analyticsService</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnalyticsService.html" target="_self" >AnalyticsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="createShareLink"></a>
+                    <span class="name">
+                        <b>
+                            createShareLink
+                        </b>
+                        <a href="#createShareLink"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>createShareLink()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="315"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:315</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Create a sharable link for the job</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="editSearchPage"></a>
+                    <span class="name">
+                        <b>
+                            editSearchPage
+                        </b>
+                        <a href="#editSearchPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>editSearchPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="292"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:292</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Goto search page with the search values</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getJobDetails"></a>
+                    <span class="name">
+                        <b>
+                            getJobDetails
+                        </b>
+                        <a href="#getJobDetails"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getJobDetails()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="80"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:80</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get the job detail of selected job</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getVideoData"></a>
+                    <span class="name">
+                        <b>
+                            getVideoData
+                        </b>
+                        <a href="#getVideoData"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getVideoData()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="380"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:380</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get video data based on video Id</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBack"></a>
+                    <span class="name">
+                        <b>
+                            goBack
+                        </b>
+                        <a href="#goBack"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBack()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="229"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:229</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Go to the previous page</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="goBackLastPage"></a>
+                    <span class="name">
+                        <b>
+                            goBackLastPage
+                        </b>
+                        <a href="#goBackLastPage"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>goBackLastPage()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="250"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:250</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Last page </p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="gotoSection"></a>
+                    <span class="name">
+                        <b>
+                            gotoSection
+                        </b>
+                        <a href="#gotoSection"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>gotoSection(sectionName: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>, event)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="264"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:264</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Scroll to the selected section in the Job details header</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>sectionName</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>Name of the section to scroll to.</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>event</td>
+                                    <td>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleConfirmCancel"></a>
+                    <span class="name">
+                        <b>
+                            handleConfirmCancel
+                        </b>
+                        <a href="#handleConfirmCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleConfirmCancel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="330"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:330</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cancel handler for confirmation popup</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handleConfirmOk"></a>
+                    <span class="name">
+                        <b>
+                            handleConfirmOk
+                        </b>
+                        <a href="#handleConfirmOk"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handleConfirmOk()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="337"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:337</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ok handler for confirmation popup</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handlePreInterviewCancel"></a>
+                    <span class="name">
+                        <b>
+                            handlePreInterviewCancel
+                        </b>
+                        <a href="#handlePreInterviewCancel"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handlePreInterviewCancel()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="344"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:344</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Cancel handler for pre-interview popup</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="handlePreInterviewOk"></a>
+                    <span class="name">
+                        <b>
+                            handlePreInterviewOk
+                        </b>
+                        <a href="#handlePreInterviewOk"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>handlePreInterviewOk()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="362"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:362</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Ok handler for pre-interview popup</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="61"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:61</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onJobSelect"></a>
+                    <span class="name">
+                        <b>
+                            onJobSelect
+                        </b>
+                        <a href="#onJobSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onJobSelect(selectedValue)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="157"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:157</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get job details on select</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>selectedValue</td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>job object</p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="onSelect"></a>
+                    <span class="name">
+                        <b>
+                            onSelect
+                        </b>
+                        <a href="#onSelect"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>onSelect()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="213"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:213</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Get the job details on selection of job from theresults list</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="takeAction"></a>
+                    <span class="name">
+                        <b>
+                            takeAction
+                        </b>
+                        <a href="#takeAction"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>takeAction(isApplied: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank">boolean</a>, jobReferenceId: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank">number</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="170"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:170</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Update status of a job to shortlist/applied</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                    <td>Description</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>isApplied</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>boolean value true if status to be is to apply</p>
+
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>jobReferenceId</td>
+                                    <td>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                    <td>
+                                        <p>job reference Id </p>
+
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="toggleShareJobModal"></a>
+                    <span class="name">
+                        <b>
+                            toggleShareJobModal
+                        </b>
+                        <a href="#toggleShareJobModal"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>toggleShareJobModal()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="307"
+                            class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:307</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-description"><p>Toggle Share job modal</p>
+</div>
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="currentSearchType"></a>
+                        <span class="name">
+                            <b>
+                            currentSearchType</b>
+                            <a href="#currentSearchType"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:29</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="descSection"></a>
+                        <span class="name">
+                            <b>
+                            descSection</b>
+                            <a href="#descSection"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;desc&#x27;, {read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:17</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="infoSection"></a>
+                        <span class="name">
+                            <b>
+                            infoSection</b>
+                            <a href="#infoSection"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;info&#x27;, {read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:16</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="isEmbedVideo"></a>
+                        <span class="name">
+                            <b>
+                            isEmbedVideo</b>
+                            <a href="#isEmbedVideo"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:48</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="jobContent"></a>
+                        <span class="name">
+                            <b>
+                            jobContent</b>
+                            <a href="#jobContent"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;jobContent&#x27;, {read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="22" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:22</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="jobs"></a>
+                        <span class="name">
+                            <b>
+                            jobs</b>
+                            <a href="#jobs"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:24</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="lastPage"></a>
+                        <span class="name">
+                            <b>
+                            lastPage</b>
+                            <a href="#lastPage"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:34</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="loading"></a>
+                        <span class="name">
+                            <b>
+                            loading</b>
+                            <a href="#loading"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:46</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="missingFields"></a>
+                        <span class="name">
+                            <b>
+                            missingFields</b>
+                            <a href="#missingFields"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>string[]</code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:47</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="radioValue"></a>
+                        <span class="name">
+                            <b>
+                            radioValue</b>
+                            <a href="#radioValue"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="23" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:23</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="refreshResultList"></a>
+                        <span class="name">
+                            <b>
+                            refreshResultList</b>
+                            <a href="#refreshResultList"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:30</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="resultSidebarTitle"></a>
+                        <span class="name">
+                            <b>
+                            resultSidebarTitle</b>
+                            <a href="#resultSidebarTitle"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:28</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="searchLocation"></a>
+                        <span class="name">
+                            <b>
+                            searchLocation</b>
+                            <a href="#searchLocation"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="27" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:27</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedJob"></a>
+                        <span class="name">
+                            <b>
+                            selectedJob</b>
+                            <a href="#selectedJob"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="25" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:25</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="selectedJobDetails"></a>
+                        <span class="name">
+                            <b>
+                            selectedJobDetails</b>
+                            <a href="#selectedJobDetails"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="26" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:26</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="shareLink"></a>
+                        <span class="name">
+                            <b>
+                            shareLink</b>
+                            <a href="#shareLink"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>    <code>literal type</code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>{
+    facebook: &#x27;&#x27;,
+    twitter: &#x27;&#x27;,
+    linkedin: &#x27;&#x27;,
+    email: &#x27;&#x27;
+  }</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:35</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showConfirmationModal"></a>
+                        <span class="name">
+                            <b>
+                            showConfirmationModal</b>
+                            <a href="#showConfirmationModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:32</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showPreInterviewModal"></a>
+                        <span class="name">
+                            <b>
+                            showPreInterviewModal</b>
+                            <a href="#showPreInterviewModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:33</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="showShareJobModal"></a>
+                        <span class="name">
+                            <b>
+                            showShareJobModal</b>
+                            <a href="#showShareJobModal"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>false</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:31</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="timelineSection"></a>
+                        <span class="name">
+                            <b>
+                            timelineSection</b>
+                            <a href="#timelineSection"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;timeline&#x27;, {read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:21</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="videosSection"></a>
+                        <span class="name">
+                            <b>
+                            videosSection</b>
+                            <a href="#videosSection"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <b>Decorators : </b>
+                            <br />
+                            <code>
+                                @ViewChild(&#x27;videos&#x27;, {read: ElementRef})<br />
+                            </code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/job-search/job-details/job-details.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit, ViewChild, ElementRef } from &#x27;@angular/core&#x27;;
+import { Router, ActivatedRoute } from &#x27;@angular/router&#x27;;
+import { AuthenticationService,SearchJobService, JobService, VimeoService, AnalyticsService } from &#x27;@app/core&#x27;;
+import { NzMessageService } from &#x27;ng-zorro-antd&#x27;;
+import { FeedbackMessages } from &#x27;@app/core/messages&#x27;;
+import { DomSanitizer } from &#x27;@angular/platform-browser&#x27;;
+
+
+@Component({
+  selector: &#x27;app-job-details&#x27;,
+  templateUrl: &#x27;./job-details.component.html&#x27;,
+  styleUrls: [&#x27;./job-details.component.scss&#x27;]
+})
+export class JobDetailsComponent implements OnInit {
+  // Element reference to scroll to the respective element
+  @ViewChild(&#x27;info&#x27;, { read: ElementRef }) infoSection: ElementRef;
+  @ViewChild(&#x27;desc&#x27;, { read: ElementRef }) descSection: ElementRef;
+  @ViewChild(&#x27;videos&#x27;, { read: ElementRef }) videosSection: ElementRef;
+  // @ViewChild(&#x27;slot&#x27;, { read: ElementRef }) slotSection: ElementRef;
+  // @ViewChild(&#x27;intro&#x27;, { read: ElementRef }) introSection: ElementRef;
+  @ViewChild(&#x27;timeline&#x27;, { read: ElementRef }) timelineSection: ElementRef;
+  @ViewChild(&#x27;jobContent&#x27;, { read: ElementRef }) jobContent: ElementRef;
+  radioValue: any;
+  jobs: any;
+  selectedJob: any;
+  selectedJobDetails: any;
+  searchLocation: any;
+  resultSidebarTitle: string;
+  currentSearchType: number;
+  refreshResultList &#x3D; false;
+  showShareJobModal &#x3D; false;
+  showConfirmationModal &#x3D; false;
+  showPreInterviewModal &#x3D; false;
+  lastPage: any;
+  shareLink: {
+    facebook: string,
+    twitter: string,
+    linkedin: string,
+    email: string
+  } &#x3D; {
+    facebook: &#x27;&#x27;,
+    twitter: &#x27;&#x27;,
+    linkedin: &#x27;&#x27;,
+    email: &#x27;&#x27;
+  }
+  loading &#x3D; false;
+  missingFields: string[];
+  isEmbedVideo: boolean;
+  constructor(
+    private searchJobService: SearchJobService,
+    private jobService: JobService,
+    private router: Router,
+    private route: ActivatedRoute,
+    private message: NzMessageService,
+    private authService: AuthenticationService,
+    private vimeoService: VimeoService,
+    private sanitizer: DomSanitizer,
+    private analyticsService: AnalyticsService
+  ) { }
+
+  ngOnInit() {
+    this.currentSearchType &#x3D; this.searchJobService.getSearchType();
+    this.searchJobService.searchActivePage(2);
+    this.jobs &#x3D; this.searchJobService.getSearchResults(); // Get the job search results from the search results page
+    if (this.jobs &amp;&amp; this.jobs.results) {
+      this.resultSidebarTitle &#x3D; &#x60;Top ${this.jobs.results.length} of ${this.jobs.totalResult} Matching Jobs&#x60;;
+    }
+    this.selectedJob &#x3D; this.searchJobService.getSelectedJob(); // Get the selected Job form search result page
+    // Get the search values like location, skills from the search jobs page to point the location on map on the Results page
+    this.searchLocation &#x3D; this.searchJobService.getSearchLocation();
+    if (window.navigator) {
+      if (this.vimeoService.getBrowserVersion() &#x3D;&#x3D; &#x27;Safari 12&#x27;) this.isEmbedVideo &#x3D; true;
+      else this.isEmbedVideo &#x3D; false;
+    }
+  }
+
+  /**
+   * Get the job detail of selected job
+  */
+  getJobDetails(){
+    const loading &#x3D; this.message.loading(FeedbackMessages.loading.JobDetailsFetch, { nzDuration: 0 }).messageId;
+    this.searchJobService.getJobDetails(0).subscribe((response) &#x3D;&gt; {
+      if(response.code &#x3D;&#x3D;&#x3D; 200) {
+        this.selectedJobDetails &#x3D; response.data;
+        this.searchJobService.setSelectedJobDetails(this.selectedJobDetails);
+        this.getVideoData();
+        this.createShareLink();
+        setTimeout(() &#x3D;&gt; {
+          let element &#x3D; this.jobContent.nativeElement;
+          element.scrollTo(0, 0);
+          document.querySelectorAll(&quot;.scroll-to-header li.active&quot;).forEach((liElement) &#x3D;&gt; {
+            liElement.classList.remove(&quot;active&quot;);
+          });
+          document.querySelector(&#x27;.scroll-to-header li&#x27;).classList.add(&#x27;active&#x27;);
+        });
+        if(this.selectedJobDetails &amp;&amp; this.selectedJobDetails.JobVideo instanceof Array &amp;&amp; this.selectedJobDetails.JobVideo.length &gt; 0){
+          this.selectedJobDetails.JobVideo &#x3D; this.selectedJobDetails.JobVideo.map((elem) &#x3D;&gt; {
+            if (elem.url &amp;&amp; elem.venderId &#x3D;&#x3D; 2) {
+              this.vimeoService.getVideoDataById(elem.url).subscribe(response &#x3D;&gt; {
+                if (response &amp;&amp; response.files &amp;&amp; response.files instanceof Array &amp;&amp; response.files.length &gt; 0 &amp;&amp; response[&#x27;embed&#x27;] &amp;&amp; response[&#x27;embed&#x27;][&#x27;html&#x27;]) {
+                  elem.url &#x3D; this.sanitizer.bypassSecurityTrustResourceUrl(response.files[0][&#x27;link&#x27;])
+                  let vidClipDiv &#x3D; document.createElement(&#x27;div&#x27;);
+                  let vidColDiv &#x3D; document.createElement(&quot;div&quot;);
+                  vidClipDiv.classList.add(&#x27;vid-clip&#x27;);
+                  vidColDiv.classList.add(&quot;video-col&quot;);
+                  if (this.isEmbedVideo) {
+                    vidClipDiv.innerHTML &#x3D; response[&#x27;embed&#x27;][&#x27;html&#x27;];
+                    vidClipDiv.querySelector(&quot;iframe&quot;).style.width &#x3D; &quot;180px&quot;;
+                    vidClipDiv.querySelector(&quot;iframe&quot;).style.height &#x3D; &quot;107px&quot;;
+                    vidClipDiv.querySelector(&quot;iframe&quot;).style.background &#x3D; &quot;#404040&quot;;
+                    vidColDiv.appendChild(vidClipDiv);
+                  } else {
+                    let videoElement &#x3D; document.createElement(&quot;video&quot;);
+                    videoElement.src &#x3D; response.files[0][&#x27;link&#x27;];
+                    videoElement.controls &#x3D; true;
+                    videoElement.autoplay &#x3D; false;
+                    videoElement.style.width &#x3D; &quot;180px&quot;;
+                    videoElement.style.height &#x3D; &quot;107px&quot;;
+                    videoElement.style.background &#x3D; &quot;#404040&quot;;
+                    vidColDiv.appendChild(videoElement);
+                  }
+                  document.querySelector(&quot;#videos .row&quot;).appendChild(vidColDiv);
+                }
+              });
+            } else if (elem.url &amp;&amp; elem.venderId &#x3D;&#x3D; 1) {
+              let vidClipDiv &#x3D; document.createElement(&#x27;div&#x27;);
+              let vidColDiv &#x3D; document.createElement(&quot;div&quot;);
+              let videoElement &#x3D; document.createElement(&quot;video&quot;);
+              vidClipDiv.classList.add(&#x27;vid-clip&#x27;);
+              vidColDiv.classList.add(&quot;video-col&quot;);
+              videoElement.src &#x3D; elem.url;
+              videoElement.controls &#x3D; true;
+              videoElement.autoplay &#x3D; false;
+              videoElement.style.width &#x3D; &quot;180px&quot;;
+              videoElement.style.height &#x3D; &quot;107px&quot;;
+              videoElement.style.background &#x3D; &quot;#404040&quot;;
+              vidColDiv.appendChild(videoElement);
+              document.querySelector(&quot;#videos .row&quot;).appendChild(vidColDiv);
+            }
+            return elem;
+          });
+        }
+        if(this.route.snapshot.queryParams &amp;&amp; this.route.snapshot.queryParams[&#x27;video_uri&#x27;]) {
+          this.showPreInterviewModal &#x3D; true;
+        }
+      }
+      this.message.remove(loading);
+    }, (error) &#x3D;&gt; {
+      this.message.remove(loading);
+    });
+  }
+
+  /**
+   * Get job details on select
+   * @param selectedValue job object
+   */
+  onJobSelect(selectedValue) {
+    if (!selectedValue) {
+      this.selectedJobDetails &#x3D; null;
+    } else {
+      this.getJobDetails();
+    }
+  }
+
+  /**
+   * Update status of a job to shortlist/applied
+   * @param isApplied boolean value true if status to be is to apply
+   * @param jobReferenceId  job reference Id 
+   */
+  takeAction(isApplied: boolean, jobReferenceId: number) {
+    let reqBody &#x3D; {
+      referrenceId: jobReferenceId.toString(),
+      status: isApplied ? 18 : 1
+    }
+    if (!this.loading) {
+      this.loading &#x3D; true;
+      const loading &#x3D; this.message.loading(FeedbackMessages.loading.JobShortlist, {nzDuration: 0}).messageId;
+      this.searchJobService.takeAction(reqBody).subscribe((response) &#x3D;&gt; {
+        this.loading &#x3D; false;
+        this.message.remove(loading);
+        if (response &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 200 &amp;&amp; response.data) {
+          this.message.success(response.message, {nzDuration: 1500});
+          if (isApplied &amp;&amp; this.selectedJob) {
+            this.selectedJob.isShortlisted &#x3D; false;
+            this.selectedJob.isApplyed &#x3D; true;
+            this.analyticsService.eventEmitter(&#x27;JobDetailsScreen&#x27;, &#x27;JobDetailsApply&#x27;, &#x27;JobDetailsApply&#x27;);
+            this.authService.preInterviewRedirectPage(this.router.url);
+            this.showPreInterviewModal &#x3D; true;
+            // this.router.navigateByUrl(&#x27;/job/preinterview&#x27;);
+            // this.jobService.startPreInterviewProcess.next(true);
+          } else if (!isApplied &amp;&amp; this.selectedJob) {
+            this.selectedJob.isShortlisted &#x3D; true;
+            this.analyticsService.eventEmitter(&#x27;JobDetailsScreen&#x27;, &#x27;JobDetailShortlist&#x27;, &#x27;JobDetailShortlist&#x27;);
+          }
+          this.searchJobService.setSelectedJob(this.selectedJob);
+          this.searchJobService.refreshResults.next(true);
+          // this.getJobDetails();
+        } else if (response.code &amp;&amp; response.code &#x3D;&#x3D;&#x3D; 710 &amp;&amp; response.data &amp;&amp; response.data[&#x27;missingFields&#x27;] &amp;&amp; response.data[&#x27;missingFields&#x27;].length &gt; 0) {
+          this.missingFields &#x3D; response.data[&#x27;missingFields&#x27;];
+          this.showConfirmationModal &#x3D; true;
+          // this.router.navigate([&#x27;profile&#x27;], {queryParams: {fields: response.data[&#x27;missingFields&#x27;].toString()}});
+        }
+      }, () &#x3D;&gt; {
+        this.loading &#x3D; false;
+        this.message.remove(loading);
+      });
+    }
+  }
+
+  /**
+   * Get the job details on selection of job from theresults list
+   */
+  onSelect() {
+    this.selectedJob &#x3D; this.searchJobService.getSelectedJob();
+    this.selectedJobDetails &#x3D; null;
+    this.getJobDetails();
+    // let element &#x3D; this.jobContent.nativeElement;
+    // element.scrollTo(0, 0);
+    // document.querySelectorAll(&quot;.scroll-to-header li.active&quot;).forEach((liElement) &#x3D;&gt; {
+    //   liElement.classList.remove(&quot;active&quot;);
+    // });
+    // document.querySelector(&#x27;.scroll-to-header li&#x27;).classList.add(&#x27;active&#x27;)
+    // element.classList.add(&quot;active&quot;);
+  }
+
+  /**
+   * Go to the previous page
+   */
+  goBack(){
+    // if (this.currentSearchType &amp;&amp; this.currentSearchType &#x3D;&#x3D; 1) {
+    //   if(this.lastPage &#x3D;&#x3D; 1) {
+    //     this.router.navigate([&#x27;/dashboard&#x27;], {queryParamsHandling: &#x27;preserve&#x27;});
+    //   } else if (this.lastPage &#x3D;&#x3D; 2) {
+    //     this.router.navigate([&#x27;/search&#x27;], {queryParamsHandling: &#x27;preserve&#x27;});
+    //   }
+    // } else if(this.currentSearchType &amp;&amp; this.currentSearchType &#x3D;&#x3D; 2){
+    //   window.history.go(-2);
+    // }
+    let previousUrlsHistory &#x3D; this.authService.routeHistory();
+    if (previousUrlsHistory instanceof Array &amp;&amp; previousUrlsHistory.length &gt; 0) {
+      this.router.navigate([previousUrlsHistory[previousUrlsHistory.length - 1]], {queryParamsHandling: &#x27;preserve&#x27;});
+    } else {
+      window.history.back();
+    }
+  }
+
+  /**
+   * Last page 
+   */
+  goBackLastPage() {
+    // window.history.back();
+    let previousUrlsHistory &#x3D; this.authService.searchPageRouteHistory();
+    if (previousUrlsHistory instanceof Array &amp;&amp; previousUrlsHistory.length &gt; 0) {
+      this.router.navigate([previousUrlsHistory[previousUrlsHistory.length - 2]], {queryParamsHandling: &#x27;preserve&#x27;});
+    } else {
+      window.history.back();
+    }
+  }
+
+  /**
+   * Scroll to the selected section in the Job details header
+   * @param sectionName Name of the section to scroll to.
+   */
+  gotoSection(sectionName: string, event) {
+    let element;
+    document.querySelectorAll(&quot;.scroll-to-header li.active&quot;).forEach((liElement) &#x3D;&gt; {
+      liElement.classList.remove(&quot;active&quot;);
+    });
+    switch(sectionName) {
+      case &#x27;info&#x27;: element &#x3D; this.infoSection.nativeElement;
+        break;
+      case &#x27;desc&#x27;: element &#x3D; this.descSection.nativeElement;
+        break;
+      case &#x27;videos&#x27;: element &#x3D; this.videosSection.nativeElement;
+        break;
+      // case &#x27;slot&#x27;: element &#x3D; this.slotSection.nativeElement;
+      //   break;
+      // case &#x27;intro&#x27;: element &#x3D; this.introSection.nativeElement;
+      //   break;
+      case &#x27;timeline&#x27;: element &#x3D; this.timelineSection.nativeElement;
+        break;
+      default: element &#x3D; this.infoSection.nativeElement;
+        break;
+    }
+    event.currentTarget.classList.add(&quot;active&quot;);
+    element.scrollIntoView({behavior: &#x27;smooth&#x27;, block: &#x27;start&#x27;});
+  }
+
+  /**
+   * Goto search page with the search values
+   */
+  editSearchPage() {
+    let searchData &#x3D; this.searchJobService.getSearchLocation();
+    let location;
+    let skills;
+    if (searchData){
+      location &#x3D; searchData[&#x27;location&#x27;];
+      skills &#x3D; searchData[&#x27;query&#x27;];
+      this.router.navigate([&#x27;search&#x27;], {queryParams: { skills: skills, location: location}});
+    }
+    // this.router.navigate([&#x27;search&#x27;], {queryParams: { skills: skills, location: location}});
+  }
+
+  /**
+   * Toggle Share job modal
+   */
+  toggleShareJobModal() {
+    if(this.showShareJobModal) this.showShareJobModal &#x3D; false;
+    else this.showShareJobModal &#x3D; true;
+  }
+
+  /**
+   * Create a sharable link for the job
+   */
+  createShareLink(){
+    const title &#x3D; this.selectedJobDetails.quickInfo.jobTitle;
+    const id &#x3D; this.selectedJobDetails.quickInfo.referrenceId;
+    this.shareLink &#x3D; {
+      facebook: &#x60;https://facebook.com/sharer/sharer.php?u&#x3D;${encodeURIComponent(this.selectedJobDetails.webUrl)}&#x60;,
+      twitter: &#x60;https://twitter.com/intent/tweet?text&#x3D;${title}&amp;url&#x3D;${encodeURIComponent(this.selectedJobDetails.webUrl)}&#x60;,
+      email: &#x60;mailto:?subject&#x3D;${title}&amp;body&#x3D;${this.selectedJobDetails.webUrl}&#x60;,
+      // linkedin: &#x60;https://www.linkedin.com/shareArticle?mini&#x3D;true&amp;url&#x3D;${encodeURIComponent(this.selectedJobDetails.webUrl)}&amp;summary&#x3D;${title}&#x60; 
+      linkedin: &#x60;https://www.linkedin.com/shareArticle?mini&#x3D;true&amp;url&#x3D;${this.selectedJobDetails.webUrl}&amp;summary&#x3D;${title}&#x60; 
+    }
+  }
+
+  /**
+   * Cancel handler for confirmation popup
+   */
+  handleConfirmCancel() {
+    this.showConfirmationModal &#x3D; false;
+  }
+
+  /**
+   * Ok handler for confirmation popup
+   */
+  handleConfirmOk() {
+    this.router.navigate([&#x27;profile&#x27;], {queryParams: {fields: this.missingFields.toString()}});
+  }
+
+  /**
+   * Cancel handler for pre-interview popup
+   */
+  handlePreInterviewCancel() {
+    let redirectPage &#x3D; this.authService.preInterviewRedirectPage();
+    if (redirectPage) {
+      if (new RegExp(&#x27;(video_uri)&#x27;).test(redirectPage)) {
+        this.router.navigateByUrl(redirectPage.split(&#x27;video_uri&#x27;)[0]);
+      } else {
+        this.router.navigateByUrl(redirectPage);
+      }
+    } else {
+      this.router.navigateByUrl(this.router.url.split(&#x27;video_uri&#x27;)[0]);
+    }
+    this.jobService.clearPreinterviewData();
+    this.showPreInterviewModal &#x3D; false;
+  }
+
+  /**
+   * Ok handler for pre-interview popup
+   */
+  handlePreInterviewOk() {
+    let redirectPage &#x3D; this.authService.preInterviewRedirectPage();
+    if (redirectPage) {
+      if (new RegExp(&#x27;(video_uri)&#x27;).test(redirectPage)) {
+        this.router.navigateByUrl(redirectPage.split(&#x27;video_uri&#x27;)[0]);
+      } else {
+        this.router.navigateByUrl(redirectPage);
+      }
+    } else {
+      this.router.navigateByUrl(this.router.url.split(&#x27;video_uri&#x27;)[0]);
+    }
+    this.jobService.clearPreinterviewData();
+    this.showPreInterviewModal &#x3D; false;
+  }
+
+  /**
+   * Get video data based on video Id
+   */
+  getVideoData() {
+    if (this.selectedJobDetails 
+      &amp;&amp; this.selectedJobDetails.preInterviewProcess 
+      &amp;&amp; this.selectedJobDetails.preInterviewProcess.introduction_video_id
+    ) {
+      this.vimeoService.getVideoDataById(this.selectedJobDetails.preInterviewProcess.introduction_video_id).subscribe(response &#x3D;&gt; {
+        if (response &amp;&amp; response.files &amp;&amp; response.files instanceof Array &amp;&amp; response.files.length &gt; 0) {
+          let videoElement &#x3D; document.createElement(&quot;video&quot;);
+          videoElement.src &#x3D; response.files[0][&#x27;link&#x27;];
+          videoElement.controls &#x3D; true;
+          videoElement.autoplay &#x3D; false;
+          videoElement.style.width &#x3D; &quot;181px&quot;;
+          videoElement.style.height &#x3D; &quot;107px&quot;;
+          document.querySelector(&quot;#preInterviewDiv&quot;).appendChild(videoElement);
+        }
+      });
+    }
+  }
+  
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;section class&#x3D;&quot;main-header blue row&quot;&gt;
+  &lt;div class&#x3D;&quot;left-subheader&quot;&gt;
+    &lt;span class&#x3D;&quot;back-button&quot; (click)&#x3D;&quot;goBack()&quot;&gt;&lt;img src&#x3D;&quot;/assets/images/ic-arrow-back.svg&quot;&gt;&lt;/span&gt;
+    &lt;p [ngClass]&#x3D;&quot;searchLocation?.query ? &#x27;search-title&#x27;: &#x27;matching-jobs-search-title&#x27;&quot; title&#x3D;&quot;{{searchLocation?.query ? searchLocation?.query.split(&#x27;,&#x27;).join(&#x27;, &#x27;) : &#x27;Matching Jobs&#x27;}}&quot;&gt;{{searchLocation?.query ? searchLocation?.query.split(&#x27;,&#x27;).join(&#x27;, &#x27;) : &#x27;Matching Jobs&#x27;}}&lt;/p&gt;
+    &lt;p class&#x3D;&quot;search-city&quot; *ngIf&#x3D;&quot;searchLocation?.location&quot;&gt;{{searchLocation?.location}}&lt;/p&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;right-subheader row&quot; *ngIf&#x3D;&quot;currentSearchType &#x3D;&#x3D; 1&quot;&gt;
+    &lt;span (click)&#x3D;&quot;editSearchPage()&quot;&gt;&lt;img src&#x3D;&quot;/assets/images/ic-edit.svg&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;app-results-sidebar (selected)&#x3D;&quot;onSelect()&quot; (fetched)&#x3D;&quot;onJobSelect($event)&quot;&gt;&lt;/app-results-sidebar&gt;
+&lt;section class&#x3D;&quot;main-section&quot;&gt;
+  &lt;div class&#x3D;&quot;content-header row&quot;&gt;
+    Job Details &lt;span class&#x3D;&quot;cross&quot;&gt;&lt;img src&#x3D;&quot;/assets/images/ic-close.svg&quot; alt&#x3D;&quot;close&quot; (click)&#x3D;&quot;goBackLastPage()&quot;&gt;&lt;/span&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;content-menu&quot;&gt;
+    &lt;ul class&#x3D;&quot;scroll-to-header&quot;&gt;
+      &lt;li class&#x3D;&quot;active&quot; (click)&#x3D;&quot;gotoSection(&#x27;info&#x27;, $event)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Quick Info&lt;/a&gt;&lt;/li&gt;
+      &lt;li (click)&#x3D;&quot;gotoSection(&#x27;desc&#x27;, $event)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Description&lt;/a&gt;&lt;/li&gt;
+      &lt;li (click)&#x3D;&quot;gotoSection(&#x27;videos&#x27;, $event)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Videos&lt;/a&gt;&lt;/li&gt;
+      &lt;!-- &lt;li (click)&#x3D;&quot;gotoSection(&#x27;slot&#x27;)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Interview Slot&lt;/a&gt;&lt;/li&gt;
+      &lt;li (click)&#x3D;&quot;gotoSection(&#x27;intro&#x27;)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Record Intro&lt;/a&gt;&lt;/li&gt; --&gt;
+      &lt;li (click)&#x3D;&quot;gotoSection(&#x27;timeline&#x27;, $event)&quot;&gt;&lt;a alt&#x3D;&quot;&quot;&gt;Timeline&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+    &lt;div class&#x3D;&quot;action-buttons&quot;&gt;
+      &lt;!-- &lt;button class&#x3D;&quot;orange-button&quot; *ngIf&#x3D;&quot;!selectedJobDetails?.quickInfo?.isshortlisted &amp;&amp; !selectedJobDetails?.quickInfo?.isApplyed&quot; (click)&#x3D;&quot;takeAction(false, selectedJobDetails.quickInfo.referrenceId)&quot;&gt;Shortlist&lt;/button&gt; --&gt;
+      &lt;button class&#x3D;&quot;orange-button&quot; *ngIf&#x3D;&quot;selectedJob &amp;&amp; !selectedJob?.isApplyed &amp;&amp; selectedJobDetails &amp;&amp; !selectedJobDetails?.quickInfo?.isApplyed&quot; (click)&#x3D;&quot;takeAction(true, selectedJobDetails?.quickInfo?.referrenceId)&quot;&gt;Apply&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class&#x3D;&quot;job-content&quot; #jobContent&gt;
+    &lt;!-- Quick Info Section --&gt;
+    &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;info&quot; #info&gt;
+      &lt;p class&#x3D;&quot;job-title&quot;&gt;{{selectedJobDetails?.quickInfo?.jobTitle}}&lt;/p&gt;
+      &lt;p class&#x3D;&quot;company&quot;&gt;{{selectedJobDetails?.quickInfo?.companyName}} &lt;span class&#x3D;&quot;location&quot;&gt;{{selectedJobDetails?.quickInfo?.Location}}&lt;/span&gt;&lt;/p&gt;
+      &lt;div class&#x3D;&quot;details-intro row flex&quot; *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo&quot;&gt;
+        &lt;div class&#x3D;&quot;exp-col&quot;&gt;
+          &lt;img src&#x3D;&quot;../../../assets/images/ic-experience.svg&quot; alt&#x3D;&quot;&quot;&gt;
+          &lt;p class&#x3D;&quot;font-bold&quot;&gt;{{selectedJobDetails?.quickInfo?.experience ? selectedJobDetails?.quickInfo?.experience : &#x27;Not Available&#x27;}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;pay-col&quot;&gt;
+            &lt;img src&#x3D;&quot;../../../assets/images/ic-bill-rate.svg&quot; alt&#x3D;&quot;&quot;&gt;
+            &lt;p *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo?.payRate&quot; class&#x3D;&quot;font-bold&quot;&gt;{{selectedJobDetails?.quickInfo?.payRateUnitSymbol}}{{selectedJobDetails?.quickInfo?.payRate}}{{selectedJobDetails?.quickInfo?.payRateUnit}}&lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;!selectedJobDetails?.quickInfo?.payRate&quot; class&#x3D;&quot;font-bold&quot;&gt;Not Available&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;post-col&quot;&gt;
+            &lt;img src&#x3D;&quot;../../../assets/images/ic-calendar.svg&quot; alt&#x3D;&quot;&quot;&gt;
+            &lt;p *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo?.postedDate&quot; class&#x3D;&quot;font-bold&quot;&gt;{{selectedJobDetails?.quickInfo?.postedDate | timeago}}&lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;!selectedJobDetails?.quickInfo?.postedDate&quot; class&#x3D;&quot;font-bold&quot;&gt;Not Available&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;pos-col&quot;&gt;
+            &lt;img src&#x3D;&quot;../../../assets/images/drawermenu-ic-myjobs.svg&quot; alt&#x3D;&quot;&quot;&gt;
+            &lt;p&gt;{{selectedJobDetails?.quickInfo?.jobtype? selectedJobDetails?.quickInfo?.jobtype  + &#x27; Position&#x27; : &#x27;Not Available&#x27;}}&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;assess-col&quot;&gt;
+            &lt;img src&#x3D;&quot;../../../assets/images/dashboard-ic-assessments-completed.svg&quot; alt&#x3D;&quot;&quot;&gt;
+            &lt;p *ngIf&#x3D;&quot;selectedJobDetails?.includeTechAssessment&quot;&gt;Assessment Required&lt;/p&gt;
+            &lt;p *ngIf&#x3D;&quot;!selectedJobDetails?.includeTechAssessment&quot;&gt;Assessment Not Required&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot; *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo&quot;&gt;Job Requirements&lt;/p&gt;
+      &lt;pre class&#x3D;&quot;base-font&quot;&gt;{{selectedJobDetails?.quickInfo?.requirement}}&lt;/pre&gt;
+      &lt;!-- &lt;ul *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo&quot;&gt;
+        &lt;li&gt;{{selectedJobDetails?.quickInfo?.requirement}}&lt;/li&gt;
+      &lt;/ul&gt; --&gt;
+      &lt;div class&#x3D;&quot;ruler&quot; *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;row&quot; *ngIf&#x3D;&quot;selectedJobDetails?.quickInfo&quot;&gt;
+          &lt;span class&#x3D;&quot;job-match&quot; [ngClass]&#x3D;&quot;{&#x27;red&#x27;: selectedJobDetails?.quickInfo?.score &lt;&#x3D; 30, &#x27;yellow&#x27;: selectedJobDetails?.quickInfo?.score &lt;&#x3D; 50 &amp;&amp; selectedJobDetails?.quickInfo?.score &gt;30, &#x27;light-green&#x27;: selectedJobDetails?.quickInfo?.score &lt;&#x3D; 80 &amp;&amp; selectedJobDetails?.quickInfo?.score &gt;50, &#x27;dark-green&#x27;: selectedJobDetails?.quickInfo?.score &gt; 80}&quot;&gt;{{selectedJobDetails?.quickInfo?.score}} % Match&lt;/span&gt;
+          &lt;p class&#x3D;&quot;detail-right-links&quot;&gt;
+            &lt;span *ngIf&#x3D;&quot;selectedJob &amp;&amp; !selectedJob?.isShortlisted &amp;&amp; !selectedJob?.isApplyed&quot; (click)&#x3D;&quot;takeAction(false, selectedJobDetails?.quickInfo?.referrenceId)&quot;&gt;
+              &lt;img src&#x3D;&quot;/assets/images/ic-matchingjobsforyou-shortlist.svg&quot; alt&#x3D;&quot;&quot;&gt;Shortlist
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;green-text&quot; *ngIf&#x3D;&quot;selectedJob &amp;&amp; selectedJob?.isShortlisted &amp;&amp; !selectedJob?.isApplyed&quot;&gt;
+              &lt;img src&#x3D;&quot;/assets/images/ic-matchingjobsforyou-shortlisted.svg&quot; alt&#x3D;&quot;&quot;&gt;Shortlisted
+            &lt;/span&gt;
+            &lt;span class&#x3D;&quot;green-text&quot; *ngIf&#x3D;&quot;selectedJob &amp;&amp; selectedJob?.isApplyed&quot;&gt;
+              &lt;img src&#x3D;&quot;/assets/images/ic-matchingjobsforyou-applied.svg&quot; alt&#x3D;&quot;&quot;&gt;Applied
+            &lt;/span&gt;
+            &lt;!-- &lt;span *ngIf&#x3D;&quot;!selectedJobDetails?.quickInfo?.isApplyed&quot; (click)&#x3D;&quot;takeAction(true, selectedJobDetails?.quickInfo?.referrenceId)&quot;&gt;
+              &lt;img src&#x3D;&quot;/assets/images/ic-matchingjobsforyou-apply-orange.svg&quot; alt&#x3D;&quot;&quot;&gt;Apply
+            &lt;/span&gt; --&gt;
+            &lt;span (click)&#x3D;&quot;toggleShareJobModal()&quot;&gt;
+              &lt;img src&#x3D;&quot;/assets/images/ic-job-details-share.svg&quot; alt&#x3D;&quot;&quot;&gt;Share
+            &lt;/span&gt;
+          &lt;/p&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Description Section --&gt;
+    &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;desc&quot; #desc&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot;&gt;Job Description&lt;/p&gt;
+      &lt;pre class&#x3D;&quot;base-font&quot;&gt;{{selectedJobDetails?.description}}&lt;/pre&gt;
+    &lt;/div&gt;
+    &lt;!-- Video Section --&gt;
+    &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;videos&quot; #videos&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot;&gt;Videos&lt;/p&gt;
+      &lt;div class&#x3D;&quot;ruler&quot;&gt;&lt;/div&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;!-- &lt;div class&#x3D;&quot;video-col&quot;&gt;
+          &lt;div class&#x3D;&quot;vid-clip&quot;&gt;
+            &lt;video [src]&#x3D;&quot;video.url&quot; controls&gt;&lt;/video&gt;
+          &lt;/div&gt;
+        &lt;/div&gt; --&gt;
+        &lt;!-- &lt;div class&#x3D;&quot;video-details-col&quot;&gt;
+          &lt;p class&#x3D;&quot;video-title&quot;&gt;&lt;/p&gt;
+          &lt;p class&#x3D;&quot;video-time&quot;&gt;03:30 mins&lt;/p&gt;
+          &lt;img src&#x3D;&quot;/assets/images/YT-icon.jpg&quot; alt&#x3D;&quot;youtube logo&quot;&gt;
+        &lt;/div&gt; --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- Slot Section --&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;slot&quot; #slot&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot;&gt;Preferred Interview Time &lt;span class&#x3D;&quot;opt&quot;&gt; (Optional)&lt;/span&gt;&lt;/p&gt;
+      &lt;app-choose-slot [referrenceId]&#x3D;&quot;selectedJobDetails?.quickInfo?.referrenceId&quot;&gt;&lt;/app-choose-slot&gt;
+    &lt;/div&gt; --&gt;
+    &lt;!-- Intro Section --&gt;
+    &lt;!-- &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;record&quot; #intro&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot;&gt;Record Introduction Video &lt;span class&#x3D;&quot;opt&quot;&gt; (Optional)&lt;/span&gt;&lt;/p&gt;
+      &lt;p class&#x3D;&quot;record-text&quot;&gt;Record a brief introduction of why you are suited for this job.&lt;/p&gt;
+      &lt;p class&#x3D;&quot;record-text&quot;&gt;This will enhance your chances of getting selected.&lt;/p&gt;
+      &lt;app-upload-intro [referrenceId]&#x3D;&quot;selectedJobDetails?.quickInfo?.referrenceId&quot; [redirectUri]&#x3D;&quot;&#x27;search/details&#x27;&quot;&gt;&lt;/app-upload-intro&gt;
+    &lt;/div&gt; --&gt;
+    &lt;!-- Timeline section --&gt;
+    &lt;div class&#x3D;&quot;content-box&quot; id&#x3D;&quot;timeline&quot; #timeline&gt;
+      &lt;p class&#x3D;&quot;sub-title&quot;&gt;Timeline&lt;/p&gt;
+      &lt;div class&#x3D;&quot;timline-progress&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine&quot;&gt;
+        &lt;div  class&#x3D;&quot;tl-status&quot; id&#x3D;&quot;tl-shortlisted&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.shortlistedDate&quot;&gt;
+          &lt;img src&#x3D;&quot;/assets/images/ic-myjobs-shortlisted.svg&quot; alt&#x3D;&quot;Shortlisted On&quot; /&gt; &lt;span&gt;&lt;img src&#x3D;&quot;/assets/images/h-connector.svg&quot;&gt;{{selectedJobDetails?.TimeLine?.shortlistedDate | date : &#x27;dd MMM, yyyy&#x27;}}&lt;/span&gt;
+          &lt;p class&#x3D;&quot;timeline-status&quot;&gt;Shortlisted&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tl-status&quot; id&#x3D;&quot;tl-applied&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.appliedDate&quot;&gt;
+            &lt;p class&#x3D;&quot;vertical-ruler&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.appliedDate&quot;&gt;&lt;/p&gt;
+            &lt;img src&#x3D;&quot;/assets/images/ic-matchingjobsforyou-apply-white.svg&quot; alt&#x3D;&quot;Applied On&quot; /&gt; &lt;span&gt;&lt;img src&#x3D;&quot;/assets/images/h-connector.svg&quot;&gt;{{selectedJobDetails?.TimeLine?.appliedDate | date : &#x27;dd MMM, yyyy&#x27;}}&lt;/span&gt;
+          &lt;p class&#x3D;&quot;timeline-status&quot;&gt;Applied&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tl-status&quot; id&#x3D;&quot;tl-interview&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.interviewDate&quot;&gt;
+            &lt;p class&#x3D;&quot;vertical-ruler&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.interviewDate&quot;&gt;&lt;/p&gt;
+            &lt;img src&#x3D;&quot;/assets/images/ic-myjobs-interivew-copy-2.svg&quot; alt&#x3D;&quot;&quot; /&gt; &lt;span&gt;&lt;img src&#x3D;&quot;/assets/images/h-connector.svg&quot;&gt;{{selectedJobDetails?.TimeLine?.interviewDate | date : &#x27;dd MMM, yyyy&#x27;}}&lt;/span&gt;
+            &lt;p class&#x3D;&quot;timeline-status&quot;&gt;Interview&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tl-status&quot; id&#x3D;&quot;tl-hire&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.hireDate&quot;&gt;
+          &lt;p class&#x3D;&quot;vertical-ruler&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.hireDate&quot;&gt;&lt;/p&gt;
+          &lt;img src&#x3D;&quot;/assets/images/ic-myjobs-good-to-hire.svg&quot; alt&#x3D;&quot;&quot; /&gt; &lt;span&gt;&lt;img src&#x3D;&quot;/assets/images/h-connector.svg&quot;&gt;{{selectedJobDetails?.TimeLine?.hireDate | date : &#x27;dd MMM, yyyy&#x27;}}&lt;/span&gt;
+          &lt;p class&#x3D;&quot;timeline-status&quot;&gt;Good To Hire&lt;/p&gt;
+        &lt;/div&gt;
+        &lt;div class&#x3D;&quot;tl-status&quot; id&#x3D;&quot;tl-rejected&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.rejectedDate&quot;&gt;
+          &lt;p class&#x3D;&quot;vertical-ruler&quot; *ngIf&#x3D;&quot;selectedJobDetails?.TimeLine?.rejectedDate&quot;&gt;&lt;/p&gt;
+          &lt;img src&#x3D;&quot;/assets/images/ic-myjobs-rejected.svg&quot; alt&#x3D;&quot;&quot; /&gt; &lt;span&gt;&lt;img src&#x3D;&quot;/assets/images/h-connector.svg&quot;&gt;{{selectedJobDetails?.TimeLine?.rejectedDate | date : &#x27;dd MMM, yyyy&#x27;}}&lt;/span&gt;
+          &lt;p class&#x3D;&quot;timeline-status&quot;&gt;Rejected&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/section&gt;
+&lt;!-- Share Job Modal --&gt;
+&lt;nz-modal [nzWidth]&#x3D;&quot;400&quot; [nzKeyboard]&#x3D;&quot;false&quot; [nzClosable]&#x3D;&quot;true&quot; [(nzVisible)]&#x3D;&quot;showShareJobModal&quot; nzTitle&#x3D;&quot;Share Application&quot; [nzFooter]&#x3D;&quot;null&quot; [nzMaskClosable]&#x3D;&quot;true&quot; (nzOnCancel)&#x3D;&quot;toggleShareJobModal()&quot;&gt;
+    &lt;!-- &lt;nz-rate [ngModel]&#x3D;&quot;0&quot; (ngModelChange)&#x3D;&quot;onRateChange($event)&quot;&gt;&lt;/nz-rate&gt; --&gt;
+    &lt;div class&#x3D;&quot;flex share-app&quot;&gt;
+      &lt;div class&#x3D;&quot;share-img-count&quot;&gt;
+          &lt;a [href]&#x3D;&quot;shareLink.twitter&quot; target&#x3D;&quot;_blank&quot;&gt;
+              &lt;svg class&#x3D;&quot;socials-icons&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; viewBox&#x3D;&quot;0 0 95 93&quot;&gt;
+                  &lt;g fill&#x3D;&quot;none&quot; fill-rule&#x3D;&quot;evenodd&quot;&gt;
+                      &lt;!-- &lt;rect width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; fill&#x3D;&quot;#00A9F2&quot; rx&#x3D;&quot;2&quot;/&gt; --&gt;
+                      &lt;circle cx&#x3D;&quot;47.5&quot; cy&#x3D;&quot;32.5&quot; r&#x3D;&quot;22.5&quot; fill&#x3D;&quot;#0096DC&quot;/&gt;
+                      &lt;path fill&#x3D;&quot;#FFF&quot; d&#x3D;&quot;M57 26.844c-.707.313-1.46.52-2.244.621a3.903 3.903 0 0 0 1.713-2.173 7.741 7.741 0 0 1-2.47.952A3.887 3.887 0 0 0 51.154 25c-2.157 0-3.893 1.767-3.893 3.932 0 .312.026.611.09.897-3.238-.16-6.103-1.726-8.028-4.112a3.986 3.986 0 0 0-.533 1.987c0 1.361.694 2.568 1.73 3.267a3.82 3.82 0 0 1-1.76-.484v.043a3.94 3.94 0 0 0 3.12 3.862c-.316.088-.662.13-1.02.13-.25 0-.502-.015-.738-.067.505 1.556 1.937 2.701 3.64 2.738a7.781 7.781 0 0 1-4.83 1.677 7.23 7.23 0 0 1-.932-.054 10.894 10.894 0 0 0 5.975 1.764c7.168 0 11.087-5.992 11.087-11.186 0-.174-.006-.342-.014-.509A7.811 7.811 0 0 0 57 26.845&quot;/&gt;
+                  &lt;/g&gt;
+                &lt;/svg&gt;
+              &lt;div class&#x3D;&quot;sharing-numbers&quot;&gt;
+                  &lt;span&gt;Twitter&lt;/span&gt;
+              &lt;/div&gt;
+          &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;share-img-count&quot;&gt;
+          &lt;a [href]&#x3D;&quot;shareLink.linkedin&quot; target&#x3D;&quot;_blank&quot;&gt;
+              &lt;svg class&#x3D;&quot;socials-icons&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; viewBox&#x3D;&quot;0 0 95 93&quot;&gt;
+                  &lt;g fill&#x3D;&quot;none&quot; fill-rule&#x3D;&quot;evenodd&quot;&gt;
+                      &lt;!-- &lt;rect width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; fill&#x3D;&quot;#1776B5&quot; rx&#x3D;&quot;2&quot;/&gt; --&gt;
+                      &lt;circle cx&#x3D;&quot;47.5&quot; cy&#x3D;&quot;32.5&quot; r&#x3D;&quot;22.5&quot; fill&#x3D;&quot;#166BA3&quot;/&gt;
+                      &lt;g fill&#x3D;&quot;#FFF&quot;&gt;
+                          &lt;path d&#x3D;&quot;M38.233 40.962h4.052V28.865h-4.052zM55.581 29.97c-.85-.923-1.977-1.385-3.376-1.385-.516 0-.984.063-1.406.19a3.197 3.197 0 0 0-1.068.53c-.29.228-.522.44-.694.635a5.24 5.24 0 0 0-.479.646v-1.72H44.52l.012.585c.009.391.013 1.595.013 3.614 0 2.018-.008 4.65-.025 7.897h4.04v-6.75c0-.415.044-.745.134-.989.172-.415.432-.763.78-1.043.348-.281.78-.422 1.296-.422.703 0 1.221.242 1.553.726.331.485.497 1.154.497 2.009v6.47h4.04v-6.934c-.001-1.782-.427-3.135-1.278-4.059M40.284 23.043c-.68 0-1.23.197-1.652.592-.421.395-.632.893-.632 1.495 0 .594.205 1.09.614 1.49.409.398.95.597 1.62.597h.025c.688 0 1.242-.199 1.664-.598.421-.398.628-.895.62-1.489-.009-.602-.217-1.1-.627-1.495-.409-.395-.953-.592-1.632-.592&quot;/&gt;
+                      &lt;/g&gt;
+                  &lt;/g&gt;
+                &lt;/svg&gt;
+              &lt;div class&#x3D;&quot;sharing-numbers&quot;&gt;
+                  &lt;span&gt;LinkedIn&lt;/span&gt;
+              &lt;/div&gt;
+          &lt;/a&gt;
+      &lt;/div&gt;
+
+      &lt;div class&#x3D;&quot;share-img-count&quot;&gt;
+          &lt;a [href]&#x3D;&quot;shareLink.facebook&quot; target&#x3D;&quot;_blank&quot;&gt;
+              &lt;svg class&#x3D;&quot;socials-icons&quot; xmlns&#x3D;&quot;http://www.w3.org/2000/svg&quot; xmlns:xlink&#x3D;&quot;http://www.w3.org/1999/xlink&quot; width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; viewBox&#x3D;&quot;0 0 95 93&quot;&gt;
+                  &lt;defs&gt;
+                      &lt;path id&#x3D;&quot;a&quot; d&#x3D;&quot;M0 0h9.946v18.697H0z&quot;/&gt;
+                  &lt;/defs&gt;
+                  &lt;g fill&#x3D;&quot;none&quot; fill-rule&#x3D;&quot;evenodd&quot;&gt;
+                      &lt;!-- &lt;rect width&#x3D;&quot;95&quot; height&#x3D;&quot;93&quot; fill&#x3D;&quot;#39559C&quot; rx&#x3D;&quot;2&quot;/&gt; --&gt;
+                      &lt;circle cx&#x3D;&quot;47.5&quot; cy&#x3D;&quot;32.5&quot; r&#x3D;&quot;22.5&quot; fill&#x3D;&quot;#324B8B&quot;/&gt;
+                      &lt;g transform&#x3D;&quot;translate(42.5 23)&quot;&gt;
+                          &lt;mask id&#x3D;&quot;b&quot; fill&#x3D;&quot;#fff&quot;&gt;
+                              &lt;use xlink:href&#x3D;&quot;#a&quot;/&gt;
+                          &lt;/mask&gt;
+                          &lt;path fill&#x3D;&quot;#FFF&quot; d&#x3D;&quot;M6.456 18.697v-8.528h2.931l.44-3.325H6.456V4.722c0-.962.273-1.618 1.688-1.618h1.802V.13C9.634.09 8.564 0 7.319 0 4.72 0 2.94 1.549 2.94 4.393v2.451H0v3.325h2.94v8.528h3.516z&quot; mask&#x3D;&quot;url(#b)&quot;/&gt;
+                      &lt;/g&gt;
+                  &lt;/g&gt;
+                &lt;/svg&gt;
+              &lt;div class&#x3D;&quot;sharing-numbers&quot;&gt;
+                  &lt;span&gt;Facebook&lt;/span&gt;
+              &lt;/div&gt;
+          &lt;/a&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;!-- &lt;button (click)&#x3D;&quot;handleOk()&quot; class&#x3D;&quot;orange-button&quot;&gt;Submit Rating &lt;/button&gt; --&gt;
+&lt;/nz-modal&gt;
+
+&lt;!-- Confirmation Modal --&gt;
+&lt;nz-modal [(nzVisible)]&#x3D;&quot;showConfirmationModal&quot; [nzFooter]&#x3D;&quot;null&quot; nzTitle&#x3D;&quot;Confirm&quot; (nzOnCancel)&#x3D;&quot;handleConfirmCancel()&quot; (nzOnOk)&#x3D;&quot;handleConfirmOk()&quot;&gt;
+  &lt;div class&#x3D;&quot;confirmation-modal&quot;&gt;
+    &lt;div class&#x3D;&quot;flex confirmation-modal-body&quot;&gt;
+      &lt;div class&#x3D;&quot;flex&quot;&gt;
+        &lt;p class&#x3D;&quot;text-explanation&quot;&gt;Please update the missing fields if you want to apply for this job.&lt;/p&gt;
+        &lt;p class&#x3D;&quot;text-explanation&quot;&gt;Missing field(s) are&lt;/p&gt;
+      &lt;/div&gt;
+      &lt;!-- &lt;span class&#x3D;&quot;confirmation-text&quot;&gt;Missing Fields:&lt;/span&gt; --&gt;
+      &lt;div class&#x3D;&quot;flex fields-row&quot;&gt;
+        &lt;span class&#x3D;&quot;field&quot; *ngFor&#x3D;&quot;let field of missingFields&quot;&gt;{{field | format}}&lt;/span&gt;
+        &lt;!-- &lt;span class&#x3D;&quot;field&quot;&gt;Field 2&lt;/span&gt;
+        &lt;span class&#x3D;&quot;field&quot;&gt;Field 3&lt;/span&gt;
+        &lt;span class&#x3D;&quot;field&quot;&gt;Field 4&lt;/span&gt; --&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+    &lt;div class&#x3D;&quot;flex button-row&quot;&gt;
+      &lt;button class&#x3D;&quot;cancel&quot; (click)&#x3D;&quot;handleConfirmCancel()&quot;&gt;Cancel&lt;/button&gt;
+      &lt;button class&#x3D;&quot;update&quot; (click)&#x3D;&quot;handleConfirmOk()&quot;&gt;Update&lt;/button&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+&lt;/nz-modal&gt;
+
+&lt;!-- Pre-Interview Modal --&gt;
+&lt;nz-modal [(nzVisible)]&#x3D;&quot;showPreInterviewModal&quot; [nzMaskClosable]&#x3D;&quot;false&quot; [nzKeyboard]&#x3D;&quot;false&quot; [nzFooter]&#x3D;&quot;null&quot; nzTitle&#x3D;&quot;Pre Interview&quot; (nzOnCancel)&#x3D;&quot;handlePreInterviewCancel()&quot; (nzOnOk)&#x3D;&quot;handlePreInterviewOk()&quot;&gt;
+  &lt;app-pre-inteview *ngIf&#x3D;&quot;showPreInterviewModal&quot; (success)&#x3D;&quot;handlePreInterviewOk()&quot; (cancel)&#x3D;&quot;handlePreInterviewCancel()&quot;&gt;&lt;/app-pre-inteview&gt;
+&lt;/nz-modal&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>./job-details.component.scss</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">/*
+** mixin to basic set font properties
+*/
+@mixin used-font($size, $weight, $color) {
+  font-size: $size;
+  font-weight: $weight;
+  color: $color;
+}
+
+.main-header {
+  padding: 7px 20px;
+
+  .matching-jobs-search-title {
+    margin-top: 7px;
+    margin-bottom: 0;
+    font-size: 16px;
+    color: #fff;
+  }
+
+  .search-title {
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    width: 65%;
+    @include used-font(16px, 400, #fff);
+  }
+
+  .search-city {
+    margin-bottom: 0;
+    @include used-font(14px, 400, #fff);
+  }
+
+  .right-subheader {
+    padding-top: 8px;
+  }
+}
+
+.result-sidebar {
+  position: relative;
+  float: left;
+  top: 0;
+}
+
+.main-section {
+  float: right;
+  width: calc(100% - 330px);
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+}
+
+.content-header {
+  padding: 18px 20px;
+  font-family: SourceSansPro;
+  @include used-font(16px, 600, #f9683d);
+
+  .cross {
+    float: right;
+    width: 24px;
+    height: 24px;
+    cursor: pointer;
+  }
+}
+
+/*
+** Style for menu bar
+*/
+.content-menu {
+  height: 56px;
+  width: 100%;
+  background: #4855b5;
+  box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
+
+  ul {
+    display: flex;
+    overflow-y: auto;
+    white-space: nowrap;
+    margin-bottom: 0;
+    padding: 0;
+
+    &amp;:after {
+      display: block;
+      clear: both;
+      content: &quot;&quot;;
+    }
+
+    li {
+      padding: 18px 20px 14px;
+      border-bottom: 3px solid transparent;
+      list-style: none;
+      cursor: pointer;
+
+      a {
+        color: #fff;
+        opacity: 0.5;
+      }
+
+      &amp;.active,
+      &amp;:hover {
+        border-bottom-color: #fff;
+
+        a {
+          opacity: 1;
+        }
+      }
+    }
+  }
+}
+
+/*
+** Style for auth left section
+*/
+.job-content {
+  padding: 20px 20px;
+  background-color: #f5f5fc;
+  height: 75vh;
+  overflow-y: scroll;
+  .green-text {
+    color: #6dae12;
+  }
+  .content-box {
+    margin-bottom: 20px;
+    padding: 12px 16px 24px 16px;
+    background: #fff;
+    border-radius: 2px;
+    box-shadow: 0 0 17px 0 rgba(0, 0, 0, 0.07);
+    
+    .base-font{
+      white-space: pre-wrap;
+      white-space: -moz-pre-wrap;
+      white-space: -pre-wrap;
+      white-space: -o-pre-wrap;
+      word-wrap: break-word;
+      font-family: SourceSansPro;
+      line-height: 2;
+    }
+
+    &amp;:last-child {
+      margin-bottom: 0;
+    }
+
+    .job-title {
+      margin-bottom: 8px;
+      @include used-font(16px, 600, #4855b5);
+    }
+
+    .job-match {
+      float: left;
+      padding: 2px 10px;
+      background-color: #3ec82c;
+      border-radius: 2px;
+      @include used-font(12px, 400, #fff);
+      
+      &amp;.yellow {
+        background-color: #e4c60e;
+      }
+      &amp;.red {
+        background-color: #f44c4d;
+      }
+      &amp;.dark-green {
+        background-color: #2c921e;
+      }
+      &amp;.light-green {
+        background-color: #3ec82c;
+      }
+    }
+
+    .detail-right-links {
+      float: right;
+      margin-bottom: 0;
+      width: 80%;
+      text-align: right;
+      @include used-font(14px, 400, #f9683d);
+      
+      span{
+        cursor: pointer;
+        margin-left: 20px;
+        &amp;:last-child {
+          display: inline;
+        }
+        img {
+          margin-right: 5px;
+          width: 24px;
+          height: 24px;
+        }
+      }
+    }
+        
+    .company {
+      margin-right: 8px;
+      @include used-font(14px, 400, #363636);
+    }
+
+    .location {
+      margin-left: 5px;
+      @include used-font(12px, 400, #7e7e7e);
+    }
+
+    .sub-title {
+      @include used-font(16px, 400, #242c6b);
+    }
+
+    .ruler {
+      margin-top: 20px;
+      margin-bottom: 20px;
+      width: 100%;
+      height: 1px;
+      background: #c9c9c9;
+    }
+    .opt{
+      @include used-font(14px, 400, #242c6b);
+      opacity: 0.5;
+    }
+    .record-text {
+      @include used-font(14px, 400, #888888);
+    }
+
+    .video-col {
+      float: left;
+      width: 181px;
+      margin-right: 16px;
+
+      .vid-clip {
+        display: block;
+        width: 181px;
+        height: 127px;
+        background: #404040;
+      }
+    }
+
+    .video-details-col {
+      float: left;
+      width: 280px;
+
+      .video-title {
+        @include used-font(18px, 600, #4c4c4c);
+        line-height: 1.22;
+      }
+
+      .video-time {
+        @include used-font(16px, 400, #7e7e7e);
+        letter-spacing: 0px;
+      }
+
+      img {
+        width: 77px;
+        height: 22px;
+      }
+    }
+  }
+}
+
+form {
+  margin: 0;
+
+  label {
+    position: relative;
+    top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .main-section {
+    top: 200px;
+  }
+  .job-content{
+    height: auto;
+    overflow: unset;
+  }
+}
+
+@media screen and (max-width: 356px) {
+  .main-section {
+    top: 200px;
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><section class="main-header blue row">  <div class="left-subheader">    <span class="back-button" (click)="goBack()"><img src="/assets/images/ic-arrow-back.svg"></span>    <p [ngClass]="searchLocation?.query ? \'search-title\': \'matching-jobs-search-title\'" title="{{searchLocation?.query ? searchLocation?.query.split(\',\').join(\', \') : \'Matching Jobs\'}}">{{searchLocation?.query ? searchLocation?.query.split(\',\').join(\', \') : \'Matching Jobs\'}}</p>    <p class="search-city" *ngIf="searchLocation?.location">{{searchLocation?.location}}</p>  </div>  <div class="right-subheader row" *ngIf="currentSearchType == 1">    <span (click)="editSearchPage()"><img src="/assets/images/ic-edit.svg"></span>  </div></section><app-results-sidebar (selected)="onSelect()" (fetched)="onJobSelect($event)"></app-results-sidebar><section class="main-section">  <div class="content-header row">    Job Details <span class="cross"><img src="/assets/images/ic-close.svg" alt="close" (click)="goBackLastPage()"></span>  </div>  <div class="content-menu">    <ul class="scroll-to-header">      <li class="active" (click)="gotoSection(\'info\', $event)"><a alt="">Quick Info</a></li>      <li (click)="gotoSection(\'desc\', $event)"><a alt="">Description</a></li>      <li (click)="gotoSection(\'videos\', $event)"><a alt="">Videos</a></li>      <!-- <li (click)="gotoSection(\'slot\')"><a alt="">Interview Slot</a></li>      <li (click)="gotoSection(\'intro\')"><a alt="">Record Intro</a></li> -->      <li (click)="gotoSection(\'timeline\', $event)"><a alt="">Timeline</a></li>    </ul>    <div class="action-buttons">      <!-- <button class="orange-button" *ngIf="!selectedJobDetails?.quickInfo?.isshortlisted && !selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(false, selectedJobDetails.quickInfo.referrenceId)">Shortlist</button> -->      <button class="orange-button" *ngIf="selectedJob && !selectedJob?.isApplyed && selectedJobDetails && !selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(true, selectedJobDetails?.quickInfo?.referrenceId)">Apply</button>    </div>  </div>  <div class="job-content" #jobContent>    <!-- Quick Info Section -->    <div class="content-box" id="info" #info>      <p class="job-title">{{selectedJobDetails?.quickInfo?.jobTitle}}</p>      <p class="company">{{selectedJobDetails?.quickInfo?.companyName}} <span class="location">{{selectedJobDetails?.quickInfo?.Location}}</span></p>      <div class="details-intro row flex" *ngIf="selectedJobDetails?.quickInfo">        <div class="exp-col">          <img src="../../../assets/images/ic-experience.svg" alt="">          <p class="font-bold">{{selectedJobDetails?.quickInfo?.experience ? selectedJobDetails?.quickInfo?.experience : \'Not Available\'}}</p>        </div>        <div class="pay-col">            <img src="../../../assets/images/ic-bill-rate.svg" alt="">            <p *ngIf="selectedJobDetails?.quickInfo?.payRate" class="font-bold">{{selectedJobDetails?.quickInfo?.payRateUnitSymbol}}{{selectedJobDetails?.quickInfo?.payRate}}{{selectedJobDetails?.quickInfo?.payRateUnit}}</p>            <p *ngIf="!selectedJobDetails?.quickInfo?.payRate" class="font-bold">Not Available</p>        </div>        <div class="post-col">            <img src="../../../assets/images/ic-calendar.svg" alt="">            <p *ngIf="selectedJobDetails?.quickInfo?.postedDate" class="font-bold">{{selectedJobDetails?.quickInfo?.postedDate | timeago}}</p>            <p *ngIf="!selectedJobDetails?.quickInfo?.postedDate" class="font-bold">Not Available</p>        </div>        <div class="pos-col">            <img src="../../../assets/images/drawermenu-ic-myjobs.svg" alt="">            <p>{{selectedJobDetails?.quickInfo?.jobtype? selectedJobDetails?.quickInfo?.jobtype  + \' Position\' : \'Not Available\'}}</p>        </div>        <div class="assess-col">            <img src="../../../assets/images/dashboard-ic-assessments-completed.svg" alt="">            <p *ngIf="selectedJobDetails?.includeTechAssessment">Assessment Required</p>            <p *ngIf="!selectedJobDetails?.includeTechAssessment">Assessment Not Required</p>        </div>      </div>      <p class="sub-title" *ngIf="selectedJobDetails?.quickInfo">Job Requirements</p>      <pre class="base-font">{{selectedJobDetails?.quickInfo?.requirement}}</pre>      <!-- <ul *ngIf="selectedJobDetails?.quickInfo">        <li>{{selectedJobDetails?.quickInfo?.requirement}}</li>      </ul> -->      <div class="ruler" *ngIf="selectedJobDetails?.quickInfo"></div>      <div class="row" *ngIf="selectedJobDetails?.quickInfo">          <span class="job-match" [ngClass]="{\'red\': selectedJobDetails?.quickInfo?.score <= 30, \'yellow\': selectedJobDetails?.quickInfo?.score <= 50 && selectedJobDetails?.quickInfo?.score >30, \'light-green\': selectedJobDetails?.quickInfo?.score <= 80 && selectedJobDetails?.quickInfo?.score >50, \'dark-green\': selectedJobDetails?.quickInfo?.score > 80}">{{selectedJobDetails?.quickInfo?.score}} % Match</span>          <p class="detail-right-links">            <span *ngIf="selectedJob && !selectedJob?.isShortlisted && !selectedJob?.isApplyed" (click)="takeAction(false, selectedJobDetails?.quickInfo?.referrenceId)">              <img src="/assets/images/ic-matchingjobsforyou-shortlist.svg" alt="">Shortlist            </span>            <span class="green-text" *ngIf="selectedJob && selectedJob?.isShortlisted && !selectedJob?.isApplyed">              <img src="/assets/images/ic-matchingjobsforyou-shortlisted.svg" alt="">Shortlisted            </span>            <span class="green-text" *ngIf="selectedJob && selectedJob?.isApplyed">              <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="">Applied            </span>            <!-- <span *ngIf="!selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(true, selectedJobDetails?.quickInfo?.referrenceId)">              <img src="/assets/images/ic-matchingjobsforyou-apply-orange.svg" alt="">Apply            </span> -->            <span (click)="toggleShareJobModal()">              <img src="/assets/images/ic-job-details-share.svg" alt="">Share            </span>          </p>      </div>    </div>    <!-- Description Section -->    <div class="content-box" id="desc" #desc>      <p class="sub-title">Job Description</p>      <pre class="base-font">{{selectedJobDetails?.description}}</pre>    </div>    <!-- Video Section -->    <div class="content-box" id="videos" #videos>      <p class="sub-title">Videos</p>      <div class="ruler"></div>      <div class="row">        <!-- <div class="video-col">          <div class="vid-clip">            <video [src]="video.url" controls></video>          </div>        </div> -->        <!-- <div class="video-details-col">          <p class="video-title"></p>          <p class="video-time">03:30 mins</p>          <img src="/assets/images/YT-icon.jpg" alt="youtube logo">        </div> -->      </div>    </div>    <!-- Slot Section -->    <!-- <div class="content-box" id="slot" #slot>      <p class="sub-title">Preferred Interview Time <span class="opt"> (Optional)</span></p>      <app-choose-slot [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId"></app-choose-slot>    </div> -->    <!-- Intro Section -->    <!-- <div class="content-box" id="record" #intro>      <p class="sub-title">Record Introduction Video <span class="opt"> (Optional)</span></p>      <p class="record-text">Record a brief introduction of why you are suited for this job.</p>      <p class="record-text">This will enhance your chances of getting selected.</p>      <app-upload-intro [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId" [redirectUri]="\'search/details\'"></app-upload-intro>    </div> -->    <!-- Timeline section -->    <div class="content-box" id="timeline" #timeline>      <p class="sub-title">Timeline</p>      <div class="timline-progress" *ngIf="selectedJobDetails?.TimeLine">        <div  class="tl-status" id="tl-shortlisted" *ngIf="selectedJobDetails?.TimeLine?.shortlistedDate">          <img src="/assets/images/ic-myjobs-shortlisted.svg" alt="Shortlisted On" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.shortlistedDate | date : \'dd MMM, yyyy\'}}</span>          <p class="timeline-status">Shortlisted</p>        </div>        <div class="tl-status" id="tl-applied" *ngIf="selectedJobDetails?.TimeLine?.appliedDate">            <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.appliedDate"></p>            <img src="/assets/images/ic-matchingjobsforyou-apply-white.svg" alt="Applied On" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.appliedDate | date : \'dd MMM, yyyy\'}}</span>          <p class="timeline-status">Applied</p>        </div>        <div class="tl-status" id="tl-interview" *ngIf="selectedJobDetails?.TimeLine?.interviewDate">            <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.interviewDate"></p>            <img src="/assets/images/ic-myjobs-interivew-copy-2.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.interviewDate | date : \'dd MMM, yyyy\'}}</span>            <p class="timeline-status">Interview</p>        </div>        <div class="tl-status" id="tl-hire" *ngIf="selectedJobDetails?.TimeLine?.hireDate">          <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.hireDate"></p>          <img src="/assets/images/ic-myjobs-good-to-hire.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.hireDate | date : \'dd MMM, yyyy\'}}</span>          <p class="timeline-status">Good To Hire</p>        </div>        <div class="tl-status" id="tl-rejected" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate">          <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate"></p>          <img src="/assets/images/ic-myjobs-rejected.svg" alt="" /> <span><img src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.rejectedDate | date : \'dd MMM, yyyy\'}}</span>          <p class="timeline-status">Rejected</p>        </div>      </div>    </div>  </div></section><!-- Share Job Modal --><nz-modal [nzWidth]="400" [nzKeyboard]="false" [nzClosable]="true" [(nzVisible)]="showShareJobModal" nzTitle="Share Application" [nzFooter]="null" [nzMaskClosable]="true" (nzOnCancel)="toggleShareJobModal()">    <!-- <nz-rate [ngModel]="0" (ngModelChange)="onRateChange($event)"></nz-rate> -->    <div class="flex share-app">      <div class="share-img-count">          <a [href]="shareLink.twitter" target="_blank">              <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">                  <g fill="none" fill-rule="evenodd">                      <!-- <rect width="95" height="93" fill="#00A9F2" rx="2"/> -->                      <circle cx="47.5" cy="32.5" r="22.5" fill="#0096DC"/>                      <path fill="#FFF" d="M57 26.844c-.707.313-1.46.52-2.244.621a3.903 3.903 0 0 0 1.713-2.173 7.741 7.741 0 0 1-2.47.952A3.887 3.887 0 0 0 51.154 25c-2.157 0-3.893 1.767-3.893 3.932 0 .312.026.611.09.897-3.238-.16-6.103-1.726-8.028-4.112a3.986 3.986 0 0 0-.533 1.987c0 1.361.694 2.568 1.73 3.267a3.82 3.82 0 0 1-1.76-.484v.043a3.94 3.94 0 0 0 3.12 3.862c-.316.088-.662.13-1.02.13-.25 0-.502-.015-.738-.067.505 1.556 1.937 2.701 3.64 2.738a7.781 7.781 0 0 1-4.83 1.677 7.23 7.23 0 0 1-.932-.054 10.894 10.894 0 0 0 5.975 1.764c7.168 0 11.087-5.992 11.087-11.186 0-.174-.006-.342-.014-.509A7.811 7.811 0 0 0 57 26.845"/>                  </g>                </svg>              <div class="sharing-numbers">                  <span>Twitter</span>              </div>          </a>      </div>      <div class="share-img-count">          <a [href]="shareLink.linkedin" target="_blank">              <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">                  <g fill="none" fill-rule="evenodd">                      <!-- <rect width="95" height="93" fill="#1776B5" rx="2"/> -->                      <circle cx="47.5" cy="32.5" r="22.5" fill="#166BA3"/>                      <g fill="#FFF">                          <path d="M38.233 40.962h4.052V28.865h-4.052zM55.581 29.97c-.85-.923-1.977-1.385-3.376-1.385-.516 0-.984.063-1.406.19a3.197 3.197 0 0 0-1.068.53c-.29.228-.522.44-.694.635a5.24 5.24 0 0 0-.479.646v-1.72H44.52l.012.585c.009.391.013 1.595.013 3.614 0 2.018-.008 4.65-.025 7.897h4.04v-6.75c0-.415.044-.745.134-.989.172-.415.432-.763.78-1.043.348-.281.78-.422 1.296-.422.703 0 1.221.242 1.553.726.331.485.497 1.154.497 2.009v6.47h4.04v-6.934c-.001-1.782-.427-3.135-1.278-4.059M40.284 23.043c-.68 0-1.23.197-1.652.592-.421.395-.632.893-.632 1.495 0 .594.205 1.09.614 1.49.409.398.95.597 1.62.597h.025c.688 0 1.242-.199 1.664-.598.421-.398.628-.895.62-1.489-.009-.602-.217-1.1-.627-1.495-.409-.395-.953-.592-1.632-.592"/>                      </g>                  </g>                </svg>              <div class="sharing-numbers">                  <span>LinkedIn</span>              </div>          </a>      </div>      <div class="share-img-count">          <a [href]="shareLink.facebook" target="_blank">              <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="95" height="93" viewBox="0 0 95 93">                  <defs>                      <path id="a" d="M0 0h9.946v18.697H0z"/>                  </defs>                  <g fill="none" fill-rule="evenodd">                      <!-- <rect width="95" height="93" fill="#39559C" rx="2"/> -->                      <circle cx="47.5" cy="32.5" r="22.5" fill="#324B8B"/>                      <g transform="translate(42.5 23)">                          <mask id="b" fill="#fff">                              <use xlink:href="#a"/>                          </mask>                          <path fill="#FFF" d="M6.456 18.697v-8.528h2.931l.44-3.325H6.456V4.722c0-.962.273-1.618 1.688-1.618h1.802V.13C9.634.09 8.564 0 7.319 0 4.72 0 2.94 1.549 2.94 4.393v2.451H0v3.325h2.94v8.528h3.516z" mask="url(#b)"/>                      </g>                  </g>                </svg>              <div class="sharing-numbers">                  <span>Facebook</span>              </div>          </a>      </div>    </div>    <!-- <button (click)="handleOk()" class="orange-button">Submit Rating </button> --></nz-modal><!-- Confirmation Modal --><nz-modal [(nzVisible)]="showConfirmationModal" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleConfirmCancel()" (nzOnOk)="handleConfirmOk()">  <div class="confirmation-modal">    <div class="flex confirmation-modal-body">      <div class="flex">        <p class="text-explanation">Please update the missing fields if you want to apply for this job.</p>        <p class="text-explanation">Missing field(s) are</p>      </div>      <!-- <span class="confirmation-text">Missing Fields:</span> -->      <div class="flex fields-row">        <span class="field" *ngFor="let field of missingFields">{{field | format}}</span>        <!-- <span class="field">Field 2</span>        <span class="field">Field 3</span>        <span class="field">Field 4</span> -->      </div>    </div>    <div class="flex button-row">      <button class="cancel" (click)="handleConfirmCancel()">Cancel</button>      <button class="update" (click)="handleConfirmOk()">Update</button>    </div>  </div></nz-modal><!-- Pre-Interview Modal --><nz-modal [(nzVisible)]="showPreInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Pre Interview" (nzOnCancel)="handlePreInterviewCancel()" (nzOnOk)="handlePreInterviewOk()">  <app-pre-inteview *ngIf="showPreInterviewModal" (success)="handlePreInterviewOk()" (cancel)="handlePreInterviewCancel()"></app-pre-inteview></nz-modal></div>'
+    var COMPONENTS = [{'name': 'AboutusComponent', 'selector': 'app-about-us'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'AssessmentsComponent', 'selector': 'app-assessments'},{'name': 'AuthForgotPassComponent', 'selector': 'app-auth-forgot-pass'},{'name': 'AuthLandingComponent', 'selector': 'app-auth-landing'},{'name': 'AuthLeftSectionComponent', 'selector': 'app-auth-left-section'},{'name': 'AuthRightSidebarComponent', 'selector': 'app-auth-right-sidebar'},{'name': 'ChooseSlotComponent', 'selector': 'app-choose-slot'},{'name': 'CommonHeaderComponent', 'selector': 'app-common-header'},{'name': 'CommonJobDetailsComponent', 'selector': 'app-common-job-details'},{'name': 'CommonMapComponent', 'selector': 'app-common-map'},{'name': 'CommonSidemenuComponent', 'selector': 'app-common-sidemenu'},{'name': 'ConfirmOTPComponent', 'selector': 'app-confirm-otp'},{'name': 'DashboardLandingComponent', 'selector': 'app-dashboard-landing'},{'name': 'FaqComponent', 'selector': 'app-faq'},{'name': 'FormButtonComponent', 'selector': 'app-form-button'},{'name': 'JobDetailsComponent', 'selector': 'app-job-details'},{'name': 'MainSearchComponent', 'selector': 'app-main-search'},{'name': 'MatchingJobsComponent', 'selector': 'app-matching-jobs'},{'name': 'MyJobsComponent', 'selector': 'app-my-jobs'},{'name': 'NewPasswordComponent', 'selector': 'app-new-password'},{'name': 'NotificationComponent', 'selector': 'app-notification'},{'name': 'PreInterviewComponent', 'selector': 'app-pre-inteview'},{'name': 'ProfileLandingComponent', 'selector': 'app-profile-landing'},{'name': 'RecentSearchComponent', 'selector': 'app-recent-search'},{'name': 'ResultsSidebarComponent', 'selector': 'app-results-sidebar'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'ScheduleComponent', 'selector': 'app-schedule'},{'name': 'SearchResultsComponent', 'selector': 'app-search-results'},{'name': 'SendOTPComponent', 'selector': 'app-send-otp'},{'name': 'SettingsComponent', 'selector': 'app-settings'},{'name': 'SidebarExternalRegisterComponent', 'selector': 'app-sidebar-external-register'},{'name': 'SidebarLoginComponent', 'selector': 'app-sidebar-login'},{'name': 'SidebarOTPVerifyComponent', 'selector': 'app-sidebar-otp-verify'},{'name': 'SidebarRegisterComponent', 'selector': 'app-sidebar-register'},{'name': 'UploadVideoComponent', 'selector': 'app-upload-intro'},{'name': 'ViewJobsComponent', 'selector': 'app-view-jobs'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'JobDetailsComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'JobDetailsComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

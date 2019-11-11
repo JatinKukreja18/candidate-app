@@ -1,0 +1,49 @@
+<div class="row">
+    <div class="flex choose-slots">
+        <nz-radio-group class="choose-slot" [(ngModel)]="slots.preferredinterviewtype">
+            <label nz-radio [nzValue]="1"><span class="radio-label">Available all the time</span></label>
+            <label nz-radio [nzValue]="2"><span class="radio-label">Choose preferred slot</span></label>
+        </nz-radio-group>
+    </div>
+    <div class="flex slot-row" *ngIf="slots.preferredinterviewtype == 2">
+        <div class="select-date">  
+            <div class="form-group">
+                <label for="slot-date-1">Select Slot 1 Date</label>
+                <nz-date-picker tabindex="1" id="slot-date-1" class="form-control" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Select Date'" (ngModelChange)="onChangeDate($event, 1)" [ngModel]="slots.date_slot1" [nzDisabledDate]="disabledDateSlot1"></nz-date-picker>
+            </div>
+        </div>
+        <div class="flex pick-time">
+            <div class="form-group">
+                <label for="slot1-from">Select From Time</label>
+                <nz-time-picker tabindex="2" id="slot1-from" [nzPlaceHolder]="'Start Time'" [nzFormat]="'HH:mm'" [ngModel]="slots.date_slot1" (ngModelChange)="onChange($event, 1)" [nzDisabledHours]="disabledFromTimeSlot1"></nz-time-picker>
+            </div>
+            <div class="form-group">
+                <label for="slot1-to">Select To Time</label>
+                <nz-time-picker tabindex="3" id="slot1-to" [nzPlaceHolder]="'End Time'" [nzFormat]="'HH:mm'" [ngModel]="slots.date_slot1" (ngModelChange)="onChange($event, 2)" [nzDisabledHours]="disabledToTimeSlot1"></nz-time-picker>
+            </div>
+        </div>
+    </div>
+    <div class="flex slot-row" *ngIf="slots.preferredinterviewtype == 2">
+        <div class="select-date"> 
+            <div class="form-group">
+                <label for="slot-date-2">Select Slot 2 Date</label> 
+                <nz-date-picker tabindex="4" id="slot-date-2" class="form-control" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Select Date'" (ngModelChange)="onChangeDate($event, 2)" [ngModel]="slots.date_slot2" [nzDisabledDate]="disabledDateSlot1"></nz-date-picker>
+            </div>
+        </div>
+        <div class="flex pick-time">
+            <div class="form-group">
+                <label for="slot2-from">Select From Time</label>
+                <nz-time-picker tabindex="5" id="slot2-from" [nzPlaceHolder]="'Start Time'" [nzFormat]="'HH:mm'" (ngModelChange)="onChange($event, 3)" [ngModel]="slots.date_slot2" [nzDisabledHours]="disabledFromTimeSlot2"></nz-time-picker>
+            </div>
+            <div class="form-group">
+                <label for="slot2-to">Select To Time</label>
+                <nz-time-picker tabindex="6" id="slot2-to" [nzPlaceHolder]="'End Time'" [nzFormat]="'HH:mm'" (ngModelChange)="onChange($event, 4)" [ngModel]="slots.date_slot2" [nzDisabledHours]="disabledToTimeSlot2"></nz-time-picker>
+            </div>
+        </div>
+    </div>
+    <!-- <div class="flex">
+        <div class="button-col">
+            <button class="orange-button" (click)="onSubmit()">Apply</button>
+        </div>
+    </div> -->
+</div>

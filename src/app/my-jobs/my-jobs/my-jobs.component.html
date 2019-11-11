@@ -1,0 +1,532 @@
+<div class="flex fullWidth horiTabsHeade">
+  <div [ngClass]="activeTab.shortlisted ? 'horiTabsText sixteenFont activeHori': 'horiTabsText sixteenFont'"
+    (click)="showTabs('shortlisted')">
+    <span>Shortlisted</span>
+  </div>
+  <div [ngClass]="activeTab.applied ? 'horiTabsText sixteenFont activeHori': 'horiTabsText sixteenFont'"
+    (click)="showTabs('applied')">
+    <span>Applied</span>
+  </div>
+  <div [ngClass]="activeTab.interview ? 'horiTabsText sixteenFont activeHori': 'horiTabsText sixteenFont'"
+    (click)="showTabs('interview')">
+    <span>Interview</span>
+  </div>
+  <div [ngClass]="activeTab.goodToHire ? 'horiTabsText sixteenFont activeHori': 'horiTabsText sixteenFont'"
+    (click)="showTabs('goodToHire')">
+    <span>Hired</span>
+  </div>
+  <div [ngClass]="activeTab.rejected ? 'horiTabsText sixteenFont activeHori': 'horiTabsText sixteenFont'"
+    (click)="showTabs('rejected')">
+    <span>Rejected</span>
+  </div>
+</div>
+<!-- Results sidebar -->
+<div class="result-sidebar" (scroll)="onWindowScroll($event)">
+  <div class="main-left-sidebar">
+    <div class="result-list" (scroll)="onHorizontalScroll($event)">
+      <div class="result-search" [id]="job?.referrenceId"
+        [ngClass]="job?.referrenceId == selectedJobDetails?.quickInfo?.referrenceId ? 'result-search active': 'result-search'"
+        *ngFor="let job of jobs" (click)="selectJob(job)">
+        <a>
+          <p class="row">
+            <span class="job-title" title="{{job.jobTitle}}">{{job.jobTitle}}</span>
+            <span [hidden]="!job.score" class="job-match"
+              [ngClass]="{'red': job.score <= 30, 'yellow': job.score <= 50 && job.score >30, 'light-green': job.score <= 80 && job.score >50, 'dark-green': job.score > 80}">{{job.score}}%
+              Match</span>
+          </p>
+          <p class="row">
+            <span class="company">{{job.companyName}}</span>
+            <span class="location">{{job.Location}}</span>
+          </p>
+          <p class="row">
+            <span class="pay">{{job.payRateUnitSymbol}}{{job.payRate}}/{{job.payRateUnit}}</span>
+            <span class="exp">{{job.experience ? job.experience : 'NA' }}</span>
+            <span class="posted">{{job.postedDate | timeago}}</span>
+            <span class="status-icon">
+              <img src="/assets/images/ic-start-interview.svg" alt="Start Interview"
+                *ngIf="(job.InterviewTypeId == 1 && job.interviewDate && job.zoomId) && (activeTab.interview)" />
+              <img src="/assets/images/ic-scheduled.svg" alt="Schedule Interview"
+                *ngIf="(!job.interviewDate) && (activeTab.interview)" />
+              <!-- <img src="/assets/images/ic-canceled.svg" alt="Interview Canceled" *ngIf="(job.interviewStatusId == 2) && (activeTab.interview)"/> -->
+              <!-- <img src="/assets/images/ic-collabera-applied-offline.svg" alt="Applied offline" *ngIf="(!job.isShortlisted && !job.isApplyed) && (activeTab.shortlisted ||activeTab.applied)"/> -->
+              <img src="/assets/images/ic-matchingjobsforyou-shortlisted.svg" alt="Shortlisted"
+                *ngIf="job.isShortlisted" />
+              <img src="/assets/images/ic-matchingjobsforyou-applied.svg" alt="Applied" *ngIf="job.isApplyed" />
+            </span>
+          </p>
+        </a>
+      </div>
+      <div *ngIf="!loading && (!jobs || (jobs && jobs.length == 0))">
+        <p class="no-records">No Record Found</p>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Job details section -->
+<section class="main-section">
+  <div *ngIf="selectedJobDetails">
+    <!-- Job status section -->
+    <div class="content-header row">
+      Job Details
+      <span class="tab-Category shortlisted" *ngIf="activeTab.shortlisted"> Shortlisted</span>
+      <span class="tab-Category applied" *ngIf="activeTab.applied && selectedJobDetails?.TimeLine?.appliedDate"> Applied
+        on {{selectedJobDetails?.TimeLine?.appliedDate | date: 'dd MMM. yyyy'}}</span>
+      <!-- Status for Interview Tab Start -->
+      <span class="tab-Category interview green-text"
+        *ngIf="activeTab.interview && (currentSelectedJob?.interviewStatusId == 1 && currentSelectedJob?.interviewDate)">
+        Round {{currentSelectedJob?.interviewround }} Confirmed</span>
+      <span class="tab-Category interview"
+        *ngIf="activeTab.interview && (currentSelectedJob?.interviewStatusId == 1 && !currentSelectedJob?.interviewDate)">
+        Round {{currentSelectedJob?.interviewround}} Scheduled</span>
+      <span class="tab-Category interview red-text"
+        *ngIf="activeTab.interview && (currentSelectedJob?.interviewStatusId == 2)"> Interview Canceled</span>
+      <!-- <span class="tab-Category interview" *ngIf="activeTab.interview"> Interview In Process</span>
+      <span class="tab-Category interview" *ngIf="activeTab.interview"> Interview In Process</span> -->
+      <!-- Status for Interview Tab End -->
+      <span class="tab-Category hire" *ngIf="activeTab.goodToHire"> Selected For Hiring</span>
+      <span class="tab-Category rejected" *ngIf="activeTab.rejected"> Rejected For Job</span>
+    </div>
+    <!-- Job details top menu -->
+    <div class="content-menu">
+      <ul class="scroll-to-header">
+        <li class="active" (click)="gotoSection('info', $event)" data-id="info"><a alt="">Quick Info</a></li>
+        <li (click)="gotoSection('desc', $event)" data-id="desc"><a alt="">Description</a></li>
+        <li (click)="gotoSection('videos', $event)" data-id="videos"><a alt="">Videos</a></li>
+        <li (click)="gotoSection('slot', $event)" data-id="slot"><a alt="">Interview Slot</a></li>
+        <li (click)="gotoSection('intro', $event)" data-id="intro"><a alt="">Record Intro</a></li>
+        <li (click)="gotoSection('timeline', $event)" data-id="timeline"><a alt="">Timeline</a></li>
+      </ul>
+      <div class="action-buttons" *ngIf="currentSelectedJob && selectedJobDetails">
+        <!-- <button class="orange-button" *ngIf="!selectedJobDetails?.quickInfo?.isshortlisted && !selectedJobDetails?.quickInfo?.isApplyed" (click)="takeAction(false, selectedJobDetails.quickInfo.referrenceId)">Shortlist</button> -->
+        <button class="orange-button" id="apply"
+          *ngIf="activeTab.shortlisted && currentSelectedJob && !currentSelectedJob?.isApplyed && selectedJobDetails && !selectedJobDetails?.quickInfo?.isApplyed"
+          (click)="takeAction(true, selectedJobDetails?.quickInfo?.referrenceId)">Apply</button>
+        <button class="orange-button" id="start-interview"
+          *ngIf="(currentSelectedJob?.InterviewTypeId == 1 && currentSelectedJob?.interviewDate && currentSelectedJob?.zoomId) && (activeTab.interview)"
+          (click)="startInterview(currentSelectedJob?.zoomId, currentSelectedJob?.interviewDate)">Start
+          Interview</button>
+        <button class="orange-button" id="start-interview"
+          *ngIf="(!currentSelectedJob?.interviewDate) && (activeTab.interview) && !currentSelectedJob?.isCronofyIntegrated"
+          (click)="scheduleInterview(currentSelectedJob)">Schedule Interview</button>
+        <button class="orange-button" id="start-interview"
+          *ngIf="(!currentSelectedJob?.interviewDate) && (activeTab.interview) && currentSelectedJob?.isCronofyIntegrated"
+          (click)="showCronofyScheduleInterviewModal(currentSelectedJob?.interviewId)">Schedule Interview</button>
+        <!-- <button class="orange-button" id="start-interview" *ngIf="(activeTab.applied)" (click)="showPreInterviewModal = true">Select Interview Slots</button> -->
+      </div>
+    </div>
+    <!-- Job details -->
+    <div class="job-content" #jobContent (scroll)="onJobDetailsScroll($event)">
+      <!-- Quick Info section -->
+      <div class="content-box" id="info" *ngIf="selectedJobDetails">
+        <div #info>
+          <p class="job-title">{{selectedJobDetails?.quickInfo?.jobTitle}}</p>
+          <p class="company">{{selectedJobDetails?.quickInfo?.companyName}} <span
+              class="location">{{selectedJobDetails?.quickInfo?.Location}}</span></p>
+          <div class="details-intro row flex">
+            <div class="exp-col">
+              <img src="/assets/images/ic-experience.svg" alt="">
+              <p class="font-bold">
+                {{selectedJobDetails?.quickInfo?.experience ? selectedJobDetails?.quickInfo?.experience : 'Not Available'}}
+              </p>
+            </div>
+            <div class="pay-col">
+              <img src="/assets/images/ic-bill-rate.svg" alt="">
+              <p class="font-bold" *ngIf="selectedJobDetails?.quickInfo?.payRate">
+                {{selectedJobDetails?.quickInfo?.payRateUnitSymbol}}{{selectedJobDetails?.quickInfo?.payRate}}{{selectedJobDetails?.quickInfo?.payRateUnit}}
+              </p>
+              <p class="font-bold" *ngIf="!selectedJobDetails?.quickInfo?.payRate">Not Available</p>
+            </div>
+            <div class="post-col">
+              <img src="/assets/images/ic-calendar.svg" alt="">
+              <p class="font-bold" *ngIf="selectedJobDetails?.quickInfo?.postedDate">
+                {{selectedJobDetails?.quickInfo?.postedDate | timeago}}</p>
+              <p class="font-bold" *ngIf="!selectedJobDetails?.quickInfo?.postedDate">Not Available</p>
+            </div>
+            <div class="pos-col">
+              <img src="/assets/images/drawermenu-ic-myjobs.svg" alt="">
+              <p>
+                {{selectedJobDetails?.quickInfo?.jobtype? selectedJobDetails?.quickInfo?.jobtype + ' Position' : 'Not Available'}}
+              </p>
+            </div>
+            <div class="assess-col">
+              <img src="/assets/images/dashboard-ic-assessments-completed.svg" alt="">
+              <p *ngIf="selectedJobDetails?.includeTechAssessment">Assessment Required</p>
+              <p *ngIf="!selectedJobDetails?.includeTechAssessment">Assessment Not Required</p>
+            </div>
+          </div>
+          <div class="start-duration flex">
+            <div class="start-date" *ngIf="selectedJobDetails?.quickInfo?.projectStartDate">Start Date:
+              <span>{{selectedJobDetails?.quickInfo?.projectStartDate | date: 'dd, MMM. yyyy'}}</span></div>
+            <div class="start-date" *ngIf="!selectedJobDetails?.quickInfo?.projectStartDate">Start Date: <span>Not
+                Available</span></div>
+            <div class="duration">Duration:
+              <span>{{selectedJobDetails?.quickInfo?.projectDurationMonths ? selectedJobDetails?.quickInfo?.projectDurationMonths : 'Not Available'}}
+                Months</span></div>
+          </div>
+
+          <div class="job_requirement">
+          <p class="sub-title">Job Requirements</p>
+          <pre class="base-font">{{selectedJobDetails?.quickInfo?.requirement}}</pre>
+          <!-- <ul>
+            <li>{{selectedJobDetails?.quickInfo?.requirement}}</li>
+          </ul> -->
+          </div>
+          <div class="ruler"></div>
+          <div class="view_intrview">
+            <p class="sub-title">Technical Assessment</p>
+            <ng-container *ngIf="selectedJobDetails.assesmentList.length; else technotreq">
+            <div class="video_cont" *ngFor="let data of selectedJobDetails?.assesmentList">
+              <p>{{data.assessmentName}}</p>
+              <p>{{data.testDuration}}</p>
+              <p>{{data.questionCount}}</p>
+            </div>
+          </ng-container>
+            <ng-template #technotreq>
+            <pre class="base-font">Technical Assessment is not required</pre>
+          </ng-template>
+        </div>
+
+          <div class="ruler"></div>
+
+          <div class="view_intrview">
+            <p class="sub-title">Video Interview</p>
+            <div class="video_cont" *ngIf="selectedJobDetails.videoAssessment == true; else videonotreq">
+            <p class="record-text">{{selectedJobDetails.videoAssessmentDetail.assessmentName}}</p>
+            <p class="record-text">{{selectedJobDetails.videoAssessmentDetail.assessmentDescription}}</p>
+          </div>
+            <ng-template #videonotreq>
+            <pre class="base-font">Video Interview is not required</pre>
+          </ng-template>
+        </div>
+
+          <div class="ruler"></div>
+          <div class="row match-row">
+            <span class="job-match" *ngIf="selectedJobDetails?.quickInfo?.score"
+              [ngClass]="{'red': selectedJobDetails?.quickInfo?.score <= 30, 'yellow': selectedJobDetails?.quickInfo?.score <= 50 && selectedJobDetails?.quickInfo?.score >30, 'light-green': selectedJobDetails?.quickInfo?.score <= 80 && selectedJobDetails?.quickInfo?.score >50, 'dark-green': selectedJobDetails?.quickInfo?.score > 80}">{{selectedJobDetails?.quickInfo?.score}}
+              % Match</span>
+            <p class="detail-right-links">
+              <!-- <span>
+                  <img src="/assets/images/ic-matchingjobsforyou-shortlist.svg" alt="">Shortlist
+                </span> -->
+              <span (click)="toggleShareJobModal()">
+                <img src="/assets/images/ic-job-details-share.svg" alt="">Share
+              </span>
+            </p>
+          </div>
+        </div>
+      </div>
+      <!-- Job description section -->
+      <div class="content-box" id="desc">
+        <div #desc>
+          <p class="sub-title">Job Description</p>
+          <pre *ngIf="selectedJobDetails?.description" class="base-font">{{selectedJobDetails?.description}}</pre>
+        </div>
+      </div>
+      <!-- Video Section -->
+      <div class="content-box" id="videos">
+        <div #videos>
+          <p class="sub-title">Videos</p>
+          <!-- <div class="ruler"></div> -->
+          <div class="row">
+            <!-- <div class="video-col" *ngFor="let video of selectedJobDetails?.JobVideo">
+              <div class="vid-clip" *ngIf="video.url">
+                <video [src]="video.url" controls></video>
+                <iframe [src]="video.url"></iframe>
+              </div>
+            </div> -->
+            <!-- <div class="video-details-col">
+              <p class="video-title"></p>
+              <p class="video-time">03:30 mins</p>
+              <img src="/assets/images/YT-icon.jpg" alt="youtube logo">
+            </div> -->
+          </div>
+        </div>
+      </div>
+      <!-- Choose Interview Slot Section -->
+      <div class="content-box" id="slot" #slot>
+        <p class="sub-title">Preferred Interview Time <span class="opt"> (Optional)</span></p>
+        <div class="form-group interview-slot" *ngIf="selectedJobDetails?.preInterviewProcess?.date_slot1">
+          <p class="flex">
+            <span class="label">Slot 1: Date </span>
+            <span class="label">Time</span>
+          </p>
+          <p class="flex">
+            <!-- <label nz-radio tabindex="1" nz-radio [nzValue]="interviewDetail?.slot1">{{interviewDetail?.slot1 | date: 'dd, MMM yyyy' : 'GMT'}}</label> -->
+            <span class="interview-time label"
+              *ngIf="selectedJobDetails?.preInterviewProcess?.date_slot1">{{selectedJobDetails?.preInterviewProcess?.date_slot1 | date: 'dd, MMM yyyy' : 'GMT'}}</span>
+            <span class="interview-time label"
+              *ngIf="selectedJobDetails?.preInterviewProcess?.slot1_from_time && selectedJobDetails?.preInterviewProcess?.slot1_to_time">{{selectedJobDetails?.preInterviewProcess?.slot1_from_time | date: 'HH:mm' }}
+              - {{selectedJobDetails?.preInterviewProcess?.slot1_to_time | date: 'HH:mm' }}</span>
+            <span class="interview-time label"
+              *ngIf="!selectedJobDetails?.preInterviewProcess?.slot1_from_time || !selectedJobDetails?.preInterviewProcess?.slot1_to_time">All
+              Day</span>
+          </p>
+        </div>
+        <div class="form-group interview-slot" *ngIf="selectedJobDetails?.preInterviewProcess?.date_slot2">
+          <p class="flex">
+            <span class="label">Slot 2: Date </span>
+            <span class="label">Time</span>
+          </p>
+          <p class="flex">
+            <!-- <label nz-radio tabindex="2" nz-radio [nzValue]="interviewDetail?.slot2">{{interviewDetail?.slot2 | date: 'dd, MMM yyyy' : 'GMT'}}</label> -->
+            <span class="interview-time label"
+              *ngIf="selectedJobDetails?.preInterviewProcess?.date_slot2">{{selectedJobDetails?.preInterviewProcess?.date_slot2 | date: 'dd, MMM yyyy' : 'GMT'}}</span>
+            <span class="interview-time label"
+              *ngIf="selectedJobDetails?.preInterviewProcess?.slot2_from_time && selectedJobDetails?.preInterviewProcess?.slot2_to_time">{{selectedJobDetails?.preInterviewProcess?.slot2_from_time | date: 'HH:mm' }}
+              - {{selectedJobDetails?.preInterviewProcess?.slot2_to_time | date: 'HH:mm'}}</span>
+            <span class="interview-time label"
+              *ngIf="!selectedJobDetails?.preInterviewProcess?.slot2_from_time || !selectedJobDetails?.preInterviewProcess?.slot2_to_time">All
+              Day</span>
+          </p>
+        </div>
+        <p class="add-video-slot" *ngIf="activeTab.applied">
+          <span (click)="openPreInterviewModal()">Choose Slots</span>
+        </p>
+      </div>
+      <!-- Record Interview Slot Section -->
+      <div class="content-box" id="record" #intro>
+        <p class="sub-title">Introduction Video <span class="opt"> (Optional)</span></p>
+        <p *ngIf="(activeTab.shortlisted || activeTab.applied)" class="record-text">Add a brief introduction of why you
+          are suited for this job.</p>
+        <p *ngIf="(activeTab.shortlisted || activeTab.applied)" class="record-text">This will enhance your chances of
+          getting selected.</p>
+        <div class="vid-clip" id="preInterviewDiv"
+          *ngIf="selectedJobDetails?.preInterviewProcess?.intoduction_video_url">
+          <!-- <video [src]="selectedJobDetails?.preInterviewProcess?.intoduction_video_url" controls></video> -->
+        </div>
+        <p class="add-video-slot" *ngIf="activeTab.applied">
+          <span (click)="openPreInterviewModal()">
+            <img src="/assets/images/video (1).svg" alt="">Add Video
+          </span>
+        </p>
+        <!-- <app-upload-intro *ngIf="selectedJobDetails?.quickInfo?.referrenceId && activeTab.shortlisted" [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId" [redirectUri]="'myjobs?tab=1&type=1&id='+selectedJobDetails?.quickInfo?.referrenceId"></app-upload-intro> -->
+      </div>
+      <!-- Timeline section -->
+      <div class="content-box" id="timeline">
+        <div #timeline>
+          <p class="sub-title">Timeline</p>
+          <div class="timline-progress" *ngIf="selectedJobDetails?.TimeLine">
+            <div class="tl-status" id="tl-shortlisted" *ngIf="selectedJobDetails?.TimeLine?.shortlistedDate">
+              <img src="/assets/images/ic-myjobs-shortlisted.svg" alt="Shortlisted On" /> <span><img
+                  src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.shortlistedDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Shortlisted</p>
+            </div>
+            <div class="tl-status" id="tl-applied" *ngIf="selectedJobDetails?.TimeLine?.appliedDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.appliedDate"></p>
+              <img src="/assets/images/ic-matchingjobsforyou-apply-white.svg" alt="Applied On" /> <span><img
+                  src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.appliedDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Applied</p>
+            </div>
+            <div class="tl-status" id="tl-interview" *ngIf="selectedJobDetails?.TimeLine?.interviewDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.interviewDate"></p>
+              <img src="/assets/images/ic-myjobs-interivew-copy-2.svg" alt="" /> <span><img
+                  src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.interviewDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Interview</p>
+            </div>
+            <div class="tl-status" id="tl-hire" *ngIf="selectedJobDetails?.TimeLine?.hireDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.hireDate"></p>
+              <img src="/assets/images/ic-myjobs-good-to-hire.svg" alt="" /> <span><img
+                  src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.hireDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Good To Hire</p>
+            </div>
+            <div class="tl-status" id="tl-rejected" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate">
+              <p class="vertical-ruler" *ngIf="selectedJobDetails?.TimeLine?.rejectedDate"></p>
+              <img src="/assets/images/ic-myjobs-rejected.svg" alt="" /> <span><img
+                  src="/assets/images/h-connector.svg">{{selectedJobDetails?.TimeLine?.rejectedDate | date : 'dd MMM, yyyy'}}</span>
+              <p class="timeline-status">Rejected</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="no-content flex" *ngIf="!selectedJobDetails">
+    <div class="no-content-circle" *ngIf="!loading">
+      <p class="text-center" *ngIf="jobs && jobs.length > 0">Select any job to see details</p>
+      <p class="text-center" *ngIf="jobs && jobs.length == 0">No Record Found</p>
+    </div>
+  </div>
+</section>
+<!-- Share Job Modal -->
+<nz-modal [nzWidth]="400" [nzKeyboard]="false" [nzClosable]="true" [(nzVisible)]="showShareJobModal"
+  nzTitle="Share Application" [nzFooter]="null" [nzMaskClosable]="true" (nzOnCancel)="toggleShareJobModal()">
+  <!-- <nz-rate [ngModel]="0" (ngModelChange)="onRateChange($event)"></nz-rate> -->
+  <div class="flex share-app">
+    <div class="share-img-count">
+      <a [href]="shareLink.twitter" target="_blank">
+        <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+          <g fill="none" fill-rule="evenodd">
+            <!-- <rect width="95" height="93" fill="#00A9F2" rx="2"/> -->
+            <circle cx="47.5" cy="32.5" r="22.5" fill="#0096DC" />
+            <path fill="#FFF"
+              d="M57 26.844c-.707.313-1.46.52-2.244.621a3.903 3.903 0 0 0 1.713-2.173 7.741 7.741 0 0 1-2.47.952A3.887 3.887 0 0 0 51.154 25c-2.157 0-3.893 1.767-3.893 3.932 0 .312.026.611.09.897-3.238-.16-6.103-1.726-8.028-4.112a3.986 3.986 0 0 0-.533 1.987c0 1.361.694 2.568 1.73 3.267a3.82 3.82 0 0 1-1.76-.484v.043a3.94 3.94 0 0 0 3.12 3.862c-.316.088-.662.13-1.02.13-.25 0-.502-.015-.738-.067.505 1.556 1.937 2.701 3.64 2.738a7.781 7.781 0 0 1-4.83 1.677 7.23 7.23 0 0 1-.932-.054 10.894 10.894 0 0 0 5.975 1.764c7.168 0 11.087-5.992 11.087-11.186 0-.174-.006-.342-.014-.509A7.811 7.811 0 0 0 57 26.845" />
+          </g>
+        </svg>
+        <div class="sharing-numbers">
+          <span>Twitter</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="share-img-count">
+      <a [href]="shareLink.linkedin" target="_blank">
+        <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" width="95" height="93" viewBox="0 0 95 93">
+          <g fill="none" fill-rule="evenodd">
+            <!-- <rect width="95" height="93" fill="#1776B5" rx="2"/> -->
+            <circle cx="47.5" cy="32.5" r="22.5" fill="#166BA3" />
+            <g fill="#FFF">
+              <path
+                d="M38.233 40.962h4.052V28.865h-4.052zM55.581 29.97c-.85-.923-1.977-1.385-3.376-1.385-.516 0-.984.063-1.406.19a3.197 3.197 0 0 0-1.068.53c-.29.228-.522.44-.694.635a5.24 5.24 0 0 0-.479.646v-1.72H44.52l.012.585c.009.391.013 1.595.013 3.614 0 2.018-.008 4.65-.025 7.897h4.04v-6.75c0-.415.044-.745.134-.989.172-.415.432-.763.78-1.043.348-.281.78-.422 1.296-.422.703 0 1.221.242 1.553.726.331.485.497 1.154.497 2.009v6.47h4.04v-6.934c-.001-1.782-.427-3.135-1.278-4.059M40.284 23.043c-.68 0-1.23.197-1.652.592-.421.395-.632.893-.632 1.495 0 .594.205 1.09.614 1.49.409.398.95.597 1.62.597h.025c.688 0 1.242-.199 1.664-.598.421-.398.628-.895.62-1.489-.009-.602-.217-1.1-.627-1.495-.409-.395-.953-.592-1.632-.592" />
+            </g>
+          </g>
+        </svg>
+        <div class="sharing-numbers">
+          <span>LinkedIn</span>
+        </div>
+      </a>
+    </div>
+
+    <div class="share-img-count">
+      <a [href]="shareLink.facebook" target="_blank">
+        <svg class="socials-icons" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+          width="95" height="93" viewBox="0 0 95 93">
+          <defs>
+            <path id="a" d="M0 0h9.946v18.697H0z" />
+          </defs>
+          <g fill="none" fill-rule="evenodd">
+            <!-- <rect width="95" height="93" fill="#39559C" rx="2"/> -->
+            <circle cx="47.5" cy="32.5" r="22.5" fill="#324B8B" />
+            <g transform="translate(42.5 23)">
+              <mask id="b" fill="#fff">
+                <use xlink:href="#a" />
+              </mask>
+              <path fill="#FFF"
+                d="M6.456 18.697v-8.528h2.931l.44-3.325H6.456V4.722c0-.962.273-1.618 1.688-1.618h1.802V.13C9.634.09 8.564 0 7.319 0 4.72 0 2.94 1.549 2.94 4.393v2.451H0v3.325h2.94v8.528h3.516z"
+                mask="url(#b)" />
+            </g>
+          </g>
+        </svg>
+        <div class="sharing-numbers">
+          <span>Facebook</span>
+        </div>
+      </a>
+    </div>
+
+
+  </div>
+</nz-modal>
+
+<!-- Confirmation Modal -->
+<nz-modal [(nzVisible)]="showConfirmationModal" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleConfirmCancel()"
+  (nzOnOk)="handleConfirmOk()">
+  <div class="confirmation-modal">
+    <div class="flex confirmation-modal-body">
+      <div class="flex">
+        <p class="text-explanation">Please update the missing fields if you want to apply for this job.</p>
+        <p class="text-explanation">Missing field(s) are</p>
+      </div>
+      <!-- <span class="confirmation-text">Missing Fields:</span> -->
+      <div class="flex fields-row">
+        <span class="field" *ngFor="let field of missingFields">{{field | format}}</span>
+      </div>
+    </div>
+    <div class="flex button-row">
+      <button class="cancel" (click)="handleConfirmCancel()">Cancel</button>
+      <button class="update" (click)="handleConfirmOk()">Update</button>
+    </div>
+  </div>
+</nz-modal>
+
+<!-- Pre-Interview Modal -->
+<nz-modal [(nzVisible)]="showPreInterviewModal" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null"
+  nzTitle="Pre Interview" (nzOnCancel)="handlePreInterviewCancel()" (nzOnOk)="handlePreInterviewOk()">
+  <app-pre-inteview *ngIf="showPreInterviewModal" [isApplied]="preInterviewIsApplied" (success)="handlePreInterviewOk()"
+    (cancel)="handlePreInterviewCancel()"></app-pre-inteview>
+</nz-modal>
+
+<!-- Cronofy Interview Schedule Modal -->
+<nz-modal [(nzVisible)]="showConfirmInterviewModal" [nzZIndex]="1000" [nzMaskClosable]="false" [nzKeyboard]="false" [nzFooter]="null"
+  nzTitle="Schedule Interview" (nzOnCancel)="cancelInterviewModal()" (nzOnOk)="confirmInterviewModal()">
+  <div class="interview-confirmation-modal">
+    <!-- <p>Schedule Interview</p> -->
+    <div class="row">
+      <h3>Choose Interview Date</h3>
+      <div class="dateslot">
+        <div [ngClass]="slot?.active ? 'active' : ''"
+          *ngFor="let slot of cronofyResponse?.available_periods;let idx = index" (click)="selectDateSlot(slot, idx)">
+          <span class="dayslot">{{slot?.start | date:'EEE'}}</span>
+          <span class="date">{{slot?.start | date:'dd'}}</span>
+          <span class="month">{{slot?.start | date:'LLL'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="row time-slot-list">
+      <h3>Choose Interview Slot</h3>
+      <div class="timeslot">
+        <div *ngFor="let slot of selectedDateSlot?.timeSlots; let timeSlotidx = index"
+          (click)="selectTimeSlot(slot, timeSlotidx)">
+          <span [ngClass]="slot?.active ? 'active' : ''">{{slot?.startDate | date: 'shortTime'}}</span>
+        </div>
+      </div>
+    </div>
+    <div class="interviewtype">
+      <div>
+        <span>Interview Type</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 1" class="value">F2F Video Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 2" class="value">F2F Interview</span>
+        <span *ngIf="cronofyResponse?.interviewDetails?.InterviewTypeId == 3" class="value">Telephonic Interview</span>
+      </div>
+      <div>
+        <span style="padding-left: 58px">Interview Duration</span>
+        <span class="value" style="padding-left: 55px" *ngIf="cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Hours}} Hours {{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+        <span class="value" style="padding-left: 55px" *ngIf="!cronofyResponse?.required_duration?.Hours">{{cronofyResponse?.required_duration?.Minutes}} Mins</span>
+      </div>
+    </div>
+    <form [formGroup]="scheduleForm" *ngIf="cronofyResponse">
+        <div class="flex" id="interview-form">
+            <div class="form-group" id="phoneCode">
+              <label for="phoneCodeSelect" class="form-control-placeholder"
+              [ngClass]="{'active': f.countryPhoneCode.value, 'inactive': !f.countryPhoneCode.value }">Country Code</label>
+                <nz-select id="phoneCodeSelect" class="form-control not-mandate" [nzDropdownMatchSelectWidth]="false"
+                formControlName="countryPhoneCode" style="padding-top: 5px">
+                <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'"
+                    *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
+                </nz-select>
+                <!-- <input type="text" tabindex="3" id="phoneCode" formControlName="countryPhoneCode" class="form-control"/> -->
+                <div *ngIf="f.countryPhoneCode.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="f.countryPhoneCode.errors.required">{{validationMsgs.PhoneRequired}}</div>
+                </div>
+            </div>
+            <div class="form-group" id="phone">
+                <label for="phoneNumber" class="form-control-placeholder"
+                [ngClass]="{'active': f.mobile.value, 'inactive': !f.mobile.value }">Candidate Phone Number</label>
+                <input app-phone-field type="number" tabindex="3" id="phoneNumber" formControlName="mobile"
+                class="form-control" />
+                <div *ngIf="submitted && f.mobile.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="f.mobile.errors.required && cronofyResponse?.interviewDetails?.InterviewTypeId == 3">{{validationMsgs.PhoneRequired}}</div>
+                    <div class="error" *ngIf="f.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+                </div>
+            </div>
+        </div>
+    </form>
+  </div>
+  <div class="buttn">
+    <button (click)="cancelInterviewModal()">Cancel</button>
+    <button [disabled]="!selectedDateSlot || !selectedTimeSlot" (click)="confirmInterviewModal()">Submit</button>
+  </div>
+</nz-modal>
+
+<!-- Cronofy Confirmation modal -->
+<nz-modal nzClassName="cronofy-confirm-modal" [nzKeyboard]="false" [nzZIndex]="1001" nzWidth="475px" [(nzVisible)]="showCronofyConfirmationModal" [nzStyle]="{top: '150px', width: '475px'}" [nzMaskClosable]="true" [nzFooter]="null" (nzOnCancel)="cancelConfirmationModal()" (nzOnOk)="submitConfirmationModal()">
+  <div class="confirmation-modal">
+    <div class="flex confirmation-modal-body">
+      <div class="flex">
+        <p class="text-explanation">Are you sure you want to share the selected slot with Hiring Manager?</p>
+      </div>
+    </div>
+    <div class="flex button-row">
+      <button class="cancel" (click)="cancelConfirmationModal()">No</button>
+      <button class="update" (click)="submitConfirmationModal()">Yes</button>
+    </div>
+  </div>
+</nz-modal>

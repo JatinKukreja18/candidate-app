@@ -1,0 +1,178 @@
+@mixin used-font($size, $weight, $color) {
+    font-size: $size;
+    font-weight: $weight;
+    color: $color;
+}
+
+.sub-title {
+    @include used-font(16px, 400, #242c6b);
+}
+.detail-right-links {
+    float: right;
+    margin-bottom: 0;
+    width: 80%;
+    text-align: right;
+    @include used-font(16px, 400, #f9683d);    
+    span{
+        cursor: pointer;
+        &:nth-child(2) {
+            display: inline;
+            margin-left: 20px;
+        }
+        &:last-child {
+            display: inline;
+            margin-left: 20px;
+        }
+        img {
+            margin-right: 5px;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
+.select-date{
+    width: 35% ;
+    margin-right: 20px; 
+}
+.pick-time{
+    width: 60%;
+    justify-content: space-between
+}
+
+.slot-row {
+    margin-bottom: 10px;
+    // flex-direction: column;
+}
+
+.button-col{
+    width: 120px;
+}
+
+.orange-button {
+    margin-top: 0px;
+}
+
+.form-group {
+    label {
+        display: block;
+        color: #4950bf;
+    }
+}
+
+.page-title{
+    color: #fff;
+    margin-top: 10px;
+}
+.main-section {
+    background: #f5f5fc;
+    // height: calc(100vh - 56px);
+    .grey-bg-content{
+        // padding: 20px;
+        margin: 0 auto;
+        // width: 64%;
+        background: #fff;
+        padding: 20px 0;
+        text-align: left;
+
+        .content-box {
+            margin-bottom: 30px;
+            .choose-slots {
+                margin-bottom: 20px;
+            }
+        }
+        .sub-title {
+            font-size: 16px;
+            font-weight: 600;
+        }
+        .schedule-content{
+            height: calc(100vh - 56px);
+            padding: 20px;
+            box-shadow: 1px 0 8px 0 rgba(0, 0, 0, 0.07);
+            nz-radio-group, .interview-type {
+                border-bottom: 1px solid #a4a9dc;
+            }
+            nz-radio-group {
+                margin-bottom: 20px;
+            }
+            p{
+                &.title{
+                    margin-bottom: 10px;
+                    color: #4855b5;
+                    opacity: 0.5;
+                    font-size: 12px;
+                }
+            }
+            .label{
+                margin-bottom: 10px;
+                color: #4855b5;
+                opacity: 0.5;
+                &:first-child {
+                    padding-left: 25px;
+                }
+            }
+            .form-group{
+                margin-bottom: 10px;
+                input, nz-select {
+                    border-bottom: 1px solid #a4a9dc;
+                }
+                #phoneCode .ant-select-selection-selected-value {
+                    font-size: 14px;
+                    font-weight: 600;
+                    color: #4855b5;
+                }
+            }
+            .interview-slot .label,
+            .interview-slot label.ant-radio-wrapper{
+                float: left;
+                width: 50%;
+                margin: 0
+            }
+            .interview-time, .type-of-interview{
+                color: #4855b5;
+                font-size: 14px;
+            }
+            .interview-link{
+                color: #4855b5;
+                font-size: 14px;
+                font-weight: 600; 
+            }
+            .interview-link-help {
+                opacity: 0.5;
+                font-size: 14px;
+            }
+            #phone.form-group{
+                width: 80%;
+            }
+            #phoneCode.form-group {
+                width: calc(20% - 15px);
+                margin-right: 10px;
+            }
+            .phone-update-note{
+                font-size: 12px;
+                font-style: italic;
+            }
+            .horizontal-ruler-light{
+                height: 1px;
+                width: 100%;
+                background: #999;
+            }
+            .scheduling-btns{
+                justify-content: flex-end;
+            }
+        }
+    }
+    .scheduling-btns {
+        justify-content: flex-end;
+    }
+}
+
+.note {
+    font-size: 10px;
+    color: red;
+}
+
+@media screen and (max-width: 767px){
+    .grey-bg-content {
+        width: 100% !important;
+    }
+}

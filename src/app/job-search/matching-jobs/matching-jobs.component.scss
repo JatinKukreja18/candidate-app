@@ -1,0 +1,54 @@
+  .main-header {
+    padding: 7px 20px;
+  
+    .search-title {
+      margin-top: 7px;
+      margin-bottom: 0;
+      font-size: 16px;
+      color: #fff;
+    }
+  
+    .right-subheader {
+      padding-top: 11px;
+    }
+  }
+  
+  .result-sidebar {
+    box-shadow: 2px 0 4px 0 rgba(0, 0, 0, 0.2);  
+    p {
+      margin: 0;
+    }
+    
+  }
+  
+  .filterCont {
+    width: 33%;
+  }
+  .filter-input {
+    nz-select {
+        border-bottom: 1px solid #5050e2;
+    }
+    .form-control-placeholder {
+        top: -25px;
+    }
+  }
+  .opt{
+    opacity: 0.5;
+  }
+
+form {
+    margin: 0;
+
+    label {
+    position: relative;
+    top: 0;
+    font-size: 18px;
+    margin-bottom: 10px;
+    }
+}
+.edit-profile-btn {
+    padding: 5px 10px;
+    border: 1px solid #fff;
+    border-radius: 15px;
+    color: #fff;
+}

@@ -1,0 +1,121 @@
+<div class="content-header row">
+Job Details <span class="cross"><img src="/assets/images/ic-close.svg" alt="close"></span>
+</div>
+<div class="content-menu">
+    <ul>
+        <li class="active"><a alt="">Quick Info</a></li>
+        <li ><a alt="">Description</a></li>
+        <li ><a alt="">Videos</a></li>
+        <li ><a alt="">Interview Slot</a></li>
+        <li ><a alt="">Record Intro</a></li>
+    </ul>
+</div>
+<div class="job-content">
+    <div class="content-box" id="info" #info>
+        <p class="job-title">{{selectedJobDetails?.quickInfo?.jobTitle}}</p>
+        <p class="company">{{selectedJobDetails?.quickInfo?.companyName}} <span class="location">{{selectedJobDetails?.quickInfo?.Location}}</span></p>
+        <div class="details-intro row flex">
+        <div class="exp-col">
+            <img src="/assets/images/ic-experience.svg" alt="">
+            <p><strong>{{selectedJobDetails?.quickInfo?.experience}}</strong></p>
+        </div>
+        <div class="pay-col">
+            <img src="/assets/images/ic-bill-rate.svg" alt="">
+            <p><strong>{{selectedJobDetails?.quickInfo?.payRateUnitSymbol}}{{selectedJobDetails?.quickInfo?.payRate}}{{selectedJobDetails?.quickInfo?.payRateUnit}}</strong></p>
+        </div>
+        <div class="post-col">
+            <img src="/assets/images/ic-calendar.svg" alt="">
+            <p><strong>{{selectedJobDetails?.quickInfo?.postedDate | timeago}}</strong></p>
+        </div>
+        <div class="pos-col">
+            <img src="/assets/images/drawermenu-ic-myjobs.svg" alt="">
+            <p>{{selectedJobDetails?.quickInfo?.jobtype}}</p>
+        </div>
+        <div class="assess-col">
+            <img src="/assets/images/dashboard-ic-assessments-completed.svg" alt="">
+            <p *ngIf="selectedJobDetails?.includeTechAssessment">Assessment Required</p>
+            <p *ngIf="!selectedJobDetails?.includeTechAssessment">Assessment Not Required</p>
+        </div>
+        </div>
+        <p class="sub-title">Job Requirements</p>
+        <ul>
+        <li>{{selectedJobDetails?.quickInfo?.requirement}}</li>
+        <!-- <li>UI Technology, HTML/ JavaScript</li> -->
+        </ul>
+        <div class="ruler"></div>
+        <div class="row">
+            <span class="job-match" [ngClass]="{'red': selectedJob?.score <= 30, 'yellow': selectedJob?.score <= 50 && selectedJob?.score >30, 'light-green': selectedJob?.score <= 80 && selectedJob?.score >50, 'dark-green': selectedJob?.score > 80}">{{selectedJob?.score}} % Match</span>
+            <!-- <p class="detail-right-links">
+            <span>
+                <img src="../../../assets/images/ic-matchingjobsforyou-shortlist.svg" alt="">Shortlist
+            </span>
+            <span>
+                <img src="../../../assets/images/ic-job-details-share.svg" alt="">Share
+            </span>
+            </p> -->
+        </div>
+    </div>
+    <div class="content-box" id="desc" #desc>
+        <p class="sub-title">Job Description</p>
+        <pre class="base-font">{{selectedJobDetails?.description}}</pre>
+        <!-- <ul>
+        <li>Design, build and configure applications to meet business process and application requirements.</li>
+        <li>Looking for someone with 5-7 years hands-on development experience on Core Java, J2EE, Spring, Hibernate,
+            Oracle. </li>
+        <li>Some experience on UI Technology stack with AngularJS, JavaScript, HTML5 is preferred, but not mandatory.</li>
+        </ul> -->
+    </div>
+    <div class="content-box" id="videos" #videos>
+        <p class="sub-title">Videos</p>
+        <div class="ruler"></div>
+        <!-- <div class="row" *ngFor="let video of selectedJobDetails.JobVideo">
+        <div class="video-col">
+            <div class="vid-clip">
+                <iframe width="181" height="127"
+                [src]="video.url">
+                </iframe>
+            </div>
+        </div>
+        <div class="video-details-col">
+            <p class="video-title">{{video?.vender}}</p>
+            <p class="video-time">03:30 mins</p>
+            <img src="../../../assets/images/YT-icon.jpg" alt="youtube logo">
+        </div>
+        </div> -->
+        <div class="row">
+        <div class="video-col">
+            <div class="vid-clip">
+                <iframe width="181" height="127"
+                src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0">
+                </iframe>
+            </div>
+        </div>
+        <div class="video-details-col">
+            <p class="video-title">Know about the Java Programmer Role at Collabera</p>
+            <p class="video-time">03:30 mins</p>
+            <img src="../../../assets/images/YT-icon.jpg" alt="youtube logo">
+        </div>
+        </div>
+        <div class="ruler"></div>
+        <div class="row">
+            <div class="video-col">
+                <div class="vid-clip">
+                    <iframe width="181" height="127"
+                    src="https://www.youtube.com/embed/tgbNymZ7vqY?controls=0">
+                    </iframe>
+                </div>
+            </div>
+            <div class="video-details-col">
+                <p class="video-title">Life @ Collabera</p>
+                <p class="video-time">05:30 mins</p>
+            </div>
+        </div>
+    </div>
+    <div class="content-box" id="slot" #slot>
+        <p class="sub-title">Preferred Interview Time <span class="opt"> (Optional)</span></p>
+        <app-choose-slot [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId"></app-choose-slot>
+    </div>
+    <div class="content-box" id="record" #intro>
+        <app-upload-intro [referrenceId]="selectedJobDetails?.quickInfo?.referrenceId" [redirectUri]="'search/matching'"></app-upload-intro>
+    </div>
+</div>
