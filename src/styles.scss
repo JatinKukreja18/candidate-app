@@ -10,7 +10,7 @@ $font-color: #4855b5;
 body,
 * {
     margin: 0;
-    font-family: 'Source Sans Pro', 'sans-serif';
+    font-family:'Work Sans', sans-serif;
 }
 
 
@@ -62,7 +62,7 @@ body,
     content:'⯆';
 
 }
-.ngx-dropdown-container .ngx-dropdown-list-container 
+.ngx-dropdown-container .ngx-dropdown-list-container
 {
     height: 150px;
 }
@@ -267,7 +267,7 @@ form {
             right: 0;
             background: red;
             content: "";
-        } 
+        }
     }
     .form-control-placeholder {
         display: block;
@@ -498,7 +498,7 @@ button {
     width: 100%;
     background: #4855b5;
     box-shadow: 0 0 8px 0 rgba(0, 0, 0, 0.2);
-    
+
     .action-buttons {
         display: flex;
         flex-wrap: wrap;
@@ -517,29 +517,29 @@ button {
     ul {
         margin-bottom: 0;
         padding: 0;
-    
+
         &:after {
             display: block;
             clear: both;
             content: "";
         }
-    
+
         li {
             float: left;
             padding: 18px 20px 14px;
             border-bottom: 3px solid transparent;
             list-style: none;
             cursor: pointer;
-    
+
             a {
             color: #fff;
             opacity: 0.5;
             }
-    
+
             &.active,
             &:hover {
             border-bottom-color: #fff;
-    
+
                 a {
                     opacity: 1;
                 }
@@ -858,40 +858,40 @@ span.ant-select-arrow {
     width: 100%;
     border-top: 1px solid #c9c9c9;
     border-bottom: 1px solid #c9c9c9;
-  
+
     >div {
       float: left;
       padding: 20px 0;
       border-right: 1px solid #979797;
-  
+
       img {
         display: block;
         margin: 0 auto 20px;
         width: 24px;
         height: 24px;
       }
-  
+
       p {
         font-size: 14px;
         text-align: center;
       }
-  
+
       &:last-child {
         border-right: none;
-  
+
       }
-  
+
       &.exp-col,
       &.pay-col {
         width: 17%;
         color: #4b4b4b;
       }
-  
+
       &.post-col {
         width: 16%;
         color: #7e7e7e;
       }
-  
+
       &.pos-col,
       &.assess-col {
         width: 25%;
@@ -957,7 +957,7 @@ a.ytp-watermark.yt-uix-sessionlink.ytp-hide-controls .ytp-watermark {
     }
     app-auth-left-section {
         height: auto;
-        padding: 0;   
+        padding: 0;
         .content img{
             width: 50%;
         }
@@ -1080,9 +1080,9 @@ input.ant-calendar-picker-input.ant-input{
     color: #4853bc;
     font-size: 14px;
     box-shadow: unset;
-    &::placeholder { 
+    &::placeholder {
         color: #4853bc;
-        opacity: 1; 
+        opacity: 1;
         font-size: 12px;
     }
     &::-ms-input-placeholder { /* Microsoft Edge */
@@ -1291,7 +1291,7 @@ input.ant-calendar-picker-input.ant-input{
           }
         }
       }
-      
+
     }
     .form-control-placeholder {
         top: -25px;
@@ -1390,12 +1390,12 @@ input.ant-calendar-picker-input.ant-input{
         border: 0;
         // border-radius: 10px;
         font-size: 16px;
-        cursor: pointer; 
+        cursor: pointer;
     }
     input[type='file']{
         opacity: 0;
         width: 160px;
-        cursor: pointer; 
+        cursor: pointer;
     }
     label {
         width: 130px;
@@ -1406,7 +1406,7 @@ input.ant-calendar-picker-input.ant-input{
         border: 1px solid #4855b5;
         border-radius: 0;
         font-size: 16px;
-        cursor: pointer; 
+        cursor: pointer;
     }
     .filename-text {
         font-weight: 600;
@@ -1432,13 +1432,13 @@ input.ant-calendar-picker-input.ant-input{
             border: 0;
             // border-radius: 10px;
             font-size: 16px;
-            cursor: pointer; 
+            cursor: pointer;
             height: 37px;
         }
         input[type='file']{
             opacity: 0;
             width: 160px;
-            cursor: pointer; 
+            cursor: pointer;
         }
         label {
             width: 130px;
@@ -1449,7 +1449,7 @@ input.ant-calendar-picker-input.ant-input{
             border: 1px solid #4855b5;
             border-radius: 0;
             font-size: 16px;
-            cursor: pointer; 
+            cursor: pointer;
         }
         .filename-text {
             font-weight: 600;
@@ -1559,209 +1559,209 @@ input.ant-calendar-picker-input.ant-input{
 .share-app {
     justify-content: center;
   }
-  
+
   .resp-sharing-button__link,
   .resp-sharing-button__icon {
     display: inline-block
   }
-  
+
   .resp-sharing-button__link {
     text-decoration: none;
     color: #fff;
     margin: 0.5em
   }
-  
+
   .resp-sharing-button {
     border-radius: 5px;
     transition: 25ms ease-out;
     padding: 0.5em 0.75em;
     font-family: Helvetica Neue,Helvetica,Arial,sans-serif
   }
-  
+
   .resp-sharing-button__icon svg {
     width: 1em;
     height: 1em;
     margin-right: 0.4em;
     vertical-align: top
   }
-  
+
   .resp-sharing-button--small svg {
     margin: 0;
     vertical-align: middle
   }
-  
+
   /* Non solid icons get a stroke */
   .resp-sharing-button__icon {
     stroke: #fff;
     fill: none
   }
-  
+
   /* Solid icons get a fill */
   .resp-sharing-button__icon--solid,
   .resp-sharing-button__icon--solidcircle {
     fill: #fff;
     stroke: none
   }
-  
+
   .resp-sharing-button--twitter {
     background-color: #55acee
   }
-  
+
   .resp-sharing-button--twitter:hover {
     background-color: #2795e9
   }
-  
+
   .resp-sharing-button--pinterest {
     background-color: #bd081c
   }
-  
+
   .resp-sharing-button--pinterest:hover {
     background-color: #8c0615
   }
-  
+
   .resp-sharing-button--facebook {
     background-color: #3b5998
   }
-  
+
   .resp-sharing-button--facebook:hover {
     background-color: #2d4373
   }
-  
+
   .resp-sharing-button--tumblr {
     background-color: #35465C
   }
-  
+
   .resp-sharing-button--tumblr:hover {
     background-color: #222d3c
   }
-  
+
   .resp-sharing-button--reddit {
     background-color: #5f99cf
   }
-  
+
   .resp-sharing-button--reddit:hover {
     background-color: #3a80c1
   }
-  
+
   .resp-sharing-button--google {
     background-color: #dd4b39
   }
-  
+
   .resp-sharing-button--google:hover {
     background-color: #c23321
   }
-  
+
   .resp-sharing-button--linkedin {
     background-color: #0077b5
   }
-  
+
   .resp-sharing-button--linkedin:hover {
     background-color: #046293
   }
-  
+
   .resp-sharing-button--email {
     background-color: #777
   }
-  
+
   .resp-sharing-button--email:hover {
     background-color: #5e5e5e
   }
-  
+
   .resp-sharing-button--xing {
     background-color: #1a7576
   }
-  
+
   .resp-sharing-button--xing:hover {
     background-color: #114c4c
   }
-  
+
   .resp-sharing-button--whatsapp {
     background-color: #25D366
   }
-  
+
   .resp-sharing-button--whatsapp:hover {
     background-color: #1da851
   }
-  
+
   .resp-sharing-button--hackernews {
   background-color: #FF6600
   }
   .resp-sharing-button--hackernews:hover, .resp-sharing-button--hackernews:focus {   background-color: #FB6200 }
-  
+
   .resp-sharing-button--vk {
     background-color: #507299
   }
-  
+
   .resp-sharing-button--vk:hover {
     background-color: #43648c
   }
-  
+
   .resp-sharing-button--facebook {
     background-color: #3b5998;
     border-color: #3b5998;
   }
-  
+
   .resp-sharing-button--facebook:hover,
   .resp-sharing-button--facebook:active {
     background-color: #2d4373;
     border-color: #2d4373;
   }
-  
+
   .resp-sharing-button--twitter {
     background-color: #55acee;
     border-color: #55acee;
   }
-  
+
   .resp-sharing-button--twitter:hover,
   .resp-sharing-button--twitter:active {
     background-color: #2795e9;
     border-color: #2795e9;
   }
-  
+
   .resp-sharing-button--google {
     background-color: #dd4b39;
     border-color: #dd4b39;
   }
-  
+
   .resp-sharing-button--google:hover,
   .resp-sharing-button--google:active {
     background-color: #c23321;
     border-color: #c23321;
   }
-  
+
   .resp-sharing-button--tumblr {
     background-color: #35465C;
     border-color: #35465C;
   }
-  
+
   .resp-sharing-button--tumblr:hover,
   .resp-sharing-button--tumblr:active {
     background-color: #222d3c;
     border-color: #222d3c;
   }
-  
+
   .resp-sharing-button--email {
     background-color: #777777;
     border-color: #777777;
   }
-  
+
   .resp-sharing-button--email:hover,
   .resp-sharing-button--email:active {
     background-color: #5e5e5e;
     border-color: #5e5e5e;
   }
-  
+
   .resp-sharing-button--pinterest {
     background-color: #bd081c;
     border-color: #bd081c;
   }
-  
+
   .resp-sharing-button--pinterest:hover,
   .resp-sharing-button--pinterest:active {
     background-color: #8c0615;
     border-color: #8c0615;
   }
-  
+
 
 .share-img-count {
     position: relative;
@@ -1829,7 +1829,7 @@ input.ant-calendar-picker-input.ant-input{
             align-items: center;
             border-radius: 20px;
             color: #4855b5;
-            padding: 0 5px; 
+            padding: 0 5px;
         }
     }
     input {
@@ -1872,7 +1872,7 @@ input.ant-calendar-picker-input.ant-input{
         li:last-of-type {
             display: block;
         }
-        
+
         #selectedCount{
             cursor: pointer;
             width: 40px;
@@ -1885,7 +1885,7 @@ input.ant-calendar-picker-input.ant-input{
             align-items: center;
             border-radius: 20px;
             color: #4855b5;
-            padding: 0 5px; 
+            padding: 0 5px;
         }
     }
 }
@@ -2039,7 +2039,7 @@ datalist {
             height: 96vh;
         }
     }
-    
+
     .recent-sidebar,
     .result-sidebar {
         position: absolute;

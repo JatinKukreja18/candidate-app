@@ -49,6 +49,10 @@ const routes: Routes = [
     canActivate: [AuthGaurd]
   },
   {
+    path: 'coverPage/:id',
+    loadChildren: './cover-page/cover-page.module#CoverPageModule'
+  },
+  {
     path: 'job/preinterview',
     component: PreInterviewComponent
   },

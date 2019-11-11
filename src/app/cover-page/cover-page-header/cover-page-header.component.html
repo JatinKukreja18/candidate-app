@@ -6,16 +6,21 @@
         </div>
 
     </div>
+    <div class="role">{{role}}</div>
     <div class="contact-info">
         <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
         <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
     </div>
-    <div class="role">{{role}}</div>
     <div class="social" >
         <div *ngFor=" let link of socialLinks" [matTooltip]="link.site">
-            <a [href]="link.ProfileLink" class="link" target="_blank"><i [ngClass]="link.icon" class="fa"></i></a>
+            <a [href]="link.ProfileLink" class="link" target="_blank">
+              <i [ngClass]="link.icon" class="fa"></i>
+              <img [src]="link.icon" alt="" srcset="">
+            </a>
         </div>
-        <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank">RESUME</a>
+        <!-- <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank">
+                <i class="fa fa-file resume-icon"></i>
+            RESUME</a> -->
 
     </div>
 </div>

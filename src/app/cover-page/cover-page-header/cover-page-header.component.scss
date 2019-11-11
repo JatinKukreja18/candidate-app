@@ -21,7 +21,7 @@
     .contact-info{
         font-size: 18px;
         color: rgb(43, 189, 225);
-        margin-bottom: 6px;
+        margin-bottom: 18px;
 
         a{
           color: rgb(43, 189, 225);
@@ -38,14 +38,14 @@
         font-size: 26px;
         font-weight: 500;
         color: rgb(43, 189, 225);
-        margin-bottom: 18px;
+        margin-bottom: 6px;
     }
     .social{
         display: flex;
         align-items: center;
         div{
             font-size: 45px;
-            margin-right: 15px;
+            // margin-right: 15px;
             display: flex;
             align-items: center;
 
@@ -62,14 +62,28 @@
                 .fa-id-card{
                     color: rgb(83, 187, 221)
                 }
+                img{
+                  width: 40px;
+                }
             }
-            
+
         }
         .resume-heading{
-            margin-left: 7px;
-            font-size: 20px;
+            // margin-left: 7px;
+            font-size: 18px;
             color: rgb(83, 187, 221);
             text-decoration: none;
         }
     }
+}
+.resume-icon{
+  width: 40px;
+    height: 40px;
+    text-align: center;
+    justify-content: center;
+    display: inline-flex;
+    align-items: center;
+    color: white;
+    background: #2bbde1;
+    border-radius: 50%;
 }

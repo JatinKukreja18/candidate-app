@@ -1,5 +1,5 @@
 import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 
 interface SocialLinks {
   site: string;
@@ -24,10 +24,12 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() email: string;
   exportLink = '';
 
-  constructor( private router: Router) { }
+  constructor( private router: Router,private activatedRoute: ActivatedRoute,) { }
 
   ngOnInit() {
-    this.exportLink = `/dashboard/coverPage/${this.candidateId}`;
+    // console.log(this.activatedRoute)
+    // console.log(this.router)
+    this.exportLink = this.router.url;
 
   }
   ngOnChanges(){
@@ -36,11 +38,11 @@ export class CoverPageHeaderComponent implements OnInit {
       a = this.socialLinks.map( function(item, index){
         switch (item.SocialSiteId) {
           case 3:
-                item.icon = 'fa-linkedin-square';
+                item.icon = 'assets/icons/linkedin.svg';
                 item.site = 'Linkedin';
                 break;
           case 2:
-              item.icon = 'fa fa-github';
+              item.icon = 'assets/icons/github.svg';
               item.site = 'Github';
               break;
           default:
