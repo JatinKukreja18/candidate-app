@@ -1,4 +1,4 @@
-import { Component, OnInit, AfterViewChecked, AfterViewInit, Input } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, AfterViewInit, Input, SimpleChanges } from '@angular/core';
 import * as jspdf from 'jspdf';
 import html2canvas from 'html2canvas';
 // import FileSaver from 'file-saver';
@@ -15,7 +15,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   @Input() candidateData: any = {};
   @Input() primarySkills: [];
   @Input() additionalSkills: [];
-  @Input() exporting;
+  exporting = false;
   isEditable = false;
   constructor( private activatedRoute: ActivatedRoute,
                 private userDataService: UserDataService,
@@ -25,19 +25,43 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   ngOnInit() {
     console.log('loading content for ' + this.activatedRoute.snapshot.params.id)
 
-    this.activatedRoute.params.subscribe(params => {
+    /* this.activatedRoute.params.subscribe(params => {
       if (params && params.export) {
         this.exporting = true;
       }
-    });
+    }); */
   }
-  ngOnChanges(){
+
+  ngOnChanges(changes: SimpleChanges){
+    this.handleSkills(changes['candidateData'].currentValue['CandidateSkills']);
     // console.log(this.primarySkills);
   }
+
   ngAfterViewInit() {
-    if (this.exporting) {
+    /* if (this.exporting) {
       setTimeout(this.captureScreen.bind(this), 5000);
-    }
+    } */
+  }
+
+  handleSkills(allSkills) {
+    const PS =  allSkills.filter(item => {
+          item.iconPath = 'assets/images/java-logo.png';
+          return item.SkillType === 'Primary';
+          });
+
+    const AS =  allSkills.filter(item => {
+          item.iconPath = 'assets/images/java-logo.png';
+          return item.SkillType === 'Additional';
+          });
+    PS ?  this.primarySkills = PS : this.primarySkills = [];
+    AS ?  this.additionalSkills = AS : this.additionalSkills = [];
+    console.log(this.primarySkills);
+
+}
+
+  export() {
+    this.exporting = true;
+    setTimeout(this.captureScreen.bind(this), 5000);
   }
 
   captureScreen() {
@@ -65,6 +89,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
       // doc.save( 'file.pdf');
       doc.output("dataurlnewwindow");
       window.close();
+      this.exporting = false;
     });
     // let doc = new jspdf('p', 'mm', 'a4');
 

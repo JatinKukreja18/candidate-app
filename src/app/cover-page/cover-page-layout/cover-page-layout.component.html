@@ -10,7 +10,8 @@
             [companyName]="'Cognixia'"
             [socialLinks]="candidateData.CandidateSocialProfileDetails"
             [mobile]="candidateData.MobileNumber"
-            [email]="candidateData.EmailId">
+            [email]="candidateData.EmailId"
+            (export)="export()">
           </app-cover-page-header>
       </div>
       <div class="primary-skills" *ngIf="primarySkills?.length">

@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, ViewEncapsulation } from '@angular/core';
+import { Component, OnInit, Input, ViewEncapsulation, Output, EventEmitter, OnChanges } from '@angular/core';
 import { Router, ActivatedRoute } from '@angular/router';
 
 interface SocialLinks {
@@ -13,7 +13,7 @@ interface SocialLinks {
   styleUrls: ['./cover-page-header.component.scss'],
   encapsulation: ViewEncapsulation.None
 })
-export class CoverPageHeaderComponent implements OnInit {
+export class CoverPageHeaderComponent implements OnInit, OnChanges {
 
   @Input() candidateName: string;
   @Input() candidateId: number = null;
@@ -22,9 +22,10 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() socialLinks;
   @Input() mobile: string;
   @Input() email: string;
+  @Output() export = new EventEmitter();
   exportLink = '';
 
-  constructor( private router: Router,private activatedRoute: ActivatedRoute,) { }
+  constructor( private router: Router,private activatedRoute: ActivatedRoute) { }
 
   ngOnInit() {
     // console.log(this.activatedRoute)
@@ -32,7 +33,8 @@ export class CoverPageHeaderComponent implements OnInit {
     this.exportLink = this.router.url;
 
   }
-  ngOnChanges(){
+
+  ngOnChanges() {
     let a;
     if(this.socialLinks){
       a = this.socialLinks.map( function(item, index){
@@ -53,5 +55,9 @@ export class CoverPageHeaderComponent implements OnInit {
       });
     }
     console.log(a);
+  }
+
+  exportResume() {
+    this.export.emit();
   }
 }

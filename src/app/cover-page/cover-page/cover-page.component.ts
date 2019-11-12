@@ -31,7 +31,7 @@ export class CoverPageComponent implements OnInit, AfterViewInit {
     // Get Data from API for current profile
     this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.candidateData = res;
-      this.handleSkills(this.candidateData.CandidateSkills);
+      // this.handleSkills(this.candidateData.CandidateSkills);
       this.loading = false;
     }, err => {
       console.log(err.message);
@@ -39,11 +39,11 @@ export class CoverPageComponent implements OnInit, AfterViewInit {
     });
 
 
-    this.activatedRoute.params.subscribe(params => {
+    /* this.activatedRoute.params.subscribe(params => {
       if (params && params.export) {
         this.exporting = true;
       }
-    });
+    }); */
 
 
     // this.candidateData = {
@@ -189,21 +189,6 @@ export class CoverPageComponent implements OnInit, AfterViewInit {
     //   ]
 
     // };
-
-  }
-  handleSkills(allSkills){
-      const PS =  allSkills.filter(item => {
-            item.iconPath = 'assets/images/java-logo.png';
-            return item.SkillType === 'Primary';
-            });
-
-      const AS =  allSkills.filter(item => {
-            item.iconPath = 'assets/images/java-logo.png';
-            return item.SkillType === 'Additional';
-            });
-      PS ?  this.primarySkills = PS : this.primarySkills = [];
-      AS ?  this.additionalSkills = AS : this.additionalSkills = [];
-      console.log(this.primarySkills);
 
   }
 

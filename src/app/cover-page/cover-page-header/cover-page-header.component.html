@@ -18,7 +18,8 @@
               <img [src]="link.icon" alt="" srcset="">
             </a>
         </div>
-        <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank">
+        <!-- <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank"> -->
+            <a class="resume-heading" (click)="exportResume()">
                 <img src="assets/icons/ic_resume.svg" alt="" srcset="" style="width: 40px;">
             RESUME</a>
 
