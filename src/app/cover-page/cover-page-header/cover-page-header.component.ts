@@ -22,6 +22,7 @@ export class CoverPageHeaderComponent implements OnInit {
   @Input() socialLinks;
   @Input() mobile: string;
   @Input() email: string;
+  @Input() exporting;
   exportLink = '';
 
   constructor( private router: Router,private activatedRoute: ActivatedRoute,) { }

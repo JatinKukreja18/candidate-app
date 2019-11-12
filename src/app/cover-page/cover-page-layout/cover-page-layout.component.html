@@ -1,9 +1,10 @@
 
 <div class="cover-page" id="cover-page">
-    <div class="page-section page-1" [ngClass]="exporting?'page-section page-1': 'is-paged page-section page-1'">
+    <div class="page-section page-1" [ngClass]="exporting?'page-section page-1 fixed': 'is-paged page-section page-1'">
 
       <div class="header">
           <app-cover-page-header
+            [exporting]='exporting'
             [candidateName]="candidateData.FullName"
             [candidateId]="candidateData.CandidateId"
             [role]="candidateData.JobTitle"
@@ -81,7 +82,7 @@
           </div>
       </div>
     </div>
-    <div [ngClass]="exporting?'page-section ': 'is-paged page-section '" *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length">
+    <div [ngClass]="exporting?'page-section fixed': 'is-paged page-section '" *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length">
         <div class="additional-projects prof-experience" >
             <div class="heading">
                 <span>Experience</span>

@@ -15,7 +15,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   @Input() candidateData: any = {};
   @Input() primarySkills: [];
   @Input() additionalSkills: [];
-  @Input() exporting;
+  @Input() exporting = false;
   isEditable = false;
   constructor( private activatedRoute: ActivatedRoute,
                 private userDataService: UserDataService,
@@ -36,13 +36,13 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
   }
   ngAfterViewInit() {
     if (this.exporting) {
-      setTimeout(this.captureScreen.bind(this), 5000);
+      setTimeout(this.captureScreen.bind(this), 200);
     }
   }
 
   captureScreen() {
     const page = document.getElementById('cover-page');
-    html2canvas(page, { y: 140, width: 1120, height: page.offsetHeight + 40}).then(canvas => {
+    html2canvas(page, {  width: 1040, height: page.offsetHeight + 40}).then(canvas => {
       const contentDataURL = canvas.toDataURL('image/jpeg');
       const dataHeight = page.offsetHeight;
       const imgWidth = 210;
