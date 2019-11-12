@@ -24,50 +24,6 @@
       {
           "ID": 0,
           "CandidateID": 0,
-          "Skill": "Java",
-          "Experience": null,
-          "CreatedOn": null,
-          "IsActive": null,
-          "Proficiency": 2,
-          "IsPrimarySkill": false,
-          "SkillType": "Additional"
-      },
-      {
-          "ID": 0,
-          "CandidateID": 0,
-          "Skill": ".NET",
-          "Experience": null,
-          "CreatedOn": null,
-          "IsActive": null,
-          "Proficiency": 10,
-          "IsPrimarySkill": true,
-          "SkillType": "Primary"
-      },
-      {
-          "ID": 0,
-          "CandidateID": 0,
-          "Skill": "SQL Server",
-          "Experience": null,
-          "CreatedOn": null,
-          "IsActive": null,
-          "Proficiency": 2,
-          "IsPrimarySkill": false,
-          "SkillType": "Additional"
-      },
-      {
-          "ID": 0,
-          "CandidateID": 0,
-          "Skill": "Oracle",
-          "Experience": null,
-          "CreatedOn": null,
-          "IsActive": null,
-          "Proficiency": 4,
-          "IsPrimarySkill": true,
-          "SkillType": "Primary"
-      },
-      {
-          "ID": 0,
-          "CandidateID": 0,
           "Skill": "Entity Framework",
           "Experience": null,
           "CreatedOn": null,

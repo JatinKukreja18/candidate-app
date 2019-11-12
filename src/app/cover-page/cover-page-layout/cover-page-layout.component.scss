@@ -42,6 +42,9 @@ $heading-color-2: rgb(43, 189, 225);
   border-left: 10px;
   background-color: rgb(252, 253, 255);
 }
+.page-section.fixed{
+  width: 1040px;
+}
 .page-section.is-paged{
   box-shadow: 2px 2px 13px -4px #bbb;
   margin-bottom: 20px;

@@ -11,7 +11,7 @@
         <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
         <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
     </div>
-    <div class="social" >
+    <div class="social" *ngIf="!exporting">
         <div *ngFor=" let link of socialLinks" [matTooltip]="link.site">
             <a [href]="link.ProfileLink" class="link" target="_blank">
               <i [ngClass]="link.icon" class="fa"></i>

@@ -204,32 +204,31 @@ export class CoverPageComponent implements OnInit, AfterViewInit {
     }
   }
 
-  captureScreen() {
-    const page = document.getElementById('cover-page');
-    html2canvas(page, { y: 140, width: 1120, height: page.offsetHeight + 40}).then(canvas => {
-      const contentDataURL = canvas.toDataURL('image/jpeg');
-      const dataHeight = page.offsetHeight;
-      const imgWidth = 210;
-      const pageHeight = 300;
-      const imgHeight = canvas.height * imgWidth / canvas.width;
-      let heightLeft = imgHeight;
-      // FileSaver.saveAs(contentDataURL, 'my-pdfimage.png');
-      let doc = new jspdf('p', 'mm', 'a4');
-      let position = 0;
+  // captureScreen() {
+  //   const page = document.getElementById('cover-page');
+  //   html2canvas(page, { y: 140, width: 1120, height: page.offsetHeight + 40}).then(canvas => {
+  //     const contentDataURL = canvas.toDataURL('image/jpeg');
+  //     const dataHeight = page.offsetHeight;
+  //     const imgWidth = 210;
+  //     const pageHeight = 300;
+  //     const imgHeight = canvas.height * imgWidth / canvas.width;
+  //     let heightLeft = imgHeight;
+  //     // FileSaver.saveAs(contentDataURL, 'my-pdfimage.png');
+  //     let doc = new jspdf('p', 'mm', 'a4');
+  //     let position = 0;
 
-      doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight);
-      heightLeft -= pageHeight;
+  //     doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight);
+  //     heightLeft -= pageHeight;
 
-      while (heightLeft >= 0) {
-        position = heightLeft - imgHeight;
-        doc.addPage();
-        doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight);
-        heightLeft -= pageHeight;
-      }
-      doc.save( 'file.pdf');
-      window.close();
-    });
-
-  }
+  //     while (heightLeft >= 0) {
+  //       position = heightLeft - imgHeight;
+  //       doc.addPage();
+  //       doc.addImage(contentDataURL, 'JPEG', 0, position, imgWidth, imgHeight);
+  //       heightLeft -= pageHeight;
+  //     }
+  //     doc.save( 'file.pdf');
+  //     window.close();
+  //   });
+  // }
 
 }
