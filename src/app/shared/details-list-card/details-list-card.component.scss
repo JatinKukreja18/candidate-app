@@ -11,8 +11,8 @@
         padding-top: 30px;
         padding-bottom: 10px;
         background-color: #ffffff;
-      outline: none;
-      flex-wrap: wrap;
+        outline: none;
+        flex-wrap: wrap;
         .mat-card-title {
             margin: 0 -16px;
         }
@@ -20,10 +20,12 @@
 
     .details-list-card-content.mat-card-content{
         background-color: #ffffff;
-      outline: none;
-      padding: 20px;
-      white-space: pre-line;
+        outline: none;
+        padding: 20px;
+        white-space: pre-line;
         padding-top: 0;
+        font-size: 24px;
+        font-weight: normal;
     }
 
   .items {
@@ -35,8 +37,8 @@
     line-height: 1.5;
 
     .bullet {
-      height: 7px;
-      width: 7px;
+      height: 9px;
+      width: 9px;
       border-radius: 50%;
       background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));;
       margin-right: 10px;
@@ -76,14 +78,18 @@
   z-index: 2;
 }
 
-.card-title .light{
+.card-title {
+  font-size: 26px;
+  font-weight: 500;
+  .light{
     font-weight: 400;
+  }
 }
 .card-sub-title{
   width: 100%;
-  font-size: 16px;
-  color: #676364;
-  font-weight: 600;
+  font-size: 22px;
+  color: #776c6e;
+  font-weight: 500;
   display: flex;
   align-items: center;
   justify-content: space-between;

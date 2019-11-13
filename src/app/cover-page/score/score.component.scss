@@ -68,9 +68,10 @@ $circle-size: 120px;
   .text{
     text-align: center;
     width: $circle-size;
-    margin-top: 10px;
-    font-weight: 500;
     color: rgb(80, 75, 77);
-    font-size: 18px;
+    span{
+      font-size: 28px;
+      font-weight: 500;
+  }
   }
 }

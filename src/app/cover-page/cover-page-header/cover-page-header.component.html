@@ -8,8 +8,14 @@
     </div>
     <div class="role">{{role}}</div>
     <div class="contact-info">
-        <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
-        <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
+        <div class="mobile-wrapper">
+            <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
+            <div class="custom-tooltip">{{mobile}}</div>
+        </div>
+        <div class="email-wrapper">
+            <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
+            <div class="custom-tooltip">{{email}}</div>
+        </div>
     </div>
     <div class="social" *ngIf="!exporting">
         <div *ngFor=" let link of socialLinks" [matTooltip]="link.site">

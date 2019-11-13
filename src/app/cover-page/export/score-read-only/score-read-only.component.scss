@@ -87,9 +87,11 @@
         text-align: center;
         width: 120px;
         margin-top: 10px;
-        font-weight: 500;
         color: rgb(80, 75, 77);
-        font-size: 18px;
+        span{
+            font-size: 28px;
+            font-weight: 500;
+        }
       }
 }
 
