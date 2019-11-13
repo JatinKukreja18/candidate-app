@@ -1,9 +1,10 @@
 import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { DashboardService, CommonService, SearchJobService, JobService, AuthenticationService, AnalyticsService } from '@app/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { FeedbackMessages } from '@app/core/messages';
+import { UserDataService } from './../../core/services/userdata.service';
 @Component({
   selector: 'app-dashboard-landing',
   templateUrl: './dashboard-landing.component.html',
@@ -18,11 +19,13 @@ export class DashboardLandingComponent implements OnInit {
   candidate: any;
   submitted = false;
   searchForm: FormGroup;
-  skills:any = [];
+  skills: any = [];
   selectedAddress: any = {};
   showConfirmationModal = false;
   missingFields: string[];
   showPreInterviewModal = false;
+  candidateData = {};
+  loading = true;
 
   constructor(
     private dashboardService: DashboardService,
@@ -33,7 +36,9 @@ export class DashboardLandingComponent implements OnInit {
     private jobService: JobService,
     private message: NzMessageService,
     private authService: AuthenticationService,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private userDataService: UserDataService,
+    private activatedRoute: ActivatedRoute
   ) {
   }
 
@@ -45,6 +50,7 @@ export class DashboardLandingComponent implements OnInit {
     // this.getDashboardData(true);
     this.getSuggestedSkills(); // Get the Skills lists from API or from local(if exists)
     this.initGoogleMapPlaces(); // Initialize the Google places API with the city dropdown element
+    this.getCandidateData(); // Get the candidate data to be populated into the cover page
   }
 
   /**
@@ -53,6 +59,17 @@ export class DashboardLandingComponent implements OnInit {
   */
   get f() {
     return this.searchForm.controls;
+  }
+
+  private getCandidateData() {
+    this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
+      this.candidateData = res;
+      // this.handleSkills(this.candidateData.CandidateSkills);
+      this.loading = false;
+    }, err => {
+      console.log(err.message);
+      // this.router.navigate(['pageNotFound']);
+    });
   }
 
   /**

@@ -6,11 +6,11 @@ import { ViewJobsComponent } from './view-jobs/view-jobs.component';
 
 const routes: Routes = [
   {
-    path: '',
+    path: ':id',
     component: DashboardLandingComponent,
-    children: [
-      { path: 'coverPage/:id', loadChildren: '../cover-page/cover-page.module#CoverPageModule'}
-    ]
+    /* children: [
+      { path: ':id', loadChildren: '../cover-page/cover-page.module#CoverPageModule'}
+    ] */
   },
   {
     path: 'job',

@@ -7,6 +7,8 @@ import { ViewJobsComponent } from './view-jobs/view-jobs.component';
 import { DashboardRoutingModule } from './dashboard-routing.module';
 import { NgZorroAntdModule, NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 import {NgxDocViewerModule} from 'ngx-doc-viewer';
+import { MatProgressSpinnerModule } from '@angular/material';
+import { CoverPageModule } from '@app/cover-page/cover-page.module';
 @NgModule({
   declarations: [
     DashboardLandingComponent, ViewJobsComponent
@@ -16,7 +18,9 @@ import {NgxDocViewerModule} from 'ngx-doc-viewer';
     SharedModule,
     DashboardRoutingModule,
     ReactiveFormsModule,
-    NgZorroAntdModule
+    NgZorroAntdModule,
+    MatProgressSpinnerModule,
+    CoverPageModule
   ],
   providers: [
     { provide: NZ_MESSAGE_CONFIG, useValue:

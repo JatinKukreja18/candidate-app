@@ -81,9 +81,12 @@
           <!-- <p class="tip-text">Having updated Resumes will fetch you better jobs</p> -->
         </div>
       </aside>
+      <!------------------------------------------ Cover Page ---------------------------------------------------------->
+      <div class="loader" *ngIf="loading">
+          <mat-spinner></mat-spinner>
+      </div>
       <section class="dash-sections row">
-       <!-- Cover Page -->
-       <router-outlet></router-outlet>
+       <app-cover-page-layout *ngIf="!loading" [candidateData]="candidateData"></app-cover-page-layout>
       </section>
     </div>
   </div>
