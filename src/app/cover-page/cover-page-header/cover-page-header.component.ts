@@ -23,6 +23,7 @@ export class CoverPageHeaderComponent implements OnInit, OnChanges {
   @Input() mobile: string;
   @Input() email: string;
   @Output() export = new EventEmitter();
+  @Input() exporting;
   exportLink = '';
 
   constructor( private router: Router,private activatedRoute: ActivatedRoute) { }
@@ -43,7 +44,7 @@ export class CoverPageHeaderComponent implements OnInit, OnChanges {
                 item.icon = 'assets/icons/linkedin.svg';
                 item.site = 'Linkedin';
                 break;
-          case 2:
+          case 5:
               item.icon = 'assets/icons/github.svg';
               item.site = 'Github';
               break;

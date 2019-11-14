@@ -45,12 +45,12 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
 
   handleSkills(allSkills) {
     const PS =  allSkills.filter(item => {
-          item.iconPath = 'assets/images/java-logo.png';
+          // item.iconPath = 'assets/images/java-logo.png';
           return item.SkillType === 'Primary';
           });
 
     const AS =  allSkills.filter(item => {
-          item.iconPath = 'assets/images/java-logo.png';
+          // item.iconPath = 'assets/images/java-logo.png';
           return item.SkillType === 'Additional';
           });
     PS ?  this.primarySkills = PS : this.primarySkills = [];

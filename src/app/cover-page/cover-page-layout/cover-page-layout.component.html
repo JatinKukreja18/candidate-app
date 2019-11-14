@@ -1,8 +1,7 @@
-
-{{exporting}}
 <div class="loader-container"  *ngIf="exporting">
   <div class="loader">
       <mat-spinner></mat-spinner>
+      <p style='text-align:center; margin-top: 10px'>Exporting</p>
   </div>
 </div>
 <div class="cover-page" id="cover-page">
@@ -17,6 +16,7 @@
             [socialLinks]="candidateData.CandidateSocialProfileDetails"
             [mobile]="candidateData.MobileNumber"
             [email]="candidateData.EmailId"
+            [exporting]="exporting"
             (export)="export()">
           </app-cover-page-header>
       </div>
@@ -27,8 +27,8 @@
           <div class="skills">
               <div class="skills-row">
                 <div *ngFor="let skill of primarySkills" class="skill-circle">
-                    <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score>
-                    <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score-read-only>
+                    <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.SkillIcon"></app-score>
+                    <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.SkillIcon"></app-score-read-only>
                 </div>
               </div>
 
@@ -41,8 +41,8 @@
           <div class="skills">
               <div class="skills-row">
                 <div *ngFor="let skill of additionalSkills" class="skill-circle" >
-                      <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score>
-                      <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.iconPath"></app-score-read-only>
+                      <app-score *ngIf="!exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.SkillIcon"></app-score>
+                      <app-score-read-only *ngIf="exporting" [skill]="skill.Skill" [months]="skill.Experience" [rating]="skill.Proficiency" [iconPath]="skill.SkillIcon"></app-score-read-only>
                 </div>
               </div>
 
