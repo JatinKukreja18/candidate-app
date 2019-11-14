@@ -9,11 +9,11 @@
     <div class="role">{{role}}</div>
     <div class="contact-info">
         <div class="mobile-wrapper">
-            <a class="mobile" [attr.href]="'tel:' + mobile" > {{mobile}}</a>
+            <a class="mobile" [attr.href]="'tel:' + mobile" ><i class="fa fa-phone-square" aria-hidden="true"></i></a>
             <div class="custom-tooltip">{{mobile}}</div>
         </div>
         <div class="email-wrapper">
-            <a class="email" target="_blank" [attr.href]="'mailto:' + email">{{email}}</a>
+            <a class="email" target="_blank" [attr.href]="'mailto:' + email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
             <div class="custom-tooltip">{{email}}</div>
         </div>
     </div>

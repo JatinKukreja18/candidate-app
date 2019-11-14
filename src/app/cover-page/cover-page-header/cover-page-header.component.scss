@@ -27,6 +27,8 @@
 
         .mobile-wrapper, .email-wrapper{
             position: relative;
+            width: 35px;
+            text-align: center;
             &:hover{
                 .custom-tooltip{
                     visibility: visible;
@@ -66,12 +68,13 @@
 
         a{
           color: rgb(43, 189, 225);
+          font-size: 30px;
           &:hover{
             text-decoration: underline;
           }
         }
         .email{
-            margin-left: 40px;
+            margin-left: 32px;
         }
     }
     .role{
