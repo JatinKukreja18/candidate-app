@@ -15,12 +15,13 @@ import { SocialLoginModule, LoginOpt } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { SafePipe } from './shared/pipes/safe.pipe';
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
   return_scopes: true,
   enable_profile_selector: true
 }; // https://developers.facebook.com/docs/reference/javascript/FB.login/v2.11
- 
+
 const googleLoginOptions: LoginOpt = {
   scope: 'profile email openid'
 }; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
@@ -45,6 +46,7 @@ registerLocaleData(en);
 @NgModule({
   declarations: [
     AppComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -61,12 +63,12 @@ registerLocaleData(en);
   providers: [
     { provide: NZ_I18N, useValue: en_US },
     { provide: AuthServiceConfig, useFactory: provideConfig},
-    { provide: NZ_MESSAGE_CONFIG, useValue: 
-      { 
+    { provide: NZ_MESSAGE_CONFIG, useValue:
+      {
         nzDuration: 1000,
         nzMaxStack: 1,
         nzPauseOnHover: true,
-        nzAnimate: true 
+        nzAnimate: true
       }
     }
   ],

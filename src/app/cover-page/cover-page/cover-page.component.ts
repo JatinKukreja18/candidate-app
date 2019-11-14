@@ -31,6 +31,7 @@ export class CoverPageComponent implements OnInit, AfterViewInit {
     // Get Data from API for current profile
     this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
       this.candidateData = res;
+      console.log(res)
       // this.handleSkills(this.candidateData.CandidateSkills);
       this.loading = false;
     }, err => {

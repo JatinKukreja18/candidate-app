@@ -10,7 +10,7 @@ $heading-color-2: rgb(43, 189, 225);
   margin-bottom: 30px;
   span {
     font-family: Montserrat;
-    font-size: 30px;
+    font-size: 18px;
     font-weight: 600;
   }
 }
@@ -21,11 +21,11 @@ $heading-color-2: rgb(43, 189, 225);
     margin-bottom: 30px;
     span {
       font-family: Montserrat;
-      font-size: 30px;
+      font-size: 18px;
       font-weight: 600;
       letter-spacing: 1.18px;
     }
-    
+
   }
 
 @mixin bullet {
@@ -162,7 +162,7 @@ $heading-color-2: rgb(43, 189, 225);
       &.trained-on {
         .training-list {
           color: rgb(103, 99, 100);
-          font-size: 28px;
+          font-size: 16px;
           font-weight: 500;
 
           div {
@@ -187,7 +187,7 @@ $heading-color-2: rgb(43, 189, 225);
         .content {
           font-style: italic;
           color: rgb(103, 99, 100);
-          font-size: 28px;
+          font-size: 16px;
           font-weight: normal;
           font-family: Montserrat;
           line-height: 2;
@@ -204,7 +204,7 @@ $heading-color-2: rgb(43, 189, 225);
     }
     .content {
       color: rgb(103, 99, 100);
-      font-size: 28px;
+      font-size: 16px;
       font-weight: 500;
       line-height: 1.5;
     }
@@ -296,7 +296,7 @@ $heading-color-2: rgb(43, 189, 225);
           font-size: 24px;
           font-weight: normal;
           color: #776c6e;
-          
+
           .items {
             display: flex;
             //align-items: center;
@@ -354,12 +354,23 @@ $heading-color-2: rgb(43, 189, 225);
   align-items: center;
   justify-content: space-between;
 }
-.loader{
+.loader-container{
+
   position: fixed;
   top: 0;
   bottom: 0;
   left: 0;
   right: 0;
+  background: rgba(255,255,255,0.8);
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  z-index: 99;
+}
+.loader{
   margin: auto;
   height: 100px;
   width: 100px;

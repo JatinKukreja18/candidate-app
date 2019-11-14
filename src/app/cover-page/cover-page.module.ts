@@ -1,3 +1,4 @@
+import { SafePipe } from './../shared/pipes/safe.pipe';
 import { CoverPageComponent } from './cover-page/cover-page.component';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -28,7 +29,8 @@ const routes: Routes = [
         CoverPageHeaderComponent,
         ScoreComponent,
         ScoreReadOnlyComponent,
-        CoverPageComponent
+        CoverPageComponent,
+        SafePipe
     ],
     providers: [UserDataService],
     exports: [CoverPageLayoutComponent, CoverPageHeaderComponent, CoverPageComponent]
