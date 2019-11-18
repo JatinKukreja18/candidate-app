@@ -16,6 +16,7 @@ import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedIn
 // import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SafePipe } from './shared/pipes/safe.pipe';
+import { SmartProfileModule } from './smart-profile/smart-profile.module';
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
   return_scopes: true,
@@ -57,7 +58,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SocialLoginModule
+    SocialLoginModule,
+    SmartProfileModule
     // serviceworkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

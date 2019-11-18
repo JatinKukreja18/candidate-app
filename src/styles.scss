@@ -1,3 +1,8 @@
+@import '~@angular/material/theming';
+@import url('//fonts.googleapis.com/icon?family=Material+Icons');
+
+
+
 /* You can add global styles to this file, and also import other style files */
 
 
@@ -145,7 +150,21 @@ body,
 /*
 ** Default fonts
 */
+.ant-pagination{
+  padding: 0 50px;
+}
+.ant-btn:focus, .ant-btn:hover{
+  border-color: #465191;
+  color: #465191;
+}
 
+.ant-btn-primary{
+  background-color: #465191;
+  border-color: #465191;
+  &:hover,&:focus,&:active{
+    background-color: lighten(#465191,10%);
+  }
+}
 @font-face {
     font-family: SourceSansPro;
     font-display: swap;
@@ -173,11 +192,7 @@ body,
 */
 
 app-auth-left-section {
-    float: left;
-    width: 66.6%;
-    height: 100vh;
-    padding: 100px 0 30px;
-    text-align: center;
+  flex: 1;
 }
 
 
@@ -186,9 +201,9 @@ app-auth-left-section {
 */
 
 .right-section {
-    float: left;
+    // float: left;
     width: 33.3%;
-    height: 100vh;
+    min-height: 100vh;
     background: #fff;
     box-shadow: -2px 0 8px 0 rgba(0, 0, 0, 0.15);
 }

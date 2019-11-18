@@ -1,0 +1,217 @@
+
+[
+    {
+        "CandidateId": 132,
+        "FullName": "Kamal  Sabapathi",
+        "EmailId": "kamal.s@collabera.com",
+        "CandidateSkills": [
+            {
+                "ID": 0,
+                "CandidateID": 0,
+                "Skill": "asp.net",
+                "Experience": null,
+                "CreatedOn": null,
+                "IsActive": null,
+                "Proficiency": 4,
+                "SkillType": "Primary",
+                "IsPrimarySkill": null,
+                "SkillIcon": ""
+            },
+            {
+                "ID": 0,
+                "CandidateID": 0,
+                "Skill": "Java",
+                "Experience": null,
+                "CreatedOn": null,
+                "IsActive": null,
+                "Proficiency": 4,
+                "SkillType": "Primary",
+                "IsPrimarySkill": null,
+                "SkillIcon": ""
+            },
+            {
+              "ID": 0,
+              "CandidateID": 0,
+              "Skill": "C#",
+              "Experience": null,
+              "CreatedOn": null,
+              "IsActive": null,
+              "Proficiency": 4,
+              "SkillType": "Additional",
+              "IsPrimarySkill": null,
+              "SkillIcon": ""
+          }
+        ],
+        "InstructorFeedback": "Good"
+    },
+    {
+        "CandidateId": 134,
+        "FullName": "collabera  collabera",
+        "EmailId": "collabera33@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 136,
+        "FullName": "Narendra  Nadendla",
+        "EmailId": "nnarendra111+1@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 140,
+        "FullName": "shankar  bs",
+        "EmailId": "shankar.bs@collabera.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 141,
+        "FullName": "Narendra  Nadendla",
+        "EmailId": "nnarendra111@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 142,
+        "FullName": "sunny  deol",
+        "EmailId": "sunny@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 143,
+        "FullName": "ghhh  bob",
+        "EmailId": "rajnikant.hole@collabera.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 144,
+        "FullName": "boby  deol",
+        "EmailId": "boby@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 145,
+        "FullName": "Kamal  Sabapathi",
+        "EmailId": "kamal.sabapathi@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+        "CandidateId": 146,
+        "FullName": "Goutham m Bende",
+        "EmailId": "bendegoutham@gmail.com",
+        "CandidateSkills": [],
+        "InstructorFeedback": null
+    },
+    {
+      "CandidateId": 132,
+      "FullName": "Kamal  Sabapathi",
+      "EmailId": "kamal.s@collabera.com",
+      "CandidateSkills": [
+          {
+              "ID": 0,
+              "CandidateID": 0,
+              "Skill": "asp.net",
+              "Experience": null,
+              "CreatedOn": null,
+              "IsActive": null,
+              "Proficiency": 4,
+              "SkillType": "Primary",
+              "IsPrimarySkill": null,
+              "SkillIcon": ""
+          },
+          {
+              "ID": 0,
+              "CandidateID": 0,
+              "Skill": "Java",
+              "Experience": null,
+              "CreatedOn": null,
+              "IsActive": null,
+              "Proficiency": 4,
+              "SkillType": "Primary",
+              "IsPrimarySkill": null,
+              "SkillIcon": ""
+          },
+          {
+            "ID": 0,
+            "CandidateID": 0,
+            "Skill": "C#",
+            "Experience": null,
+            "CreatedOn": null,
+            "IsActive": null,
+            "Proficiency": 4,
+            "SkillType": "Additional",
+            "IsPrimarySkill": null,
+            "SkillIcon": ""
+        }
+      ],
+      "InstructorFeedback": "Good"
+  },
+  {
+      "CandidateId": 134,
+      "FullName": "collabera  collabera",
+      "EmailId": "collabera33@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 136,
+      "FullName": "Narendra  Nadendla",
+      "EmailId": "nnarendra111+1@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 140,
+      "FullName": "shankar  bs",
+      "EmailId": "shankar.bs@collabera.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 141,
+      "FullName": "Narendra  Nadendla",
+      "EmailId": "nnarendra111@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 142,
+      "FullName": "sunny  deol",
+      "EmailId": "sunny@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 143,
+      "FullName": "ghhh  bob",
+      "EmailId": "rajnikant.hole@collabera.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 144,
+      "FullName": "boby  deol",
+      "EmailId": "boby@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 145,
+      "FullName": "Kamal  Sabapathi",
+      "EmailId": "kamal.sabapathi@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  },
+  {
+      "CandidateId": 146,
+      "FullName": "Goutham m ",
+      "EmailId": "bendegoutham@gmail.com",
+      "CandidateSkills": [],
+      "InstructorFeedback": null
+  }
+]

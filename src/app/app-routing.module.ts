@@ -16,7 +16,7 @@ const routes: Routes = [
   {
     path: 'profile',
     loadChildren: './profile/profile.module#ProfileModule',
-    canActivate: [AuthGaurd]
+    // canActivate: [AuthGaurd]
   },
   {
     path: 'search',
@@ -55,6 +55,10 @@ const routes: Routes = [
   {
     path: 'job/preinterview',
     component: PreInterviewComponent
+  },
+  {
+    path: 'smartprofile',
+    loadChildren: './smart-profile/smart-profile.module#SmartProfileModule'
   },
   {
     path: '',

@@ -1,0 +1,51 @@
+.components-table-demo-control-bar {
+  margin-bottom: 12px;
+}
+
+.nz-form-item {
+  margin-right: 16px;
+  margin-bottom: 8px;
+}
+
+.user-list-wrapper{
+  margin: 0px auto;
+  max-width: 1280px;
+  padding: 50px;
+  background: #f3f4f5;
+  .email-icon{
+    float: right;
+    padding: 0px 0px;
+    font-size: 24px;
+  }
+  .ant-table-row {
+    font-size: 16px;
+  }
+  .ant-table-wrapper{
+    background: #fff;
+    box-shadow: 1px 2px 10px -1px #ccc;
+
+    a.ant-btn.ant-btn-primary{
+      color: #fff;
+      font-weight: 500;
+      // i{
+      //   color: rgba(0,0,0,.65);
+      // }
+    }
+  }
+  .ant-table-thead {
+    font-size: 16px;
+  }
+  nz-pagination{
+    padding: 0 50px;
+  }
+
+  .skill-title{
+    font-size: 16px;
+  }
+  .skill-list{
+    list-style-type: none;
+    padding: 0;
+    margin: 5px 10px;
+  }
+  
+}

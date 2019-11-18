@@ -19,8 +19,9 @@ export const environment = {
   },
   shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com',
   apiPaths: {
-    coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
-    // coverPage: '../assets/cp_video.json'
+    // coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+    coverPage: '../assets/cp_video.json',
+    allUsers: '../assets/user-list.json'
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };

@@ -1,0 +1,94 @@
+<app-smart-header></app-smart-header>
+
+<div class="user-list-wrapper" >
+
+  <nz-table #basicTable [nzData]="users" [nzBordered]="true" [nzShowTotal]="true">
+    <thead>
+      <tr>
+        <th>Candidate Name</th>
+        <th>Email</th>
+        <th>Jump Instructor Feedback</th>
+        <th>Skills</th>
+        <th>Profile Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of basicTable.data">
+        <td>{{ user.FullName }}</td>
+        <td>
+            <span style="float: left;">
+                {{ user.EmailId }}
+            </span>         
+            <div style="float: right;">
+            
+            <a nz-button nzType="default" nzShape="circle"  target="_blank" nz-tooltip nzTooltipPlacement="bottom" nzTitle="Send Email" [attr.href]="'mailto:' + user.EmailId">
+              <i nz-icon nzType="mail" nzTheme="outline"></i>
+            </a>
+            </div>
+
+
+        </td>
+        <td>
+          {{ user.InstructorFeedback }}
+          <button nz-button nzType="default" nzShape="circle" style="float: right;" nz-popover nzTitle="Edit Feedback" [nzContent]="feedbackTemplate" nzTrigger="click">
+              <i nz-icon nzType="edit" nzTheme="outline"></i>
+          </button>
+          <ng-template #feedbackTemplate>
+            <div style="width: 250px;">
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value)">
+                  <nz-form-item>
+                      <nz-form-control [nzSpan]="24" nzErrorTip="Please write something here!">
+                        <textarea style="min-height:100px" formControlName="comment" nz-input rows="2" placeholder="write any thing"></textarea>
+                      </nz-form-control>
+                    </nz-form-item>
+                    <nz-form-item>
+                      <nz-form-control  [nzSpan]="24">
+                        <button style="margin-right: 15px;" nz-button nzType="primary" [disabled]="!validateForm.valid">Submit</button>
+                        <button nz-button (click)="resetForm($event)">Reset</button>
+                      </nz-form-control>
+                    </nz-form-item>
+                  </form>
+            </div>
+            </ng-template>
+
+        </td>
+        <td>
+          <button  nzType="default" nz-button nz-popover nzTitle="Skills" [nzContent]="contentTemplate" nzTrigger="click">
+            Skills
+          </button>
+            <ng-template #contentTemplate>
+                <div style="width: 250px;" *ngIf="user.CandidateSkills.length != 0">
+                    <p class="skill-title">Primary</p>
+                    <div *ngFor="let skill of user.CandidateSkills">
+                      <label *ngIf="skill.SkillType == 'Primary'">
+                        {{skill.Skill}}
+                        <nz-progress [nzShowInfo]="false" [nzPercent]="getPercent(skill.Proficiency)" nzSize="small">Skill</nz-progress>
+                      </label>
+                    </div>
+                </div>
+                <div style="width: 250px;" *ngIf="user.CandidateSkills.length != 0">
+                    <nz-divider></nz-divider>
+                    <p class="skill-title" style="margin-top:15px">Additional</p>
+                    <div *ngFor="let skill of user.CandidateSkills">
+                      <label *ngIf="skill.SkillType == 'Additional'">
+                        {{skill.Skill}}
+                        <nz-progress [nzShowInfo]="false" [nzPercent]="getPercent(skill.Proficiency)" nzSize="small">Skill</nz-progress>
+                      </label>
+                    </div>
+                </div>
+                <div style="width: 170px;" *ngIf="user.CandidateSkills.length == 0">
+                    <p class="skill-title" style="margin:0">No data found</p>
+                </div>
+              </ng-template>
+        </td>
+        <td>
+            <a nzType="primary" nz-button style="margin-right: 15px;" target="_blank" [attr.href]="'/coverPage/' + user.CandidateId" >View </a>
+           
+              <a  nzType="primary" nz-button target="_blank" [attr.href]="'mailto:?subject=Candidate Details&body=https://appst.cliksource.com/jumpprofessional/coverPage/' + user.CandidateId" >Share </a>
+           
+        </td>
+      </tr>
+    </tbody>
+  </nz-table>
+ 
+</div>

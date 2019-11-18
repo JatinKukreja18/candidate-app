@@ -33,5 +33,8 @@ export const ValidationMessages: any = {
     'YoutubeLinkInvalid': ' Please provide valid Youtube url',
     'InterviewSlotRequired': 'Please select Interview slot',
     'ReferenceEmailsNotUnique': 'Reference emails should be unique.',
-    'ReferenceMobileNotUnique': 'Reference phone number should be unique.'
-}
+    'ReferenceMobileNotUnique': 'Reference phone number should be unique.',
+    'ValidRating': 'Please enter a valid rating between 1 - 10',
+    'ValidExperience': 'Please enter a valid experience in months',
+    'ValidYear': 'Please enter a valid year'
+};

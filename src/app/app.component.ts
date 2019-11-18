@@ -99,7 +99,7 @@ export class AppComponent {
    */
   toggleHeader(currentUrl: string) {
     let showHeaderRegex = new RegExp('(dashboard|profile|settings|aboutus|assessments|myjobs|search)', 'i');
-    let hideHeaderRegex = new RegExp('(forgotpassword|search/results|search/details|notification|dashboard/job|search/matching|myjobs/schedule|job/preinterview)', 'i');
+    let hideHeaderRegex = new RegExp('(forgotpassword|search/results|search/details|notification|dashboard/job|search/matching|myjobs/schedule|job/preinterview|/smartprofile)', 'i');
     if (currentUrl && showHeaderRegex.test(currentUrl)) {
       this.showHeader = true;
     }

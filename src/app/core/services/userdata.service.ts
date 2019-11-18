@@ -12,9 +12,12 @@ export class UserDataService {
    constructor( private httpService: HttpClient) { }
 
    getUserData(id): Observable<any> {
-    return this.httpService.get(environment.apiPaths.coverPage + id);
+    return this.httpService.get(environment.apiPaths.coverPage);
    }
 
+   getAllUsers():  Observable<any>{
+     return this.httpService.get(environment.apiPaths.allUsers);
+   }
 }
 // {
 //     this.httpService.get('./assets/cp.json').subscribe(
