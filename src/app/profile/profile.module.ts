@@ -5,7 +5,7 @@ import { NgZorroAntdModule, NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 import { ProfileLandingComponent } from './profile-landing/profile-landing.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from './../shared/shared.module';
-import {NgxDocViewerModule} from 'ngx-doc-viewer';
+// import {NgxDocViewerModule} from 'ngx-doc-viewer';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ProfileviewComponent } from './profileview/profileview.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component'
@@ -17,16 +17,15 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component'
     ReactiveFormsModule,
     NgZorroAntdModule,
     SharedModule,
-    NgxDocViewerModule,
     SelectDropDownModule
   ],
   providers: [
-    { provide: NZ_MESSAGE_CONFIG, useValue: 
-      { 
+    { provide: NZ_MESSAGE_CONFIG, useValue:
+      {
         nzDuration: 1000,
         nzMaxStack: 1,
         nzPauseOnHover: true,
-        nzAnimate: true 
+        nzAnimate: true
       }
     }
   ],

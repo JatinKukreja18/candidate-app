@@ -45,12 +45,14 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
 
   handleSkills(allSkills) {
     const PS =  allSkills.filter(item => {
-          // item.iconPath = 'assets/images/java-logo.png';
+          if (item.SkillIcon === null || item.SkillIcon.length === 0) {
+            item.SkillIcon = 'assets/icons/skill-default.png';
+          }
           return item.SkillType === 'Primary';
           });
 
     const AS =  allSkills.filter(item => {
-          // item.iconPath = 'assets/images/java-logo.png';
+          // item.SkillIcon = 'assets/images/java-logo.png';
           return item.SkillType === 'Additional';
           });
     PS ?  this.primarySkills = PS : this.primarySkills = [];
@@ -88,7 +90,7 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
       }
       // doc.save( 'file.pdf');
       doc.output("dataurlnewwindow");
-      window.close();
+      // window.close();
       this.exporting = false;
     });
     // let doc = new jspdf('p', 'mm', 'a4');

@@ -3,10 +3,10 @@
             <div class="pie" data-start="0"  data-value="180" [style.display]="this.flip()?'none':'block'" >
                     <div class="pie-child" [@rotatedState]="{value: state, params: { rotDeg: rotation}}"></div>
                 </div>
-                <div class="pie big"  style=" --rotation: 242deg " data-start="180" data-value="180" 
+                <div class="pie big"  style=" --rotation: 242deg " data-start="180" data-value="180"
                      [style.display]="this.flip()?'block':'none'">
                     <div class="pie-child" [@rotatedState]="{value: state, params: { rotDeg: rotation}}"></div>
-                    
+
                 </div>
                 <div class="inset"><img class="icon" [ngClass]="skill" [src]="iconPath" /></div>
     </div>

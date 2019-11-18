@@ -34,7 +34,7 @@ $heading-color-2: rgb(43, 189, 225);
   border-radius: 50%;
   background-image: linear-gradient(to right, rgb(108, 169, 248), rgb(122, 226, 202));
   margin-right: 10px;
-  transform: translateY(15px);
+  transform: translateY(7px);
 }
 
 @mixin set-width{
@@ -164,7 +164,7 @@ $heading-color-2: rgb(43, 189, 225);
           color: rgb(103, 99, 100);
           font-size: 16px;
           font-weight: 500;
-
+          min-height: 236px;
           div {
             display: flex;
             //align-items: center;
@@ -207,6 +207,7 @@ $heading-color-2: rgb(43, 189, 225);
       font-size: 16px;
       font-weight: 500;
       line-height: 1.5;
+      min-height: 168px;
     }
   }
   .prof-experience{
@@ -321,7 +322,7 @@ $heading-color-2: rgb(43, 189, 225);
       justify-content: space-between;
       align-items: flex-end;
       margin-bottom: 0px;
-      font-size: 48px;
+      font-size: 30px;
       font-weight: 500;
       text-transform: uppercase;
       color: #000;
@@ -339,7 +340,7 @@ $heading-color-2: rgb(43, 189, 225);
   }
 }
 .card-title {
-  font-size: 26px;
+  font-size: 18px;
   font-weight: 500;
   .light{
     font-weight: 400;
@@ -347,7 +348,7 @@ $heading-color-2: rgb(43, 189, 225);
 }
 .card-sub-title{
   width: 100%;
-  font-size: 22px;
+  font-size: 16px;
   font-weight: 500;
   color: #776c6e;
   display: flex;

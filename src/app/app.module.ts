@@ -13,7 +13,7 @@ import { registerLocaleData } from '@angular/common';
 import en from '@angular/common/locales/en';
 import { SocialLoginModule, LoginOpt } from 'angularx-social-login';
 import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedInLoginProvider} from 'angularx-social-login';
-import { ServiceWorkerModule } from '@angular/service-worker';
+// import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
 import { SafePipe } from './shared/pipes/safe.pipe';
 const fbLoginOptions: LoginOpt = {
@@ -26,7 +26,7 @@ const googleLoginOptions: LoginOpt = {
   scope: 'profile email openid'
 }; // https://developers.google.com/api-client-library/javascript/reference/referencedocs#gapiauth2clientconfig
 
-let config = new AuthServiceConfig([
+const config = new AuthServiceConfig([
   {
     id: GoogleLoginProvider.PROVIDER_ID,
     provider: new GoogleLoginProvider(environment.googleClientId)
@@ -57,8 +57,8 @@ registerLocaleData(en);
     FormsModule,
     HttpClientModule,
     BrowserAnimationsModule,
-    SocialLoginModule,
-    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
+    SocialLoginModule
+    // serviceworkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     { provide: NZ_I18N, useValue: en_US },

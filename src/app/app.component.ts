@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Router, NavigationStart, NavigationEnd } from '@angular/router';
 import { AuthenticationService, SearchJobService, NotificationsService } from '@app/core';
-import { SwUpdate } from '@angular/service-worker';
+// import { SwUpdate } from '@angular/service-worker';
 
 // declare ga as a function to set and sent the events
 // declare let ga: Function;
@@ -23,7 +23,7 @@ export class AppComponent {
     private authService: AuthenticationService,
     private searchJobService: SearchJobService,
     private notificationService: NotificationsService,
-    private swUpdate: SwUpdate
+    // private swUpdate: SwUpdate
   ) {
     this.router.events.subscribe((event) => {
       if (event instanceof NavigationStart) {
@@ -36,7 +36,7 @@ export class AppComponent {
           this.showHeader = false;
         }
         this.notificationService.refreshNotificationCounts.next(true);
-      } 
+      }
       if (event instanceof NavigationEnd) {
         this.sideMenu = false;
         this.toggleHeader(event.url);
@@ -51,12 +51,12 @@ export class AppComponent {
         });
       }
     });
-    this.swUpdate.available.subscribe(event => {
-      this.swUpdate.checkForUpdate();
-      this.swUpdate.activateUpdate().then(() => {
-        document.location.reload();
-      });
-    });
+    // this.swUpdate.available.subscribe(event => {
+    //   this.swUpdate.checkForUpdate();
+    //   this.swUpdate.activateUpdate().then(() => {
+    //     document.location.reload();
+    //   });
+    // });
   }
 
   /**
@@ -102,7 +102,7 @@ export class AppComponent {
     let hideHeaderRegex = new RegExp('(forgotpassword|search/results|search/details|notification|dashboard/job|search/matching|myjobs/schedule|job/preinterview)', 'i');
     if (currentUrl && showHeaderRegex.test(currentUrl)) {
       this.showHeader = true;
-    } 
+    }
     if (currentUrl && hideHeaderRegex.test(currentUrl)) {
       this.showHeader = false;
     }
@@ -117,7 +117,7 @@ export class AppComponent {
 
   /**
    * Clear search results
-   * @param currentUrl 
+   * @param currentUrl
    */
   clearSearchJobSession(currentUrl) {
     let clearSessionRegex = new RegExp('(search/details|job/preinterview|schedule)', 'i');
@@ -128,7 +128,7 @@ export class AppComponent {
 
   /**
    * Update the page height
-   * @param currentUrl  
+   * @param currentUrl
    */
   updatePageheight(currentUrl) {
     let clearSessionRegex = new RegExp('(myjobs|search/details)', 'i');

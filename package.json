@@ -44,7 +44,6 @@
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
     "ng-zorro-antd": "^7.5.1",
-    "ngx-doc-viewer": "^0.1.22",
     "ngx-select-dropdown": "^1.2.0",
     "node-sass": "^4.10.0",
     "nyc": "^14.1.1",

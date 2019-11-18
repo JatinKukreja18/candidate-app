@@ -12,7 +12,7 @@ export class UserDataService {
    constructor( private httpService: HttpClient) { }
 
    getUserData(id): Observable<any> {
-    return this.httpService.get(environment.apiPaths.coverPage);
+    return this.httpService.get(environment.apiPaths.coverPage + id);
    }
 
 }
