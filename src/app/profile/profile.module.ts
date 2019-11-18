@@ -22,7 +22,7 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component'
   ],
   providers: [
     { provide: NZ_MESSAGE_CONFIG, useValue: 
-      { 
+      {
         nzDuration: 1000,
         nzMaxStack: 1,
         nzPauseOnHover: true,

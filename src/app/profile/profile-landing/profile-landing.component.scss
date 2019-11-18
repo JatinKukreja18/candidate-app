@@ -56,6 +56,14 @@
             width: 24px;
         }
     }
+    .card-content{
+        .submit-button{
+            text-align: center;
+            button.orange-button{
+                max-width: 200px;
+            }
+        }
+    }
     
     .missing {
         label.form-control-placeholder {
@@ -291,6 +299,24 @@
     }
     &#social, &#video{
         width: 49%;
+    }
+    &#primarySkills, &#additionalSkills{
+        .primarySkillsContent{
+            width: 75%;
+            .horizontal{
+                width: 30%;
+                margin-right: 20px;
+            }
+        }
+    }
+    &#primaryProjects, &#additionalProjects{
+        .primaryProjectsContent{
+            width: 100%;
+            .horizontal{
+                width: 22%;
+                margin-right: 20px;
+            }
+        }
     }
     &#video{
         .video-title {

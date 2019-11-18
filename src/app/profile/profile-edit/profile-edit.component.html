@@ -1,554 +1,593 @@
+<section class="wrapper">
+  <div class="container-fluid">
 
-  <section class="wrapper">
-      <div class="container-fluid">
-
-      <section class="back_section">
-        <div class="row flex">
-          <div class="col col-6"><h3>My 360 Profile</h3><span>Last Updated: 2 days ago</span></div>
-          <div class="col col-6">
-            <div class="share_prof">
+    <section class="back_section">
+      <div class="row flex">
+        <div class="col col-6">
+          <h3>My 360 Profile</h3><span>Last Updated: 2 days ago</span>
+        </div>
+        <div class="col col-6">
+          <div class="share_prof">
             <!-- <button>Share Profile</button> -->
             <button [routerLink]="['/profile/edit']"><i class="fa fa-pencil"></i> Edit Profile</button>
           </div>
         </div>
-        </div>
-      </section>
-
-        <section class="profile_section">
-          <div class="row flex">
-          <div class="col col-9">
-
-     <div class="left_profile_sec">
-
-      <div class="tab_section">
-        <ul>
-          <li id="basic">BASIC</li>
-          <li id="professional">PROFESSIONAL</li>
-          <li>CONTACT</li>
-          <li>SOCIAL</li>
-          <li>WORK EXP.</li>
-          <li>EDUCATION</li>
-          <li>EDUCATION</li>
-
-
-        </ul>
       </div>
+    </section>
 
+    <section class="profile_section">
+      <div class="row flex">
+        <div class="col col-9">
 
-      <div class="basic_detail">
-      <h4>BASIC DETAIL</h4>
+          <div class="left_profile_sec">
 
-      <div class="col col-3">
-<img class="img-responsive" class="img-responsive" src="assets/images/user-pic.png"/>
-<button class="outline_but"> + Add Profile Pic</button>
-      </div>
-
-      <div class="col col-9">
-<div class="row">
-    <div class="col col-3">
-        <div class="form-group">
-          <label for="email">First Name:</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-        </div>
-
-        <div class="col col-3">
-        <div class="form-group">
-          <label for="email">Middle Name:</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-        </div>
-
-        <div class="col col-3">
-        <div class="form-group">
-            <label for="email">Last Name:</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-        </div>
-
-
-        <div class="col col-3">
-            <div class="form-group">
-                <label for="dob">DOB:</label>
-                <input type="dob" class="form-control" id="dob">
-              </div>
+            <div class="tab_section">
+              <ul>
+                <li id="basic">BASIC</li>
+                <li id="professional">PROFESSIONAL</li>
+                <li>CONTACT</li>
+                <li>SOCIAL</li>
+                <li>WORK EXP.</li>
+                <li>EDUCATION</li>
+                <li>EDUCATION</li>
+                <li>PRIMARY SKILLS</li>
+                <li>ADDITIONAL SKILLS</li>
+              </ul>
             </div>
 
 
-        <div class="col col-4">
-            <div class="form-group">
-                <label for="location">Location:</label>
-                <input type="location" class="form-control" id="location">
-              </div>
-            </div>
-</div>
+            <div class="basic_detail">
+              <h4>BASIC DETAIL</h4>
 
-<div class="row">
-    <div class="col col-9">
-      <div class="form-group radio_sec">
-
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1" value="option1">
-              <label class="form-check-label" for="inlineRadio1">Male</label>
-            </div>
-
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2" value="option2">
-                <label class="form-check-label" for="inlineRadio2">Female</label>
+              <div class="col col-3">
+                <img class="img-responsive" class="img-responsive" src="assets/images/user-pic.png" />
+                <button class="outline_but"> + Add Profile Pic</button>
               </div>
 
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3" value="option3">
-              <label class="form-check-label" for="inlineRadio3">Others</label>
-            </div>
+              <div class="col col-9">
+                <div class="row">
+                  <div class="col col-3">
+                    <div class="form-group">
+                      <label for="email">First Name:</label>
+                      <input type="email" class="form-control" id="email">
+                    </div>
+                  </div>
 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                <label class="form-check-label" for="inlineRadio4">Prefer Not to Say</label>
+                  <div class="col col-3">
+                    <div class="form-group">
+                      <label for="email">Middle Name:</label>
+                      <input type="email" class="form-control" id="email">
+                    </div>
+                  </div>
+
+                  <div class="col col-3">
+                    <div class="form-group">
+                      <label for="email">Last Name:</label>
+                      <input type="email" class="form-control" id="email">
+                    </div>
+                  </div>
+
+
+                  <div class="col col-3">
+                    <div class="form-group">
+                      <label for="dob">DOB:</label>
+                      <input type="dob" class="form-control" id="dob">
+                    </div>
+                  </div>
+
+
+                  <div class="col col-4">
+                    <div class="form-group">
+                      <label for="location">Location:</label>
+                      <input type="location" class="form-control" id="location">
+                    </div>
+                  </div>
+                </div>
+
+                <div class="row">
+                  <div class="col col-9">
+                    <div class="form-group radio_sec">
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio1"
+                          value="option1">
+                        <label class="form-check-label" for="inlineRadio1">Male</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio2"
+                          value="option2">
+                        <label class="form-check-label" for="inlineRadio2">Female</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio3"
+                          value="option3">
+                        <label class="form-check-label" for="inlineRadio3">Others</label>
+                      </div>
+
+                      <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                          value="option4">
+                        <label class="form-check-label" for="inlineRadio4">Prefer Not to Say</label>
+                      </div>
+
+                    </div>
+                  </div>
+                </div>
+
               </div>
 
-        </div>
-    </div>
-  </div>
-
-      </div>
-
-      </div>
-<!--  -->
-
-<div class="professional_detail" href="#professional">
-  <h4>PROFESSIONAL DETAILS</h4>
-
-  <div class="col col-3">
-      <label>Willing to Relocate</label>
-
-      <div class="form-group radio_sec">
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-              <label class="form-check-label" for="inlineRadio4">YES</label>
             </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                <label class="form-check-label" for="inlineRadio4">NO</label>
+            <!--  -->
+
+            <div class="professional_detail" href="#professional">
+              <h4>PROFESSIONAL DETAILS</h4>
+
+              <div class="col col-3">
+                <label>Willing to Relocate</label>
+
+                <div class="form-group radio_sec">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">YES</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">NO</label>
+                  </div>
+                </div>
               </div>
-        </div>
-  </div>
 
 
-  <div class="col col-3">
-      <label>Willing to Travel</label>
-      <div class="form-group radio_sec">
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-              <label class="form-check-label" for="inlineRadio4">YES</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                <label class="form-check-label" for="inlineRadio4">NO</label>
+              <div class="col col-3">
+                <label>Willing to Travel</label>
+                <div class="form-group radio_sec">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">YES</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">NO</label>
+                  </div>
+                </div>
               </div>
-        </div>
-  </div>
 
 
-  <div class="col col-3">
-      <label>Willing to Telecommute</label>
-      <div class="form-group radio_sec">
-          <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-              <label class="form-check-label" for="inlineRadio4">YES</label>
-            </div>
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4" value="option4">
-                <label class="form-check-label" for="inlineRadio4">NO</label>
+              <div class="col col-3">
+                <label>Willing to Telecommute</label>
+                <div class="form-group radio_sec">
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">YES</label>
+                  </div>
+                  <div class="form-check form-check-inline">
+                    <input class="form-check-input" type="radio" name="inlineRadioOptions" id="inlineRadio4"
+                      value="option4">
+                    <label class="form-check-label" for="inlineRadio4">NO</label>
+                  </div>
+                </div>
               </div>
-        </div>
-  </div>
 
 
 
-  <div class="col col-3">
-      <label>Location Preference</label>
-      <div class="form-group">
-          <input type="location" class="form-control" id="location">
-        </div>
-  </div>
+              <div class="col col-3">
+                <label>Location Preference</label>
+                <div class="form-group">
+                  <input type="location" class="form-control" id="location">
+                </div>
+              </div>
 
-  <div class="col col-4">
-      <div class="form-group selector_cat">
-          <label for="location">Work Authorization</label>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>Choose...</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
-            </select>
-        </div>
-      </div>
-
-
-  <div class="col col-4">
-      <div class="form-group selector_cat">
-          <label for="location">Availability</label>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>Choose...</option>
-              <option value="1">Availabe Immadiately</option>
-              <option value="2">2 Weeks</option>
-              <option value="3">1 Month Notice</option>
-              <option value="4">Others</option>
-
-            </select>
-        </div>
-      </div>
-
-
-  <div class="col col-4">
-      <div class="form-group selector_cat">
-          <label for="location">Work Preference</label>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>Choose...</option>
-              <option value="1">Full Time</option>
-              <option value="2">Contract</option>
-              <option value="3">Both</option>
-            </select>
-        </div>
-      </div>
-
-    <div class="col col-3">
-        <div class="form-group">
-            <label for="experience">Total Experience</label>
-            <input type="experience" class="form-control" id="experience" placeholder="Enter Exp.">
-          </div>
-        </div>
-
-      <div class="col col-9">
-          <div class="form-group">
-              <label for="hobby">Hobby</label>
-              <input type="hobby" class="form-control" id="hobby">
-            </div>
-          </div>
-
-      <div class="col col-6">
-          <div class="form-group">
-              <label for="skills">Technical Skills</label>
-              <input type="skills" class="form-control" id="skils" placeholder="Enter Skills">
-            </div>
-          </div>
-
-
-      <div class="col col-6">
-          <div class="form-group">
-              <label for="skills">Other Skills</label>
-              <input type="skills" class="form-control" id="skils" placeholder="Other Skills">
-            </div>
-          </div>
-
-</div>
-
-<!--  -->
-
-
-<div class="basic_detail">
-    <h4>CONTACT DETAILS</h4>
-<div class="row">
-  <div class="col col-3">
-      <div class="form-group">
-        <label for="email">Mobile No.</label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      </div>
-
-      <div class="col col-3">
-      <div class="form-group">
-        <label for="email">Phone No.</label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      </div>
-
-      <div class="col col-3">
-      <div class="form-group">
-          <label for="email">Email ID.</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-      </div>
-
-
-      <div class="col col-3">
-          <div class="form-group">
-              <label for="dob">Zip Code.</label>
-              <input type="dob" class="form-control" id="dob">
-            </div>
-          </div>
-
-
-      <div class="col col-5">
-          <div class="form-group">
-              <label for="location">Website URL</label>
-              <input type="location" class="form-control" id="location">
-            </div>
-          </div>
-
-
-      <div class="col col-6">
-          <div class="form-group">
-              <label for="location">Address</label>
-              <input type="location" class="form-control" id="location">
-            </div>
-          </div>
-
-</div>
-    </div>
-
-    <!--  -->
-    <div class="basic_detail">
-        <h4>SOCIAL LINKS </h4>
-    <div class="row">
-
-          <div class="col col-3">
-              <div class="form-group selector_cat">
+              <div class="col col-4">
+                <div class="form-group selector_cat">
+                  <label for="location">Work Authorization</label>
                   <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">One</option>
+                    <option value="2">Two</option>
+                    <option value="3">Three</option>
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="col col-4">
+                <div class="form-group selector_cat">
+                  <label for="location">Availability</label>
+                  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">Availabe Immadiately</option>
+                    <option value="2">2 Weeks</option>
+                    <option value="3">1 Month Notice</option>
+                    <option value="4">Others</option>
+
+                  </select>
+                </div>
+              </div>
+
+
+              <div class="col col-4">
+                <div class="form-group selector_cat">
+                  <label for="location">Work Preference</label>
+                  <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                    <option selected>Choose...</option>
+                    <option value="1">Full Time</option>
+                    <option value="2">Contract</option>
+                    <option value="3">Both</option>
+                  </select>
+                </div>
+              </div>
+
+              <div class="col col-3">
+                <div class="form-group">
+                  <label for="experience">Total Experience</label>
+                  <input type="experience" class="form-control" id="experience" placeholder="Enter Exp.">
+                </div>
+              </div>
+
+              <div class="col col-9">
+                <div class="form-group">
+                  <label for="hobby">Hobby</label>
+                  <input type="hobby" class="form-control" id="hobby">
+                </div>
+              </div>
+
+              <div class="col col-6">
+                <div class="form-group">
+                  <label for="skills">Technical Skills</label>
+                  <input type="skills" class="form-control" id="skils" placeholder="Enter Skills">
+                </div>
+              </div>
+
+
+              <div class="col col-6">
+                <div class="form-group">
+                  <label for="skills">Other Skills</label>
+                  <input type="skills" class="form-control" id="skils" placeholder="Other Skills">
+                </div>
+              </div>
+
+            </div>
+
+            <!--  -->
+
+
+            <div class="basic_detail">
+              <h4>CONTACT DETAILS</h4>
+              <div class="row">
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Mobile No.</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Phone No.</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Email ID.</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="dob">Zip Code.</label>
+                    <input type="dob" class="form-control" id="dob">
+                  </div>
+                </div>
+
+
+                <div class="col col-5">
+                  <div class="form-group">
+                    <label for="location">Website URL</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+
+
+                <div class="col col-6">
+                  <div class="form-group">
+                    <label for="location">Address</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+            <!--  -->
+            <div class="basic_detail">
+              <h4>SOCIAL LINKS </h4>
+              <div class="row">
+
+                <div class="col col-3">
+                  <div class="form-group selector_cat">
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
                       <option selected>Select Social Network</option>
                       <option value="1">GitHub</option>
                       <option value="2">Linkedin</option>
                       <option value="3">Facebook</option>
                     </select>
+                  </div>
                 </div>
-              </div>
 
-          <div class="col col-9">
-              <div class="form-group">
-                  <input type="dob" class="form-control" id="dob" placeholder="Enter URL">
+                <div class="col col-9">
+                  <div class="form-group">
+                    <input type="dob" class="form-control" id="dob" placeholder="Enter URL">
+                  </div>
                 </div>
+
               </div>
+            </div>
 
-    </div>
-        </div>
+            <!--  -->
+            <div class="basic_detail">
+              <h4>WORK EXPERIENCE</h4>
+              <div class="row">
 
-<!--  -->
-  <div class="basic_detail">
-        <h4>WORK EXPERIENCE</h4>
-        <div class="row">
-
-            <div class="col col-3">
-                <div class="form-group">
+                <div class="col col-3">
+                  <div class="form-group">
                     <label for="location">job Title</label>
                     <input type="location" class="form-control" id="location">
                   </div>
                 </div>
 
 
-            <div class="col col-3">
-                <div class="form-group">
+                <div class="col col-3">
+                  <div class="form-group">
                     <label for="location">Company Name</label>
                     <input type="location" class="form-control" id="location">
                   </div>
                 </div>
 
 
-            <div class="col col-3">
-                <div class="form-group">
+                <div class="col col-3">
+                  <div class="form-group">
                     <label for="location">Location</label>
                     <input type="location" class="form-control" id="location">
                   </div>
                 </div>
 
-        </div>
+              </div>
 
-<div class="row">
-  <div class="col col-6">
+              <div class="row">
+                <div class="col col-6">
 
-    <div class="row">
+                  <div class="row">
 
-  <div class="col col-12">
-      <div class="form-group selector_cat">
-        <label>Position Type</label>
-          <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-              <option selected>Select Social Network</option>
-              <option value="1">GitHub</option>
-              <option value="2">Linkedin</option>
-              <option value="3">Facebook</option>
-            </select>
-        </div>
-        </div>
+                    <div class="col col-12">
+                      <div class="form-group selector_cat">
+                        <label>Position Type</label>
+                        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                          <option selected>Select Social Network</option>
+                          <option value="1">GitHub</option>
+                          <option value="2">Linkedin</option>
+                          <option value="3">Facebook</option>
+                        </select>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                <div class="col col-6">
 
-
-
-      </div>
-
-
-
-  </div>
-  <div class="col col-6">
-
-    </div>
-</div>
-
-
-            </div>
-
-<!--  -->
-
-<div class="basic_detail">
-    <h4>EDUCATIONAL HISTORY</h4>
-<div class="row">
-  <div class="col col-3">
-      <div class="form-group">
-        <label for="email">School Type.</label>
-        <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
-            <option selected>Select Achool</option>
-            <option value="1">GitHub</option>
-            <option value="2">Linkedin</option>
-            <option value="3">Facebook</option>
-          </select>
-      </div>
-      </div>
-
-      <div class="col col-3">
-      <div class="form-group">
-        <label for="email">School Name</label>
-        <input type="email" class="form-control" id="email">
-      </div>
-      </div>
-
-      <div class="col col-3">
-      <div class="form-group">
-          <label for="email">Degree Type</label>
-          <input type="email" class="form-control" id="email">
-        </div>
-      </div>
-
-
-      <div class="col col-3">
-          <div class="form-group">
-              <label for="dob">Degree Name</label>
-              <input type="dob" class="form-control" id="dob">
-            </div>
-          </div>
-
-
-      <div class="col col-6">
-          <div class="form-group">
-              <label for="location">Major In</label>
-              <input type="location" class="form-control" id="location">
-            </div>
-          </div>
-
-
-      <div class="col col-2">
-          <div class="form-group">
-              <label for="location">Start Date</label>
-                              <nz-date-picker tabindex="6" id="dob" class="form-control not-mandate" [nzDisabledDate]="disabledDate" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Date of Birth'"></nz-date-picker>
-
-            </div>
-          </div>
-
-
-      <div class="col col-2">
-          <div class="form-group">
-              <label for="location">End Date</label>
-              <input type="location" class="form-control" id="location">
-            </div>
-          </div>
-
-
-      <div class="col col-2">
-          <div class="form-group">
-              <label for="location">Degree Date</label>
-              <input type="location" class="form-control" id="location">
-            </div>
-          </div>
-</div>
-    </div>
-
-    <!--  -->
-
-
-    <div class="basic_detail">
-        <h4>REFERENCE</h4>
-    <div class="row">
-      <div class="col col-3">
-          <div class="form-group">
-            <label for="email">Name</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          </div>
-
-          <div class="col col-3">
-          <div class="form-group">
-            <label for="email">Email ID</label>
-            <input type="email" class="form-control" id="email">
-          </div>
-          </div>
-
-          <div class="col col-3">
-          <div class="form-group">
-              <label for="email">Phone No.</label>
-              <input type="email" class="form-control" id="email">
-            </div>
-          </div>
-
-
-          <div class="col col-3">
-              <div class="form-group">
-                  <label for="location">Your Relationship With</label>
-                  <input type="location" class="form-control" id="location">
                 </div>
               </div>
-               </div>
+
+
+            </div>
+
+            <!--  -->
+
+            <div class="basic_detail">
+              <h4>EDUCATIONAL HISTORY</h4>
+              <div class="row">
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">School Type.</label>
+                    <select class="custom-select my-1 mr-sm-2" id="inlineFormCustomSelectPref">
+                      <option selected>Select School</option>
+                      <option value="1">GitHub</option>
+                      <option value="2">Linkedin</option>
+                      <option value="3">Facebook</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">School Name</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Degree Type</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="dob">Degree Name</label>
+                    <input type="dob" class="form-control" id="dob">
+                  </div>
+                </div>
+
+
+                <div class="col col-6">
+                  <div class="form-group">
+                    <label for="location">Major In</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+
+
+                <div class="col col-2">
+                  <div class="form-group">
+                    <label for="location">Start Date</label>
+                    <nz-date-picker tabindex="6" id="dob" class="form-control not-mandate"
+                      [nzDisabledDate]="disabledDate"
+                      [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
+                      [nzPlaceHolder]="'Date of Birth'"></nz-date-picker>
+
+                  </div>
+                </div>
+
+
+                <div class="col col-2">
+                  <div class="form-group">
+                    <label for="location">End Date</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+
+
+                <div class="col col-2">
+                  <div class="form-group">
+                    <label for="location">Degree Date</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <!--  -->
+
+
+            <div class="basic_detail">
+              <h4>REFERENCE</h4>
+              <div class="row">
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Name</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Email ID</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="email">Phone No.</label>
+                    <input type="email" class="form-control" id="email">
+                  </div>
+                </div>
+
+
+                <div class="col col-3">
+                  <div class="form-group">
+                    <label for="location">Your Relationship With</label>
+                    <input type="location" class="form-control" id="location">
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="basic_detail">
+              <h4>PRIMARY SKILLS</h4>
+              <div class="row">
+                <div class="col col-4">
+                  <div class="form-group">
+                    <label for="email">Skill Name</label>
+                    <input type="text" class="form-control" id="p_skill">
+                  </div>
+                </div>
+
+                <div class="col col-4">
+                  <div class="form-group selector_cat">
+                    <label for="rating">Self Assessment</label>
+                    <select class="custom-select my-1 mr-sm-2" id="rating">
+                      <option selected>Select School</option>
+                      <option value="1">GitHub</option>
+                      <option value="2">Linkedin</option>
+                      <option value="3">Facebook</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div class="col col-4">
+                  <div class="form-group">
+                    <label for="experience">Experience</label>
+                    <input type="text" class="form-control" id="experience" placeholder="In Months">
+                  </div>
+                </div>
+
+              </div>
+            </div>
+
+
+            <!--  -->
+
+
+          </div>
         </div>
 
 
-    <!--  -->
+        <div class="col col-3">
+          <div class="description">
+            <h4>VIDEO PROFILE</h4>
 
+            <div class="img">
+              <img src="assets/images/user-pic.png" />
+            </div>
 
-    </div>
-          </div>
-
-
-          <div class="col col-3">
-            <div class="description">
-          <h4>VIDEO PROFILE</h4>
-
-          <div class="img">
-            <img src="assets/images/user-pic.png"/>
-          </div>
-
-          <div class="it_skills">
-            <h4>IT SKILLS</h4>
-            <ul>
-              <li>JAVA</li>
-              <li>Full Stack Development</li>
-            </ul>
-          </div>
-
-          <div class="it_skills">
-            <h4>OTHER SKILLS</h4>
-            <ul>
+            <div class="it_skills">
+              <h4>IT SKILLS</h4>
+              <ul>
                 <li>JAVA</li>
                 <li>Full Stack Development</li>
               </ul>
+            </div>
+
+            <div class="it_skills">
+              <h4>OTHER SKILLS</h4>
+              <ul>
+                <li>JAVA</li>
+                <li>Full Stack Development</li>
+              </ul>
+            </div>
+
+
+
+
+
+            <!--  -->
+
+            <div class="certification">
+              <h4>CERTIFICATION</h4>
+
+            </div>
+
+            <div class="resume">
+              <h4>RESUME</h4>
+            </div>
+
           </div>
-
-
-
-
-
-          <!--  -->
-
-          <div class="certification">
-            <h4>CERTIFICATION</h4>
-
-          </div>
-
-      <div class="resume">
-        <h4>RESUME</h4>
-      </div>
-
-          </div>
-
-          </div>
-
 
         </div>
-        </section>
+
+
       </div>
-        </section>
+    </section>
+  </div>
+</section>

@@ -5,13 +5,15 @@
       <div class="info flex">
         <div class="user-image" *ngIf="profile?.basicInfo?.imageUrl">
           <img class="profile-image" [src]="profile?.basicInfo?.imageUrl" alt="Profile picture" />
-          <img class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(202)"/>
+          <img class="delete-cross" src="/assets/images/ic-delete-cross.svg" alt="red cross"
+            (click)="openDeleteResourceConfirmationModal(202)" />
         </div>
-        <form [formGroup]="profileForm" *ngIf="!profile?.basicInfo?.imageUrl" >
+        <form [formGroup]="profileForm" *ngIf="!profile?.basicInfo?.imageUrl">
           <div class="form-group">
             <!-- <p *ngIf="selectedFile.profileImage">{{selectedFile.profileImage}}</p> -->
             <button class="upload-button">Upload Image</button>
-            <input type="file" class="form-control not-mandate fileUpload" accept=".png, .jpg, .jpeg" (change)="fileChange($event, 202)"/>
+            <input type="file" class="form-control not-mandate fileUpload" accept=".png, .jpg, .jpeg"
+              (change)="fileChange($event, 202)" />
           </div>
         </form>
         <div class="user-info">
@@ -19,33 +21,42 @@
           <p class="user-desig">{{profile?.professionalInfo?.designation}}</p>
         </div>
       </div>
-      <form [formGroup]="profileForm" id="submit-button">
+      <!-- <form [formGroup]="profileForm" id="submit-button">
         <button class="orange-button" (click)="onSubmit(false)">Submit</button>
-      </form>
+      </form> -->
     </div>
     <div class="profile-content flex">
       <!-- Personal details form -->
-      <div class="profile-card" id="personal" [ngClass]="{'active': activeSection.personal}" (click)="highlightSectionOnClick(1)">
+      <div class="profile-card" id="personal" [ngClass]="{'active': activeSection.personal}"
+        (click)="highlightSectionOnClick(1)">
         <div class="card-title">Personal Details
-          <span class="card-status">
+          <!-- <span class="card-status">
             <img
-              [src]="profile && profile.basicInfo && profile.basicInfo.firstName && profile.basicInfo.lastName && profile.basicInfo.dob ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-          </span>
+              [src]="profile && profile.basicInfo && profile.basicInfo.firstName && profile.basicInfo.lastName && profile.basicInfo.dob ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
         </div>
         <div class="card-content">
-          <form [formGroup]="profileForm" name="profileForm" (ngSubmit)="onSubmit(false)">
+          <form [formGroup]="personalDetailsForm" name="personalDetailsForm"
+            (ngSubmit)="onSubmit(false, 'personalDetailsForm')">
             <div class="form-group">
-              <input #firstName tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control" [ngClass]="{ 'is-invalid':f.firstName.touched && f.firstName.errors }"/>
-              <label for="firstName" class="form-control-placeholder" [ngClass]="{'active': f.firstName.value, 'inactive': !f.firstName.value }">First Name<span class="required-star">*</span></label>
-              <div *ngIf="submitted && f.firstName.errors" class="invalid-feedback">
-                <div class="error" *ngIf="f.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
-                <div class="error" *ngIf="f.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
-                <div class="error" *ngIf="f.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
+              <input #firstName tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control"
+                [ngClass]="{ 'is-invalid':pers.firstName.touched && pers.firstName.errors }" />
+              <label for="firstName" class="form-control-placeholder"
+                [ngClass]="{'active': pers.firstName.value, 'inactive': !pers.firstName.value }">First Name<span
+                  class="required-star">*</span></label>
+              <div *ngIf="submitted && pers.firstName.errors" class="invalid-feedback">
+                <div class="error" *ngIf="pers.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
+                <div class="error" *ngIf="pers.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
+                <div class="error" *ngIf="pers.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
               </div>
             </div>
             <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('LAST_NAME') >= 0 }">
-              <input #lastName tabindex="2" type="text" id="lastName" formControlName="lastName" class="form-control not-mandate" [ngClass]="{ 'is-invalid':f.lastName.touched &&  f.lastName.errors }" />
-              <label for="lastName" class="form-control-placeholder" [ngClass]="{'active': f.lastName.value, 'inactive': !f.lastName.value }">Last Name</label>
+              <input #lastName tabindex="2" type="text" id="lastName" formControlName="lastName"
+                class="form-control not-mandate"
+                [ngClass]="{ 'is-invalid':pers.lastName.touched &&  pers.lastName.errors }" />
+              <label for="lastName" class="form-control-placeholder"
+                [ngClass]="{'active': pers.lastName.value, 'inactive': !pers.lastName.value }">Last Name</label>
             </div>
             <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('GENDER') >= 0 }" #gender>
               <label for="gender" class="form-control-placeholder  radio-label">Gender</label>
@@ -57,70 +68,86 @@
               <label for="gender" class="form-control-placeholder">Gender</label>
             </div>
             <div class="form-group" id="dob-group">
-                <nz-date-picker formControlName="dob" tabindex="6" id="dob" class="form-control not-mandate" [nzDisabledDate]="disabledDate" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Date of Birth'" [ngClass]="{ 'is-invalid': f.lastName.touched &&  f.lastName.errors }"></nz-date-picker>
-                <label for="dob" class="form-control-placeholder">DOB</label>
-                <span class="calendar-icon"><img src="/assets/images/ic-calendar-copy.svg" alt=""/></span>
+              <nz-date-picker formControlName="dob" tabindex="6" id="dob" class="form-control not-mandate"
+                [nzDisabledDate]="disabledDate" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
+                [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Date of Birth'"
+                [ngClass]="{ 'is-invalid': pers.lastName.touched &&  pers.lastName.errors }"></nz-date-picker>
+              <label for="dob" class="form-control-placeholder">DOB</label>
+              <span class="calendar-icon"><img src="/assets/images/ic-calendar-copy.svg" alt="" /></span>
             </div>
             <div class="flex" id="phone">
               <div class="form-group">
-                  <label for="countryCode" class="form-control-placeholder country-code-placeholder" [ngClass]="{'active': f.countryPhoneCode.value, 'inactive': !f.countryPhoneCode.value }">Country Code</label>
-                  <!-- <select tabindex="7" id="countryCode" list="countries" placeholder="Select Country" formControlName="countryPhoneCode" class="form-control not-mandate">
-                    <option *ngFor="let country of countryList" value="(+{{country.phonecode}})">(+{{country.phonecode}})</option>
-                  </select> -->
-
-                  <ngx-select-dropdown (change)="selectionChanged($event,'one')" formControlName="countryPhoneCode" [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
-<!--
-                  <nz-select tabindex="7" id="work-permit" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" [nzShowSearch]="true" [nzFilterOption]="countrycodeFilter" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
-                    <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
-                  </nz-select>  -->
-                  <!-- <div class="scroll-controller-overlay"></div> -->
+                <label for="countryCode" class="form-control-placeholder country-code-placeholder"
+                  [ngClass]="{'active': pers.countryPhoneCode.value, 'inactive': !pers.countryPhoneCode.value }">Country
+                  Code</label>
+                <ngx-select-dropdown (change)="selectionChanged($event,'one')" formControlName="countryPhoneCode"
+                  [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
               </div>
               <div class="form-group">
-                  <input app-phone-field type="number" tabindex="8" id="phoneNumber" formControlName="mobile" class="form-control not-mandate"/>
-                  <label for="phoneNumber" class="form-control-placeholder" [ngClass]="{'active': f.mobile.value, 'inactive': !f.mobile.value }">Contact Number</label>
-                  <div *ngIf="f.mobile.value && f.mobile.errors" class="invalid-feedback">
-                    <div class="error" *ngIf="f.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
-                    <!-- <div class="error" *ngIf="f.mobile.errors.minlength || f.mobile.errors.maxlength">{{validationMsgs.PhoneInvalid}}</div> -->
-                  </div>
+                <input app-phone-field type="number" tabindex="8" id="phoneNumber" formControlName="mobile"
+                  class="form-control not-mandate" />
+                <label for="phoneNumber" class="form-control-placeholder"
+                  [ngClass]="{'active': pers.mobile.value, 'inactive': !pers.mobile.value }">Contact Number</label>
+                <div *ngIf="pers.mobile.value && pers.mobile.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="pers.mobile.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
+                </div>
               </div>
+            </div>
+            <div class="submit-button">
+              <button class="orange-button">Submit</button>
             </div>
           </form>
         </div>
       </div>
       <!-- Professional details form -->
-      <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}" (click)="highlightSectionOnClick(2)">
+      <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}"
+        (click)="highlightSectionOnClick(2)">
         <div class="card-title">Professional Details
-          <span class="card-status">
+          <!-- <span class="card-status">
             <img
-            [src]="profile && profile.professionalInfo && profile.professionalInfo.designation && profile.professionalInfo.expectedpay && profile.professionalInfo.preferredJobTypeId ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-          </span>
+              [src]="profile && profile.professionalInfo && profile.professionalInfo.designation && profile.professionalInfo.expectedpay && profile.professionalInfo.preferredJobTypeId ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
         </div>
         <div class="card-content">
-          <form [formGroup]="profileForm" (ngSubmit)="onSubmit(false)">
+          <form [formGroup]="professionalDetailsForm" (ngSubmit)="onSubmit(false, 'professionalDetailsForm')">
             <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('DESIRED_DESIGNATION') >= 0 }">
-              <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation" class="form-control not-mandate"/>
-              <label for="preferDesignation" class="form-control-placeholder" [ngClass]="{'active': f.designation.value, 'inactive': !f.designation.value }">Desired Designation</label>
+              <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
+                class="form-control not-mandate" />
+              <label for="preferDesignation" class="form-control-placeholder"
+                [ngClass]="{'active': prof.designation.value, 'inactive': !prof.designation.value }">Desired
+                Designation</label>
             </div>
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('PREFERRED_LOCATION') >= 0 }" #preferredLocation>
-              <input tabindex="10" type="text" id="preferLocation" placeholder="" formControlName="preferredLocation" class="form-control not-mandate" #city/>
-              <label for="preferLocation" class="form-control-placeholder" [ngClass]="{'active': f.preferredLocation.value, 'inactive': !f.preferredLocation.value }">Preferred Location<span class="required-star">*</span></label>
-              <div *ngIf="submitted && f.preferredLocation.errors" class="invalid-feedback">
-                <div class="error" *ngIf="f.preferredLocation.errors.required">{{validationMsgs.PreferredLocationRequired}}</div>
+            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('PREFERRED_LOCATION') >= 0 }"
+              #preferredLocation>
+              <input tabindex="10" type="text" id="preferLocation" placeholder="" formControlName="preferredLocation"
+                class="form-control not-mandate" #city />
+              <label for="preferLocation" class="form-control-placeholder"
+                [ngClass]="{'active': prof.preferredLocation.value, 'inactive': !prof.preferredLocation.value }">Preferred
+                Location<span class="required-star">*</span></label>
+              <div *ngIf="submitted && prof.preferredLocation.errors" class="invalid-feedback">
+                <div class="error" *ngIf="prof.preferredLocation.errors.required">
+                  {{validationMsgs.PreferredLocationRequired}}</div>
               </div>
             </div>
             <div class="form-group">
               <div class="relative" id="work-permit-relative">
-                <nz-select tabindex="11" id="work-permit" class="form-control not-mandate" formControlName="visastatus" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
-                  <nz-option [nzValue]="status.visastatusid" [nzLabel]="status.visastatusname" *ngFor="let status of profile?.visastatus"></nz-option>
+                <nz-select tabindex="11" id="work-permit" class="form-control not-mandate" formControlName="visastatus"
+                  style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
+                  <nz-option [nzValue]="status.visastatusid" [nzLabel]="status.visastatusname"
+                    *ngFor="let status of profile?.visastatus"></nz-option>
                 </nz-select>
                 <!-- <div class="scroll-controller-overlay "></div> -->
               </div>
-              <label for="work-permit" class="form-control-placeholder" [ngClass]="{'active': f.visastatus.value, 'inactive': !f.visastatus.value }">Work Permit Status</label>
+              <label for="work-permit" class="form-control-placeholder"
+                [ngClass]="{'active': prof.visastatus.value, 'inactive': !prof.visastatus.value }">Work Permit
+                Status</label>
             </div>
 
 
 
-            <div class="form-group" id="job-type-group" [ngClass]="{'missing': missingFields.indexOf('EMPLOYMENT_TYPE') >= 0 }">
+            <div class="form-group" id="job-type-group"
+              [ngClass]="{'missing': missingFields.indexOf('EMPLOYMENT_TYPE') >= 0 }">
               <nz-radio-group class="choose-slot not-mandate flex" id="job-type" formControlName="preferredJobTypeId">
                 <label nz-radio nzValue="1"><span class="radio-label" tabindex="12">Full Time</span></label>
                 <label nz-radio nzValue="2"><span class="radio-label" tabindex="13">Contract</span></label>
@@ -130,318 +157,757 @@
               <label for="job-type" class="form-control-placeholder">Type of Job</label>
             </div>
 
-            <div class="form-group"  *ngIf="f.preferredJobTypeId && (f.preferredJobTypeId.value == 1 || f.preferredJobTypeId.value == 0 || f.preferredJobTypeId.value == 3)" [ngClass]="{'missing': missingFields.indexOf('ANNUAL_SALARY') >= 0 }">
+            <div class="form-group"
+              *ngIf="prof.preferredJobTypeId && (prof.preferredJobTypeId.value == 1 || prof.preferredJobTypeId.value == 0 || prof.preferredJobTypeId.value == 3)"
+              [ngClass]="{'missing': missingFields.indexOf('ANNUAL_SALARY') >= 0 }">
               <span class="pay-rate-type">$/annum</span>
-              <!-- <span class="pay-rate-type" *ngIf="f.preferredJobTypeId && f.preferredJobTypeId.value == 2">$/hr</span>
-              <span class="pay-rate-type" *ngIf="f.preferredJobTypeId && f.preferredJobTypeId.value == 3">$/annum & $/hr</span> -->
-              <input tabindex="14" type="text" id="payRate" formControlName="expectedAnnual" class="form-control not-mandate"/>
-              <label for="payRate" class="form-control-placeholder" [ngClass]="{'active': f.expectedAnnual.value, 'inactive': !f.expectedAnnual.value}">Annual Salary</label>
-              <div *ngIf="f.expectedAnnual.errors" class="invalid-feedback">
-                <div class="error" *ngIf="f.expectedAnnual.errors.pattern">{{validationMsgs.PayrateAnnualMaxLength}}</div>
+              <!-- <span class="pay-rate-type" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 2">$/hr</span>
+              <span class="pay-rate-type" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 3">$/annum & $/hr</span> -->
+              <input tabindex="14" type="text" id="payRate" formControlName="expectedAnnual"
+                class="form-control not-mandate" />
+              <label for="payRate" class="form-control-placeholder"
+                [ngClass]="{'active': prof.expectedAnnual.value, 'inactive': !prof.expectedAnnual.value}">Annual
+                Salary</label>
+              <div *ngIf="prof.expectedAnnual.errors" class="invalid-feedback">
+                <div class="error" *ngIf="prof.expectedAnnual.errors.pattern">{{validationMsgs.PayrateAnnualMaxLength}}
+                </div>
               </div>
-              <!-- <label for="payRate" class="form-control-placeholder" *ngIf="f.preferredJobTypeId && f.preferredJobTypeId.value == 2">Expected Pay Rate</label>
-              <label for="payRate" class="form-control-placeholder" *ngIf="f.preferredJobTypeId && f.preferredJobTypeId.value == 3">Annual Salary and Expected Pay Rate</label> -->
+              <!-- <label for="payRate" class="form-control-placeholder" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 2">Expected Pay Rate</label>
+              <label for="payRate" class="form-control-placeholder" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 3">Annual Salary and Expected Pay Rate</label> -->
             </div>
 
 
-            <div class="form-group" *ngIf="f.preferredJobTypeId && f.preferredJobTypeId.value == 2 || f.preferredJobTypeId.value == 3" #expectedPayRate [ngClass]="{'missing': missingFields.indexOf('EXPECTED_PAY_RATE') >= 0 }">
-              <span class="pay-rate-type" >$/hr</span>
-              <input tabindex="15" type="text" id="payRate" formControlName="expectedpayrate" class="form-control not-mandate"/>
-              <label for="payRate" class="form-control-placeholder" [ngClass]="{'active': f.expectedpayrate.value, 'inactive': !f.expectedpayrate.value }">Expected Pay Rate</label>
-              <div *ngIf="f.expectedpayrate.errors" class="invalid-feedback">
-                <!-- <div class="error" *ngIf="f.expectedpayrate.errors.max">{{validationMsgs.PayrateMaxLength}}</div> -->
-                <div class="error" *ngIf="f.expectedpayrate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
+            <div class="form-group"
+              *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 2 || prof.preferredJobTypeId.value == 3"
+              #expectedPayRate [ngClass]="{'missing': missingFields.indexOf('EXPECTED_PAY_RATE') >= 0 }">
+              <span class="pay-rate-type">$/hr</span>
+              <input tabindex="15" type="text" id="payRate" formControlName="expectedpayrate"
+                class="form-control not-mandate" />
+              <label for="payRate" class="form-control-placeholder"
+                [ngClass]="{'active': prof.expectedpayrate.value, 'inactive': !prof.expectedpayrate.value }">Expected
+                Pay Rate</label>
+              <div *ngIf="prof.expectedpayrate.errors" class="invalid-feedback">
+                <!-- <div class="error" *ngIf="prof.expectedpayrate.errors.max">{{validationMsgs.PayrateMaxLength}}</div> -->
+                <div class="error" *ngIf="prof.expectedpayrate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
               </div>
             </div>
 
-
-
+            <div class="submit-button">
+              <button class="orange-button">Submit</button>
+            </div>
 
           </form>
         </div>
       </div>
       <!-- Resume upload form -->
-      <div class="profile-card" id="resume" [ngClass]="{'active': activeSection.resume}" (click)="highlightSectionOnClick(3)">
-          <div class="card-title">Resume
-            <span class="card-status">
-                <img
-                [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-            </span>
-            <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply for jobs.</i></p>
-          </div>
-          <div class="card-content flex">
-            <div class="resume-image" *ngIf="profile && profile.resumeUrl">
-              <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
+      <div class="profile-card" id="resume" [ngClass]="{'active': activeSection.resume}"
+        (click)="highlightSectionOnClick(3)">
+        <div class="card-title">Resume
+          <!-- <span class="card-status">
+            <img
+              [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+          <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply
+              for jobs.</i></p>
+        </div>
+        <div class="card-content flex">
+          <div class="resume-image" *ngIf="profile && profile.resumeUrl">
+            <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
 
-                <!-- -->
-             <a>
-               <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
-              </a>
-              <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
-              <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(201)"/>
-              <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the original resume by clicking on it.</i></p>
-            </div>
-            <form [formGroup]="profileForm" *ngIf="!profile || !profile.resumeUrl">
-              <div class="form-group">
-                  <!-- <p *ngIf="selectedFile.resumeName">{{selectedFile.resumeName}}</p> -->
-                  <button class="upload-button">Upload Resume</button>
-                  <!-- <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
+            <!-- -->
+            <a>
+              <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
+            </a>
+            <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
+            <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
+              alt="red cross" (click)="openDeleteResourceConfirmationModal(201)" />
+            <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the
+                original resume by clicking on it.</i></p>
+          </div>
+          <form [formGroup]="resumeForm" *ngIf="!profile || !profile.resumeUrl">
+            <div class="form-group">
+              <!-- <p *ngIf="selectedFile.resumeName">{{selectedFile.resumeName}}</p> -->
+              <button class="upload-button">Upload Resume</button>
+              <!-- <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
                   "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
                   text/plain, application/pdf, .docx, .doc" (change)="fileChange($event, 201)"/> -->
-                  <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
-                  "application/pdf, .docx, .doc" (change)="fileChange($event, 201)"/>
-                </div>
-            </form>
-          </div>
+              <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload"
+                accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" />
+            </div>
+          </form>
+        </div>
       </div>
       <!-- Social details form -->
-      <div class="profile-card" id="social" [ngClass]="{'active': activeSection.social}" (click)="highlightSectionOnClick(4)">
-          <div class="card-title">Social Profiles
-            <span class="card-status">
+      <div class="profile-card" id="social" [ngClass]="{'active': activeSection.social}"
+        (click)="highlightSectionOnClick(4)">
+        <div class="card-title">Social Profiles
+          <!-- <span class="card-status">
                 <img
-                [src]="f.linkedin.value && f.github.value && f.stack.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-            </span>
-          </div>
-          <div class="card-content">
-              <form [formGroup]="profileForm" (ngSubmit)="onSubmit(false)">
-                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                  <input #linkedIn tabindex="17" type="text" id="linkedin" formControlName="linkedin" class="form-control not-mandate"/>
-                  <label for="linkedin" class="form-control-placeholder" [ngClass]="{'active': f.linkedin.value, 'inactive': !f.linkedin.value }">Linkedin</label>
-                  <div *ngIf=" f.linkedin.errors" class="invalid-feedback">
-                    <div class="error" *ngIf="f.linkedin.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
-                  </div>
-                </div>
-                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                  <input tabindex="18" type="text" id="github" formControlName="github" class="form-control not-mandate"/>
-                  <label for="github" class="form-control-placeholder" [ngClass]="{'active': f.github.value, 'inactive': !f.github.value }">Github</label>
-                  <div *ngIf=" f.github.errors" class="invalid-feedback">
-                    <div class="error" *ngIf="f.github.errors.pattern">{{validationMsgs.ValidGithubLink}}</div>
-                  </div>
-                </div>
-                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                  <input tabindex="19" type="text" id="stack" formControlName="stack" class="form-control not-mandate"/>
-                  <label for="stack" class="form-control-placeholder" [ngClass]="{'active': f.stack.value, 'inactive': !f.stack.value }">Stack Overflow</label>
-                  <div *ngIf=" f.stack.errors" class="invalid-feedback">
-                    <div class="error" *ngIf="f.stack.errors.pattern">{{validationMsgs.ValidStackLink}}</div>
-                  </div>
-                </div>
-                <!-- <div class="form-group">
+                [src]="social.linkedin.value && social.github.value && social.stack.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
+            </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="socialForm" (ngSubmit)="onSubmit(false, 'socialForm')">
+            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input #linkedIn tabindex="17" type="text" id="linkedin" formControlName="linkedin"
+                class="form-control not-mandate" />
+              <label for="linkedin" class="form-control-placeholder"
+                [ngClass]="{'active': social.linkedin.value, 'inactive': !social.linkedin.value }">Linkedin</label>
+              <div *ngIf=" social.linkedin.errors" class="invalid-feedback">
+                <div class="error" *ngIf="social.linkedin.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+              </div>
+            </div>
+            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="18" type="text" id="github" formControlName="github" class="form-control not-mandate" />
+              <label for="github" class="form-control-placeholder"
+                [ngClass]="{'active': social.github.value, 'inactive': !social.github.value }">Github</label>
+              <div *ngIf=" social.github.errors" class="invalid-feedback">
+                <div class="error" *ngIf="social.github.errors.pattern">{{validationMsgs.ValidGithubLink}}</div>
+              </div>
+            </div>
+            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="19" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
+              <label for="stack" class="form-control-placeholder"
+                [ngClass]="{'active': social.stack.value, 'inactive': !social.stack.value }">Stack Overflow</label>
+              <div *ngIf=" social.stack.errors" class="invalid-feedback">
+                <div class="error" *ngIf="social.stack.errors.pattern">{{validationMsgs.ValidStackLink}}</div>
+              </div>
+            </div>
+            <!-- <div class="form-group">
                   <input tabindex="19" type="text" id="others" formControlName="others" class="form-control not-mandate"/>
                   <label for="others" class="form-control-placeholder">Others</label>
                 </div> -->
-
-              </form>
-          </div>
+            <div class="submit-button">
+              <button class="orange-button">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
       <!-- Video upload form -->
-      <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}" (click)="highlightSectionOnClick(5)">
-          <div class="card-title">Video Profile
-            <span class="card-status">
-                <img
-                [src]="profile && profile.videoLink && profile.videoLinkTypeId != 0 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-            </span>
-          </div>
-          <div class="card-content">
-            <form [formGroup]="profileForm" (ngSubmit)="onSubmit(false)">
-              <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('VIDEO_LINK') >= 0 }" #videoLink>
-                <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId" (ngModelChange)="onChange($event)">
-                  <label tabindex="19" nz-radio nzValue="1"><span class="radio-label">YouTube</span></label>
-                  <label tabindex="20" nz-radio nzValue="2"><span class="radio-label">Upload</span></label>
-                </nz-radio-group>
-                <label for="video-type" class="form-control-placeholder" >Video Type</label>
+      <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}"
+        (click)="highlightSectionOnClick(5)">
+        <div class="card-title">Video Profile
+          <!-- <span class="card-status">
+            <img
+              [src]="profile && profile.videoLink && profile.videoLinkTypeId != 0 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="videoForm" (ngSubmit)="onSubmit(false, 'videoForm')">
+            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('VIDEO_LINK') >= 0 }" #videoLink>
+              <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId"
+                (ngModelChange)="onChange($event)">
+                <label tabindex="19" nz-radio nzValue="1"><span class="radio-label">YouTube</span></label>
+                <label tabindex="20" nz-radio nzValue="2"><span class="radio-label">Upload</span></label>
+              </nz-radio-group>
+              <label for="video-type" class="form-control-placeholder">Video Type</label>
+            </div>
+            <div class="form-group" *ngIf="video.videoLinkTypeId.value == 1">
+              <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink"
+                class="form-control not-mandate" />
+              <label for="vidUrl" class="form-control-placeholder"
+                [ngClass]="{'active': video.videoLink.value, 'inactive': !video.videoLink.value }">Video URL</label>
+              <div *ngIf="video.videoLink.touched && video.videoLink.errors" class="invalid-feedback">
+                <div class="error" *ngIf="video.videoLink.errors.pattern">{{validationMsgs.YoutubeLinkInvalid}}</div>
               </div>
-              <div class="form-group" *ngIf="f.videoLinkTypeId.value == 1">
-                <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink" class="form-control not-mandate"/>
-                <label for="vidUrl" class="form-control-placeholder" [ngClass]="{'active': f.videoLink.value, 'inactive': !f.videoLink.value }">Video URL</label>
-                <div *ngIf="f.videoLink.touched && f.videoLink.errors" class="invalid-feedback">
-                  <div class="error" *ngIf="f.videoLink.errors.pattern">{{validationMsgs.YoutubeLinkInvalid}}</div>
-                </div>
-              </div>
-              <div class="form-group" *ngIf="f.videoLinkTypeId.value == 2 && profile && profile.videoLink">
-                <input tabindex="22" type="text" id="videoCaption" formControlName="VideoLinkCaption" class="form-control not-mandate"/>
-                <label for="videoCaption" class="form-control-placeholder" [ngClass]="{'active': f.VideoLinkCaption.value, 'inactive': !f.VideoLinkCaption.value }">Video Caption</label>
-              </div>
+            </div>
+            <div class="form-group" *ngIf="video.videoLinkTypeId.value == 2 && profile && profile.videoLink">
+              <input tabindex="22" type="text" id="videoCaption" formControlName="VideoLinkCaption"
+                class="form-control not-mandate" />
+              <label for="videoCaption" class="form-control-placeholder"
+                [ngClass]="{'active': video.VideoLinkCaption.value, 'inactive': !video.VideoLinkCaption.value }">Video
+                Caption</label>
+            </div>
 
-              <div class="row flex video-box" *ngIf="f.videoLinkTypeId.value == 2 && profile && profile.videoLink && !testYoutubeUrl(profile.videoLink) ">
-                <p class="video-transcoding note" *ngIf="videoData?.status == 'transcoding'">Note: Please wait while video is getting ready.</p>
-                <div class="video-col">
-                  <!-- <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(203)"/> -->
-                  <div class="vid-clip" *ngIf="videoData?.pictures" (click)="openPlayVideoModal()">
-                    <!-- <video width="181" height="107" [src]="videoLink"></video> -->
-                    <!-- <iframe width="181" height="107" [src]="safeUrl()" frameBorder="0"></iframe> -->
-                    <img [src]="videoData?.pictures?.sizes[0]['link_with_play_button']" alt="">
-                    <!-- <embed [src]="videoLink" width="181" height="107"></embed> -->
-                  </div>
+            <div class="row flex video-box"
+              *ngIf="video.videoLinkTypeId.value == 2 && profile && profile.videoLink && !testYoutubeUrl(profile.videoLink) ">
+              <p class="video-transcoding note" *ngIf="videoData?.status == 'transcoding'">Note: Please wait while video
+                is getting ready.</p>
+              <div class="video-col">
+                <!-- <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(203)"/> -->
+                <div class="vid-clip" *ngIf="videoData?.pictures" (click)="openPlayVideoModal()">
+                  <!-- <video width="181" height="107" [src]="videoLink"></video> -->
+                  <!-- <iframe width="181" height="107" [src]="safeUrl()" frameBorder="0"></iframe> -->
+                  <img [src]="videoData?.pictures?.sizes[0]['link_with_play_button']" alt="">
+                  <!-- <embed [src]="videoLink" width="181" height="107"></embed> -->
                 </div>
-                <!-- <div class="video-details-col">
+              </div>
+              <!-- <div class="video-details-col">
                   <p class="video-title">{{profile?.VideoLinkCaption}}</p>
                   <p class="video-time">05:30 mins</p>
                 </div> -->
-                <div class="delete-video">
-                  <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross" src="/assets/images/delete.png"  alt="red cross" (click)="openDeleteResourceConfirmationModal(203)"/>
-                </div>
+              <div class="delete-video">
+                <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross"
+                  src="/assets/images/delete.png" alt="red cross" (click)="openDeleteResourceConfirmationModal(203)" />
               </div>
-            </form>
-          </div>
+            </div>
+            <div class="submit-button">
+              <button class="orange-button">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
       <!-- Reference form -->
-      <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}" (click)="highlightSectionOnClick(6)">
-          <div class="card-title">References
-            <span class="card-status">
-                <img
-                [src]="profile && profile.referenceList && profile.referenceList.length == 2 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
-            </span>
-          </div>
-          <div class="card-content">
-            <div class="flex">
-              <!-- Reference One -->
-              <div class="ref ref-one">
-                <div class="ref-completed" *ngIf="profile?.referenceList[0]?.comment">
-                  <p class="ref-name">{{profile?.referenceList[0]?.name}}</p>
-                  <p class="ref-capacity">{{profile?.capacityList[profile?.referenceList[0].capacity - 1].capacityName}}</p>
-                  <p class="ref-mail"><img src="/assets/images/email.svg" alt=""/>{{profile?.referenceList[0]?.emailid}}</p>
-                  <p class="ref-contact"><img src="/assets/images/phone-2.svg" alt=""/>{{profile?.referenceList[0]?.mobilenumber}}</p>
-                  <div class="card-title">Comments</div>
-                  <pre class="ref-comments" [ngClass]="{'expanded': expandedComment.one, 'collapse': !expandedComment.one}">{{profile?.referenceList[0]?.comment}}</pre>
-                  <p class="more-content" *ngIf="!expandedComment.one && profile?.referenceList[0]?.comment?.length > 400" (click)="toggleComment(1, true)"><span><img src="/assets/images/more.svg">More</span></p>
-                  <p class="more-content less" *ngIf="expandedComment.one" (click)="toggleComment(1, false)"><span><img src="/assets/images/more.svg">Less</span></p>
+      <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}"
+        (click)="highlightSectionOnClick(6)">
+        <div class="card-title">References
+          <!-- <span class="card-status">
+            <img
+              [src]="profile && profile.referenceList && profile.referenceList.length == 2 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <div class="flex">
+            <!-- Reference One -->
+            <div class="ref ref-one">
+              <div class="ref-completed" *ngIf="profile?.referenceList[0]?.comment">
+                <p class="ref-name">{{profile?.referenceList[0]?.name}}</p>
+                <p class="ref-capacity">{{profile?.capacityList[profile?.referenceList[0].capacity - 1].capacityName}}
+                </p>
+                <p class="ref-mail"><img src="/assets/images/email.svg" alt="" />{{profile?.referenceList[0]?.emailid}}
+                </p>
+                <p class="ref-contact"><img src="/assets/images/phone-2.svg"
+                    alt="" />{{profile?.referenceList[0]?.mobilenumber}}</p>
+                <div class="card-title">Comments</div>
+                <pre class="ref-comments"
+                  [ngClass]="{'expanded': expandedComment.one, 'collapse': !expandedComment.one}">{{profile?.referenceList[0]?.comment}}</pre>
+                <p class="more-content" *ngIf="!expandedComment.one && profile?.referenceList[0]?.comment?.length > 400"
+                  (click)="toggleComment(1, true)"><span><img src="/assets/images/more.svg">More</span></p>
+                <p class="more-content less" *ngIf="expandedComment.one" (click)="toggleComment(1, false)"><span><img
+                      src="/assets/images/more.svg">Less</span></p>
+              </div>
+              <p class="second-ref-title" *ngIf="!profile?.referenceList[0]?.comment">First Reference</p>
+              <form [formGroup]="reference.referenceList.controls.one" *ngIf="!profile?.referenceList[0]?.comment"
+                (ngSubmit)="onSubmit(false)" id="ref-form">
+                <div class="form-group">
+                  <input tabindex="23" type="text" id="firstRefName" formControlName="name"
+                    class="form-control not-mandate" />
+                  <label for="firstRefName" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.one.value.name, 'inactive': !reference.referenceList.controls.one.value.name }">Name</label>
+                  <div *ngIf="reference.referenceList.controls.one.controls.name.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="reference.referenceList.controls.one.controls.name.errors.maxlength">
+                      {{validationMsgs.FirstNameMaxlength}}</div>
+                  </div>
                 </div>
-                <p class="second-ref-title" *ngIf="!profile?.referenceList[0]?.comment">First Reference</p>
-                <form [formGroup]="f.referenceList.controls.one" *ngIf="!profile?.referenceList[0]?.comment" (ngSubmit)="onSubmit(false)" id="ref-form" >
-                  <div class="form-group">
-                    <input tabindex="23" type="text" id="firstRefName" formControlName="name" class="form-control not-mandate"/>
-                    <label for="firstRefName" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.one.value.name, 'inactive': !f.referenceList.controls.one.value.name }">Name</label>
-                    <div *ngIf="f.referenceList.controls.one.controls.name.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.one.controls.name.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
-                    </div>
+                <div class="form-group">
+                  <input tabindex="24" type="text" id="firstRefMail" formControlName="emailid"
+                    class="form-control not-mandate" />
+                  <label for="firstRefEmail" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.one.value.emailid, 'inactive': !reference.referenceList.controls.one.value.emailid }">Email
+                    ID</label>
+                  <div *ngIf="reference.referenceList.controls.one.controls.emailid.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="reference.referenceList.controls.one.controls.emailid.errors.maxlength">
+                      {{validationMsgs.EmailMaxlength}}</div>
+                    <div class="error" *ngIf="reference.referenceList.controls.one.controls.emailid.errors.pattern">
+                      {{validationMsgs.EmailInvalid}}</div>
                   </div>
-                  <div class="form-group">
-                    <input tabindex="24" type="text" id="firstRefMail" formControlName="emailid" class="form-control not-mandate"/>
-                    <label for="firstRefEmail" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.one.value.emailid, 'inactive': !f.referenceList.controls.one.value.emailid }">Email ID</label>
-                    <div *ngIf="f.referenceList.controls.one.controls.emailid.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.one.controls.emailid.errors.maxlength">{{validationMsgs.EmailMaxlength}}</div>
-                      <div class="error" *ngIf="f.referenceList.controls.one.controls.emailid.errors.pattern">{{validationMsgs.EmailInvalid}}</div>
-                    </div>
-                    <div *ngIf="f.referenceList.controls.one.controls.emailid.value && f.referenceList.controls.two.controls.emailid.value && f.referenceList.controls.one.controls.emailid.value == f.referenceList.controls.two.controls.emailid.value" class="invalid-feedback">
-                      <div class="error">{{validationMsgs.ReferenceEmailsNotUnique}}</div>
-                    </div>
+                  <div
+                    *ngIf="reference.referenceList.controls.one.controls.emailid.value && reference.referenceList.controls.two.controls.emailid.value && reference.referenceList.controls.one.controls.emailid.value == reference.referenceList.controls.two.controls.emailid.value"
+                    class="invalid-feedback">
+                    <div class="error">{{validationMsgs.ReferenceEmailsNotUnique}}</div>
                   </div>
-                  <div class="form-group select-box">
-                    <label for="capacity" class="form-control-placeholder" [ngClass]="{'active': profile && profile.capacityList && f.referenceList.controls.one.value.capacity, 'inactive': !profile || !profile.capacityList || !f.referenceList.controls.one.value.capacity}">Your relationship with</label>
-                    <nz-select nzShowArrow="true" tabindex="25" formControlName="capacity" nzPlaceHolder="Select Capacity" [nzDropdownMatchSelectWidth]="false">
-                      <nz-option [nzValue]="capacity?.capacityId" [nzLabel]="capacity?.capacityName" *ngFor="let capacity of profile?.capacityList"></nz-option>
-                    </nz-select>
-                  </div>
+                </div>
+                <div class="form-group select-box">
+                  <label for="capacity" class="form-control-placeholder"
+                    [ngClass]="{'active': profile && profile.capacityList && reference.referenceList.controls.one.value.capacity, 'inactive': !profile || !profile.capacityList || !reference.referenceList.controls.one.value.capacity}">Your
+                    relationship with</label>
+                  <nz-select nzShowArrow="true" tabindex="25" formControlName="capacity" nzPlaceHolder="Select Capacity"
+                    [nzDropdownMatchSelectWidth]="false">
+                    <nz-option [nzValue]="capacity?.capacityId" [nzLabel]="capacity?.capacityName"
+                      *ngFor="let capacity of profile?.capacityList"></nz-option>
+                  </nz-select>
+                </div>
 
-                  <div class="form-group">
-                    <label for="countryCode" class="form-control-placeholder country-code-placeholder" [ngClass]="{'active': f.referenceList.controls.one.value.countryPhoneCode, 'inactive': !f.referenceList.controls.one.value.countryPhoneCode }">Country Code</label>
+                <div class="form-group">
+                  <label for="countryCode" class="form-control-placeholder country-code-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.one.value.countryPhoneCode, 'inactive': !reference.referenceList.controls.one.value.countryPhoneCode }">Country
+                    Code</label>
 
-                    <ngx-select-dropdown (change)="selectionChanged($event,'two')" formControlName="countryPhoneCode" [multiple]="false" formControlName="countryPhoneCode" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
+                  <ngx-select-dropdown (change)="selectionChanged($event,'two')" formControlName="countryPhoneCode"
+                    [multiple]="false" formControlName="countryPhoneCode" [config]="config" [options]="dropdownOptions">
+                  </ngx-select-dropdown>
 
-                   <!--
+                  <!--
                    <nz-select nzShowArrow="true" tabindex="26" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                       <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
                     </nz-select>  -->
-                  </div>
-
-
-                  <div class="form-group">
-                    <input app-phone-field tabindex="27" type="text" id="firstRefContact" formControlName="mobilenumber" class="form-control not-mandate"/>
-                    <label for="firstRefContact" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.one.value.mobilenumber, 'inactive': !f.referenceList.controls.one.value.mobilenumber }">Phone Number</label>
-                    <div *ngIf="f.referenceList.controls.one.controls.mobilenumber.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.one.controls.mobilenumber.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
-                    </div>
-                    <div *ngIf="f.referenceList.controls.one.controls.mobilenumber.value && f.referenceList.controls.two.controls.mobilenumber.value && f.referenceList.controls.one.controls.mobilenumber.value == f.referenceList.controls.two.controls.mobilenumber.value" class="invalid-feedback">
-                      <div class="error">{{validationMsgs.ReferenceMobileNotUnique}}</div>
-                    </div>
-                  </div>
-                </form>
-              </div>
-
-              <!-- Reference Two -->
-              <div class="ref ref-two">
-                <div class="ref-completed" *ngIf="profile?.referenceList[1]?.comment">
-                  <p class="ref-name">{{profile?.referenceList[1]?.name}}</p>
-                  <p class="ref-capacity">{{profile?.capacityList[profile?.referenceList[1].capacity - 1].capacityName}}</p>
-                  <p class="ref-mail"><img src="/assets/images/email.svg" alt=""/>{{profile?.referenceList[1]?.emailid}}</p>
-                  <p class="ref-contact"><img src="/assets/images/phone-2.svg" alt=""/>{{profile?.referenceList[1]?.mobilenumber}}</p>
-                  <div class="card-title">Comments</div>
-                  <pre class="ref-comments" [ngClass]="{'expanded': expandedComment.two, 'collapse': !expandedComment.two}">{{profile?.referenceList[1]?.comment}}</pre>
-                  <p class="more-content" *ngIf="!expandedComment.two && profile?.referenceList[1]?.comment?.length > 400" (click)="toggleComment(2, true)"><span><img src="/assets/images/more.svg">More</span></p>
-                  <p class="more-content less" *ngIf="expandedComment.two" (click)="toggleComment(2, false)"><span><img src="/assets/images/more.svg">Less</span></p>
                 </div>
-                <p class="second-ref-title" *ngIf="!profile?.referenceList[1]?.comment">Second Reference</p>
-                <form [formGroup]="f.referenceList.controls.two" *ngIf="!profile?.referenceList[1]?.comment" (ngSubmit)="onSubmit(false)" id="ref-form" >
-                  <div class="form-group">
-                    <input tabindex="28" type="text" id="firstRefName" formControlName="name" class="form-control not-mandate"/>
-                    <label for="firstRefName" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.two.controls.name.value, 'inactive': !f.referenceList.controls.two.controls.name.value}">Name</label>
-                    <div *ngIf="f.referenceList.controls.two.controls.name.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.two.controls.name.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
-                    </div>
-                  </div>
-                  <div class="form-group">
-                    <input tabindex="29" type="text" id="firstRefMail" formControlName="emailid" class="form-control not-mandate"/>
-                    <label for="firstRefEmail" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.two.value.emailid, 'inactive': !f.referenceList.controls.two.value.emailid }">Email ID</label>
-                    <div *ngIf="f.referenceList.controls.two.controls.emailid.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.two.controls.emailid.errors.maxlength">{{validationMsgs.EmailMaxlength}}</div>
-                      <div class="error" *ngIf="f.referenceList.controls.two.controls.emailid.errors.pattern">{{validationMsgs.EmailInvalid}}</div>
-                    </div>
-                    <div *ngIf="f.referenceList.controls.one.controls.emailid.value && f.referenceList.controls.two.controls.emailid.value && f.referenceList.controls.one.controls.emailid.value == f.referenceList.controls.two.controls.emailid.value" class="invalid-feedback">
-                      <div class="error">{{validationMsgs.ReferenceEmailsNotUnique}}</div>
-                    </div>
-                  </div>
-                  <div class="form-group select-box">
-                    <label for="capacity" class="form-control-placeholder" [ngClass]="{'active': profile && profile.capacityList && f.referenceList.controls.two.value.capacity, 'inactive': !profile || !profile.capacityList || !f.referenceList.controls.two.value.capacity}">Your relationship with</label>
-                    <nz-select tabindex="30" formControlName="capacity" nzPlaceHolder="Select Capacity" [nzDropdownMatchSelectWidth]="true">
-                      <nz-option [nzValue]="capacity?.capacityId" [nzLabel]="capacity?.capacityName" *ngFor="let capacity of profile?.capacityList"></nz-option>
-                    </nz-select>
-                  </div>
 
-                  <div class="form-group">
-                    <label for="countryCode" class="form-control-placeholder country-code-placeholder" [ngClass]="{'active': f.referenceList.controls.two.value.countryPhoneCode, 'inactive': !f.referenceList.controls.two.value.countryPhoneCode }">Country Code</label>
 
-                    <ngx-select-dropdown (change)="selectionChanged($event,'three')" formControlName="countryPhoneCode" [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
+                <div class="form-group">
+                  <input app-phone-field tabindex="27" type="text" id="firstRefContact" formControlName="mobilenumber"
+                    class="form-control not-mandate" />
+                  <label for="firstRefContact" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.one.value.mobilenumber, 'inactive': !reference.referenceList.controls.one.value.mobilenumber }">Phone
+                    Number</label>
+                  <div *ngIf="reference.referenceList.controls.one.controls.mobilenumber.errors"
+                    class="invalid-feedback">
+                    <div class="error"
+                      *ngIf="reference.referenceList.controls.one.controls.mobilenumber.errors.pattern">
+                      {{validationMsgs.PhoneInvalid}}</div>
+                  </div>
+                  <div
+                    *ngIf="reference.referenceList.controls.one.controls.mobilenumber.value && reference.referenceList.controls.two.controls.mobilenumber.value && reference.referenceList.controls.one.controls.mobilenumber.value == reference.referenceList.controls.two.controls.mobilenumber.value"
+                    class="invalid-feedback">
+                    <div class="error">{{validationMsgs.ReferenceMobileNotUnique}}</div>
+                  </div>
+                </div>
+              </form>
+            </div>
 
-                    <!-- <nz-select tabindex="31" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
+            <!-- Reference Two -->
+            <div class="ref ref-two">
+              <div class="ref-completed" *ngIf="profile?.referenceList[1]?.comment">
+                <p class="ref-name">{{profile?.referenceList[1]?.name}}</p>
+                <p class="ref-capacity">{{profile?.capacityList[profile?.referenceList[1].capacity - 1].capacityName}}
+                </p>
+                <p class="ref-mail"><img src="/assets/images/email.svg" alt="" />{{profile?.referenceList[1]?.emailid}}
+                </p>
+                <p class="ref-contact"><img src="/assets/images/phone-2.svg"
+                    alt="" />{{profile?.referenceList[1]?.mobilenumber}}</p>
+                <div class="card-title">Comments</div>
+                <pre class="ref-comments"
+                  [ngClass]="{'expanded': expandedComment.two, 'collapse': !expandedComment.two}">{{profile?.referenceList[1]?.comment}}</pre>
+                <p class="more-content" *ngIf="!expandedComment.two && profile?.referenceList[1]?.comment?.length > 400"
+                  (click)="toggleComment(2, true)"><span><img src="/assets/images/more.svg">More</span></p>
+                <p class="more-content less" *ngIf="expandedComment.two" (click)="toggleComment(2, false)"><span><img
+                      src="/assets/images/more.svg">Less</span></p>
+              </div>
+              <p class="second-ref-title" *ngIf="!profile?.referenceList[1]?.comment">Second Reference</p>
+              <form [formGroup]="reference.referenceList.controls.two" *ngIf="!profile?.referenceList[1]?.comment"
+                (ngSubmit)="onSubmit(false)" id="ref-form">
+                <div class="form-group">
+                  <input tabindex="28" type="text" id="firstRefName" formControlName="name"
+                    class="form-control not-mandate" />
+                  <label for="firstRefName" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.two.controls.name.value, 'inactive': !reference.referenceList.controls.two.controls.name.value}">Name</label>
+                  <div *ngIf="reference.referenceList.controls.two.controls.name.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="reference.referenceList.controls.two.controls.name.errors.maxlength">
+                      {{validationMsgs.FirstNameMaxlength}}</div>
+                  </div>
+                </div>
+                <div class="form-group">
+                  <input tabindex="29" type="text" id="firstRefMail" formControlName="emailid"
+                    class="form-control not-mandate" />
+                  <label for="firstRefEmail" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.two.value.emailid, 'inactive': !reference.referenceList.controls.two.value.emailid }">Email
+                    ID</label>
+                  <div *ngIf="reference.referenceList.controls.two.controls.emailid.errors" class="invalid-feedback">
+                    <div class="error" *ngIf="reference.referenceList.controls.two.controls.emailid.errors.maxlength">
+                      {{validationMsgs.EmailMaxlength}}</div>
+                    <div class="error" *ngIf="reference.referenceList.controls.two.controls.emailid.errors.pattern">
+                      {{validationMsgs.EmailInvalid}}</div>
+                  </div>
+                  <div
+                    *ngIf="reference.referenceList.controls.one.controls.emailid.value && reference.referenceList.controls.two.controls.emailid.value && reference.referenceList.controls.one.controls.emailid.value == reference.referenceList.controls.two.controls.emailid.value"
+                    class="invalid-feedback">
+                    <div class="error">{{validationMsgs.ReferenceEmailsNotUnique}}</div>
+                  </div>
+                </div>
+                <div class="form-group select-box">
+                  <label for="capacity" class="form-control-placeholder"
+                    [ngClass]="{'active': profile && profile.capacityList && reference.referenceList.controls.two.value.capacity, 'inactive': !profile || !profile.capacityList || !reference.referenceList.controls.two.value.capacity}">Your
+                    relationship with</label>
+                  <nz-select tabindex="30" formControlName="capacity" nzPlaceHolder="Select Capacity"
+                    [nzDropdownMatchSelectWidth]="true">
+                    <nz-option [nzValue]="capacity?.capacityId" [nzLabel]="capacity?.capacityName"
+                      *ngFor="let capacity of profile?.capacityList"></nz-option>
+                  </nz-select>
+                </div>
+
+                <div class="form-group">
+                  <label for="countryCode" class="form-control-placeholder country-code-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.two.value.countryPhoneCode, 'inactive': !reference.referenceList.controls.two.value.countryPhoneCode }">Country
+                    Code</label>
+
+                  <ngx-select-dropdown (change)="selectionChanged($event,'three')" formControlName="countryPhoneCode"
+                    [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
+
+                  <!-- <nz-select tabindex="31" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                       <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
                     </nz-select> -->
-                  </div>
+                </div>
 
-                  <div class="form-group">
-                    <input app-phone-field tabindex="32" type="text" id="firstRefContact" formControlName="mobilenumber" class="form-control not-mandate"/>
-                    <label for="firstRefContact" class="form-control-placeholder" [ngClass]="{'active': f.referenceList.controls.two.value.mobilenumber, 'inactive': !f.referenceList.controls.two.value.mobilenumber }">Phone Number</label>
-                    <div *ngIf="f.referenceList.controls.two.controls.mobilenumber.errors" class="invalid-feedback">
-                      <div class="error" *ngIf="f.referenceList.controls.two.controls.mobilenumber.errors.pattern">{{validationMsgs.PhoneInvalid}}</div>
-                    </div>
-                    <div *ngIf="f.referenceList.controls.one.controls.mobilenumber.value && f.referenceList.controls.two.controls.mobilenumber.value && f.referenceList.controls.one.controls.mobilenumber.value == f.referenceList.controls.two.controls.mobilenumber.value" class="invalid-feedback">
-                      <div class="error">{{validationMsgs.ReferenceMobileNotUnique}}</div>
-                    </div>
+                <div class="form-group">
+                  <input app-phone-field tabindex="32" type="text" id="firstRefContact" formControlName="mobilenumber"
+                    class="form-control not-mandate" />
+                  <label for="firstRefContact" class="form-control-placeholder"
+                    [ngClass]="{'active': reference.referenceList.controls.two.value.mobilenumber, 'inactive': !reference.referenceList.controls.two.value.mobilenumber }">Phone
+                    Number</label>
+                  <div *ngIf="reference.referenceList.controls.two.controls.mobilenumber.errors"
+                    class="invalid-feedback">
+                    <div class="error"
+                      *ngIf="reference.referenceList.controls.two.controls.mobilenumber.errors.pattern">
+                      {{validationMsgs.PhoneInvalid}}</div>
                   </div>
-                </form>
-              </div>
+                  <div
+                    *ngIf="reference.referenceList.controls.one.controls.mobilenumber.value && reference.referenceList.controls.two.controls.mobilenumber.value && reference.referenceList.controls.one.controls.mobilenumber.value == reference.referenceList.controls.two.controls.mobilenumber.value"
+                    class="invalid-feedback">
+                    <div class="error">{{validationMsgs.ReferenceMobileNotUnique}}</div>
+                  </div>
+                </div>
+              </form>
             </div>
           </div>
+          <form [formGroup]="referenceForm" id="submit-button">
+            <div class="submit-button">
+              <button class="orange-button">Submit</button>
+            </div>
+          </form>
+        </div>
       </div>
+      <!-- Primary Skills -->
+      <div class="profile-card" id="primarySkills" [ngClass]="{'active': activeSection.primarySkills}"
+        (click)="highlightSectionOnClick(7)">
+        <div class="card-title">Primary Skills
+          <!-- <span class="card-status">
+            <img
+              [src]="primarySkills.skillName.value && primarySkills.rating.value && primarySkills.experience.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="primarySkillsForm" class="flex primarySkillsContent">
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
+                class="form-control not-mandate" />
+              <label for="skillName" class="form-control-placeholder"
+                [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
+                Name</label>
+              <!-- <div *ngIf=" primarySkills.skillName.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="primarySkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+                </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <nz-select tabindex="34" id="rating" class="form-control not-mandate" formControlName="rating"
+                style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
+                <nz-option [nzValue]="rate" [nzLabel]="rate" *ngFor="let rate of ratings"></nz-option>
+              </nz-select>
+              <label for="rating" class="form-control-placeholder"
+                [ngClass]="{'active': primarySkills.rating.value, 'inactive': !primarySkills.rating.value }">Self
+                Assessment</label>
+              <div *ngIf=" primarySkills.rating.errors" class="invalid-feedback">
+                <div class="error" *ngIf="primarySkills.rating.errors.pattern">{{validationMsgs.ValidRating}}</div>
+              </div>
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="35" type="text" id="experience" formControlName="experience"
+                class="form-control not-mandate" placeholder="In Months" />
+              <label for="experience" class="form-control-placeholder"
+                [ngClass]="{'active': primarySkills.experience.value, 'inactive': !primarySkills.experience.value }">Experience</label>
+              <div *ngIf=" primarySkills.experience.errors" class="invalid-feedback">
+                <div class="error" *ngIf="primarySkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
+                </div>
+              </div>
+            </div>
+            <button nz-button (click)="addPrimarySkill()" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+
+          </form>
+          <nz-table #primarySkillsTable [nzData]="primarySkillsList" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Rating</th>
+                <th>Experience</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of primarySkillsTable.data; let i = index">
+                <td>{{data.skillName}}</td>
+                <td>{{data.rating}}</td>
+                <td>{{data.experience}}</td>
+                <td>
+                    <button nz-button (click)="editSkill('primary', data, i)" nzShape="circle">
+                        <i nz-icon nzType="edit" nzTheme="outline"></i>
+                    </button>
+                    <button nz-button (click)="deleteSkill('primary', i)" nzShape="circle" style="left: 15px;">
+                        <i nz-icon nzType="delete" nzTheme="outline"></i>
+                    </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="submit-button">
+            <button class="orange-button" (click)="onSubmit(false, 'primarySkillsForm')">Submit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Additional Skills -->
+      <div class="profile-card" id="additionalSkills" [ngClass]="{'active': activeSection.additionalSkills}"
+        (click)="highlightSectionOnClick(8)">
+        <div class="card-title">Additional Skills
+          <!-- <span class="card-status">
+            <img
+              [src]="additionalSkills.skillName.value && additionalSkills.rating.value && additionalSkills.experience.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="additionalSkillsForm" class="flex primarySkillsContent">
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input #skillName tabindex="36" type="text" id="skillName" formControlName="skillName"
+                class="form-control not-mandate" />
+              <label for="skillName" class="form-control-placeholder"
+                [ngClass]="{'active': additionalSkills.skillName.value, 'inactive': !additionalSkills.skillName.value }">Skill
+                Name</label>
+              <!-- <div *ngIf=" additionalSkills.skillName.errors" class="invalid-feedback">
+                <div class="error" *ngIf="additionalSkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+              </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <nz-select tabindex="37" id="rating" class="form-control not-mandate" formControlName="rating"
+                style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
+                <nz-option [nzValue]="rate" [nzLabel]="rate" *ngFor="let rate of ratings"></nz-option>
+              </nz-select>
+              <label for="rating" class="form-control-placeholder"
+                [ngClass]="{'active': additionalSkills.rating.value, 'inactive': !additionalSkills.rating.value }">Self
+                Assessment</label>
+              <div *ngIf=" additionalSkills.rating.errors" class="invalid-feedback">
+                <div class="error" *ngIf="additionalSkills.rating.errors.pattern">{{validationMsgs.ValidRating}}</div>
+              </div>
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="38" type="text" id="experience" formControlName="experience"
+                class="form-control not-mandate" placeholder="In Months" />
+              <label for="experience" class="form-control-placeholder"
+                [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }">Experience</label>
+              <div *ngIf=" additionalSkills.experience.errors" class="invalid-feedback">
+                <div class="error" *ngIf="additionalSkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
+                </div>
+              </div>
+            </div>
+            <button nz-button (click)="addAdditionalSkill()" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+
+          </form>
+          <nz-table #dynamicTable [nzData]="additionalSkillsList" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>Skill</th>
+                <th>Rating</th>
+                <th>Experience</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of additionalSkillsList; let i = index">
+                <td>{{data.skillName}}</td>
+                <td>{{data.rating}}</td>
+                <td>{{data.experience}}</td>
+                <td>
+                    <button nz-button (click)="editSkill('additional', data, i)" nzShape="circle">
+                        <i nz-icon nzType="edit" nzTheme="outline"></i>
+                    </button>
+                    <button nz-button (click)="deleteSkill('additional', i)" nzShape="circle" style="left: 15px;">
+                        <i nz-icon nzType="delete" nzTheme="outline"></i>
+                    </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="submit-button">
+            <button class="orange-button" (click)="onSubmit(false, 'additionalSkillsForm')">Submit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Primary Projects -->
+      <div class="profile-card" id="primaryProjects" [ngClass]="{'active': activeSection.primaryProjects}"
+        (click)="highlightSectionOnClick(9)">
+        <div class="card-title">Primary Projects
+          <!-- <span class="card-status">
+            <img
+              [src]="primaryProjects.name.value && primaryProjects.role.value && primaryProjects.description.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="primaryProjectsForm" class="flex primaryProjectsContent">
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input #name tabindex="33" type="text" id="skillName" formControlName="name"
+                class="form-control not-mandate" />
+              <label for="name" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.name.value, 'inactive': !primaryProjects.name.value }">Name</label>
+              <!-- <div *ngIf=" primaryProjects.skillName.errors" class="invalid-feedback">
+              <div class="error" *ngIf="primaryProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+            </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="34" type="text" id="role" formControlName="role" class="form-control not-mandate" />
+              <label for="role" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.role.value, 'inactive': !primaryProjects.role.value }">Role</label>
+              <!-- <div *ngIf=" primaryProjects.role.errors" class="invalid-feedback">
+              <div class="error" *ngIf="primaryProjects.role.errors.pattern">{{validationMsgs.ValidRating}}</div>
+            </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="35" type="text" id="year" formControlName="year" class="form-control not-mandate" />
+              <label for="year" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.year.value, 'inactive': !primaryProjects.year.value }">Year</label>
+              <div *ngIf=" primaryProjects.year.errors" class="invalid-feedback">
+                <div class="error" *ngIf="primaryProjects.year.errors.pattern">{{validationMsgs.ValidYear}}</div>
+              </div>
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="35" type="text" id="description" formControlName="description"
+                class="form-control not-mandate" />
+              <label for="description" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
+              <!-- <div *ngIf=" primaryProjects.experience.errors" class="invalid-feedback">
+              <div class="error" *ngIf="primaryProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
+            </div> -->
+            </div>
+            <button nz-button (click)="addPrimaryProject()" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+
+          </form>
+          <nz-table #dynamicTable [nzData]="primaryProjectsList" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Year</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of primaryProjectsList; let i = index">
+                <td>{{data.name}}</td>
+                <td>{{data.role}}</td>
+                <td>{{data.year}}</td>
+                <td>{{data.description}}</td>
+                <td>
+                    <button nz-button (click)="editProject('primary', data, i)" nzShape="circle">
+                        <i nz-icon nzType="edit" nzTheme="outline"></i>
+                    </button>
+                    <button nz-button (click)="deleteProject('primary', i)" nzShape="circle" style="left: 15px;">
+                        <i nz-icon nzType="delete" nzTheme="outline"></i>
+                    </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="submit-button">
+            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Additional Projects -->
+      <div class="profile-card" id="additionalProjects" [ngClass]="{'active': activeSection.additionalProjects}"
+        (click)="highlightSectionOnClick(10)">
+        <div class="card-title">Additional Projects
+          <!-- <span class="card-status">
+            <img
+              [src]="additionalProjects.name.value && additionalProjects.role.value && additionalProjects.description.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+              alt="Profile completed" />
+          </span> -->
+        </div>
+        <div class="card-content">
+          <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input #name tabindex="33" type="text" id="name" formControlName="name"
+                class="form-control not-mandate" />
+              <label for="name" class="form-control-placeholder"
+                [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name</label>
+              <!-- <div *ngIf=" additionalProjects.skillName.errors" class="invalid-feedback">
+            <div class="error" *ngIf="additionalProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+          </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="34" type="text" id="role" formControlName="role" class="form-control not-mandate" />
+              <label for="role" class="form-control-placeholder"
+                [ngClass]="{'active': additionalProjects.role.value, 'inactive': !additionalProjects.role.value }">Role</label>
+              <!-- <div *ngIf=" additionalProjects.role.errors" class="invalid-feedback">
+            <div class="error" *ngIf="additionalProjects.role.errors.pattern">{{validationMsgs.ValidRating}}</div>
+          </div> -->
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="35" type="text" id="year" formControlName="year" class="form-control not-mandate" />
+              <label for="year" class="form-control-placeholder"
+                [ngClass]="{'active': additionalProjects.year.value, 'inactive': !additionalProjects.year.value }">Year</label>
+              <div *ngIf=" additionalProjects.year.errors" class="invalid-feedback">
+                <div class="error" *ngIf="additionalProjects.year.errors.pattern">{{validationMsgs.ValidYear}}</div>
+              </div>
+            </div>
+            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <input tabindex="35" type="text" id="description" formControlName="description"
+                class="form-control not-mandate" />
+              <label for="description" class="form-control-placeholder"
+                [ngClass]="{'active': additionalProjects.description.value, 'inactive': !additionalProjects.description.value }">Description</label>
+              <!-- <div *ngIf=" additionalProjects.experience.errors" class="invalid-feedback">
+            <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
+          </div> -->
+            </div>
+            <button nz-button (click)="addAdditionalProject()" nzShape="circle"><i nz-icon nzType="plus"
+                nzTheme="outline"></i></button>
+
+          </form>
+          <nz-table #dynamicTable [nzData]="additionalProjectsList" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>Name</th>
+                <th>Role</th>
+                <th>Year</th>
+                <th>Description</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of additionalProjectsList; let i = index">
+                <td>{{data.name}}</td>
+                <td>{{data.role}}</td>
+                <td>{{data.year}}</td>
+                <td>{{data.description}}</td>
+                <td>
+                    <button nz-button (click)="editProject('additional', data, i)" nzShape="circle">
+                        <i nz-icon nzType="edit" nzTheme="outline"></i>
+                    </button>
+                    <button nz-button (click)="deleteProject('additional', i)" nzShape="circle" style="left: 15px;">
+                        <i nz-icon nzType="delete" nzTheme="outline"></i>
+                    </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="submit-button">
+            <button class="orange-button" (click)="onSubmit(false, 'additionalProjectsForm')">Submit</button>
+          </div>
+        </div>
+      </div>
+      <!-- Certifications -->
+      
     </div>
   </div>
 </div>
 
 <!-- Video play modal -->
-<nz-modal [(nzVisible)]="playVideoModal" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Video Profile" (nzOnCancel)="handlePlayVideoModalCancel()" (nzOnOk)="handlePlayVideoModalOk()">
+<nz-modal [(nzVisible)]="playVideoModal" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Video Profile"
+  (nzOnCancel)="handlePlayVideoModalCancel()" (nzOnOk)="handlePlayVideoModalOk()">
   <div class="video-modal-body" id="iframeBody">
-    <p class="video-transcoding" *ngIf="videoData?.status == 'transcoding'">Note: Your video has been successfully uploaded.</p>
+    <p class="video-transcoding" *ngIf="videoData?.status == 'transcoding'">Note: Your video has been successfully
+      uploaded.</p>
     <div class="flex">
-        <!-- <iframe *ngIf="profile && videoData && videoData.files" [src]=" " allow="fullscreen" allowfullscreen width="640" height="320" frameBorder="0"></iframe> -->
+      <!-- <iframe *ngIf="profile && videoData && videoData.files" [src]=" " allow="fullscreen" allowfullscreen width="640" height="320" frameBorder="0"></iframe> -->
     </div>
   </div>
 </nz-modal>
 
-<nz-modal [(nzVisible)]="deleteConfirmationModal" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Confirm" (nzOnCancel)="handleDeleteResourceModalCancel()" (nzOnOk)="handleDeleteResourceModalOk()">
+<nz-modal [(nzVisible)]="deleteConfirmationModal" [nzKeyboard]="false" [nzFooter]="null" nzTitle="Confirm"
+  (nzOnCancel)="handleDeleteResourceModalCancel()" (nzOnOk)="handleDeleteResourceModalOk()">
   <div class="confirmation-modal">
     <div class="flex confirmation-modal-body">
-        <div class="flex">
-            <p class="text-explanation">Are you sure you want to delete?</p>
-        </div>
+      <div class="flex">
+        <p class="text-explanation">Are you sure you want to delete?</p>
+      </div>
     </div>
     <div class="flex button-row">
       <button class="cancel" (click)="handleDeleteResourceModalCancel()">Cancel</button>
