@@ -7,14 +7,14 @@
 
     </div>
     <div class="role">{{role}}</div>
-    <div class="contact-info" *ngIf="exporting">
+    <!-- <div class="contact-info" *ngIf="exporting">
           <a class="mobile" [attr.href]="'tel:' + mobile" >
             {{mobile}}
           </a>
           <a class="email" target="_blank" [attr.href]="'mailto:' + email">
             {{email}}
           </a>
-    </div>
+    </div> -->
     <div class="social" *ngIf="!exporting">
         <div *ngFor=" let link of socialLinks" [matTooltip]="link.site" [hidden]="!link.icon">
             <a [href]="link.ProfileLink" class="link" target="_blank">
@@ -22,14 +22,14 @@
               <img [src]="link.icon" alt="" srcset="">
             </a>
         </div>
-        <div class="mobile-wrapper" *ngIf='!exporting'>
+        <!-- <div class="mobile-wrapper" *ngIf='!exporting'>
             <a class="mobile" [attr.href]="'tel:' + mobile" ><i class="fa fa-phone-square" aria-hidden="true"></i></a>
             <div class="custom-tooltip">{{mobile}}</div>
         </div>
         <div class="email-wrapper" *ngIf='!exporting'>
             <a class="email" target="_blank" [attr.href]="'mailto:' + email"><i class="fa fa-envelope" aria-hidden="true"></i></a>
             <div class="custom-tooltip">{{email}}</div>
-        </div>
+        </div> -->
         <!-- <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank"> -->
             <a class="resume-heading" (click)="exportResume()" *ngIf='!exporting'>
                 <img src="assets/icons/ic_resume.svg" alt="" srcset="" style="width: 40px;">

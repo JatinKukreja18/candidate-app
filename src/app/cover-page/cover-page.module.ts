@@ -10,6 +10,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { ScoreReadOnlyComponent } from './export/score-read-only/score-read-only.component';
 import { SharedModule } from '@app/shared';
 import { UserDataService } from '@app/core/services/userdata.service';
+import { NgZorroAntdModule } from 'ng-zorro-antd';
 
 const routes: Routes = [
     { path: '', component: CoverPageComponent }
@@ -22,6 +23,7 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatProgressSpinnerModule,
+        NgZorroAntdModule,
         RouterModule.forChild(routes)
     ],
     declarations: [

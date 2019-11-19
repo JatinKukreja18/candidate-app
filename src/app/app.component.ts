@@ -45,6 +45,7 @@ export class AppComponent {
         this.updatePageheight(event.url);
         this.updateRouteHistory(event.url);
         this.updateSearchPageRouteHistory(event.url);
+        this.checkCoverPage(event.url);
         gtag('config', 'UA-134869289-1', {
           'page_title' : event.urlAfterRedirects.split('/')[1],
           'page_path': event.urlAfterRedirects.split('?')[0]
@@ -90,6 +91,14 @@ export class AppComponent {
         break;
       default: this.currentActivePage = '';
         break;
+    }
+  }
+
+  checkCoverPage(url) {
+    const currentUrlSegments = url.split('/');
+    const currentUrl = currentUrlSegments[1];
+    if (currentUrl === 'coverPage') {
+      this.currentActivePage = 'Cover Page';
     }
   }
 
