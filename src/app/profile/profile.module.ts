@@ -8,7 +8,8 @@ import { SharedModule } from './../shared/shared.module';
 // import {NgxDocViewerModule} from 'ngx-doc-viewer';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ProfileviewComponent } from './profileview/profileview.component';
-import { ProfileEditComponent } from './profile-edit/profile-edit.component'
+import { ProfileEditComponent } from './profile-edit/profile-edit.component';
+import { QuillModule } from 'ngx-quill';
 @NgModule({
   declarations: [ProfileLandingComponent, ProfileviewComponent, ProfileEditComponent],
   imports: [
@@ -17,7 +18,8 @@ import { ProfileEditComponent } from './profile-edit/profile-edit.component'
     ReactiveFormsModule,
     NgZorroAntdModule,
     SharedModule,
-    SelectDropDownModule
+    SelectDropDownModule,
+    QuillModule.forRoot()
   ],
   providers: [
     { provide: NZ_MESSAGE_CONFIG, useValue:

@@ -717,10 +717,10 @@
           </div>
         </div>
       </div>
-      <!-- Primary Projects -->
+      <!-- Experience -->
       <div class="profile-card" id="primaryProjects" [ngClass]="{'active': activeSection.primaryProjects}"
         (click)="highlightSectionOnClick(9)">
-        <div class="card-title">Primary Projects
+        <div class="card-title">Experiences
           <!-- <span class="card-status">
             <img
               [src]="primaryProjects.name.value && primaryProjects.role.value && primaryProjects.description.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
@@ -728,61 +728,72 @@
           </span> -->
         </div>
         <div class="card-content">
-          <form [formGroup]="primaryProjectsForm" class="flex primaryProjectsContent">
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #name tabindex="33" type="text" id="skillName" formControlName="name"
+          <form [formGroup]="experiencesForm" class="flex primaryProjectsContent">
+            <div class="form-group horizontal" >
+              <input #companyName tabindex="33" type="text" id="companyName" formControlName="companyName"
                 class="form-control not-mandate" />
-              <label for="name" class="form-control-placeholder"
-                [ngClass]="{'active': primaryProjects.name.value, 'inactive': !primaryProjects.name.value }">Name</label>
+              <label for="companyName" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.companyName.value, 'inactive': !primaryProjects.companyName.value }">Company Name</label>
               <!-- <div *ngIf=" primaryProjects.skillName.errors" class="invalid-feedback">
               <div class="error" *ngIf="primaryProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
             </div> -->
             </div>
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="34" type="text" id="role" formControlName="role" class="form-control not-mandate" />
-              <label for="role" class="form-control-placeholder"
-                [ngClass]="{'active': primaryProjects.role.value, 'inactive': !primaryProjects.role.value }">Role</label>
+            <div class="form-group horizontal" >
+              <input tabindex="34" type="text" id="location" formControlName="location" class="form-control not-mandate" />
+              <label for="location" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.location.value, 'inactive': !primaryProjects.location.value }">Location</label>
               <!-- <div *ngIf=" primaryProjects.role.errors" class="invalid-feedback">
               <div class="error" *ngIf="primaryProjects.role.errors.pattern">{{validationMsgs.ValidRating}}</div>
             </div> -->
             </div>
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="35" type="text" id="year" formControlName="year" class="form-control not-mandate" />
-              <label for="year" class="form-control-placeholder"
-                [ngClass]="{'active': primaryProjects.year.value, 'inactive': !primaryProjects.year.value }">Year</label>
-              <div *ngIf=" primaryProjects.year.errors" class="invalid-feedback">
-                <div class="error" *ngIf="primaryProjects.year.errors.pattern">{{validationMsgs.ValidYear}}</div>
+            <div class="form-group horizontal" >
+                <input tabindex="34" type="text" id="jobTitle" formControlName="jobTitle" class="form-control not-mandate" />
+                <label for="jobTitle" class="form-control-placeholder"
+                  [ngClass]="{'active': primaryProjects.jobTitle.value, 'inactive': !primaryProjects.jobTitle.value }">Job Title</label>
               </div>
+            <div class="form-group horizontal"  style="margin-top: 2px;">
+                <nz-date-picker formControlName="startDate" tabindex="6" id="startDate" class="form-control not-mandate"
+                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
+                [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Start Date'" style="margin-top: 25px;"></nz-date-picker>
+                <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date</label>
             </div>
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="35" type="text" id="description" formControlName="description"
-                class="form-control not-mandate" />
-              <label for="description" class="form-control-placeholder"
-                [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
-              <!-- <div *ngIf=" primaryProjects.experience.errors" class="invalid-feedback">
-              <div class="error" *ngIf="primaryProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
-            </div> -->
+            <div class="form-group horizontal"  style="margin-top: 2px;">
+                <nz-date-picker formControlName="endDate" tabindex="6" id="endDate" class="form-control not-mandate"
+                [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
+                [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'End Date'" style="margin-top: 25px;"></nz-date-picker>
+              <label for="endDate" class="form-control-placeholder"
+                [ngClass]="{'active': primaryProjects.endDate.value, 'inactive': !primaryProjects.endDate.value }" style="top: 8px;">End Date</label>
             </div>
-            <button nz-button (click)="addPrimaryProject()" nzShape="circle"><i nz-icon nzType="plus"
-                nzTheme="outline"></i></button>
+            <div class="form-group horizontal" style="width: 48%;" >
+                <quill-editor id="description" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
+                  [styles]="editorStyle" [modules]="editorConfig"></quill-editor>
+                <label for="description" class="form-control-placeholder"
+                  [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
+              </div>
+            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="margin-top: 20px;"><i nz-icon nzType="plus"
+                nzTheme="outline" ></i></button>
 
           </form>
           <nz-table #dynamicTable [nzData]="primaryProjectsList" style="margin-top: 30px;">
             <thead>
               <tr>
-                <th>Name</th>
-                <th>Role</th>
-                <th>Year</th>
+                <th>Company Name</th>
+                <th>Location</th>
+                <th>Job Title</th>
+                <th>Start date</th>
+                <th>End date</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th [nzWidth]="'100px'">Actions</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let data of primaryProjectsList; let i = index">
-                <td>{{data.name}}</td>
-                <td>{{data.role}}</td>
-                <td>{{data.year}}</td>
-                <td>{{data.description}}</td>
+              <tr *ngFor="let data of experiences; let i = index">
+                <td>{{data.Company_Name}}</td>
+                <td>{{data.Location}}</td>
+                <td>{{data.Job_Title}}</td>
+                <td>{{data.Start_Date | date}}</td>
+                <td>{{data.End_Date | date}}</td>
+                <td [innerHtml]="data.Job_Description"></td>
                 <td>
                     <button nz-button (click)="editProject('primary', data, i)" nzShape="circle">
                         <i nz-icon nzType="edit" nzTheme="outline"></i>
@@ -821,14 +832,11 @@
             <div class="error" *ngIf="additionalProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
           </div> -->
             </div>
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+            <!-- <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input tabindex="34" type="text" id="role" formControlName="role" class="form-control not-mandate" />
               <label for="role" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.role.value, 'inactive': !additionalProjects.role.value }">Role</label>
-              <!-- <div *ngIf=" additionalProjects.role.errors" class="invalid-feedback">
-            <div class="error" *ngIf="additionalProjects.role.errors.pattern">{{validationMsgs.ValidRating}}</div>
-          </div> -->
-            </div>
+            </div> -->
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input tabindex="35" type="text" id="year" formControlName="year" class="form-control not-mandate" />
               <label for="year" class="form-control-placeholder"
@@ -837,9 +845,11 @@
                 <div class="error" *ngIf="additionalProjects.year.errors.pattern">{{validationMsgs.ValidYear}}</div>
               </div>
             </div>
-            <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="35" type="text" id="description" formControlName="description"
-                class="form-control not-mandate" />
+            <div class="form-group horizontal" style="width: 48%;" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+              <!-- <input tabindex="35" type="text" id="description" formControlName="description"
+                class="form-control not-mandate" /> -->
+              <quill-editor id="description" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
+                [styles]="editorStyle" [modules]="editorConfig"></quill-editor>
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.description.value, 'inactive': !additionalProjects.description.value }">Description</label>
               <!-- <div *ngIf=" additionalProjects.experience.errors" class="invalid-feedback">
@@ -854,18 +864,16 @@
             <thead>
               <tr>
                 <th>Name</th>
-                <th>Role</th>
                 <th>Year</th>
                 <th>Description</th>
-                <th>Actions</th>
+                <th [nzWidth]="'100px'">Actions</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let data of additionalProjectsList; let i = index">
-                <td>{{data.name}}</td>
-                <td>{{data.role}}</td>
+                <td>{{data.Project_Title}}</td>
                 <td>{{data.year}}</td>
-                <td>{{data.description}}</td>
+                <td [innerHtml]="data.Project_Description"></td>
                 <td>
                     <button nz-button (click)="editProject('additional', data, i)" nzShape="circle">
                         <i nz-icon nzType="edit" nzTheme="outline"></i>

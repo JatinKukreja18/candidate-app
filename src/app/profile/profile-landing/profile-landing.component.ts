@@ -34,7 +34,7 @@ export class ProfileLandingComponent implements OnInit {
   referenceForm: FormGroup;
   primarySkillsForm: FormGroup;
   additionalSkillsForm: FormGroup;
-  primaryProjectsForm: FormGroup;
+  experiencesForm: FormGroup;
   additionalProjectsForm: FormGroup;
   validationMsgs: any;
   submitted = false;
@@ -51,7 +51,7 @@ export class ProfileLandingComponent implements OnInit {
   selectedAddress: any;
   primarySkillsList = [];
   additionalSkillsList = [];
-  primaryProjectsList = [];
+  experiences = [];
   additionalProjectsList = [];
   selectedFile: {
     profileImage: string,
@@ -91,7 +91,7 @@ export class ProfileLandingComponent implements OnInit {
   } = {
       one: false,
       two: false
-    }
+    };
   missingFields: string[] = [];
   playVideoModal = false;
   deleteConfirmationModal = false;
@@ -100,6 +100,20 @@ export class ProfileLandingComponent implements OnInit {
   videoFileName: string;
   isEmbedVideo: boolean;
   ratings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  editorStyle = {
+    height: '80px'
+  };
+  editorConfig = {
+    toolbar: [
+      ['bold', 'italic', 'underline'],
+      [{ 'size': ['small', false, 'large', 'huge'] }],
+      [{ list: 'ordered' }, { list: 'bullet' }],
+      ['link', 'blockquote'],
+      /* [{ 'color': [] }, { 'background': [] }], */
+      ['clean']
+    ]
+  };
+
   constructor(
     private formBuilder: FormBuilder,
     private message: NzMessageService,
@@ -208,18 +222,20 @@ export class ProfileLandingComponent implements OnInit {
       experience: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
     });
 
-    this.primaryProjectsForm = this.formBuilder.group({
-      name: ['', { updateOn: 'blur' }],
-      role: ['', { updateOn: 'blur' }],
-      year: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
-      description: ['', { updateOn: 'blur' }],
+    this.experiencesForm = this.formBuilder.group({
+      companyName: ['', { updateOn: 'blur' }],
+      location: ['', { updateOn: 'blur' }],
+      jobTitle: ['', { updateOn: 'blur' }],
+      startDate: [''],
+      endDate: [''],
+      description: [''],
     });
 
     this.additionalProjectsForm = this.formBuilder.group({
       name: ['', { updateOn: 'blur' }],
       role: ['', { updateOn: 'blur' }],
       year: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
-      description: ['', { updateOn: 'blur' }],
+      description: [''],
     });
 
     this.profileForm = this.formBuilder.group({
@@ -228,6 +244,7 @@ export class ProfileLandingComponent implements OnInit {
     });
     this.initGoogleMapPlaces();
     this.getProfileDetails();
+
   }
 
   addPrimarySkill() {
@@ -259,18 +276,21 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   addPrimaryProject() {
-    if (this.primaryProjectsForm.invalid) {
+    if (this.experiencesForm.invalid) {
       return;
     }
     const project = {
-      name: this.primaryProjectsForm.value.name,
-      role: this.primaryProjectsForm.value.role,
-      year: this.primaryProjectsForm.value.year,
-      description: this.primaryProjectsForm.value.description,
+      ID: null,
+      Company_Name: this.experiencesForm.value.companyName,
+      Location: this.experiencesForm.value.location,
+      Job_Title: this.experiencesForm.value.jobTitle,
+      Start_Date: this.experiencesForm.value.startDate,
+      End_Date: this.experiencesForm.value.endDate,
+      Job_Description: this.experiencesForm.value.description,
     };
     // this.primaryProjectsList.push(project);
-    this.primaryProjectsList = [...this.primaryProjectsList, project];
-    this.primaryProjectsForm.reset();
+    this.experiences = [...this.experiences, project];
+    this.experiencesForm.reset();
   }
 
   addAdditionalProject() {
@@ -278,11 +298,12 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const project = {
-      name: this.additionalProjectsForm.value.name,
-      role: this.additionalProjectsForm.value.role,
+      ID: null,
+      Project_Title: this.additionalProjectsForm.value.name,
       year: this.additionalProjectsForm.value.year,
-      description: this.additionalProjectsForm.value.description,
+      Project_Description: this.additionalProjectsForm.value.description,
     };
+    console.log(this.additionalProjectsForm.value.description);
     // this.additionalProjectsList.push(project);
     this.additionalProjectsList = [...this.additionalProjectsList, project]; // need to update reference for nz-table to update
     this.additionalProjectsForm.reset();
@@ -300,7 +321,7 @@ export class ProfileLandingComponent implements OnInit {
       this.additionalSkillsForm.get('skillName').setValue(data.skillName);
       this.additionalSkillsForm.get('rating').setValue(data.rating);
       this.additionalSkillsForm.get('experience').setValue(data.experience);
-      
+
       this.additionalSkillsList.splice(index, 1);
       this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
     }
@@ -318,19 +339,20 @@ export class ProfileLandingComponent implements OnInit {
 
   editProject(type, data, index) {
     if (type === 'primary') {
-      this.primaryProjectsForm.get('name').setValue(data.name);
-      this.primaryProjectsForm.get('role').setValue(data.role);
-      this.primaryProjectsForm.get('year').setValue(data.year);
-      this.primaryProjectsForm.get('description').setValue(data.description);
+      this.experiencesForm.get('companyName').setValue(data.Company_Name);
+      this.experiencesForm.get('location').setValue(data.Location);
+      this.experiencesForm.get('jobTitle').setValue(data.Job_Title);
+      this.experiencesForm.get('startDate').setValue(data.Start_Date);
+      this.experiencesForm.get('endDate').setValue(data.End_Date);
+      this.experiencesForm.get('description').setValue(data.Job_Description);
 
-      this.primaryProjectsList.splice(index, 1);
-      this.primaryProjectsList = [...this.primaryProjectsList]; // need to update reference for nz-table to update
+      this.experiences.splice(index, 1);
+      this.experiences = [...this.experiences]; // need to update reference for nz-table to update
     } else if (type === 'additional') {
-      this.additionalProjectsForm.get('name').setValue(data.name);
-      this.additionalProjectsForm.get('role').setValue(data.role);
+      this.additionalProjectsForm.get('name').setValue(data.Project_Title);
       this.additionalProjectsForm.get('year').setValue(data.year);
-      this.additionalProjectsForm.get('description').setValue(data.description);
-      
+      this.additionalProjectsForm.get('description').setValue(data.Project_Description);
+
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
     }
@@ -338,8 +360,8 @@ export class ProfileLandingComponent implements OnInit {
 
   deleteProject(type, index) {
     if (type === 'primary') {
-      this.primaryProjectsList.splice(index, 1);
-      this.primaryProjectsList = [...this.primaryProjectsList]; // need to update reference for nz-table to update
+      this.experiences.splice(index, 1);
+      this.experiences = [...this.experiences]; // need to update reference for nz-table to update
     } else if (type === 'additional') {
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
@@ -722,7 +744,7 @@ export class ProfileLandingComponent implements OnInit {
     if (this.additionalSkillsForm) return this.additionalSkillsForm.controls;
   }
   get primaryProjects() {
-    if (this.primaryProjectsForm) return this.primaryProjectsForm.controls;
+    if (this.experiencesForm) return this.experiencesForm.controls;
   }
   get additionalProjects() {
     if (this.additionalProjectsForm) return this.additionalProjectsForm.controls;
@@ -1049,10 +1071,10 @@ export class ProfileLandingComponent implements OnInit {
         reqBody = {
           skills: this.additionalSkillsList
         };
-      } else if (formName === 'primaryProjectsForm') {
+      } else if (formName === 'experiencesForm') {
 
         reqBody = {
-          skills: this.primaryProjectsList
+          skills: this.experiences
         };
       } else if (formName === 'additionalProjectsForm') {
 
