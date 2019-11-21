@@ -673,56 +673,56 @@ button {
     }
 }
 
-.ant-select-selection {
-    width: 85%;
-    overflow-x: auto;
-    border: none;
-    background: transparent;
-    border: 0 !important;
-    box-shadow: none !important;
-    overflow: hidden;
-}
+// .ant-select-selection {
+//     width: 85%;
+//     overflow-x: auto;
+//     border: none;
+//     background: transparent;
+//     border: 0 !important;
+//     box-shadow: none !important;
+//     overflow: hidden;
+// }
 
-.ant-select-selection__placeholder {
-    margin-top: 12px;
-    font-size: 17px;
-    // font-family: SourceSansProLight;
-    color: #aaafcc;
-    font-weight: 400;
-}
+// .ant-select-selection__placeholder {
+//     margin-top: 12px;
+//     font-size: 17px;
+//     // font-family: SourceSansProLight;
+//     color: #aaafcc;
+//     font-weight: 400;
+// }
 
-.ant-select-selection__rendered {
-    margin: 0 !important;
-    padding: 0;
-    background: transparent;
-    line-height: 0;
-}
+// .ant-select-selection__rendered {
+//     margin: 0 !important;
+//     padding: 0;
+//     background: transparent;
+//     line-height: 0;
+// }
 .main-search-input .ant-select-selection__placeholder{
     margin-top: -14px;
 }
-.ant-select-selection--multiple .ant-select-selection__rendered>ul>li {
-    margin: 0 0 5px;
-    height: 24px;
-    line-height: 22px;
-    font-size: 17px;
-    color: #2c377a;
-    opacity: 0.4;
-    border-radius: 17px;
-    background: rgba(72, 85, 181, 0.06);
-    // &:last-child {
-    //     margin-bottom: 10px;
-    // }
-}
+// .ant-select-selection--multiple .ant-select-selection__rendered>ul>li {
+//     margin: 0 0 5px;
+//     height: 24px;
+//     line-height: 22px;
+//     font-size: 17px;
+//     color: #2c377a;
+//     opacity: 0.4;
+//     border-radius: 17px;
+//     background: rgba(72, 85, 181, 0.06);
+//     // &:last-child {
+//     //     margin-bottom: 10px;
+//     // }
+// }
 
-.ant-select-selection--multiple .ant-select-search--inline input.ant-select-search__field {
-    margin-top: 0 !important;
-    font-size: 17px;
-    color: $font-color;
-}
+// .ant-select-selection--multiple .ant-select-search--inline input.ant-select-search__field {
+//     margin-top: 0 !important;
+//     font-size: 17px;
+//     color: $font-color;
+// }
 
-span.ant-select-arrow {
-    display: none;
-}
+// span.ant-select-arrow {
+//     display: none;
+// }
 
 .choose-slot {
     .ant-radio,
@@ -1525,19 +1525,19 @@ input.ant-calendar-picker-input.ant-input{
 
 // CSS for ant-design selected value
 .ant-select-selection-selected-value {
-    overflow: unset;
-    // font-size: 20px;
-    // font-weight: 600;
-    padding-top: 20px;
-    color: #4855b5
+    // overflow: unset;
+    // // font-size: 20px;
+    // // font-weight: 600;
+    // padding-top: 20px;
+    // color: #4855b5
 }
-.ant-select-selection-selected-value {
-    overflow: unset;
-    font-size: 20px;
-    font-weight: 600;
-    padding-top: 20px;
-    color: #4855b5
-}
+// .ant-select-selection-selected-value {
+//     overflow: unset;
+//     font-size: 20px;
+//     font-weight: 600;
+//     padding-top: 20px;
+//     color: #4855b5
+// }
 .work-permit .ant-select-selection__placeholder{
     position: relative;
     top: 10px;
