@@ -36,6 +36,7 @@ export class ProfileLandingComponent implements OnInit {
   additionalSkillsForm: FormGroup;
   experiencesForm: FormGroup;
   additionalProjectsForm: FormGroup;
+  educationForm: FormGroup;
   validationMsgs: any;
   submitted = false;
   submitting = false;
@@ -53,6 +54,7 @@ export class ProfileLandingComponent implements OnInit {
   additionalSkillsList = [];
   experiences = [];
   additionalProjectsList = [];
+  educationsList = [];
   selectedFile: {
     profileImage: string,
     resumeName: string,
@@ -72,7 +74,8 @@ export class ProfileLandingComponent implements OnInit {
     primarySkills: boolean,
     additionalSkills: boolean,
     primaryProjects: boolean,
-    additionalProjects: boolean
+    additionalProjects: boolean,
+    educations: boolean
   } = {
       personal: false,
       professional: false,
@@ -83,7 +86,8 @@ export class ProfileLandingComponent implements OnInit {
       primarySkills: false,
       additionalSkills: false,
       primaryProjects: false,
-      additionalProjects: false
+      additionalProjects: false,
+      educations: false
     }
   expandedComment: {
     one: boolean,
@@ -238,6 +242,14 @@ export class ProfileLandingComponent implements OnInit {
       description: [''],
     });
 
+    this.educationForm = this.formBuilder.group({
+      degreeName: ['', { updateOn: 'blur' }],
+      speciality: ['', { updateOn: 'blur' }],
+      schoolName: ['', { updateOn: 'blur' }],
+      startDate: [''],
+      endDate: [''],
+    });
+
     this.profileForm = this.formBuilder.group({
       imageUrl: ['', { updateOn: 'blur' }],
       workpermit: ['', { updateOn: 'blur' }],
@@ -309,6 +321,23 @@ export class ProfileLandingComponent implements OnInit {
     this.additionalProjectsForm.reset();
   }
 
+  addEducation() {
+    if (this.educationForm.invalid) {
+      return;
+    }
+    const education = {
+      ID: null,
+      Degree_Name: this.educationForm.value.degreeName,
+      School_Name: this.educationForm.value.schoolName,
+      Speciality_In: this.educationForm.value.speciality,
+      Start_Date: this.educationForm.value.startDate,
+      End_Date: this.educationForm.value.endDate,
+    };
+    // this.primaryProjectsList.push(project);
+    this.educationsList = [...this.educationsList, education];
+    this.educationForm.reset();
+  }
+
   editSkill(type, data, index) {
     if (type === 'primary') {
       this.primarySkillsForm.get('skillName').setValue(data.skillName);
@@ -358,6 +387,17 @@ export class ProfileLandingComponent implements OnInit {
     }
   }
 
+  editEducation(data, index) {
+      this.educationForm.get('degreeName').setValue(data.Degree_Name);
+      this.educationForm.get('schoolName').setValue(data.School_Name);
+      this.educationForm.get('speciality').setValue(data.Speciality_In);
+      this.educationForm.get('startDate').setValue(data.Start_Date);
+      this.educationForm.get('endDate').setValue(data.End_Date);
+
+      this.educationsList.splice(index, 1);
+      this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
+  }
+
   deleteProject(type, index) {
     if (type === 'primary') {
       this.experiences.splice(index, 1);
@@ -366,6 +406,11 @@ export class ProfileLandingComponent implements OnInit {
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
     }
+  }
+
+  deleteEducation(index) {
+    this.educationsList.splice(index, 1);
+    this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
   }
 
   /**
@@ -401,6 +446,8 @@ export class ProfileLandingComponent implements OnInit {
             case 9: this.activeSection.primaryProjects = true;
               break;
             case 10: this.activeSection.additionalProjects = true;
+              break;
+            case 11: this.activeSection.educations = true;
               break;
             default: this.activeSection.personal = true;
               break;
@@ -442,13 +489,15 @@ export class ProfileLandingComponent implements OnInit {
         break;
       case 6: this.activeSection.reference = true;
         break;
-      case 6: this.activeSection.primarySkills = true;
+      case 7: this.activeSection.primarySkills = true;
         break;
-      case 6: this.activeSection.additionalSkills = true;
+      case 8: this.activeSection.additionalSkills = true;
         break;
-      case 6: this.activeSection.primaryProjects = true;
+      case 9: this.activeSection.primaryProjects = true;
         break;
-      case 6: this.activeSection.additionalProjects = true;
+      case 10: this.activeSection.additionalProjects = true;
+        break;
+      case 11: this.activeSection.educations = true;
         break;
       default: this.activeSection.personal = true;
         break;
@@ -748,6 +797,9 @@ export class ProfileLandingComponent implements OnInit {
   }
   get additionalProjects() {
     if (this.additionalProjectsForm) return this.additionalProjectsForm.controls;
+  }
+  get educations() {
+    if (this.educationForm) return this.educationForm.controls;
   }
 
   log(value: string[]): void {
@@ -1080,6 +1132,11 @@ export class ProfileLandingComponent implements OnInit {
 
         reqBody = {
           skills: this.additionalProjectsList
+        };
+      } else if (formName === 'educationForm') {
+
+        reqBody = {
+          educations: this.educationsList
         };
       }
       /* let reqBody: ProfileForm = {

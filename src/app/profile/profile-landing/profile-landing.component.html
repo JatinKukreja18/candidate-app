@@ -747,25 +747,25 @@
             </div> -->
             </div>
             <div class="form-group horizontal" >
-                <input tabindex="34" type="text" id="jobTitle" formControlName="jobTitle" class="form-control not-mandate" />
+                <input tabindex="35" type="text" id="jobTitle" formControlName="jobTitle" class="form-control not-mandate" />
                 <label for="jobTitle" class="form-control-placeholder"
                   [ngClass]="{'active': primaryProjects.jobTitle.value, 'inactive': !primaryProjects.jobTitle.value }">Job Title</label>
               </div>
             <div class="form-group horizontal"  style="margin-top: 2px;">
-                <nz-date-picker formControlName="startDate" tabindex="6" id="startDate" class="form-control not-mandate"
+                <nz-date-picker formControlName="startDate" tabindex="36" id="startDate" class="form-control not-mandate"
                  [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
                 [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Start Date'" style="margin-top: 25px;"></nz-date-picker>
                 <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date</label>
             </div>
             <div class="form-group horizontal"  style="margin-top: 2px;">
-                <nz-date-picker formControlName="endDate" tabindex="6" id="endDate" class="form-control not-mandate"
+                <nz-date-picker formControlName="endDate" tabindex="37" id="endDate" class="form-control not-mandate"
                 [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
                 [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'End Date'" style="margin-top: 25px;"></nz-date-picker>
               <label for="endDate" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.endDate.value, 'inactive': !primaryProjects.endDate.value }" style="top: 8px;">End Date</label>
             </div>
             <div class="form-group horizontal" style="width: 48%;" >
-                <quill-editor id="description" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
+                <quill-editor id="description"  tabindex="38" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
                   [styles]="editorStyle" [modules]="editorConfig"></quill-editor>
                 <label for="description" class="form-control-placeholder"
                   [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
@@ -774,7 +774,7 @@
                 nzTheme="outline" ></i></button>
 
           </form>
-          <nz-table #dynamicTable [nzData]="primaryProjectsList" style="margin-top: 30px;">
+          <nz-table #dynamicTable [nzData]="experiences" style="margin-top: 30px;">
             <thead>
               <tr>
                 <th>Company Name</th>
@@ -824,7 +824,7 @@
         <div class="card-content">
           <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #name tabindex="33" type="text" id="name" formControlName="name"
+              <input #name tabindex="39" type="text" id="name" formControlName="name"
                 class="form-control not-mandate" />
               <label for="name" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name</label>
@@ -838,7 +838,7 @@
                 [ngClass]="{'active': additionalProjects.role.value, 'inactive': !additionalProjects.role.value }">Role</label>
             </div> -->
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="35" type="text" id="year" formControlName="year" class="form-control not-mandate" />
+              <input tabindex="40" type="text" id="year" formControlName="year" class="form-control not-mandate" />
               <label for="year" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.year.value, 'inactive': !additionalProjects.year.value }">Year</label>
               <div *ngIf=" additionalProjects.year.errors" class="invalid-feedback">
@@ -848,7 +848,7 @@
             <div class="form-group horizontal" style="width: 48%;" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <!-- <input tabindex="35" type="text" id="description" formControlName="description"
                 class="form-control not-mandate" /> -->
-              <quill-editor id="description" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
+              <quill-editor id="description" tabindex="41" style="display: block;margin-top: 30px;" formControlName="description" class="form-control not-mandate" 
                 [styles]="editorStyle" [modules]="editorConfig"></quill-editor>
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.description.value, 'inactive': !additionalProjects.description.value }">Description</label>
@@ -891,8 +891,84 @@
           </div>
         </div>
       </div>
-      <!-- Certifications -->
-      
+      <!-- Educations & Certifications -->
+      <div class="profile-card" id="educations" [ngClass]="{'active': activeSection.educations}"
+        (click)="highlightSectionOnClick(11)">
+        <div class="card-title">Educations & Certifications
+        </div>
+        <div class="card-content">
+          <form [formGroup]="educationForm" class="flex educationsContent">
+            <div class="form-group horizontal" >
+              <input #degreeName tabindex="42" type="text" id="degreeName" formControlName="degreeName"
+                class="form-control not-mandate" />
+              <label for="degreeName" class="form-control-placeholder"
+                [ngClass]="{'active': educations.degreeName.value, 'inactive': !educations.degreeName.value }">Degree Name</label>
+              
+            </div>
+            <div class="form-group horizontal" >
+              <input tabindex="43" type="text" id="speciality" formControlName="speciality" class="form-control not-mandate" />
+              <label for="speciality" class="form-control-placeholder"
+                [ngClass]="{'active': educations.speciality.value, 'inactive': !educations.speciality.value }">Speciality</label>
+              
+            </div>
+            <div class="form-group horizontal" >
+                <input tabindex="44" type="text" id="schoolName" formControlName="schoolName" class="form-control not-mandate" />
+                <label for="schoolName" class="form-control-placeholder"
+                  [ngClass]="{'active': educations.schoolName.value, 'inactive': !educations.schoolName.value }">Institution Name</label>
+              </div>
+            <div class="form-group horizontal"  style="margin-top: 2px;">
+                <nz-date-picker formControlName="startDate" tabindex="45" id="startDate" class="form-control not-mandate"
+                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
+                [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Start Date'" style="margin-top: 25px;"></nz-date-picker>
+                <label for="startDate" class="form-control-placeholder" style="top: 8px;">Start Date</label>
+            </div>
+            <div class="form-group horizontal"  style="margin-top: 2px;">
+                <nz-date-picker formControlName="endDate" tabindex="46" id="endDate" class="form-control not-mandate"
+                [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
+                [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'End Date'" style="margin-top: 25px;"></nz-date-picker>
+              <label for="endDate" class="form-control-placeholder"
+                [ngClass]="{'active': educations.endDate.value, 'inactive': !educations.endDate.value }" style="top: 8px;">End Date</label>
+            </div>
+            
+            <button nz-button (click)="addEducation()" nzShape="circle" style="margin-top: 20px;"><i nz-icon nzType="plus"
+                nzTheme="outline" ></i></button>
+
+          </form>
+          <nz-table #dynamicTable [nzData]="educationsList" style="margin-top: 30px;">
+            <thead>
+              <tr>
+                <th>Degree Name</th>
+                <th>Speciality</th>
+                <th>Institution Name</th>
+                <th>Start date</th>
+                <th>End date</th>
+                <th [nzWidth]="'100px'">Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let data of educationsList; let i = index">
+                <td>{{data.Degree_Name}}</td>
+                <td>{{data.Speciality_In}}</td>
+                <td>{{data.School_Name}}</td>
+                <td>{{data.Start_Date | date}}</td>
+                <td>{{data.End_Date | date}}</td>
+                <td>
+                    <button nz-button (click)="editEducation(data, i)" nzShape="circle">
+                        <i nz-icon nzType="edit" nzTheme="outline"></i>
+                    </button>
+                    <button nz-button (click)="deleteEducation(i)" nzShape="circle" style="left: 15px;">
+                        <i nz-icon nzType="delete" nzTheme="outline"></i>
+                    </button>
+                  
+                </td>
+              </tr>
+            </tbody>
+          </nz-table>
+          <div class="submit-button">
+            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
+          </div>
+        </div>
+      </div>
     </div>
   </div>
 </div>
