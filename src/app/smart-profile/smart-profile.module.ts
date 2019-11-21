@@ -3,7 +3,11 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 import { SharedModule } from '@app/shared/shared.module';
-import { NzIconModule, NzTableModule,NzPopoverModule,NzButtonModule,NzProgressModule, NzToolTipModule, NzDividerModule, NzFormModule, NzInputModule } from 'ng-zorro-antd';
+import { NzIconModule,
+          NzTableModule, NzPopoverModule,
+          NzButtonModule, NzProgressModule,
+          NzToolTipModule, NzDividerModule,
+          NzFormModule, NzInputModule } from 'ng-zorro-antd';
 import {  UserListComponent } from './users-list/user-list.component';
 import { SmartHeaderComponent } from './smart-header/smart-header.component';
 import { SmartProfileRoutingModule } from './smart-profile-routing.module';

@@ -9,11 +9,12 @@ import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } fro
   styleUrls: ['./user-list.component.scss']
 })
 export class UserListComponent  implements OnInit {
-  
+
   url: String;
   users: [];
   validateForm: FormGroup;
-
+  currentPageIndex = '1';
+  currentPageSize = '10';
   constructor(private userService: UserDataService,
     private router: Router,private fb: FormBuilder){
 
@@ -28,10 +29,7 @@ export class UserListComponent  implements OnInit {
     console.log(value);
   }
   ngOnInit(){
-      this.userService.getAllUsers().subscribe(res => {
-        this.users = res;
-      });
-
+      this.getUserList();
       this.validateForm = this.fb.group({
         comment: ['', [Validators.required]]
       });
@@ -40,35 +38,38 @@ export class UserListComponent  implements OnInit {
     return parseInt(val) * 10;
   }
 
+  getUserList(){
+    const options = '&pagenumber=' + this.currentPageIndex + '&pagesize=' + this.currentPageSize;
+    this.userService.getAllUsers(options).subscribe(res => {
+      this.users = res;
+    });
+  }
 
-
-  submitForm(): void {
+  submitForm(value,user): void {
     // tslint:disable-next-line: forin
     for (const i in this.validateForm.controls) {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-  }
+    console.log(this);
+    this.userService.editFeedback(value.comment, user.CandidateId).subscribe(res=>{
+      console.log(res);
+      this.resetForm();
+      user.InstructorFeedback = value.comment;
+    }, err => {
+        console.log(err);
+    });
 
-  updateConfirmValidator(): void {
-    /** wait for refresh value */
-    Promise.resolve().then(() => this.validateForm.controls.checkPassword.updateValueAndValidity());
   }
-
-  confirmationValidator = (control: FormControl): { [s: string]: boolean } => {
-    if (!control.value) {
-      return { required: true };
-    } else if (control.value !== this.validateForm.controls.password.value) {
-      return { confirm: true, error: true };
-    }
-    return {};
-  };
 
   getCaptcha(e: MouseEvent): void {
     e.preventDefault();
   }
-
-  resetForm(e: MouseEvent): void {
+  // hidePopover(e){
+  //   console.log(this);
+  //   console.log(e);
+  // }
+  resetForm(e?: MouseEvent): void {
     e.preventDefault();
     this.validateForm.reset();
     for (const key in this.validateForm.controls) {
@@ -76,5 +77,18 @@ export class UserListComponent  implements OnInit {
       this.validateForm.controls[key].updateValueAndValidity();
     }
   }
-  
+
+
+
+  // table operations
+  pageChanged(index){
+    if(index != 0){
+      this.currentPageIndex = index;
+      this.getUserList();
+    }
+  }
+  pageSizeChanged(size){
+    this.currentPageSize = size;
+    this.getUserList();
+  }
 }

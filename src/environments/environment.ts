@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/',
+  apiUrl: 'https://appst.cliksource.com/jumpprofessionalapi/api/',
   baseUrl: 'http://localhost:3000/api/',
   linkedIn: {
     client_id: '78ej629w24jy78',//'812vd5s74cgill',//'813xpyf905ktdg',
@@ -19,9 +19,11 @@ export const environment = {
   },
   shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com',
   apiPaths: {
-    // coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
-    coverPage: '../assets/cp_video.json',
-    allUsers: '../assets/user-list.json'
+    // coverPage: '../assets/cp_video.json',
+    // allUsers: '../assets/user-list.json'
+    allUsers: 'candidatelist/getcandidatelist?',
+    coverPage: 'candidatecoverpage/fetchcoverpage/',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/'
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };
