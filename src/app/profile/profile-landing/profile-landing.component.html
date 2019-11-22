@@ -349,6 +349,48 @@
           </form>
         </div>
       </div>
+      <div class="profile-card" id="trainings" [ngClass]="{'active': activeSection.trainings}"
+        (click)="highlightSectionOnClick(11)">
+        <div class="card-title">Trainings
+        </div>
+        <div class="card-content">
+          <form [formGroup]="trainingsForm" class="flex trainingsContent" >
+            <div class="form-group horizontal" >
+              <input #training tabindex="17" type="text" id="training" formControlName="training"
+                class="form-control not-mandate" />
+              <label for="training" class="form-control-placeholder"
+                [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training</label>
+            </div>
+            <button nz-button (click)="addTraining()" nzShape="circle" style="margin-top: 20px;"><i nz-icon nzType="plus"
+              nzTheme="outline" ></i></button>
+            
+          </form>
+          <div style="height: 175px;overflow-y: scroll;">
+              <nz-list [nzDataSource]="trainingsList" [nzItemLayout]="'horizontal'" [nzRenderItem]="item" style="margin-top:10px; width: 98%">
+                  <ng-template #item let-item>
+                    <nz-list-item [nzContent]="trainingContent" [nzActions]="[actions]" style="justify-content: space-between;">
+                      <ng-template #trainingContent>
+                        <div nz-tooltip [nzTitle]="item.Training" [nzPlacement]="'bottom'" 
+                          style="text-overflow: ellipsis;overflow: hidden;white-space: nowrap;">{{item.Training}}</div>
+                      </ng-template>
+                      <ng-template #actions>
+                              <button nz-button (click)="editTraining(item, i)" nzShape="circle">
+                                  <i nz-icon nzType="edit" nzTheme="outline"></i>
+                              </button>
+                              <button nz-button (click)="deleteTraining(i)" nzShape="circle" style="left: 15px;">
+                                  <i nz-icon nzType="delete" nzTheme="outline"></i>
+                              </button>
+                      </ng-template>
+                    </nz-list-item>
+                  </ng-template>
+                  
+              </nz-list>
+          </div>
+          <div class="submit-button">
+              <button class="orange-button" (click)="onSubmit(false, 'trainingsForm')">Submit</button>
+            </div>
+        </div>
+      </div>
       <!-- Reference form -->
       <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}"
         (click)="highlightSectionOnClick(6)">
@@ -603,7 +645,7 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addPrimarySkill()" nzShape="circle"><i nz-icon nzType="plus"
+            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="margin-top: 20px;"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
           </form>
@@ -618,9 +660,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of primarySkillsTable.data; let i = index">
-                <td>{{data.skillName}}</td>
-                <td>{{data.rating}}</td>
-                <td>{{data.experience}}</td>
+                <td>{{data.Skill}}</td>
+                <td>{{data.Proficiency}}</td>
+                <td>{{data.Experience}}</td>
                 <td>
                     <button nz-button (click)="editSkill('primary', data, i)" nzShape="circle">
                         <i nz-icon nzType="edit" nzTheme="outline"></i>
@@ -682,7 +724,7 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addAdditionalSkill()" nzShape="circle"><i nz-icon nzType="plus"
+            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="margin-top: 20px;"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
           </form>
@@ -697,9 +739,9 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of additionalSkillsList; let i = index">
-                <td>{{data.skillName}}</td>
-                <td>{{data.rating}}</td>
-                <td>{{data.experience}}</td>
+                <td>{{data.Skill}}</td>
+                <td>{{data.Proficiency}}</td>
+                <td>{{data.Experience}}</td>
                 <td>
                     <button nz-button (click)="editSkill('additional', data, i)" nzShape="circle">
                         <i nz-icon nzType="edit" nzTheme="outline"></i>
@@ -828,15 +870,7 @@
                 class="form-control not-mandate" />
               <label for="name" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name</label>
-              <!-- <div *ngIf=" additionalProjects.skillName.errors" class="invalid-feedback">
-            <div class="error" *ngIf="additionalProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
-          </div> -->
             </div>
-            <!-- <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="34" type="text" id="role" formControlName="role" class="form-control not-mandate" />
-              <label for="role" class="form-control-placeholder"
-                [ngClass]="{'active': additionalProjects.role.value, 'inactive': !additionalProjects.role.value }">Role</label>
-            </div> -->
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input tabindex="40" type="text" id="year" formControlName="year" class="form-control not-mandate" />
               <label for="year" class="form-control-placeholder"
