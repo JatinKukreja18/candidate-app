@@ -1,3 +1,4 @@
+import { AuthService } from 'angularx-social-login';
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { AuthRoutingModule } from './auth-routing.module';
@@ -23,8 +24,8 @@ import { SendOTPComponent, ConfirmOTPComponent, NewPasswordComponent } from '@ap
         AuthForgotPassComponent,
         SendOTPComponent,
         ConfirmOTPComponent,
-        NewPasswordComponent    
+        NewPasswordComponent
     ],
-    providers: []
+    providers: [AuthService]
 })
 export class AuthModule { }

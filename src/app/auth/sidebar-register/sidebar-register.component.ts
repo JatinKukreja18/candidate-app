@@ -23,13 +23,14 @@ export class SidebarRegisterComponent implements OnInit {
         confirmPass: false
     }
     validationMsgs: any;
+    isreadonly:boolean = true;
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthenticationService,
         private commonService: CommonService,
         private message: NzMessageService,
         private analyticsService: AnalyticsService
-    ) { 
+    ) {
         this.validationMsgs = ValidationMessages;
     }
 
@@ -58,7 +59,7 @@ export class SidebarRegisterComponent implements OnInit {
     }
 
     /**
-    * toggle funtion to show/hide password 
+    * toggle funtion to show/hide password
     */
     togglePass(fieldName: string) {
         if (this.showPassword[fieldName]) this.showPassword[fieldName] = false;
@@ -88,13 +89,14 @@ export class SidebarRegisterComponent implements OnInit {
                 this.submitting = true;
                 const loading = this.message.loading(FeedbackMessages.loading.UserRegister, { nzDuration: 0 }).messageId;
                 const formData = {
-                    firstName: this.registerForm.value.firstName,
-                    lastName: this.registerForm.value.lastName,
+                    firstname: this.registerForm.value.firstName,
+                    lastname: this.registerForm.value.lastName,
                     email: this.registerForm.value.email,
-                    countrycode: this.registerForm.value.country ? this.registerForm.value.country.split('+')[1].split(')')[0] : '',
-                    password: this.registerForm.value.password
+                    country_code: this.registerForm.value.country ? this.registerForm.value.country.split('+')[1].split(')')[0] : '',
+                    password: this.registerForm.value.password,
+                    confirm_password: this.registerForm.value.confirmPassword
                 }
-                if (this.registerForm.value.phone) formData['phone'] = this.registerForm.value.phone;
+                if (this.registerForm.value.phone) formData['mobile'] = this.registerForm.value.phone;
                 // if (this.registerForm.value.country) formData['countrycode'] = this.registerForm.value.country.split('+')[1].split(')')[0];
                 this.authService.register(formData).subscribe((response) => {
                     this.submitting = false;
@@ -112,5 +114,8 @@ export class SidebarRegisterComponent implements OnInit {
                 return; // Return incase of password missmatch
             }
         }
+    }
+    toggleRead(v){
+      this.isreadonly = v;
     }
 }

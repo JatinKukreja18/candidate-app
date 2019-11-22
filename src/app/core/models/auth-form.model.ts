@@ -1,10 +1,10 @@
 export interface RegisterForm {
-    firstName: string;
-    lastName?: string;
+    firstname: string;
+    lastname?: string;
     email: string;
     password: string;
     mobile?: string;
-    countrycode?: string;
+    country_code?: string;
 }
 
 export interface LoginForm {

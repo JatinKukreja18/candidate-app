@@ -63,13 +63,14 @@
     </div>
     <!-- Country -->
     <div class="form-group">
-      <input tabindex="6" type="text" id="country" list="countries" formControlName="country" class="form-control not-mandate" />
+      <input tabindex="6" The [readonly]="isreadonly" (focus)="toggleRead(false)" (blur)="toggleRead(true)"  type="text" id="country" list="countries" formControlName="country" class="form-control not-mandate" />
       <label for="country" class="form-control-placeholder" [ngClass]="{'active': f.country.value, 'inactive': !f.country.value }">COUNTRY<span class="required-star">*</span></label>
       <div *ngIf="submitted && f.country.errors" class="invalid-feedback">
         <div class="error" *ngIf="f.country.errors.required">{{validationMsgs.CountryRequired}}</div>
       </div>
       <datalist id="countries">
-        <option *ngFor="let country of countries">{{country.name}}(+{{country.phonecode}})</option>
+        <option *ngFor="let country of countries">
+          {{country.Name}}(+{{country.PhoneCode}})</option>
       </datalist>
     </div>
     <!-- Phone -->
