@@ -15,6 +15,9 @@ import {
     RefreshTokenForm
 } from '@app/core/models/auth-form.model';
 
+import { environment } from '../../../environments/environment';
+const apiUrl = environment.apiUrl;
+
 import * as SecureLS from 'secure-ls';
 
 @Injectable()
@@ -40,7 +43,7 @@ export class AuthenticationService {
      * @param reqBody request body of type RegisterForm
      */
     register(reqBody: RegisterForm): Observable<Response> {
-        return this.http.post<Response>('account/register', reqBody);
+        return this.http.post<Response>(apiUrl + environment.apiPaths.register, reqBody);
     }
 
     /**
@@ -86,7 +89,7 @@ export class AuthenticationService {
             }
             if (res.headers.get('expires_in')) {
                 currentUser['expires_in'] = res.headers.get('expires_in');
-            }            
+            }
             this.currentUserSubject.next(currentUser);
             // Set current user into the local storage
             this.ls.set('currentUser', currentUser)
@@ -209,10 +212,10 @@ export class AuthenticationService {
         }
         return '';
     }
-    
+
     /**
      * Save current user in the local storage
-     * @param userData user object 
+     * @param userData user object
      */
     saveUserData(userData?: LoginForm) {
         if (userData) {
@@ -220,7 +223,7 @@ export class AuthenticationService {
         } else {
             this.ls.remove('user');
         }
-        
+
     }
 
     /**
@@ -232,7 +235,7 @@ export class AuthenticationService {
 
     /**
      * Set external user into the Local Storage
-     * @param userData 
+     * @param userData
      */
     setExternalRegisterUser(userData) {
         this.ls.set('externalUser', userData);
@@ -251,7 +254,7 @@ export class AuthenticationService {
     getCurrentUser() {
         return this.ls.get('currentUser');
     }
-    
+
     /**
      * Update notification setting
      * @param settingEnabled boolean value
@@ -269,7 +272,7 @@ export class AuthenticationService {
     }
 
     /**
-     * 
+     *
      * @param routeHistoryArray Array of routes previously visited
      */
     routeHistory(routeHistoryArray?: string[]) {
@@ -286,5 +289,7 @@ export class AuthenticationService {
         if (redirectPage) this.ls.set('preInterviewRedirectPage', redirectPage);
         return this.ls.get('preInterviewRedirectPage');
     }
+
+
 
 }

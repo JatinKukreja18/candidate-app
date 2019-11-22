@@ -673,30 +673,30 @@ button {
     }
 }
 
-// .ant-select-selection {
-//     width: 85%;
-//     overflow-x: auto;
-//     border: none;
-//     background: transparent;
-//     border: 0 !important;
-//     box-shadow: none !important;
-//     overflow: hidden;
-// }
+.form-group .ant-select-selection {
+    width: 85%;
+    overflow-x: auto;
+    border: none;
+    background: transparent;
+    border: 0 !important;
+    box-shadow: none !important;
+    overflow: hidden;
+}
 
-// .ant-select-selection__placeholder {
-//     margin-top: 12px;
-//     font-size: 17px;
-//     // font-family: SourceSansProLight;
-//     color: #aaafcc;
-//     font-weight: 400;
-// }
+.form-group .ant-select-selection__placeholder {
+    margin-top: 12px;
+    font-size: 17px;
+    // font-family: SourceSansProLight;
+    color: #aaafcc;
+    font-weight: 400;
+}
 
-// .ant-select-selection__rendered {
-//     margin: 0 !important;
-//     padding: 0;
-//     background: transparent;
-//     line-height: 0;
-// }
+.form-group .ant-select-selection__rendered {
+    margin: 0 !important;
+    padding: 0;
+    background: transparent;
+    line-height: 0;
+}
 .main-search-input .ant-select-selection__placeholder{
     margin-top: -14px;
 }
@@ -1524,12 +1524,12 @@ input.ant-calendar-picker-input.ant-input{
 }
 
 // CSS for ant-design selected value
-.ant-select-selection-selected-value {
-    // overflow: unset;
-    // // font-size: 20px;
-    // // font-weight: 600;
-    // padding-top: 20px;
-    // color: #4855b5
+.form-group .ant-select-selection-selected-value {
+    overflow: unset;
+    // font-size: 20px;
+    // font-weight: 600;
+    padding-top: 20px;
+    color: #4855b5
 }
 // .ant-select-selection-selected-value {
 //     overflow: unset;

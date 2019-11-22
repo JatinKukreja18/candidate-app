@@ -57,7 +57,8 @@ export class UserListComponent  implements OnInit {
       this.resetForm();
       user.InstructorFeedback = value.comment;
     }, err => {
-        console.log(err);
+        console.log(err);        user.InstructorFeedback = value.comment;
+
     });
 
   }

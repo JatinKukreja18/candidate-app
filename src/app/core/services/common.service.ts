@@ -6,6 +6,9 @@ import { Response } from '@app/core/models';
 import {BehaviorSubject} from 'rxjs';
 import * as SecureLS from 'secure-ls';
 
+import { environment } from '../../../environments/environment';
+const apiUrl = environment.apiUrl;
+
 @Injectable()
 export class CommonService {
 
@@ -37,16 +40,20 @@ export class CommonService {
         if (countries) {
             return of(countries);
         } else {
-            return this.http.get<Response>('/common/country').pipe(tap(response => {
-                // localStorage.setItem('countries', JSON.stringify(res));
-                this.ls.set('countries', response);
-            }));
+            return this.http.get<Response>('../assets/country.json');
+            // return this.http.get<Response>(apiUrl + environment.apiPaths.countries);
+            // return this.http.get<Response>('/common/country').pipe(tap(response => {
+            //     // localStorage.setItem('countries', JSON.stringify(res));
+            //     this.ls.set('countries', response);
+            // }));
         }
     }
-
+    // getCountryList(): Observable<any>{
+    //   return this.http.get(apiUrl + environment.apiPaths.countries);
+    // }
     /**
      * Get the list of skills from the local storage(if available) and make http request if not in localstorage
-     * @returns 
+     * @returns
      */
     getSkillsList(): Observable<Response> {
         // const skills = JSON.parse(localStorage.getItem('skills'));
