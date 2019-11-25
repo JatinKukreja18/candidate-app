@@ -2,7 +2,7 @@
   background: #fafafd;
 
   .ant-select-selection {
-    // width: 85%;
+    width: 100%;
     overflow-x: auto;
     border: none;
     background: transparent;
@@ -296,9 +296,9 @@
     }
   }
   &#personal,
-  &#professional,
+//   &#professional,
   &#resume {
-    width: 32%;
+    width: 49%;
     .pay-rate-type {
       position: absolute;
       right: 2px;

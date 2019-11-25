@@ -100,14 +100,9 @@
         </div>
       </div>
       <!-- Professional details form -->
-      <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}"
+     <!--  <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}"
         (click)="highlightSectionOnClick(2)">
         <div class="card-title">Professional Details
-          <!-- <span class="card-status">
-            <img
-              [src]="profile && profile.professionalInfo && profile.professionalInfo.designation && profile.professionalInfo.expectedpay && profile.professionalInfo.preferredJobTypeId ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
-              alt="Profile completed" />
-          </span> -->
         </div>
         <div class="card-content">
           <form [formGroup]="professionalDetailsForm" (ngSubmit)="onSubmit(false, 'professionalDetailsForm')">
@@ -137,7 +132,6 @@
                   <nz-option [nzValue]="status.visastatusid" [nzLabel]="status.visastatusname"
                     *ngFor="let status of profile?.visastatus"></nz-option>
                 </nz-select>
-                <!-- <div class="scroll-controller-overlay "></div> -->
               </div>
               <label for="work-permit" class="form-control-placeholder"
                 [ngClass]="{'active': prof.visastatus.value, 'inactive': !prof.visastatus.value }">Work Permit
@@ -161,8 +155,6 @@
               *ngIf="prof.preferredJobTypeId && (prof.preferredJobTypeId.value == 1 || prof.preferredJobTypeId.value == 0 || prof.preferredJobTypeId.value == 3)"
               [ngClass]="{'missing': missingFields.indexOf('ANNUAL_SALARY') >= 0 }">
               <span class="pay-rate-type">$/annum</span>
-              <!-- <span class="pay-rate-type" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 2">$/hr</span>
-              <span class="pay-rate-type" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 3">$/annum & $/hr</span> -->
               <input tabindex="14" type="text" id="payRate" formControlName="expectedAnnual"
                 class="form-control not-mandate" />
               <label for="payRate" class="form-control-placeholder"
@@ -172,8 +164,6 @@
                 <div class="error" *ngIf="prof.expectedAnnual.errors.pattern">{{validationMsgs.PayrateAnnualMaxLength}}
                 </div>
               </div>
-              <!-- <label for="payRate" class="form-control-placeholder" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 2">Expected Pay Rate</label>
-              <label for="payRate" class="form-control-placeholder" *ngIf="prof.preferredJobTypeId && prof.preferredJobTypeId.value == 3">Annual Salary and Expected Pay Rate</label> -->
             </div>
 
 
@@ -187,7 +177,6 @@
                 [ngClass]="{'active': prof.expectedpayrate.value, 'inactive': !prof.expectedpayrate.value }">Expected
                 Pay Rate</label>
               <div *ngIf="prof.expectedpayrate.errors" class="invalid-feedback">
-                <!-- <div class="error" *ngIf="prof.expectedpayrate.errors.max">{{validationMsgs.PayrateMaxLength}}</div> -->
                 <div class="error" *ngIf="prof.expectedpayrate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
               </div>
             </div>
@@ -198,7 +187,7 @@
 
           </form>
         </div>
-      </div>
+      </div> -->
       <!-- Resume upload form -->
       <div class="profile-card" id="resume" [ngClass]="{'active': activeSection.resume}"
         (click)="highlightSectionOnClick(3)">
@@ -355,6 +344,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="trainingsForm" class="flex trainingsContent" >
+            <input type="hidden" formControlName="trainingId"/>
             <div class="form-group horizontal" >
               <input #training tabindex="17" type="text" id="training" formControlName="training"
                 class="form-control not-mandate" />
@@ -367,7 +357,7 @@
           </form>
           <div style="height: 175px;overflow-y: scroll;">
               <nz-list [nzDataSource]="trainingsList" [nzItemLayout]="'horizontal'" [nzRenderItem]="item" style="margin-top:10px; width: 98%">
-                  <ng-template #item let-item>
+                  <ng-template #item let-item let-i="index">
                     <nz-list-item [nzContent]="trainingContent" [nzActions]="[actions]" style="justify-content: space-between;">
                       <ng-template #trainingContent>
                         <div nz-tooltip [nzTitle]="item.Training" [nzPlacement]="'bottom'" 
@@ -392,18 +382,13 @@
         </div>
       </div>
       <!-- Reference form -->
-      <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}"
+      <!-- <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}"
         (click)="highlightSectionOnClick(6)">
         <div class="card-title">References
-          <!-- <span class="card-status">
-            <img
-              [src]="profile && profile.referenceList && profile.referenceList.length == 2 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
-              alt="Profile completed" />
-          </span> -->
         </div>
         <div class="card-content">
           <div class="flex">
-            <!-- Reference One -->
+
             <div class="ref ref-one">
               <div class="ref-completed" *ngIf="profile?.referenceList[0]?.comment">
                 <p class="ref-name">{{profile?.referenceList[0]?.name}}</p>
@@ -472,10 +457,6 @@
                     [multiple]="false" formControlName="countryPhoneCode" [config]="config" [options]="dropdownOptions">
                   </ngx-select-dropdown>
 
-                  <!--
-                   <nz-select nzShowArrow="true" tabindex="26" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
-                      <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
-                    </nz-select>  -->
                 </div>
 
 
@@ -500,7 +481,6 @@
               </form>
             </div>
 
-            <!-- Reference Two -->
             <div class="ref ref-two">
               <div class="ref-completed" *ngIf="profile?.referenceList[1]?.comment">
                 <p class="ref-name">{{profile?.referenceList[1]?.name}}</p>
@@ -568,9 +548,6 @@
                   <ngx-select-dropdown (change)="selectionChanged($event,'three')" formControlName="countryPhoneCode"
                     [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
 
-                  <!-- <nz-select tabindex="31" id="ref-phonecode" class="form-control not-mandate" formControlName="countryPhoneCode" [nzDropdownMatchSelectWidth]="false" style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
-                      <nz-option nzCustomContent [nzValue]="country.phonecode" [nzLabel]="'(+'+country.phonecode+')'" *ngFor="let country of countryList">{{country.name}}(+{{country.phonecode}})</nz-option>
-                    </nz-select> -->
                 </div>
 
                 <div class="form-group">
@@ -600,7 +577,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
       <!-- Primary Skills -->
       <div class="profile-card" id="primarySkills" [ngClass]="{'active': activeSection.primarySkills}"
         (click)="highlightSectionOnClick(7)">
@@ -613,6 +590,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="primarySkillsForm" class="flex primarySkillsContent">
+              <input type="hidden" formControlName="primarySkillId"/>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
                 class="form-control not-mandate" />
@@ -692,6 +670,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="additionalSkillsForm" class="flex primarySkillsContent">
+              <input type="hidden" formControlName="additionalSkillId"/>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input #skillName tabindex="36" type="text" id="skillName" formControlName="skillName"
                 class="form-control not-mandate" />
@@ -771,6 +750,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="experiencesForm" class="flex primaryProjectsContent">
+              <input type="hidden" formControlName="experienceId"/>
             <div class="form-group horizontal" >
               <input #companyName tabindex="33" type="text" id="companyName" formControlName="companyName"
                 class="form-control not-mandate" />
@@ -865,6 +845,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
+              <input type="hidden" formControlName="additionalProjectId"/>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input #name tabindex="39" type="text" id="name" formControlName="name"
                 class="form-control not-mandate" />
@@ -932,6 +913,7 @@
         </div>
         <div class="card-content">
           <form [formGroup]="educationForm" class="flex educationsContent">
+              <input type="hidden" formControlName="educationId"/>
             <div class="form-group horizontal" >
               <input #degreeName tabindex="42" type="text" id="degreeName" formControlName="degreeName"
                 class="form-control not-mandate" />

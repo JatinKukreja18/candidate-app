@@ -2,18 +2,33 @@ import { Injectable } from '@angular/core';
 
 import { HttpClient } from '@angular/common/http';
 import { HttpErrorResponse } from '@angular/common/http';
-import { Observable } from 'rxjs';
+import { Observable, BehaviorSubject } from 'rxjs';
 // import 'rxjs/add/operator/map';
 import { environment } from '../../../environments/environment';
+import { tap } from 'rxjs/operators';
 
 const apiUrl = environment.apiUrl;
 @Injectable()
 export class UserDataService {
 
-   constructor( private httpService: HttpClient) { }
+  private userSubject: BehaviorSubject<any> = new BehaviorSubject({});
+  public userEmitter: Observable<any>;
+  public userData = {};
+
+   constructor( private httpService: HttpClient) { 
+    this.userEmitter = this.userSubject.asObservable();
+   }
 
    getUserData(id): Observable<any> {
-    return this.httpService.get(apiUrl + environment.apiPaths.coverPage + id);
+    return this.httpService.get(apiUrl + environment.apiPaths.coverPage + id).pipe(tap(response => {
+      console.log(response);
+      this.userData = response;
+      this.refreshUserData(response);
+    }));
+   }
+
+   refreshUserData(userData) {
+     this.userSubject.next(userData);
    }
 
    getAllUsers(options?:any):  Observable<any>{

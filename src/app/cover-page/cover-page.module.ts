@@ -34,7 +34,8 @@ const routes: Routes = [
         CoverPageComponent,
         SafePipe
     ],
-    providers: [UserDataService],
+    providers: [//UserDataService
+    ],
     exports: [CoverPageLayoutComponent, CoverPageHeaderComponent, CoverPageComponent]
 })
 export class CoverPageModule { }

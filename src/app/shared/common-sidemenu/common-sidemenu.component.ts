@@ -1,9 +1,10 @@
 import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
-import { Router } from '@angular/router';
+import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AuthenticationService, ProfileService, FeedbackMessages, AnalyticsService } from '@app/core';
 import { AuthService } from 'angularx-social-login';
 import { NzMessageService } from 'ng-zorro-antd';
 import { environment } from '@env/environment';
+import { filter } from 'rxjs/operators';
 
 @Component({
   selector: 'app-common-sidemenu',
@@ -34,6 +35,7 @@ export class CommonSidemenuComponent implements OnInit {
     linkedin: '',
     email: ''
   }
+  editProfileLink: Array<string>;
 
   constructor(
     private router: Router,
@@ -41,8 +43,7 @@ export class CommonSidemenuComponent implements OnInit {
     private socialAuthService: AuthService,
     private profileService: ProfileService,
     private message: NzMessageService,
-    private analyticsService: AnalyticsService
-
+    private analyticsService: AnalyticsService,
   ) {}
 
   ngOnInit() {
@@ -58,7 +59,13 @@ export class CommonSidemenuComponent implements OnInit {
         if (userDetails.candidateProfile) this.currentUserDetails = userDetails.candidateProfile;
         else this.socialUserDetails = userDetails.socialProfileDetails;
       }
-    })
+    });
+    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event:NavigationEnd) => {
+      if (event.url) {
+        const id = event.url.split('/')[2];
+        this.editProfileLink = [`profile/edit-change/${id}`];
+      }
+    });
   }
 
   /**
