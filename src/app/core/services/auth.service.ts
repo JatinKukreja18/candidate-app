@@ -51,7 +51,7 @@ export class AuthenticationService {
      * @param reqBody request body of type LoginForm
      */
     login(reqBody: LoginForm): Observable<HttpResponse<any>> {
-        return this.http.post('/account/login', reqBody, {observe: 'response'}).pipe(tap(res => {
+      return this.http.post<Response>(apiUrl + environment.apiPaths.login, reqBody,{observe: 'response'}).pipe(tap(res => {
             const currentUser = {};
             if (res.headers.get('access_token')) {
                 currentUser['access_token'] = res.headers.get('access_token');
@@ -69,6 +69,25 @@ export class AuthenticationService {
             // Set current user into the local storage
             this.ls.set('currentUser', currentUser)
         }));
+
+        // return this.http.post('/account/login', reqBody, {observe: 'response'}).pipe(tap(res => {
+        //     const currentUser = {};
+        //     if (res.headers.get('access_token')) {
+        //         currentUser['access_token'] = res.headers.get('access_token');
+        //     }
+        //     if (res.headers.get('refresh_token')) {
+        //         currentUser['refresh_token'] = res.headers.get('refresh_token');
+        //     }
+        //     if (res.headers.get('expires_in')) {
+        //         currentUser['expires_in'] = res.headers.get('expires_in');
+        //     }
+        //     if (res.body && res.body.code === 200 && res.body.data){
+        //         currentUser['candidateProfile'] = res.body['data'];
+        //     }
+        //     this.currentUserSubject.next(currentUser);
+        //     // Set current user into the local storage
+        //     this.ls.set('currentUser', currentUser)
+        // }));
     }
 
     /**
@@ -135,7 +154,7 @@ export class AuthenticationService {
      * @param reqBody request body of type ValidateOTPForm
      */
     validateOTP(reqBody: ValidateOTPForm): Observable<Response> {
-        return this.http.post<Response>('/account/validateotp', reqBody);
+        return this.http.post<Response>(apiUrl + environment.apiPaths.validateOtp , reqBody);
     }
 
     /**

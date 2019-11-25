@@ -35,7 +35,7 @@
       <input tabindex="4" [type]=" showPassword.pass ? 'text' : 'password' " id="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
       <label for="password" class="form-control-placeholder" [ngClass]="{'active': f.password.value, 'inactive': !f.password.value }">PASSWORD<span class="required-star">*</span></label>
       <span class="showpass-btn" [ngClass]="showPassword.pass ? 'encrypt' : 'decrypt' " (click)="togglePass('pass');" theme="outline">
-        <span [ngClass]="{'cross-icon': !showPassword.pass}"><img src="../../../assets/images/eye.svg" alt="toggle pass" /></span>
+        <span [ngClass]="{'cross-icon': !showPassword.pass}"><img src="assets/images/eye.svg" alt="toggle pass" /></span>
         <!-- <object type="image/svg+xml" data="../../../assets/images/eye.svg" class="eye-pass"></object> -->
       </span>
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
@@ -50,7 +50,7 @@
       <input tabindex="5" [type]=" showPassword.confirmPass ? 'text' : 'password' " id="repass" formControlName="confirmPassword" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
       <label for="repass" class="form-control-placeholder" [ngClass]="{'active': f.confirmPassword.value, 'inactive': !f.confirmPassword.value }">CONFIRM PASSWORD<span class="required-star">*</span></label>
       <span class="showpass-btn" [ngClass]="showPassword.confirmPass ? 'encrypt' : 'decrypt' " (click)="togglePass('confirmPass');" theme="outline">
-        <span [ngClass]="{'cross-icon': !showPassword.confirmPass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+        <span [ngClass]="{'cross-icon': !showPassword.confirmPass}"><img src="assets/images/eye.svg" alt="toggle pass" /></span>
       </span>
       <div *ngIf="submitted && f.confirmPassword.errors" class="invalid-feedback">
         <div class="error" *ngIf="f.confirmPassword.errors.required">{{validationMsgs.ConfirmPasswordRequired}}</div>

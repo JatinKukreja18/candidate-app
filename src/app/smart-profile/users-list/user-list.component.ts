@@ -15,6 +15,7 @@ export class UserListComponent  implements OnInit {
   validateForm: FormGroup;
   currentPageIndex = '1';
   currentPageSize = '10';
+  isLoading= false
   constructor(private userService: UserDataService,
     private router: Router,private fb: FormBuilder){
 
@@ -29,6 +30,7 @@ export class UserListComponent  implements OnInit {
     console.log(value);
   }
   ngOnInit(){
+      this.isLoading = true;
       this.getUserList();
       this.validateForm = this.fb.group({
         comment: ['', [Validators.required]]
@@ -42,6 +44,7 @@ export class UserListComponent  implements OnInit {
     const options = '&pagenumber=' + this.currentPageIndex + '&pagesize=' + this.currentPageSize;
     this.userService.getAllUsers(options).subscribe(res => {
       this.users = res;
+      this.isLoading = false;
     });
   }
 
@@ -52,12 +55,13 @@ export class UserListComponent  implements OnInit {
       this.validateForm.controls[i].updateValueAndValidity();
     }
     console.log(this);
-    this.userService.editFeedback(value.comment, user.CandidateId).subscribe(res=>{
+    this.userService.editFeedback(value.comment, user.UserName).subscribe(res=>{
       console.log(res);
       this.resetForm();
       user.InstructorFeedback = value.comment;
     }, err => {
-        console.log(err);        user.InstructorFeedback = value.comment;
+        console.log(err);
+        // user.InstructorFeedback = value.comment;
 
     });
 
@@ -71,7 +75,8 @@ export class UserListComponent  implements OnInit {
   //   console.log(e);
   // }
   resetForm(e?: MouseEvent): void {
-    e.preventDefault();
+    if(e)    e.preventDefault();
+
     this.validateForm.reset();
     for (const key in this.validateForm.controls) {
       this.validateForm.controls[key].markAsPristine();

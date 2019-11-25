@@ -40,12 +40,12 @@ export class CommonService {
         if (countries) {
             return of(countries);
         } else {
-            return this.http.get<Response>('../assets/country.json');
+            // return this.http.get<Response>('../assets/country.json');
             // return this.http.get<Response>(apiUrl + environment.apiPaths.countries);
-            // return this.http.get<Response>('/common/country').pipe(tap(response => {
-            //     // localStorage.setItem('countries', JSON.stringify(res));
-            //     this.ls.set('countries', response);
-            // }));
+            return this.http.get<Response>(apiUrl + environment.apiPaths.countries).pipe(tap(response => {
+                // localStorage.setItem('countries', JSON.stringify(res));
+                this.ls.set('countries', response);
+            }));
         }
     }
     // getCountryList(): Observable<any>{

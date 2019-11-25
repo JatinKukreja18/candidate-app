@@ -21,12 +21,12 @@ export class UserDataService {
      options ? params = options : params = params;
      console.log(params);
 
-    //  return this.httpService.get(apiUrl + environment.apiPaths.allUsers + params);
-     return this.httpService.get('../assets/user-list.json');
+     return this.httpService.get(apiUrl + environment.apiPaths.allUsers + params);
+    //  return this.httpService.get('../assets/user-list.json');
    }
 
-   editFeedback(text,userid): Observable<any>{
-     return this.httpService.post(apiUrl + environment.apiPaths.editFeedback + userid, text);
+   editFeedback(text, userid): Observable<any>{
+     return this.httpService.put(apiUrl + environment.apiPaths.editFeedback + userid, '"' + text + '"');
    }
 }
 // {

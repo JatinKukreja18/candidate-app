@@ -21,11 +21,13 @@ export const environment = {
   apiPaths: {
     // coverPage: '../assets/cp_video.json',
     // allUsers: '../assets/user-list.json'
-    register: 'jumpaccount/register',
-    countries: 'commondata/countrylist',
+    login: 'registration/login',
+    register: 'registration/registerrequest',
+    validateOtp :'registration/validateregotp',
+    countries: 'common/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
-    coverPage: 'candidatecoverpage/fetchcoverpage/',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/'
+    coverPage: 'candidatecoverpage/fetchcoverpage?id=',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id='
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };
