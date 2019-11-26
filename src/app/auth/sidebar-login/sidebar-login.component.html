@@ -15,7 +15,7 @@
       <input tabindex="2" [type]="showpass ? 'text' : 'password'" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
       <label class="form-control-placeholder" [ngClass]="{'active': f.password.value, 'inactive': !f.password.value }">PASSWORD</label>
       <span class="showpass-btn" [ngClass]="showpass ? 'encrypt' : 'decrypt' " (click)="togglePass()" theme="outline">
-        <span [ngClass]="{'cross-icon': !showpass}"><img src="/assets/images/eye.svg" alt="toggle pass" /></span>
+        <span [ngClass]="{'cross-icon': !showpass}"><img src="assets/images/eye.svg" alt="toggle pass" /></span>
           <!-- <object type="image/svg+xml" data="../../../assets/images/eye.svg" class="eye-pass"></object> -->
       </span>
       <div *ngIf="submitted && f.password.errors" class="invalid-feedback">

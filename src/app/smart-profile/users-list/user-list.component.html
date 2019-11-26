@@ -12,6 +12,7 @@
         [nzShowSizeChanger]="true"
         (nzPageIndexChange)="pageChanged($event)"
         (nzPageSizeChange)="pageSizeChanged($event)"
+        [nzLoading]="isLoading"
         >
     <thead>
       <tr>
@@ -40,15 +41,20 @@
         </td>
         <td>
           {{ user.InstructorFeedback }}
-          <button nz-button nzType="default" nzShape="circle" style="float: right;"  nz-popover nzTitle="Edit Feedback" [nzContent]="feedbackTemplate" nzTrigger="click">
+          <button nz-button nzType="default"  nzShape="circle" style="float: right;"
+                  nz-popover nzTitle="Edit Feedback" [nzContent]="feedbackTemplate"
+                  [(nzVisible)]="user.visible"
+                  (nzVisibleChange)="change($event)"
+                  nzTrigger="click"
+                  >
               <i nz-icon nzType="edit" nzTheme="outline"></i>
           </button>
-          <ng-template #feedbackTemplate>
+          <ng-template #feedbackTemplate >
             <div style="width: 250px;">
-                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value,user)">
+                <form nz-form [formGroup]="validateForm" (ngSubmit)="submitForm(validateForm.value,user,feedbackTemplate)">
                   <nz-form-item>
                       <nz-form-control [nzSpan]="24" nzErrorTip="Please write something here!">
-                        <textarea style="min-height:100px" formControlName="comment" nz-input rows="2" placeholder="write any thing"></textarea>
+                        <textarea style="min-height:100px" formControlName="comment" [value]="user.InstructorFeedback" nz-input rows="2" placeholder="write any thing"></textarea>
                       </nz-form-control>
                     </nz-form-item>
                     <nz-form-item>
@@ -92,9 +98,9 @@
               </ng-template>
         </td>
         <td>
-            <a nzType="primary" nz-button style="margin-right: 15px;" target="_blank" [attr.href]="'/coverPage/' + user.CandidateId" >View </a>
+            <a nzType="primary" nz-button style="margin-right: 15px;" target="_blank" [routerLink]="['/coverPage/' + user.UserName]" [attr.href]="'/coverPage/' + user.UserName" >View </a>
 
-              <a  nzType="primary" nz-button target="_blank" [attr.href]="'mailto:?subject=Candidate Details&body=https://appst.cliksource.com/jumpprofessional/coverPage/' + user.CandidateId" >Share </a>
+              <a  nzType="primary" nz-button target="_blank" [attr.href]="'mailto:?subject=Candidate Details&body=https://appst.cliksource.com/jumpprofessional/coverPage/' + user.UserName" >Share </a>
 
         </td>
       </tr>

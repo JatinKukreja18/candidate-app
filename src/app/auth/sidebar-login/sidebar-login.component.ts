@@ -53,7 +53,7 @@ export class SidebarLoginComponent implements OnInit {
     }
 
     /**
-    * toggle funtion to show/hide password 
+    * toggle funtion to show/hide password
     */
     togglePass() {
         this.showpass = !this.showpass;
@@ -64,13 +64,13 @@ export class SidebarLoginComponent implements OnInit {
     * @return return landing page if inputs are valid
     */
     onSubmit() {
-        /* this.submitted = true;
+        this.submitted = true;
         if (this.loginForm.invalid) {
         return;
         } else {
             this.submitting = true;
             const loading = this.message.loading(FeedbackMessages.loading.UserSignin, { nzDuration: 0 }).messageId;
-            const formData = {username: this.loginForm.value.email, password: this.loginForm.value.password};
+            const formData = {UserName: this.loginForm.value.email, Password: this.loginForm.value.password};
             // If user opted for remember me then save user's data
             if (this.loginForm.value.rememberMe) {
                 this.authService.saveUserData(formData);
@@ -81,15 +81,16 @@ export class SidebarLoginComponent implements OnInit {
             this.authService.login(formData).subscribe((res) => {
                 this.submitting = false;
                 this.message.remove(loading);
-                if (res.body.code === 200) { */
-                    this.router.navigateByUrl('/dashboard/Testing_Can40538');
+                if (res.body.code === 200) {
+                    // this.router.navigateByUrl('/dashboard/coverPage');
+                    this.router.navigateByUrl('/dashboard/');
                     this.analyticsService.eventEmitter('Authentication', 'Login', 'Login');
-              /*   }
+              }
             }, (error) => {
                 this.submitting = false;
                 this.message.remove(loading);
             });
-        }*/
+        }
     }
 
 }

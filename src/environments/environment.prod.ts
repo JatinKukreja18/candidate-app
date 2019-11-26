@@ -1,7 +1,8 @@
 export const environment = {
   production: true,
   // URL of the API Server
-  apiUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/',
+  apiUrl: 'https://appst.cliksource.com/jumpprofessionalapi/api/',
+  // apiUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/',
   // URL of the server application is hosted on for proxy. Please add '/api' at the end
   baseUrl: 'https://collabera.herokuapp.com/api/',
   linkedIn: {
@@ -16,6 +17,14 @@ export const environment = {
   },
   shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com', // URL encoded URL of server application is hosted on
   apiPaths: {
-    coverPage: 'https://appst.cliksource.com/jumpprofessionalapi/api/candidatecoverpage/fetchcoverpage/'
+    // coverPage: '../assets/cp_video.json',
+    // allUsers: '../assets/user-list.json'
+    login: 'registration/login',
+    register: 'registration/registerrequest',
+    validateOtp :'registration/validateregotp',
+    countries: 'common/countrylist',
+    allUsers: 'candidatelist/getcandidatelist?',
+    coverPage: 'candidatecoverpage/fetchcoverpage?id=',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id='
   }
 };

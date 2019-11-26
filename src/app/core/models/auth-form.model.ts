@@ -8,8 +8,8 @@ export interface RegisterForm {
 }
 
 export interface LoginForm {
-    username: string;
-    password: string;
+    UserName: string;
+    Password: string;
 }
 
 export interface ExternalRegisterForm {

@@ -27,6 +27,12 @@
     a.ant-btn.ant-btn-primary{
       color: #fff;
       font-weight: 500;
+      min-width: 72px;
+      margin-bottom: 5px;
+
+      &:last-child{
+        margin-bottom: 0;
+      }
       // i{
       //   color: rgba(0,0,0,.65);
       // }
@@ -47,5 +53,5 @@
     padding: 0;
     margin: 5px 10px;
   }
-  
+
 }

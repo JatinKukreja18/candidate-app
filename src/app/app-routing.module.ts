@@ -57,7 +57,7 @@ const routes: Routes = [
     component: PreInterviewComponent
   },
   {
-    path: 'smartprofile',
+    path: 'candidate-list',
     loadChildren: './smart-profile/smart-profile.module#SmartProfileModule'
   },
   {

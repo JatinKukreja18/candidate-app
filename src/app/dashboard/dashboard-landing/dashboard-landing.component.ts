@@ -11,7 +11,7 @@ import { UserDataService } from './../../core/services/userdata.service';
   styleUrls: ['./dashboard-landing.component.scss']
 })
 export class DashboardLandingComponent implements OnInit {
-  
+
   isVisible = false;
   isVisibleresume = false;
   // Element refrence for the city dropdown and map element
@@ -47,10 +47,13 @@ export class DashboardLandingComponent implements OnInit {
       city: ['', [Validators.required]],
       skills: [null, [Validators.required]]
     });
+    const userId = this.authService.getCurrentUser().candidateProfile.name;
+
+
     // this.getDashboardData(true);
-    this.getSuggestedSkills(); // Get the Skills lists from API or from local(if exists)
-    this.initGoogleMapPlaces(); // Initialize the Google places API with the city dropdown element
-    this.getCandidateData(); // Get the candidate data to be populated into the cover page
+    // this.getSuggestedSkills(); // Get the Skills lists from API or from local(if exists)
+    // this.initGoogleMapPlaces(); // Initialize the Google places API with the city dropdown element
+    this.getCandidateData(userId); // Get the candidate data to be populated into the cover page
   }
 
   /**
@@ -61,8 +64,8 @@ export class DashboardLandingComponent implements OnInit {
     return this.searchForm.controls;
   }
 
-  private getCandidateData() {
-    this.userDataService.getUserData(this.activatedRoute.snapshot.params.id).subscribe(res => {
+  private getCandidateData(userId) {
+    this.userDataService.getUserData(userId).subscribe(res => {
       this.candidateData = res;
       // this.handleSkills(this.candidateData.CandidateSkills);
       this.loading = false;
@@ -83,7 +86,7 @@ export class DashboardLandingComponent implements OnInit {
       if (response.code && response.code === 200) {
 
         console.log('data response',response);
-        
+
         this.candidate = response.data;
         setTimeout(() => {
           this.gotoSlide(0, false);
@@ -117,7 +120,7 @@ export class DashboardLandingComponent implements OnInit {
     let location_obj: any = {};
     for (let i in place.address_components) {
       let item = place.address_components[i];
-      
+
       location_obj['formatted_address'] = place.formatted_address;
       if(item['types'].indexOf("locality") > -1) {
         location_obj['locality'] = item['long_name']
@@ -219,7 +222,7 @@ export class DashboardLandingComponent implements OnInit {
     }, 200);
   }
 
-  /** 
+  /**
    * Set the current search parameters and redirect to results page
   */
   onSubmit() {
@@ -242,14 +245,14 @@ export class DashboardLandingComponent implements OnInit {
     }
   }
 
-  /** 
+  /**
    * Show Modal
   */
   showModal(): void {
     this.isVisible = true;
   }
 
-  /** 
+  /**
    * Close Modal
   */
 
@@ -281,7 +284,7 @@ export class DashboardLandingComponent implements OnInit {
 
   /**
    * Change slide of matching jobs
-   * @param index 
+   * @param index
    */
   gotoSlide(index: number, isScroll: boolean) {
     let slides = document.querySelectorAll('.matching-job-card');
@@ -326,7 +329,7 @@ export class DashboardLandingComponent implements OnInit {
   Searchus(data)
   {
     console.log('data',data);
-    
+
   }
 
   /**

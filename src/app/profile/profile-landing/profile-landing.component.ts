@@ -516,7 +516,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Highlight section on click of section
-   * @param sectionNumber 
+   * @param sectionNumber
    */
   highlightSectionOnClick(sectionNumber: number) {
 
@@ -570,10 +570,10 @@ export class ProfileLandingComponent implements OnInit {
     // Pre-Populate the Personal Details form
     this.personalDetailsForm.get('firstName').setValue(this.profile.FirstName ? this.profile.FirstName : '');
     this.personalDetailsForm.get('lastName').setValue(this.profile.LastName ? this.profile.LastName : '');
-    this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.countryPhoneCode ? parseInt(this.profile.countryPhoneCode) : '');
+    this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.CountryCode ? parseInt(this.profile.CountryCode) : '');
     this.personalDetailsForm.get('mobile').setValue(this.profile.MobileNumber ? this.profile.MobileNumber : '');
-    this.personalDetailsForm.get('gender').setValue(this.profile.gender ? this.profile.basicInfo.gender : '');
-    this.personalDetailsForm.get('dob').setValue(this.profile.dob ? new Date(this.profile.dob) : null);
+    this.personalDetailsForm.get('gender').setValue(this.profile.Gender ? this.profile.basicInfo.Gender : '');
+    this.personalDetailsForm.get('dob').setValue(this.profile.DOB ? new Date(this.profile.DOB) : null);
     // this.profileForm.get('imageUrl').setValue(this.profile.basicInfo.imageUrl ? this.profile.basicInfo.imageUrl : '');
 
     // Pre-Populate the Professional Details form
@@ -829,7 +829,8 @@ export class ProfileLandingComponent implements OnInit {
 
       /* } else {
         this.userDataService.getUserData(this.candidateId).subscribe(response => {
-          this.profile = response;
+        this.message.remove(loading);
+        this.profile = response;
         });
       } */
 
@@ -1392,7 +1393,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Event handler for 'TAB' key
-   * @param event 
+   * @param event
    */
   @HostListener('keyup.tab', ['$event'])
   tabEvent(event: KeyboardEvent) {
@@ -1422,7 +1423,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Event handler for 'SHIFT' + 'TAB' key
-   * @param event 
+   * @param event
    */
   @HostListener('keyup.shift.tab', ['$event'])
   tabAndShiftEvent(event: KeyboardEvent) {
@@ -1485,7 +1486,7 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   /**
-   * Open Video modal 
+   * Open Video modal
    */
   openPlayVideoModal() {
     this.playVideoModal = true;

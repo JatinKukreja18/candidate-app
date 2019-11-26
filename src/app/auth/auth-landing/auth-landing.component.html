@@ -2,18 +2,18 @@
   	<app-auth-left-section></app-auth-left-section>
   	<div class="right-section">
     	<span class="right-cross" *ngIf="sections.login || sections.register || sections.verifyOTP || sections.externalRegister" (click)="showSection(null, 'external')">
-			<img src="../../../assets/images/shape-cross.svg" alt="return to home">
+			<img src="assets/images/shape-cross.svg" alt="return to home">
 		</span>
 		<div *ngIf="sections.external" class="social-login" id="social-login">
 			<div class="padded-socials">
 				<div class="social-button" id="google" (click)="socialSignIn('google')">
-					<img src="../../../assets/images/google-login.svg" alt="">
+					<img src="assets/images/google-login.svg" alt="">
 				</div>
 				<div class="social-button" id="linkedin">
-					<img src="../../../assets/images/linkedin-login.svg" alt="" (click)="signInWithLinkedIn()">
+					<img src="assets/images/linkedin-login.svg" alt="" (click)="signInWithLinkedIn()">
 				</div>
 				<div class="social-button" id="facebook">
-					<img src="../../../assets/images/facebook-login.svg" alt="" (click)="socialSignIn('facebook')">
+					<img src="assets/images/facebook-login.svg" alt="" (click)="socialSignIn('facebook')">
 				</div>
 			</div>
 			<div class="row auth-buttons">

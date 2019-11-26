@@ -21,12 +21,14 @@ export const environment = {
   apiPaths: {
     // coverPage: '../assets/cp_video.json',
     // allUsers: '../assets/user-list.json'
-    register: 'jumpaccount/register',
-    countries: 'commondata/countrylist',
+    login: 'registration/login',
+    register: 'registration/registerrequest',
+    validateOtp :'registration/validateregotp',
+    countries: 'common/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
-    coverPage: 'candidatecoverpage/fetchcoverpage/',
+    coverPage: 'candidatecoverpage/fetchcoverpage?id=',
     viewProfile: 'candidateview/getviewprofile/',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id=',
     editAdditionalProjects: 'candidateeditpage/editprojectdetails/',
     editEducations: 'candidateeditpage/editeducationdetails/',
     editExperiences: 'candidateeditpage/editexperiencedetails/',
