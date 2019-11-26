@@ -170,7 +170,7 @@ export class ProfileLandingComponent implements OnInit {
     this.personalDetailsForm = this.formBuilder.group({
       firstName: ['', { validators: [Validators.required, Validators.minLength(2), Validators.maxLength(25)], updateOn: 'blur' }],
       lastName: ['', { validators: [Validators.maxLength(25)], updateOn: 'blur' }],
-      countryPhoneCode: ['', { updateOn: 'blur' }],
+      countryPhoneCode: ['', { validators: [Validators.required], updateOn: 'blur' }],
       mobile: ['', { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: 'blur' }],
       dob: [''],
       gender: [''],
@@ -783,9 +783,10 @@ export class ProfileLandingComponent implements OnInit {
         // let countrylist = response
         this.countryList = response.data;
         this.countryList.forEach(data => {
-          data.description = `${data.Name} ( + ${data.PhoneCode})`
-          this.dropdownOptions.push(data)
+          data.description = `${data.Name} ( + ${data.PhoneCode})`;
+          this.dropdownOptions.push(data);
         });
+        this.dropdownOptions = [... this.dropdownOptions];
       }
     })
   }
@@ -937,15 +938,15 @@ export class ProfileLandingComponent implements OnInit {
 
 
   selectionChanged(e, form) {
-    console.log('e', e.value.phonecode);
+    console.log('e', e.value.PhoneCode);
 
     if (form === 'one') {
-      this.personalDetailsForm.controls.countryPhoneCode.setValue(e.value.phonecode);
+      this.personalDetailsForm.controls.countryPhoneCode.setValue(e.value.PhoneCode);
       console.log('1');
 
     }
 
-    else if (form === 'two') {
+    /* else if (form === 'two') {
       this.referenceForm.controls.referenceList.value.one.countryPhoneCode = e.value.phonecode;
       console.log('2', this.profileForm.controls.referenceList.value.one.countryPhoneCode);
 
@@ -953,7 +954,7 @@ export class ProfileLandingComponent implements OnInit {
     else if (form === 'three') {
       this.referenceForm.controls.referenceList.value.two.countryPhoneCode = e.value.phonecode;
       console.log('3', this.profileForm.controls.referenceList.value.two.countryPhoneCode);
-    }
+    } */
 
   }
   /**
