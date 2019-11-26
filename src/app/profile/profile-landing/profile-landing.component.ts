@@ -1,7 +1,8 @@
-import { Component, OnInit, ViewChild, ElementRef, HostListener } from '@angular/core';
+import { UserDataService } from '@app/core/services/userdata.service';
+import { Component, OnInit, ViewChild, ElementRef, HostListener, ViewEncapsulation } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
+import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ValidationMessages, FeedbackMessages } from '@app/core/messages';
 import { ProfileService, CommonService, VimeoService, AnalyticsService } from '@app/core';
@@ -11,7 +12,8 @@ import { Observable, Subscription } from 'rxjs';
 @Component({
   selector: 'app-profile-landing',
   templateUrl: './profile-landing.component.html',
-  styleUrls: ['./profile-landing.component.scss']
+  styleUrls: ['./profile-landing.component.scss'],
+  encapsulation: ViewEncapsulation.None
 })
 export class ProfileLandingComponent implements OnInit {
 
@@ -37,6 +39,7 @@ export class ProfileLandingComponent implements OnInit {
   experiencesForm: FormGroup;
   additionalProjectsForm: FormGroup;
   educationForm: FormGroup;
+  trainingsForm: FormGroup;
   validationMsgs: any;
   submitted = false;
   submitting = false;
@@ -55,6 +58,7 @@ export class ProfileLandingComponent implements OnInit {
   experiences = [];
   additionalProjectsList = [];
   educationsList = [];
+  trainingsList = [];
   selectedFile: {
     profileImage: string,
     resumeName: string,
@@ -75,7 +79,8 @@ export class ProfileLandingComponent implements OnInit {
     additionalSkills: boolean,
     primaryProjects: boolean,
     additionalProjects: boolean,
-    educations: boolean
+    educations: boolean,
+    trainings: boolean
   } = {
       personal: false,
       professional: false,
@@ -87,7 +92,8 @@ export class ProfileLandingComponent implements OnInit {
       additionalSkills: false,
       primaryProjects: false,
       additionalProjects: false,
-      educations: false
+      educations: false,
+      trainings: false
     }
   expandedComment: {
     one: boolean,
@@ -117,6 +123,7 @@ export class ProfileLandingComponent implements OnInit {
       ['clean']
     ]
   };
+  candidateId: string;
 
   constructor(
     private formBuilder: FormBuilder,
@@ -127,7 +134,9 @@ export class ProfileLandingComponent implements OnInit {
     private vimeoService: VimeoService,
     private route: ActivatedRoute,
     private router: Router,
-    private analyticsService: AnalyticsService
+    private analyticsService: AnalyticsService,
+    private activatedRoute: ActivatedRoute,
+    private userDataService: UserDataService
   ) {
     this.validationMsgs = ValidationMessages;
   }
@@ -215,18 +224,21 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.primarySkillsForm = this.formBuilder.group({
+      primarySkillId: [''],
       skillName: ['', { updateOn: 'blur' }],
       rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/)], updateOn: 'blur' }],
       experience: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
     });
 
     this.additionalSkillsForm = this.formBuilder.group({
+      additionalSkillId: [''],
       skillName: ['', { updateOn: 'blur' }],
       rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/)], updateOn: 'blur' }],
       experience: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
     });
 
     this.experiencesForm = this.formBuilder.group({
+      experienceId: [''],
       companyName: ['', { updateOn: 'blur' }],
       location: ['', { updateOn: 'blur' }],
       jobTitle: ['', { updateOn: 'blur' }],
@@ -236,6 +248,7 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.additionalProjectsForm = this.formBuilder.group({
+      additionalProjectId: [''],
       name: ['', { updateOn: 'blur' }],
       role: ['', { updateOn: 'blur' }],
       year: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
@@ -243,6 +256,7 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.educationForm = this.formBuilder.group({
+      educationId: [''],
       degreeName: ['', { updateOn: 'blur' }],
       speciality: ['', { updateOn: 'blur' }],
       schoolName: ['', { updateOn: 'blur' }],
@@ -250,12 +264,21 @@ export class ProfileLandingComponent implements OnInit {
       endDate: [''],
     });
 
+    this.trainingsForm = this.formBuilder.group({
+      trainingId: [''],
+      training: [''],
+    });
+
     this.profileForm = this.formBuilder.group({
       imageUrl: ['', { updateOn: 'blur' }],
       workpermit: ['', { updateOn: 'blur' }],
     });
     this.initGoogleMapPlaces();
-    this.getProfileDetails();
+    this.activatedRoute.params.subscribe((params) => {
+      this.candidateId = params.id;
+      this.getProfileDetails(this.candidateId);
+    });
+
 
   }
 
@@ -264,9 +287,10 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const skill = {
-      skillName: this.primarySkillsForm.value.skillName,
-      rating: this.primarySkillsForm.value.rating,
-      experience: this.primarySkillsForm.value.experience,
+      ID: this.primarySkillsForm.value.primarySkillId ? this.primarySkillsForm.value.primarySkillId : 0,
+      Skill: this.primarySkillsForm.value.skillName,
+      Proficiency: this.primarySkillsForm.value.rating,
+      Experience: this.primarySkillsForm.value.experience,
     };
     // this.primarySkillsList.push(skill);
     this.primarySkillsList = [...this.primarySkillsList, skill];
@@ -278,9 +302,10 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const skill = {
-      skillName: this.additionalSkillsForm.value.skillName,
-      rating: this.additionalSkillsForm.value.rating,
-      experience: this.additionalSkillsForm.value.experience,
+      ID: this.additionalSkillsForm.value.additionalSkillId ? this.additionalSkillsForm.value.additionalSkillId : 0,
+      Skill: this.additionalSkillsForm.value.skillName,
+      Proficiency: this.additionalSkillsForm.value.rating,
+      Experience: this.additionalSkillsForm.value.experience,
     };
     // this.additionalSkillsList.push(skill);
     this.additionalSkillsList = [...this.additionalSkillsList, skill];
@@ -292,7 +317,7 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const project = {
-      ID: null,
+      ID: this.experiencesForm.value.experienceId ? this.experiencesForm.value.experienceId : 0,
       Company_Name: this.experiencesForm.value.companyName,
       Location: this.experiencesForm.value.location,
       Job_Title: this.experiencesForm.value.jobTitle,
@@ -310,7 +335,7 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const project = {
-      ID: null,
+      ID: this.additionalProjectsForm.value.additionalProjectId ? this.additionalProjectsForm.value.additionalProjectId : 0,
       Project_Title: this.additionalProjectsForm.value.name,
       year: this.additionalProjectsForm.value.year,
       Project_Description: this.additionalProjectsForm.value.description,
@@ -326,44 +351,54 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const education = {
-      ID: null,
+      ID: this.educationForm.value.educationId ? this.educationForm.value.educationId : 0,
       Degree_Name: this.educationForm.value.degreeName,
       School_Name: this.educationForm.value.schoolName,
       Speciality_In: this.educationForm.value.speciality,
       Start_Date: this.educationForm.value.startDate,
       End_Date: this.educationForm.value.endDate,
     };
-    // this.primaryProjectsList.push(project);
     this.educationsList = [...this.educationsList, education];
     this.educationForm.reset();
   }
 
+  addTraining() {
+    if (this.trainingsForm.invalid) {
+      return;
+    }
+    const training = {
+      ID: this.trainingsForm.value.trainingId ? this.trainingsForm.value.trainingId : 0,
+      Training: this.trainingsForm.value.training,
+    };
+    this.trainingsList = [...this.trainingsList, training];
+    this.trainingsForm.reset();
+  }
+
   editSkill(type, data, index) {
     if (type === 'primary') {
-      this.primarySkillsForm.get('skillName').setValue(data.skillName);
-      this.primarySkillsForm.get('rating').setValue(data.rating);
-      this.primarySkillsForm.get('experience').setValue(data.experience);
+      this.primarySkillsForm.get('skillName').setValue(data.Skill);
+      this.primarySkillsForm.get('rating').setValue(data.Proficiency);
+      this.primarySkillsForm.get('experience').setValue(data.Experience);
 
       this.primarySkillsList.splice(index, 1);
       this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
     } else if (type === 'additional') {
-      this.additionalSkillsForm.get('skillName').setValue(data.skillName);
-      this.additionalSkillsForm.get('rating').setValue(data.rating);
-      this.additionalSkillsForm.get('experience').setValue(data.experience);
+      this.additionalSkillsForm.get('skillName').setValue(data.Skill);
+      this.additionalSkillsForm.get('rating').setValue(data.Proficiency);
+      this.additionalSkillsForm.get('experience').setValue(data.Experience);
 
       this.additionalSkillsList.splice(index, 1);
       this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
     }
   }
 
-  deleteSkill(type, index) {
-    if (type === 'primary') {
-      this.primarySkillsList.splice(index, 1);
-      this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
-    } else if (type === 'additional') {
-      this.additionalSkillsList.splice(index, 1);
-      this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
-    }
+  editTraining(data, index) {
+      this.trainingsForm.get('training').setValue(data.Training);
+      this.trainingsForm.get('trainingId').setValue(data.ID);
+      console.log(data.ID);
+
+      this.trainingsList.splice(index, 1);
+      this.trainingsList = [...this.trainingsList]; // need to update reference for nz-table to update
   }
 
   editProject(type, data, index) {
@@ -408,9 +443,24 @@ export class ProfileLandingComponent implements OnInit {
     }
   }
 
+  deleteSkill(type, index) {
+    if (type === 'primary') {
+      this.primarySkillsList.splice(index, 1);
+      this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
+    } else if (type === 'additional') {
+      this.additionalSkillsList.splice(index, 1);
+      this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
+    }
+  }
+
   deleteEducation(index) {
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
+  }
+
+  deleteTraining(index) {
+    this.trainingsList.splice(index, 1);
+    this.trainingsList = [...this.trainingsList]; // need to update reference for nz-table to update
   }
 
   /**
@@ -449,6 +499,8 @@ export class ProfileLandingComponent implements OnInit {
               break;
             case 11: this.activeSection.educations = true;
               break;
+            case 12: this.activeSection.trainings = true;
+              break;
             default: this.activeSection.personal = true;
               break;
           }
@@ -463,7 +515,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Highlight section on click of section
-   * @param sectionNumber 
+   * @param sectionNumber
    */
   highlightSectionOnClick(sectionNumber: number) {
 
@@ -499,6 +551,8 @@ export class ProfileLandingComponent implements OnInit {
         break;
       case 11: this.activeSection.educations = true;
         break;
+      case 12: this.activeSection.trainings = true;
+      break;
       default: this.activeSection.personal = true;
         break;
     }
@@ -513,26 +567,19 @@ export class ProfileLandingComponent implements OnInit {
       this.formChangeSubscription.unsubscribe();
     }
     // Pre-Populate the Personal Details form
-    if (this.profile.basicInfo) {
-      this.personalDetailsForm.get('firstName').setValue(this.profile.basicInfo.firstName);
-      this.personalDetailsForm.get('lastName').setValue(this.profile.basicInfo.lastName ? this.profile.basicInfo.lastName : '');
-      this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.basicInfo.countryPhoneCode ? parseInt(this.profile.basicInfo.countryPhoneCode) : '');
-      this.personalDetailsForm.get('mobile').setValue(this.profile.basicInfo.mobile ? this.profile.basicInfo.mobile : '');
-      this.personalDetailsForm.get('gender').setValue(this.profile.basicInfo.gender ? this.profile.basicInfo.gender : '');
-      this.personalDetailsForm.get('dob').setValue(this.profile.basicInfo.dob ? new Date(this.profile.basicInfo.dob) : null);
+      this.personalDetailsForm.get('firstName').setValue(this.profile.firstName?this.profile.firstName:'');
+      this.personalDetailsForm.get('lastName').setValue(this.profile.lastName ? this.profile.lastName : '');
+      this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.countryPhoneCode ? parseInt(this.profile.countryPhoneCode) : '');
+      this.personalDetailsForm.get('mobile').setValue(this.profile.MobileNumber ? this.profile.MobileNumber : '');
+      this.personalDetailsForm.get('gender').setValue(this.profile.gender ? this.profile.basicInfo.gender : '');
+      this.personalDetailsForm.get('dob').setValue(this.profile.dob ? new Date(this.profile.dob) : null);
       // this.profileForm.get('imageUrl').setValue(this.profile.basicInfo.imageUrl ? this.profile.basicInfo.imageUrl : '');
-    }
-    // Pre-Populate the Professional Details form
+
+      // Pre-Populate the Professional Details form
     if (this.profile.professionalInfo) {
       this.professionalDetailsForm.get('designation').setValue(this.profile.professionalInfo.designation ? this.profile.professionalInfo.designation : '');
       this.professionalDetailsForm.get('preferredLocation').setValue(this.profile.professionalInfo.preferredLocation ? this.profile.professionalInfo.preferredLocation : '');
       this.professionalDetailsForm.get('preferredJobTypeId').setValue(this.profile.professionalInfo.preferredJobTypeId ? this.profile.professionalInfo.preferredJobTypeId.toString() : '0');
-
-
-      console.log('this.profile', this.profile);
-
-      console.log('this.profile', this.profile.professionalInfo.preferredJobTypeId);
-
 
       if (this.profile.professionalInfo.preferredJobTypeId == '1') {
         this.professionalDetailsForm.get('expectedAnnual').setValue(this.profile.professionalInfo.expectedpay ? this.profile.professionalInfo.expectedpay : '');
@@ -545,6 +592,7 @@ export class ProfileLandingComponent implements OnInit {
         }
       });
     }
+
     if (this.profile.referenceList && this.profile.referenceList[0]) {
       this.referenceForm.get('referenceList').get('one').get('name').setValue(this.profile.referenceList[0]['name']);
       this.referenceForm.get('referenceList').get('one').get('emailid').setValue(this.profile.referenceList[0]['emailid']);
@@ -561,16 +609,16 @@ export class ProfileLandingComponent implements OnInit {
       this.referenceForm.get('referenceList').get('two').get('mobilenumber').setValue(this.profile.referenceList[1]['mobilenumber']);
     }
 
-    if (this.profile.socialLink && this.profile.socialLink.length > 0) {
-      this.profile.socialLink.forEach((element, idx) => {
-        if (element['typeid'] === 3) this.socialForm.get('linkedin').setValue(element['link']);
-        if (element['typeid'] === 5) this.socialForm.get('github').setValue(element['link']);
-        if (element['typeid'] === 6) this.socialForm.get('stack').setValue(element['link']);
-        if (element['typeid'] === 7) this.socialForm.get('others').setValue(element['link']);
-      })
+    if (this.profile.CandidateSocialProfileDetails && this.profile.CandidateSocialProfileDetails.length > 0) {
+      this.profile.CandidateSocialProfileDetails.forEach((element, idx) => {
+        if (element['SocialSiteId'] === 3) this.socialForm.get('linkedin').setValue(element['ProfileLink']);
+        if (element['SocialSiteId'] === 5) this.socialForm.get('github').setValue(element['ProfileLink']);
+        if (element['SocialSiteId'] === 6) this.socialForm.get('stack').setValue(element['ProfileLink']);
+        if (element['SocialSiteId'] === 7) this.socialForm.get('others').setValue(element['ProfileLink']);
+      });
     }
 
-    this.videoForm.get('videoLinkTypeId').setValue(this.profile.videoLinkTypeId ? this.profile.videoLinkTypeId.toString() : '0');
+/*     this.videoForm.get('videoLinkTypeId').setValue(this.profile.videoLinkTypeId ? this.profile.videoLinkTypeId.toString() : '0');
 
     this.videoForm.get('VideoLinkCaption').setValue(this.profile.VideoLinkCaption ? this.profile.VideoLinkCaption : '');
     if (this.profile.videoLink && this.profile.videoLinkTypeId == 1) {
@@ -593,7 +641,21 @@ export class ProfileLandingComponent implements OnInit {
 
     this.formChangeSubscription = this.videoForm.valueChanges.subscribe(value => {
       this.saveFormToLocal();
-    });
+    }); */
+
+    this.trainingsList = this.profile.Trainings ? this.profile.Trainings : [];
+
+    if (this.profile.CandidateSkills) {
+      this.primarySkillsList =  this.profile.CandidateSkills.filter(skill => skill.SkillType === 'Primary');
+      this.additionalSkillsList =  this.profile.CandidateSkills.filter(skill => skill.SkillType === 'Additional');
+    }
+
+    this.experiences = this.profile.CandidateExperienceDetails ? this.profile.CandidateExperienceDetails : [];
+
+    this.additionalProjectsList = this.profile.ProjectDetails ? this.profile.ProjectDetails : [];
+    console.log(this.additionalProjectsList)
+
+    this.educationsList = this.profile.CandidateEducationDetails ? this.profile.CandidateEducationDetails : [];
   }
 
   /**
@@ -730,10 +792,10 @@ export class ProfileLandingComponent implements OnInit {
   /**
    * Get user's profile data
    */
-  getProfileDetails() {
+  getProfileDetails(candidateId) {
     this.loading = true;
     const loading = this.message.loading(FeedbackMessages.loading.ProfileFetch, { nzDuration: 0 }).messageId;
-    this.profileService.getProfileDetails().subscribe((response) => {
+/*     this.profileService.getProfileDetails().subscribe((response) => {
       this.message.remove(loading);
       this.loading = false;
       if (response && response.code === 200 && response.data) {
@@ -753,7 +815,24 @@ export class ProfileLandingComponent implements OnInit {
     }, () => {
       this.message.remove(loading);
       this.loading = false;
-    })
+    }) */
+    this.userDataService.userEmitter.subscribe(candidateData => {
+
+      if(candidateData.CandidateId) {
+        this.profile = candidateData;
+        this.message.remove(loading);
+        this.initForm();
+        this.highlightSection();
+        this.highlightMissingFields();
+
+      } else {
+        this.userDataService.getUserData(this.candidateId).subscribe(response => {
+        this.message.remove(loading);
+        this.profile = response;
+        });
+      }
+
+    });
   }
 
   /**
@@ -800,6 +879,9 @@ export class ProfileLandingComponent implements OnInit {
   }
   get educations() {
     if (this.educationForm) return this.educationForm.controls;
+  }
+  get trainings() {
+    if (this.trainingsForm) return this.trainingsForm.controls;
   }
 
   log(value: string[]): void {
@@ -1001,12 +1083,12 @@ export class ProfileLandingComponent implements OnInit {
           return;
         }
         reqBody = {
-          'firstName': this.personalDetailsForm.value.firstName,
-          'lastName': this.personalDetailsForm.value.lastName,
-          'dob': this.personalDetailsForm.value.dob,
-          'gender': this.personalDetailsForm.value.gender,
-          'mobile': this.personalDetailsForm.value.mobile,
-          'countryPhoneCode': this.personalDetailsForm.value.countryPhoneCode,
+          'FirstName': this.personalDetailsForm.value.firstName,
+          'LastName': this.personalDetailsForm.value.lastName,
+          'DOB': this.personalDetailsForm.value.dob,
+          'Gender': this.personalDetailsForm.value.gender,
+          'MobileNumber': this.personalDetailsForm.value.mobile,
+          'CountryCode': this.personalDetailsForm.value.countryPhoneCode,
         };
       } else if (formName === 'professionalDetailsForm') {
         if (this.professionalDetailsForm.invalid) {
@@ -1138,6 +1220,11 @@ export class ProfileLandingComponent implements OnInit {
         reqBody = {
           educations: this.educationsList
         };
+      } else if (formName === 'trainingsForm') {
+
+        reqBody = {
+          Trainings: this.trainingsList
+        };
       }
       /* let reqBody: ProfileForm = {
         "basicInfo": {
@@ -1215,7 +1302,7 @@ export class ProfileLandingComponent implements OnInit {
 
       /* if (this.profile && this.profile.referenceList instanceof Array && this.profile.referenceList.length > 0) {
         reqBody.referenceList = this.profile.referenceList;
-        
+
         if (!this.profile.referenceList[0] || !this.profile.referenceList[0]['comment']) {
           if (this.profileForm.get('referenceList').get('one').value.name && this.profileForm.get('referenceList').get('one').value.emailid) {
             reqBody.referenceList[0] = this.profileForm.get('referenceList').get('one').value;
@@ -1405,7 +1492,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Event handler for 'TAB' key
-   * @param event 
+   * @param event
    */
   @HostListener('keyup.tab', ['$event'])
   tabEvent(event: KeyboardEvent) {
@@ -1435,7 +1522,7 @@ export class ProfileLandingComponent implements OnInit {
 
   /**
    * Event handler for 'SHIFT' + 'TAB' key
-   * @param event 
+   * @param event
    */
   @HostListener('keyup.shift.tab', ['$event'])
   tabAndShiftEvent(event: KeyboardEvent) {
@@ -1498,7 +1585,7 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   /**
-   * Open Video modal 
+   * Open Video modal
    */
   openPlayVideoModal() {
     this.playVideoModal = true;

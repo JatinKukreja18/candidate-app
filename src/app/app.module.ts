@@ -17,6 +17,7 @@ import { AuthServiceConfig, GoogleLoginProvider, FacebookLoginProvider, LinkedIn
 import { environment } from '../environments/environment';
 import { SafePipe } from './shared/pipes/safe.pipe';
 import { SmartProfileModule } from './smart-profile/smart-profile.module';
+import { UserDataService } from './core/services/userdata.service';
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
   return_scopes: true,
@@ -72,7 +73,8 @@ registerLocaleData(en);
         nzPauseOnHover: true,
         nzAnimate: true
       }
-    }
+    },
+    UserDataService
   ],
   bootstrap: [AppComponent]
 })

@@ -48,7 +48,7 @@ import { SmartProfileRoutingModule } from './smart-profile-routing.module';
     //     nzAnimate: true
     //   }
     // },
-     UserDataService
+     // UserDataService
   ]
 })
 export class SmartProfileModule { }
