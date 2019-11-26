@@ -25,6 +25,7 @@ export const environment = {
     countries: 'commondata/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
     coverPage: 'candidatecoverpage/fetchcoverpage/',
+    viewProfile: 'candidateview/getviewprofile/',
     editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/'
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'

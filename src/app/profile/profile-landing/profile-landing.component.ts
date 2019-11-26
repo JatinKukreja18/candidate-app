@@ -816,20 +816,19 @@ export class ProfileLandingComponent implements OnInit {
       this.message.remove(loading);
       this.loading = false;
     }) */
-    this.userDataService.userEmitter.subscribe(candidateData => {
+    this.profileService.getProfileDetails(candidateId).subscribe(candidateData => {
       
-      if(candidateData.CandidateId) {
         this.profile = candidateData;
         this.message.remove(loading);
         this.initForm();
         this.highlightSection();
         this.highlightMissingFields();
         
-      } else {
+      /* } else {
         this.userDataService.getUserData(this.candidateId).subscribe(response => {
           this.profile = response;
         });
-      }
+      } */
       
     });
   }
