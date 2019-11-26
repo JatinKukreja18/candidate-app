@@ -292,6 +292,7 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.primarySkillsForm.value.skillName,
       Proficiency: this.primarySkillsForm.value.rating,
       Experience: this.primarySkillsForm.value.experience,
+      IsPrimarySkill: 1
     };
     // this.primarySkillsList.push(skill);
     this.primarySkillsList = [...this.primarySkillsList, skill];
@@ -307,6 +308,7 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.additionalSkillsForm.value.skillName,
       Proficiency: this.additionalSkillsForm.value.rating,
       Experience: this.additionalSkillsForm.value.experience,
+      IsPrimarySkill: 0
     };
     // this.additionalSkillsList.push(skill);
     this.additionalSkillsList = [...this.additionalSkillsList, skill];
@@ -377,6 +379,7 @@ export class ProfileLandingComponent implements OnInit {
 
   editSkill(type, data, index) {
     if (type === 'primary') {
+      this.primarySkillsForm.get('primarySkillId').setValue(data.ID);
       this.primarySkillsForm.get('skillName').setValue(data.Skill);
       this.primarySkillsForm.get('rating').setValue(data.Proficiency);
       this.primarySkillsForm.get('experience').setValue(data.Experience);
@@ -384,6 +387,7 @@ export class ProfileLandingComponent implements OnInit {
       this.primarySkillsList.splice(index, 1);
       this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
     } else if (type === 'additional') {
+      this.additionalSkillsForm.get('additionalSkillId').setValue(data.ID);
       this.additionalSkillsForm.get('skillName').setValue(data.Skill);
       this.additionalSkillsForm.get('rating').setValue(data.Proficiency);
       this.additionalSkillsForm.get('experience').setValue(data.Experience);
@@ -647,8 +651,8 @@ export class ProfileLandingComponent implements OnInit {
     this.trainingsList = this.profile.Trainings ? this.profile.Trainings : [];
 
     if (this.profile.CandidateSkills) {
-      this.primarySkillsList = this.profile.CandidateSkills.filter(skill => skill.SkillType === 'Primary');
-      this.additionalSkillsList = this.profile.CandidateSkills.filter(skill => skill.SkillType === 'Additional');
+      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => index % 2 === 0/* skill. === 'Primary' */);
+      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => index % 2 !== 0/* skill.SkillType === 'Additional' */);
     }
 
     this.experiences = this.profile.CandidateExperienceDetails ? this.profile.CandidateExperienceDetails : [];
