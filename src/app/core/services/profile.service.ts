@@ -44,8 +44,58 @@ export class ProfileService {
         }));
     }
 
+    
+
     refreshProfileData(userData) {
         this.profileSubject.next(userData);
+        this.profileData = userData;
+    }
+
+    updateProfileDetails(formName: string, data, username) {
+        let editApi = apiUrl;
+        switch(formName) {
+            case 'personalDetailsForm': editApi += environment.apiPaths.editPersonalDetails + username;
+              break;
+            case 'primarySkillsForm': editApi += environment.apiPaths.editSkills + username;
+              break;
+            case 'additionalProjectsForm': editApi += environment.apiPaths.editAdditionalProjects + username;
+              break;
+            case 'experiencesForm': editApi += environment.apiPaths.editExperiences + username;
+              break;
+            case 'additionalSkillsForm': editApi += environment.apiPaths.editSkills + username;
+              break;
+            case 'educationForm': editApi += environment.apiPaths.editEducations + username;
+              break;
+            case 'trainingsForm': editApi += environment.apiPaths.editTrainings + username;
+              break;
+          }
+
+        if (formName === 'personalDetailsForm') {
+            return this.http.put(editApi, data).pipe(tap(response => {
+                console.log(response);
+                /* this.profileData = response;
+                this.refreshProfileData(response); */
+            }));
+        } else {
+            return this.http.post(editApi, data).pipe(tap(response => {
+                console.log(response);
+                /* this.profileData = response;
+                this.refreshProfileData(response); */
+                /* let currentUser = this.ls.get('currentUser');
+                if (!currentUser['candidateProfile']) {
+                    currentUser['candidateProfile'] = {};
+                }
+                currentUser['candidateProfile']['firstname'] = response['firstName'] ? response['firstName'] : '';
+                currentUser['candidateProfile']['lastname'] = response['lastName'] ? response['lastName'] : '';
+                currentUser['candidateProfile']['mobile'] = response['mobile'] ? response['mobile'] : '';
+                currentUser['candidateProfile']['countryPhoneCode'] = response['countryPhoneCode'] ? response['countryPhoneCode'] : '';
+                currentUser['candidateProfile']['image'] = response['imageUrl'] ? response['imageUrl'] : '';
+    
+                this.ls.set('currentUser', currentUser);
+                this.authService.currentUserSubject.next(currentUser); */
+            }));
+        }
+        
     }
     /* getProfileDetails():Observable<Response>{
         return this.http.get<Response>('profile/detail').pipe(tap((response) => {
@@ -75,14 +125,14 @@ export class ProfileService {
      * Update the value of the profile details
      * @param reqBody Profile Form
      */
-    updateProfileDetails(reqBody: ProfileForm): Observable<Response> {
+   /*  updateProfileDetails(reqBody: ProfileForm): Observable<Response> {
         return this.http.post<Response>('profile/create', reqBody).pipe(
             tap(response => {
                 this.ls.remove('profile');
             }),
             flatMap(response => this.getProfileDetails(''))
         );
-    }
+    } */
 
     /**
      * Save profile data offline in local storage

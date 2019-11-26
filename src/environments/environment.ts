@@ -26,7 +26,14 @@ export const environment = {
     allUsers: 'candidatelist/getcandidatelist?',
     coverPage: 'candidatecoverpage/fetchcoverpage/',
     viewProfile: 'candidateview/getviewprofile/',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/'
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback/',
+    editAdditionalProjects: 'candidateeditpage/editprojectdetails/',
+    editEducations: 'candidateeditpage/editeducationdetails/',
+    editExperiences: 'candidateeditpage/editexperiencedetails/',
+    editTrainings: 'candidateeditpage/edittrainingdetails/',
+    editSkills: 'candidateeditpage/EditCandidateSkills/',
+    editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
+    editSocialDetails: 'candidateeditpage/EditSocialDetails/'
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };
