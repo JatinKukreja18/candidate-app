@@ -41,10 +41,12 @@
         </td>
         <td>
           {{ user.InstructorFeedback }}
-          {{ user.isOpen }}
           <button nz-button nzType="default"  nzShape="circle" style="float: right;"
                   nz-popover nzTitle="Edit Feedback" [nzContent]="feedbackTemplate"
-                  nzTrigger="click">
+                  [(nzVisible)]="user.visible"
+                  (nzVisibleChange)="change($event)"
+                  nzTrigger="click"
+                  >
               <i nz-icon nzType="edit" nzTheme="outline"></i>
           </button>
           <ng-template #feedbackTemplate >

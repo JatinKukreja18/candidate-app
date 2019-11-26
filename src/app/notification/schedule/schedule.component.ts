@@ -47,7 +47,7 @@ export class ScheduleComponent implements OnInit {
       mobile: ['', [Validators.required, Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)]],
       interviewSlot: ['', Validators.required],
     });
-    this.profileService.getProfileDetails().subscribe((response) => {
+    this.profileService.getProfileDetails('').subscribe((response) => {
       if (response && response.code === 200 && response.data) {
         this.currentUser = response.data;
         if (this.currentUser['basicInfo']){

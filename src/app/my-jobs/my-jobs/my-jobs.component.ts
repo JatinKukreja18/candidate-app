@@ -237,7 +237,7 @@ export class MyJobsComponent implements OnInit {
   }
 
   getBasicProfileDetail() {
-    this.profileService.getProfileDetails().subscribe((response) => {
+    this.profileService.getProfileDetails('').subscribe((response) => {
         if (response && response.code === 200 && response.data) {
           console.log('profile/detail',response);
           this.currentUser = response.data;

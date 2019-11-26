@@ -27,7 +27,17 @@ export const environment = {
     countries: 'common/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
     coverPage: 'candidatecoverpage/fetchcoverpage?id=',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id='
+    viewProfile: 'candidateview/getviewprofile/',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id=',
+    editSkills: 'candidateeditpage/EditCandidateSkills/',
+    editProfileDetails: 'candidateeditpage/EditCandidateProfileDetails/',
+
+    editProjects: 'candidateeditpage/editprojectdetails/',
+    editEducation: 'candidateeditpage/editeducationdetails/',
+    editExperience: 'candidateeditpage/editexperiencedetails/',
+    editTraining: 'candidateeditpage/edittrainingdetails/',
+
+    editSocial: 'candidateeditpage/EditSocialDetails/'
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };

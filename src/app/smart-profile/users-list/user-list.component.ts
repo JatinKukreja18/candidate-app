@@ -22,19 +22,16 @@ export class UserListComponent  implements OnInit {
   }
   visible: boolean;
 
-  clickMe(): void {
-    this.visible = false;
-  }
 
-  change(value: boolean): void {
-    console.log(value);
-  }
   ngOnInit(){
       this.isLoading = true;
       this.getUserList();
       this.validateForm = this.fb.group({
         comment: ['', [Validators.required]]
       });
+  }
+  change(value: boolean): void {
+    console.log(value);
   }
   getPercent(val){
     return parseInt(val) * 10;
@@ -43,7 +40,11 @@ export class UserListComponent  implements OnInit {
   getUserList(){
     const options = '&pagenumber=' + this.currentPageIndex + '&pagesize=' + this.currentPageSize;
     this.userService.getAllUsers(options).subscribe(res => {
-      this.users = res;
+      this.users = res.map(v=>{
+           v.visible = false;
+           return v;
+      });
+      console.log(this.users);
       this.isLoading = false;
     });
   }
@@ -54,11 +55,11 @@ export class UserListComponent  implements OnInit {
       this.validateForm.controls[i].markAsDirty();
       this.validateForm.controls[i].updateValueAndValidity();
     }
-    console.log(this);
     this.userService.editFeedback(value.comment, user.UserName).subscribe(res=>{
       console.log(res);
       this.resetForm();
       user.InstructorFeedback = value.comment;
+      user.visible = false;
     }, err => {
         console.log(err);
         // user.InstructorFeedback = value.comment;

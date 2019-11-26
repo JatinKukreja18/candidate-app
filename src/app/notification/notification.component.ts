@@ -72,7 +72,7 @@ export class NotificationComponent implements OnInit {
      * Get basic profile data from API
      */
     getBasicProfileDetail() {
-        this.profileService.getProfileDetails().subscribe((response) => {
+        this.profileService.getProfileDetails('').subscribe((response) => {
             if (response && response.code === 200 && response.data) {
               this.currentUser = response.data;
               if (this.currentUser['basicInfo']) {

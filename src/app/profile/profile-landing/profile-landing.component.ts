@@ -816,23 +816,27 @@ export class ProfileLandingComponent implements OnInit {
       this.message.remove(loading);
       this.loading = false;
     }) */
-    this.userDataService.userEmitter.subscribe(candidateData => {
+    // this.userDataService.userEmitter.subscribe(candidateData => {
 
-      if(candidateData.CandidateId) {
+    //   if(candidateData.CandidateId) {
+    this.profileService.getProfileDetails(candidateId).subscribe(candidateData => {
         this.profile = candidateData;
         this.message.remove(loading);
         this.initForm();
         this.highlightSection();
         this.highlightMissingFields();
 
-      } else {
+      });
+      // else {
+
+      /* } else {
         this.userDataService.getUserData(this.candidateId).subscribe(response => {
         this.message.remove(loading);
         this.profile = response;
         });
-      }
 
-    });
+        */
+    // });
   }
 
   /**
