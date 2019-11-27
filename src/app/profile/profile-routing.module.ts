@@ -6,17 +6,17 @@ import {ProfileEditComponent} from './profile-edit/profile-edit.component'
 
 const routes: Routes = [
   {
-    path: 'edit-change/:id',
+    path: 'edit',
     component: ProfileLandingComponent
   },
   {
     path: 'view',
     component: ProfileviewComponent
-  },
-  {
-    path: 'edit',
-    component: ProfileEditComponent
-  },
+  }
+  // {
+  //   path: 'edit',
+  //   component: ProfileEditComponent
+  // },
 
 ];
 

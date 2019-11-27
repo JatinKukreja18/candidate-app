@@ -17,6 +17,7 @@
             [mobile]="candidateData.MobileNumber"
             [email]="candidateData.EmailId"
             [exporting]="exporting"
+            [target]="target"
             (export)="export()">
           </app-cover-page-header>
       </div>
@@ -88,7 +89,8 @@
           </div>
       </div>
     </div>
-    <div [ngClass]="exporting?'page-section fixed': 'is-paged page-section '" *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length">
+    <!-- *ngIf="candidateData.EmploymentHistory?.EmployerOrg?.length" -->
+    <div [ngClass]="exporting?'page-section fixed': 'is-paged page-section '"  #target>
         <div class="additional-projects prof-experience" >
             <div class="heading">
                 <span>Experience</span>

@@ -11,8 +11,9 @@ export const environment = {
     // client_secret: 'QSY2MejplNQ3xxtW',//'TBHUn69i6xMcSA55',
     redirect_uri: 'http://localhost:4200'
   },
+  // f7a379507defb935a5253b40819d0ee5
   googleClientId: "920246035724-2lo6qnhhaes0alqc9ighpe3sktfanjtk.apps.googleusercontent.com",// Google login client ID
-  facebookClientId: "239142750000978",// facebook login app id
+  facebookClientId: "2587087704712261",// facebook login app id
   websiteUrl: 'http://localhost:4200/',
   vimeo: {
     access_token: '52e07bfd53f8588d9322ab89787009b2'

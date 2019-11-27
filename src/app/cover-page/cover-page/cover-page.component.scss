@@ -36,6 +36,7 @@ $heading-color-2: rgb(43, 189, 225);
   max-width: 1120px;
   padding: 40px;
   position: relative;
+  padding-top: 80px;
 }
 .page-section{
   padding: 72px 96px;
@@ -57,13 +58,15 @@ $heading-color-2: rgb(43, 189, 225);
   background: linear-gradient(#6ca9f8,#7ae2ca);
 }
 .zoom-buttons{
-  position: absolute;
-  display: flex;
-  right: 0;
-  flex-direction: column;
-  width: 60px;
-  right: -50px;
-  font-size: 16px;
+    position: absolute;
+    font-size: 16px;
+    top: 25px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    text-align: center;
+    align-items: flex-start;
+    justify-content: center;
 }
 .zoom-buttons button{
   border: none;

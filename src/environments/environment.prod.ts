@@ -10,7 +10,7 @@ export const environment = {
     redirect_uri: 'https://collabera.herokuapp.com'// Replace with the URL of server application is hosted on
   },
   googleClientId: "920246035724-2lo6qnhhaes0alqc9ighpe3sktfanjtk.apps.googleusercontent.com",// Google login client ID
-  facebookClientId: "239142750000978",// facebook login app id
+  facebookClientId: "2587087704712261",// facebook login app id
   websiteUrl: 'https://collabera.herokuapp.com/',// Replace with the URL of server application is hosted on
   vimeo: {
     access_token: '52e07bfd53f8588d9322ab89787009b2'

@@ -11,7 +11,7 @@ const routes: Routes = [
   {
     path: 'dashboard',
     loadChildren: './dashboard/dashboard.module#DashboardModule',
-    // canActivate: [AuthGaurd]
+    canActivate: [AuthGaurd]
   },
   {
     path: 'profile',

@@ -24,6 +24,7 @@ export class CoverPageHeaderComponent implements OnInit, OnChanges {
   @Input() email: string;
   @Output() export = new EventEmitter();
   @Input() exporting;
+  @Input() target;
   exportLink = '';
 
   constructor( private router: Router,private activatedRoute: ActivatedRoute) { }
@@ -60,5 +61,8 @@ export class CoverPageHeaderComponent implements OnInit, OnChanges {
 
   exportResume() {
     this.export.emit();
+  }
+  skiptosection(el: HTMLElement) {
+    this.target.scrollIntoView({behavior: 'smooth'});
   }
 }
