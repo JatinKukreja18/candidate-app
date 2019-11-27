@@ -281,6 +281,7 @@ export class ProfileLandingComponent implements OnInit {
     //   this.getProfileDetails(this.candidateId);
     // });
     const user = this.authService.getCurrentUser();
+    this.candidateId = user.u;
     this.getProfileDetails(user.u); // Get the candidate data to be populated into the edit page
 
 
@@ -418,6 +419,7 @@ export class ProfileLandingComponent implements OnInit {
       this.experiencesForm.get('startDate').setValue(data.Start_Date);
       this.experiencesForm.get('endDate').setValue(data.End_Date);
       this.experiencesForm.get('description').setValue(data.Job_Description);
+      this.experiencesForm.get('experienceId').setValue(data.Id);
 
       this.experiences.splice(index, 1);
       this.experiences = [...this.experiences]; // need to update reference for nz-table to update
@@ -425,6 +427,7 @@ export class ProfileLandingComponent implements OnInit {
       this.additionalProjectsForm.get('name').setValue(data.Project_Title);
       this.additionalProjectsForm.get('year').setValue(data.year);
       this.additionalProjectsForm.get('description').setValue(data.Project_Description);
+      this.additionalProjectsForm.get('additionalProjectId').setValue(data.ID);
 
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
@@ -1236,7 +1239,7 @@ export class ProfileLandingComponent implements OnInit {
       }
       this.loading = true;
       const loading = this.message.loading(FeedbackMessages.loading.ProfileUpdate, { nzDuration: 0 }).messageId;
-      this.profileService.updateProfileDetails(formName, reqBody, 'Misha_Arora247').subscribe((response) => {
+      this.profileService.updateProfileDetails(formName, reqBody, this.candidateId).subscribe((response) => {
         this.loading = false;
         this.message.remove(loading);
         // this.analyticsService.eventEmitter('MyProfileScreen', 'ProfileSubmit', 'ProfileSubmit');
