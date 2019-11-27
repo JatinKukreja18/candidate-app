@@ -70,10 +70,18 @@ export class ProfileService {
               break;
             case 'socialForm': editApi += environment.apiPaths.editSocialDetails + username;
               break;
+            case 'professionalDetailsForm': editApi += environment.apiPaths.editSummary + username;
+              break;
           }
 
         if (formName === 'personalDetailsForm') {
             return this.http.put(editApi, data).pipe(tap(response => {
+                console.log(response);
+                /* this.profileData = response;
+                this.refreshProfileData(response); */
+            }));
+        } else if (formName === 'professionalDetailsForm') {
+            return this.http.post(editApi, '"' + data + '"').pipe(tap(response => {
                 console.log(response);
                 /* this.profileData = response;
                 this.refreshProfileData(response); */

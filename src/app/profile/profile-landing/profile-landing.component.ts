@@ -186,12 +186,13 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.professionalDetailsForm = this.formBuilder.group({
-      designation: ['', { updateOn: 'blur' }],
+      summary: ['', { updateOn: 'blur' }],
+      /* designation: ['', { updateOn: 'blur' }],
       expectedpayrate: ['', { validators: [Validators.pattern(/^[0-9]{1,4}$/)], updateOn: 'blur' }],
       expectedAnnual: ['', { validators: [Validators.pattern(/^[0-9]{1,7}$/)], updateOn: 'blur' }],
       preferredLocation: ['', { validators: [Validators.required], updateOn: 'blur' }],
       visastatus: [0, { updateOn: 'blur' }],
-      preferredJobTypeId: [0],
+      preferredJobTypeId: [0], */
     });
 
     this.resumeForm = this.formBuilder.group({
@@ -598,12 +599,13 @@ export class ProfileLandingComponent implements OnInit {
     // this.profileForm.get('imageUrl').setValue(this.profile.basicInfo.imageUrl ? this.profile.basicInfo.imageUrl : '');
 
     // Pre-Populate the Professional Details form
-    if (this.profile.professionalInfo) {
-      this.professionalDetailsForm.get('designation').setValue(this.profile.professionalInfo.designation ? this.profile.professionalInfo.designation : '');
+    // if (this.profile.professionalInfo) {
+      this.professionalDetailsForm.get('summary').setValue(this.profile.Summary ? this.profile.Summary : '');
+      /* this.professionalDetailsForm.get('designation').setValue(this.profile.professionalInfo.designation ? this.profile.professionalInfo.designation : '');
       this.professionalDetailsForm.get('preferredLocation').setValue(this.profile.professionalInfo.preferredLocation ? this.profile.professionalInfo.preferredLocation : '');
-      this.professionalDetailsForm.get('preferredJobTypeId').setValue(this.profile.professionalInfo.preferredJobTypeId ? this.profile.professionalInfo.preferredJobTypeId.toString() : '0');
+      this.professionalDetailsForm.get('preferredJobTypeId').setValue(this.profile.professionalInfo.preferredJobTypeId ? this.profile.professionalInfo.preferredJobTypeId.toString() : '0'); */
 
-      if (this.profile.professionalInfo.preferredJobTypeId == '1') {
+      /* if (this.profile.professionalInfo.preferredJobTypeId == '1') {
         this.professionalDetailsForm.get('expectedAnnual').setValue(this.profile.professionalInfo.expectedpay ? this.profile.professionalInfo.expectedpay : '');
       } else if (this.profile.professionalInfo.preferredJobTypeId == '2') {
         this.professionalDetailsForm.get('expectedpayrate').setValue(this.profile.professionalInfo.expectedpay ? this.profile.professionalInfo.expectedpay : '');
@@ -612,8 +614,8 @@ export class ProfileLandingComponent implements OnInit {
         if (elem.selected) {
           this.professionalDetailsForm.get('visastatus').setValue(elem.visastatusid);
         }
-      });
-    }
+      }); */
+    // }
 
     if (this.profile.referenceList && this.profile.referenceList[0]) {
       this.referenceForm.get('referenceList').get('one').get('name').setValue(this.profile.referenceList[0]['name']);
@@ -1116,11 +1118,12 @@ export class ProfileLandingComponent implements OnInit {
           'VideoLink': this.personalDetailsForm.value.videoLink
         };
       }
-      /* else if (formName === 'professionalDetailsForm') {
+      else if (formName === 'professionalDetailsForm') {
         if (this.professionalDetailsForm.invalid) {
           return;
         }
-        reqBody = {
+        reqBody = this.professionalDetailsForm.value.summary;
+        /* reqBody = {
           'designation': this.professionalDetailsForm.value.designation,
           'expectedpay': 0,
           'expectedPayUnitSymbol': '$',
@@ -1147,8 +1150,8 @@ export class ProfileLandingComponent implements OnInit {
           reqBody['professionalInfo'].expectedpay = this.professionalDetailsForm.value.expectedpayrate;
         } else if (reqBody['professionalInfo'] && reqBody['professionalInfo'].preferredJobTypeId === 3) {
           reqBody['professionalInfo'].expectedPayUnitSymbol = '$';
-        }
-      }  */
+        } */
+      } 
       else if (formName === 'videoForm') {
         if (this.videoForm.invalid) {
           return;

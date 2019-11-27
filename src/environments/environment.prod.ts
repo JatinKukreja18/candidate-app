@@ -34,7 +34,7 @@ export const environment = {
     editSkills: 'candidateeditpage/EditCandidateSkills/',
     editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
     editSocialDetails: 'candidateeditpage/EditSocialDetails/',
-    editSummary: 'candidateeditpage/EditProfessionalSummary',
+    editSummary: 'candidateeditpage/EditProfessionalSummary/',
     searchSkill: 'common/skillList?searchText='
   }
 };

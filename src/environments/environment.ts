@@ -37,7 +37,8 @@ export const environment = {
     editSkills: 'candidateeditpage/EditCandidateSkills/',
     editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
     editSocialDetails: 'candidateeditpage/EditSocialDetails/',
-    searchSkill: 'common/skillList?searchText='
+    searchSkill: 'common/skillList?searchText=',
+    editSummary: 'candidateeditpage/EditProfessionalSummary/',
   }
   // baseUrl: 'https://apiredep.collabera.com/uatcandidateapi/api/v1/candidate/'
 };

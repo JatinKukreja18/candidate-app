@@ -121,20 +121,22 @@
         </div>
       </div>
       <!-- Professional details form -->
-      <!--  <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}"
+      <div class="profile-card" id="professional" [ngClass]="{'active': activeSection.professional}"
         (click)="highlightSectionOnClick(2)">
         <div class="card-title">Professional Details
         </div>
         <div class="card-content">
           <form [formGroup]="professionalDetailsForm" (ngSubmit)="onSubmit(false, 'professionalDetailsForm')">
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('DESIRED_DESIGNATION') >= 0 }">
-              <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
-                class="form-control not-mandate" />
-              <label for="preferDesignation" class="form-control-placeholder"
-                [ngClass]="{'active': prof.designation.value, 'inactive': !prof.designation.value }">Desired
-                Designation</label>
+            <div class="form-group" >
+              <!-- <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
+                class="form-control not-mandate" /> -->
+                <textarea #summary tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary" 
+                formControlName="summary" style="margin-top: 30px;"></textarea>
+              <label for="summary" class="form-control-placeholder"
+                [ngClass]="{'active': prof.summary.value, 'inactive': !prof.summary.value }">Personal
+                Summary</label>
             </div>
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('PREFERRED_LOCATION') >= 0 }"
+            <!-- <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('PREFERRED_LOCATION') >= 0 }"
               #preferredLocation>
               <input tabindex="10" type="text" id="preferLocation" placeholder="" formControlName="preferredLocation"
                 class="form-control not-mandate" #city />
@@ -157,11 +159,11 @@
               <label for="work-permit" class="form-control-placeholder"
                 [ngClass]="{'active': prof.visastatus.value, 'inactive': !prof.visastatus.value }">Work Permit
                 Status</label>
-            </div>
+            </div> -->
 
 
 
-            <div class="form-group" id="job-type-group"
+           <!--  <div class="form-group" id="job-type-group"
               [ngClass]="{'missing': missingFields.indexOf('EMPLOYMENT_TYPE') >= 0 }">
               <nz-radio-group class="choose-slot not-mandate flex" id="job-type" formControlName="preferredJobTypeId">
                 <label nz-radio nzValue="1"><span class="radio-label" tabindex="12">Full Time</span></label>
@@ -200,7 +202,7 @@
               <div *ngIf="prof.expectedpayrate.errors" class="invalid-feedback">
                 <div class="error" *ngIf="prof.expectedpayrate.errors.pattern">{{validationMsgs.PayrateMaxLength}}</div>
               </div>
-            </div>
+            </div> -->
 
             <div class="submit-button">
               <button class="orange-button">Submit</button>
@@ -208,7 +210,7 @@
 
           </form>
         </div>
-      </div> -->
+      </div>
       <!-- Resume upload form -->
       <div class="profile-card" id="resume" [ngClass]="{'active': activeSection.resume}"
         (click)="highlightSectionOnClick(3)">
