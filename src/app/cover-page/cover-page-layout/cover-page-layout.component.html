@@ -96,16 +96,17 @@
                 <span>Experience</span>
             </div>
             <div class="content">
-                <div *ngFor="let org of candidateData?.EmploymentHistory?.EmployerOrg">
+                <div *ngFor="let org of candidateData?.CandidateExperienceDetails">
+
                     <app-details-list-card class="additional-project-card" [is-editable]="isEditable && !exporting">
                         <div title class="card-title">
-                            <span>{{org.EmployerOrgName}} <span class="light">- {{org.LocationSummary[0].Municipality}},{{org.LocationSummary[0].Region}}</span></span>
+                            <span>{{org.Company_Name}} <span class="light">- {{org.Location}}</span></span>
                         </div>
                         <div sub-title class="card-sub-title">
-                            <span class="emp-role">{{org.PositionHistories[0].Title}}</span>
-                            <span class="duration">{{org.PositionHistories[0].StartDate}} <span *ngIf='org.PositionHistories[0].EndDate'> - </span>{{org.PositionHistories[0].EndDate}}</span>
+                            <span class="emp-role">{{org.Job_Title}}</span>
+                            <span class="duration">{{org.Start_Date | date}} <span *ngIf='org.End_Date'> - </span>{{org.End_Date | date}}</span>
                         </div>
-                        <div content class="card-content" [innerHtml]="org.PositionHistories[0].Description">
+                        <div content class="card-content" [innerHtml]="org.Job_Description">
                             <!-- <div *ngFor="let item of project.keyPoints" class="items">
                                 <div class="bullet"></div>
                                 <div class="item">{{item}}</div>

@@ -17,7 +17,7 @@ export const environment = {
   },
   shareappUrl: 'http%3A%2F%2Fcollabera.herokuapp.com', // URL encoded URL of server application is hosted on
   apiPaths: {
-    // coverPage: '../assets/cp_video.json',
+     // coverPage: '../assets/cp_video.json',
     // allUsers: '../assets/user-list.json'
     login: 'registration/login',
     register: 'registration/registerrequest',
@@ -25,6 +25,15 @@ export const environment = {
     countries: 'common/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
     coverPage: 'candidatecoverpage/fetchcoverpage?id=',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id='
+    viewProfile: 'candidateview/getviewprofile/',
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id=',
+    editAdditionalProjects: 'candidateeditpage/editprojectdetails/',
+    editEducations: 'candidateeditpage/editeducationdetails/',
+    editExperiences: 'candidateeditpage/editexperiencedetails/',
+    editTrainings: 'candidateeditpage/edittrainingdetails/',
+    editSkills: 'candidateeditpage/EditCandidateSkills/',
+    editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
+    editSocialDetails: 'candidateeditpage/EditSocialDetails/',
+    editSummary: 'candidateeditpage/EditProfessionalSummary'
   }
 };
