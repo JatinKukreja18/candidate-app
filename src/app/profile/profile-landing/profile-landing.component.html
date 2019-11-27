@@ -67,14 +67,14 @@
               </nz-radio-group>
               <label for="gender" class="form-control-placeholder">Gender</label>
             </div>
-            <div class="form-group" id="dob-group">
+            <!-- <div class="form-group" id="dob-group">
               <nz-date-picker formControlName="dob" tabindex="6" id="dob" class="form-control not-mandate"
                 [nzDisabledDate]="disabledDate" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
                 [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Date of Birth'"
                 [ngClass]="{ 'is-invalid': pers.lastName.touched &&  pers.lastName.errors }"></nz-date-picker>
               <label for="dob" class="form-control-placeholder">DOB</label>
               <span class="calendar-icon"><img src="/assets/images/ic-calendar-copy.svg" alt="" /></span>
-            </div>
+            </div> -->
             <div class="flex" id="phone">
               <div class="form-group">
                 <label for="countryCode" class="form-control-placeholder country-code-placeholder"
@@ -100,14 +100,14 @@
             <div class="form-group"  #videoLink>
                 <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId"
                   (ngModelChange)="onChange($event)">
-                  <label tabindex="19" nz-radio nzValue="1"><span class="radio-label">YouTube</span></label>
-                  <label tabindex="20" nz-radio nzValue="2"><span class="radio-label">Vimeo</span></label>
+                  <label tabindex="19" nz-radio [nzValue]="videoTypes.youtube"><span class="radio-label">YouTube</span></label>
+                  <label tabindex="20" nz-radio [nzValue]="videoTypes.vimeo"><span class="radio-label">Vimeo</span></label>
                 </nz-radio-group>
                 <label for="video-type" class="form-control-placeholder">Video Type</label>
               </div>
               <div class="form-group" >
                 <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink"
-                  class="form-control not-mandate" />
+                  class="form-control not-mandate" [placeholder]="videoPlaceholder" />
                 <label for="vidUrl" class="form-control-placeholder"
                   [ngClass]="{'active': pers.videoLink.value, 'inactive': !pers.videoLink.value }">Video URL</label>
                 <!-- <div *ngIf="pers.videoLink.touched && pers.videoLink.errors" class="invalid-feedback">
