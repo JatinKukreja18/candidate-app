@@ -173,7 +173,9 @@ export class ProfileLandingComponent implements OnInit {
       lastName: ['', { validators: [Validators.maxLength(25)], updateOn: 'blur' }],
       countryPhoneCode: ['', { validators: [Validators.required], updateOn: 'blur' }],
       mobile: ['', { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: 'blur' }],
-      dob: [''],
+      /* dob : [''], */
+      videoLink: ['', { updateOn: 'blur' }],
+      videoLinkTypeId: [1],
       gender: [''],
     });
 
@@ -583,8 +585,10 @@ export class ProfileLandingComponent implements OnInit {
     this.personalDetailsForm.get('lastName').setValue(this.profile.LastName ? this.profile.LastName : '');
     this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.CountryCode ? parseInt(this.profile.CountryCode) : '');
     this.personalDetailsForm.get('mobile').setValue(this.profile.MobileNumber ? this.profile.MobileNumber : '');
-    this.personalDetailsForm.get('gender').setValue(this.profile.Gender ? this.profile.basicInfo.Gender : '');
-    this.personalDetailsForm.get('dob').setValue(this.profile.DOB ? new Date(this.profile.DOB) : null);
+    this.personalDetailsForm.get('gender').setValue(this.profile.Gender ? this.profile.Gender : '');
+    this.personalDetailsForm.get('videoLinkTypeId').setValue(this.profile.VedioLinkTypeId ? this.profile.VedioLinkTypeId : '');
+    this.personalDetailsForm.get('videoLink').setValue(this.profile.VideoLink ? this.profile.VideoLink : '');
+    /* this.personalDetailsForm.get('dob').setValue(this.profile.DOB ? new Date(this.profile.DOB) : null); */
     // this.profileForm.get('imageUrl').setValue(this.profile.basicInfo.imageUrl ? this.profile.basicInfo.imageUrl : '');
 
     // Pre-Populate the Professional Details form
@@ -980,7 +984,7 @@ export class ProfileLandingComponent implements OnInit {
       'basicInfo': {
         'firstName': this.profileForm.value.firstName,
         'lastName': this.profileForm.value.lastName,
-        'dob': this.profileForm.value.dob,
+        /* 'dob': this.profileForm.value.dob, */
         'gender': this.profileForm.value.gender,
         'mobile': this.profileForm.value.mobile,
         'countryPhoneCode': this.profileForm.value.countryPhoneCode,
@@ -1098,10 +1102,12 @@ export class ProfileLandingComponent implements OnInit {
         reqBody = {
           'FirstName': this.personalDetailsForm.value.firstName,
           'LastName': this.personalDetailsForm.value.lastName,
-          'DOB': this.personalDetailsForm.value.dob,
+          /* 'DOB': this.personalDetailsForm.value.dob, */
           'Gender': this.personalDetailsForm.value.gender,
           'MobileNumber': this.personalDetailsForm.value.mobile,
           'CountryCode': this.personalDetailsForm.value.countryPhoneCode,
+          'VedioLinkTypeId': this.personalDetailsForm.value.videoLinkTypeId,
+          'VideoLink': this.personalDetailsForm.value.videoLink
         };
       }
       /* else if (formName === 'professionalDetailsForm') {
@@ -1313,12 +1319,12 @@ export class ProfileLandingComponent implements OnInit {
    */
   onChange(value) {
     const youtubeUrlRegex = /(http(s)?:\/\/.)?(www\.)?\byoutube\b/i;
-    setTimeout(() => {
+    /* setTimeout(() => {
       if (document.querySelector('.vimeo-video')) document.querySelector('.vimeo-video').remove();
       if (value == 2 && this.profile && (!this.profile.videoLink || youtubeUrlRegex.test(this.profile.videoLink)) && !this.loading) {
         this.prepareVideoUpload();
       }
-    }, 500);
+    }, 500); */
   }
 
   /**

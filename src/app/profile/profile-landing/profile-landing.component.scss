@@ -360,9 +360,11 @@
     z-index: 2;
     opacity: 0;
   }
-  &#social,
-  &#video, &#trainings {
+  &#social{
     width: 32%;
+  }
+    &#trainings {
+        width: 67%;
     .trainingsContent{
         width: 100%;
         .horizontal{

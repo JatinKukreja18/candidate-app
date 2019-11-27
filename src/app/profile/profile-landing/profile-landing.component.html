@@ -97,6 +97,23 @@
                 </div>
               </div>
             </div>
+            <div class="form-group"  #videoLink>
+                <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId"
+                  (ngModelChange)="onChange($event)">
+                  <label tabindex="19" nz-radio nzValue="1"><span class="radio-label">YouTube</span></label>
+                  <label tabindex="20" nz-radio nzValue="2"><span class="radio-label">Vimeo</span></label>
+                </nz-radio-group>
+                <label for="video-type" class="form-control-placeholder">Video Type</label>
+              </div>
+              <div class="form-group" >
+                <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink"
+                  class="form-control not-mandate" />
+                <label for="vidUrl" class="form-control-placeholder"
+                  [ngClass]="{'active': pers.videoLink.value, 'inactive': !pers.videoLink.value }">Video URL</label>
+                <!-- <div *ngIf="pers.videoLink.touched && pers.videoLink.errors" class="invalid-feedback">
+                  <div class="error" *ngIf="pers.videoLink.errors.pattern">{{validationMsgs.YoutubeLinkInvalid}}</div>
+                </div> -->
+              </div>
             <div class="submit-button">
               <button class="orange-button">Submit</button>
             </div>
@@ -278,14 +295,9 @@
         </div>
       </div>
       <!-- Video upload form -->
-      <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}"
+     <!--  <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}"
         (click)="highlightSectionOnClick(5)">
         <div class="card-title">Video Profile
-          <!-- <span class="card-status">
-            <img
-              [src]="profile && profile.videoLink && profile.videoLinkTypeId != 0 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
-              alt="Profile completed" />
-          </span> -->
         </div>
         <div class="card-content">
           <form [formGroup]="videoForm" (ngSubmit)="onSubmit(false, 'videoForm')">
@@ -319,18 +331,10 @@
               <p class="video-transcoding note" *ngIf="videoData?.status == 'transcoding'">Note: Please wait while video
                 is getting ready.</p>
               <div class="video-col">
-                <!-- <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross" src="/assets/images/ic-delete-cross.svg"  alt="red cross" (click)="openDeleteResourceConfirmationModal(203)"/> -->
                 <div class="vid-clip" *ngIf="videoData?.pictures" (click)="openPlayVideoModal()">
-                  <!-- <video width="181" height="107" [src]="videoLink"></video> -->
-                  <!-- <iframe width="181" height="107" [src]="safeUrl()" frameBorder="0"></iframe> -->
                   <img [src]="videoData?.pictures?.sizes[0]['link_with_play_button']" alt="">
-                  <!-- <embed [src]="videoLink" width="181" height="107"></embed> -->
                 </div>
               </div>
-              <!-- <div class="video-details-col">
-                  <p class="video-title">{{profile?.VideoLinkCaption}}</p>
-                  <p class="video-time">05:30 mins</p>
-                </div> -->
               <div class="delete-video">
                 <img *ngIf="profile && profile.videoLink && videoData?.pictures" class="delete-cross"
                   src="/assets/images/delete.png" alt="red cross" (click)="openDeleteResourceConfirmationModal(203)" />
@@ -341,7 +345,7 @@
             </div>
           </form>
         </div>
-      </div>
+      </div> -->
       <div class="profile-card" id="trainings" [ngClass]="{'active': activeSection.trainings}"
         (click)="highlightSectionOnClick(11)">
         <div class="card-title">Trainings
@@ -847,7 +851,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'experiencesForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
           </div>
         </div>
       </div>
