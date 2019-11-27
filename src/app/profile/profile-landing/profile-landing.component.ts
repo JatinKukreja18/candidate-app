@@ -1161,26 +1161,28 @@ export class ProfileLandingComponent implements OnInit {
         if (this.socialForm.invalid) {
           return;
         }
-        reqBody = {
-          'socialLink': [
+        reqBody = [
             {
-              link: this.socialForm.value.linkedin,
-              typeid: 3
+              ID: 0,
+              ProfileLink: this.socialForm.value.linkedin,
+              SocialSiteId: 3
             },
             {
-              link: this.socialForm.value.github,
-              typeid: 5
+              ID: 0,
+              ProfileLink: this.socialForm.value.github,
+              SocialSiteId: 5
             },
             {
-              link: this.socialForm.value.stack,
-              typeid: 6
+              ID: 0,
+              ProfileLink: this.socialForm.value.stack,
+              SocialSiteId: 6
             },
-            {
+            /* {
               link: this.socialForm.value.others ? this.socialForm.value.others : '',
               typeid: 7
-            }
-          ],
-        };
+            } */
+          ];
+        
       }
       /* else if (formName === 'referenceForm') {
         if (this.referenceForm.invalid ||

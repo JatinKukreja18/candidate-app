@@ -68,6 +68,8 @@ export class ProfileService {
               break;
             case 'trainingsForm': editApi += environment.apiPaths.editTrainings + username;
               break;
+            case 'socialForm': editApi += environment.apiPaths.editSocialDetails + username;
+              break;
           }
 
         if (formName === 'personalDetailsForm') {

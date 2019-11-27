@@ -25,6 +25,14 @@ export const environment = {
     countries: 'common/countrylist',
     allUsers: 'candidatelist/getcandidatelist?',
     coverPage: 'candidatecoverpage/fetchcoverpage?id=',
-    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id='
+    editFeedback: 'CandidateEditPage/UpdateInstructorFeedback?id=',
+    viewProfile: 'candidateview/getviewprofile/',
+    editAdditionalProjects: 'candidateeditpage/editprojectdetails/',
+    editEducations: 'candidateeditpage/editeducationdetails/',
+    editExperiences: 'candidateeditpage/editexperiencedetails/',
+    editTrainings: 'candidateeditpage/edittrainingdetails/',
+    editSkills: 'candidateeditpage/EditCandidateSkills/',
+    editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
+    editSocialDetails: 'candidateeditpage/EditSocialDetails/'
   }
 };
