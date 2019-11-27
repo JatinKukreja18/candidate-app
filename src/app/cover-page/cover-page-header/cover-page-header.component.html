@@ -31,7 +31,7 @@
             <div class="custom-tooltip">{{email}}</div>
         </div> -->
         <!-- <a class="resume-heading" [routerLink]="[exportLink, {export: true}]" target="_blank"> -->
-            <a class="resume-heading" (click)="exportResume()" *ngIf='!exporting'>
+            <a class="resume-heading" (click)="skiptosection()" *ngIf='!exporting'>
                 <img src="assets/icons/ic_resume.svg" alt="" srcset="" style="width: 40px;">
             RESUME</a>
 

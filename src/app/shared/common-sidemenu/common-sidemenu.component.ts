@@ -14,7 +14,7 @@ import { filter } from 'rxjs/operators';
 export class CommonSidemenuComponent implements OnInit {
   currentUserDetails: any;
   socialUserDetails: any;
-    
+
   @Input() open: boolean;
   @Output() toggle: EventEmitter<boolean> = new EventEmitter<boolean>(false);
   isVisible: boolean;
@@ -52,7 +52,7 @@ export class CommonSidemenuComponent implements OnInit {
       facebook: `https://facebook.com/sharer/sharer.php?u=${environment.shareappUrl}`,
       twitter: `https://twitter.com/intent/tweet/?text=${title}&url=${environment.shareappUrl}`,
       email: `mailto:?subject=${title}&body=${environment.shareappUrl}`,
-      linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${environment.shareappUrl}&summary=${title}&source=${environment.shareappUrl}` 
+      linkedin: `https://www.linkedin.com/shareArticle?mini=true&url=${environment.shareappUrl}&summary=${title}&source=${environment.shareappUrl}`
     }
     this.authService.currentUserSubject.subscribe((userDetails) => {
       if (userDetails) {
@@ -60,12 +60,12 @@ export class CommonSidemenuComponent implements OnInit {
         else this.socialUserDetails = userDetails.socialProfileDetails;
       }
     });
-    this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event:NavigationEnd) => {
-      if (event.url) {
-        const id = event.url.split('/')[2];
-        this.editProfileLink = [`profile/edit-change/${id}`];
-      }
-    });
+    this.editProfileLink = [`profile/edit`];
+    // this.router.events.pipe(filter(event => event instanceof NavigationEnd)).subscribe((event:NavigationEnd) => {
+    //   if (event.url) {
+    //     const id = event.url.split('/')[2];
+    //   }
+    // });
   }
 
   /**
@@ -104,7 +104,7 @@ export class CommonSidemenuComponent implements OnInit {
     this.toggle.emit(false);
   }
 
-  /** 
+  /**
    * Show Modal
   */
   showModal(): void {
@@ -150,10 +150,10 @@ export class CommonSidemenuComponent implements OnInit {
     });
   }
 
-  /** 
+  /**
   * Close Modal
   */
-  handleOk(): void {  
+  handleOk(): void {
     this.profileService.shareFeedback(this.rating, this.comment).subscribe((response) => {
       if (response && response.code === 200) {
         this.isVisible = false;

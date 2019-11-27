@@ -83,7 +83,7 @@ export class SidebarLoginComponent implements OnInit {
                 this.message.remove(loading);
                 if (res.body.code === 200) {
                     // this.router.navigateByUrl('/dashboard/coverPage');
-                    this.router.navigateByUrl('/dashboard/');
+                    this.router.navigateByUrl('/dashboard');
                     this.analyticsService.eventEmitter('Authentication', 'Login', 'Login');
               }
             }, (error) => {

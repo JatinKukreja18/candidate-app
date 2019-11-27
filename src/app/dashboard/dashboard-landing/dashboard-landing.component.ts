@@ -47,13 +47,12 @@ export class DashboardLandingComponent implements OnInit {
       city: ['', [Validators.required]],
       skills: [null, [Validators.required]]
     });
-    const userId = this.authService.getCurrentUser().candidateProfile.name;
-
+    const user = this.authService.getCurrentUser();
+    this.getCandidateData(user.u); // Get the candidate data to be populated into the cover page
 
     // this.getDashboardData(true);
     // this.getSuggestedSkills(); // Get the Skills lists from API or from local(if exists)
     // this.initGoogleMapPlaces(); // Initialize the Google places API with the city dropdown element
-    this.getCandidateData(userId); // Get the candidate data to be populated into the cover page
   }
 
   /**
@@ -337,7 +336,9 @@ export class DashboardLandingComponent implements OnInit {
    * @param profileSection numeric values 1-Basic, 2-Proffessional, 3-Resume, 4-Social, 5-Video
    */
   gotoProfile(profileSection: number) {
-    this.router.navigate(['/profile'], {queryParams: {active: profileSection}});
+    // forcing to do to edit
+    this.router.navigate(['/profile/edit']);
+    // this.router.navigate(['/profile'], {queryParams: {active: profileSection}});
   }
 
   /**

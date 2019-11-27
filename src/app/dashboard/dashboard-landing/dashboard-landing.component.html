@@ -9,15 +9,15 @@
         <div *ngIf="submitted && f.skills.errors" class="invalid-feedback">
           <div class="error" *ngIf="f.skills.errors.required">Please select skills</div>
         </div>
-        <span class="editable-tag input-icon after"><img src="/assets/images/ic-search.svg"></span>
-        <span class="editable-tag input-icon before"><img src="/assets/images/ic-add-skill.svg" (click)="toggleSkillsDropdown()"></span>
+        <span class="editable-tag input-icon after"><img src="assets/images/ic-search.svg"></span>
+        <span class="editable-tag input-icon before"><img src="assets/images/ic-add-skill.svg" (click)="toggleSkillsDropdown()"></span>
       </div>
       <div class="form-group col-3">
         <input [ngClass]="{'invalid-input':submitted && f.city.errors}" formControlName="city" type="text" placeholder="Search in City" #city/>
         <div *ngIf="submitted && f.city.errors" class="invalid-feedback">
           <div class="error" *ngIf="f.city.errors.required">Please select city</div>
         </div>
-        <span class="input-icon after"><img src="/assets/images/ic-location.svg"></span>
+        <span class="input-icon after"><img src="assets/images/ic-location.svg"></span>
       </div>
 
       <div class="form-group col-2">
@@ -42,40 +42,40 @@
         <p class="section-title">Profile {{ candidate?.overallprofilestatus ? candidate.overallprofilestatus: 0}}% Completed</p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(1)">
-            <img [src]="candidate?.profile?.basicinfo == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /><span [ngClass]="{'completed': candidate?.profile?.basicinfo == 100}">Basic Info</span>
+            <img [src]="candidate?.profile?.basicinfo == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /><span [ngClass]="{'completed': candidate?.profile?.basicinfo == 100}">Basic Info</span>
             <p class="progress-pc">{{candidate?.profile?.basicinfo ? candidate.profile.basicinfo : 0}}%</p>
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(2)">
-            <img [src]="candidate?.profile?.professionalinfo == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.professionalinfo == 100}">Professional Info</span>
+            <img [src]="candidate?.profile?.professionalinfo == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.professionalinfo == 100}">Professional Info</span>
             <p class="progress-pc">{{candidate?.profile?.professionalinfo ? candidate.profile.professionalinfo : 0}}%</p>
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(3)">
-            <img [src]="candidate?.profile?.resumeupload == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.resumeupload == 100}">Resume Upload</span>
+            <img [src]="candidate?.profile?.resumeupload == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.resumeupload == 100}">Resume Upload</span>
             <p class="progress-pc">{{candidate?.profile?.resumeupload ? candidate.profile.resumeupload : 0}}%</p>
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(4)">
-            <img [src]="candidate?.profile?.sociallinks == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.sociallinks == 100}">Social Profiles</span>
+            <img [src]="candidate?.profile?.sociallinks == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.sociallinks == 100}">Social Profiles</span>
             <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p>
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(5)">
-            <img [src]="candidate?.profile?.videoprofile == 100 ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.videoprofile == 100}">Video Profile</span>
+            <img [src]="candidate?.profile?.videoprofile == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.videoprofile == 100}">Video Profile</span>
             <p class="progress-pc">{{candidate?.profile?.videoprofile ? candidate.profile.videoprofile : 0}}%</p>
           </div>
           <button class="orange-button" [routerLink]="['/profile']" *ngIf="candidate && candidate?.overallprofilestatus != 100" (click)="completeProfileNavigation()">Complete Profile</button>
           <div class="row profile-tips">
-            <p class="tip-icon"><img src="/assets/images/tip-icon.svg" alt="" /></p>
+            <p class="tip-icon"><img src="assets/images/tip-icon.svg" alt="" /></p>
             <p class="tip-text" title="{{candidate?.profileTips[0]['tips']}}">{{candidate?.profileTips[0]['tips']}}</p>
           </div>
           <!-- <p class="tip-text">Having updated Resumes will fetch you better jobs</p> -->
@@ -98,7 +98,7 @@
 <nz-modal [(nzVisible)]="isVisible" (nzOnCancel)="handleCancel()" (nzOnOk)="handleOk()">
     <div class="confirmation-modal">
         <div class="flex confirmation-modal-body">
-          <img src="/assets/images/popimg.png"/>
+          <img src="assets/images/popimg.png"/>
           </div>
     </div>
 </nz-modal> -->
@@ -113,7 +113,7 @@
 
 <div class="resume-modal">
 <div class="modal_img">
-    <img src="/assets/images/popimg.png"/>
+    <img src="assets/images/popimg.png"/>
 </div>
 
   <div class="modal_content">

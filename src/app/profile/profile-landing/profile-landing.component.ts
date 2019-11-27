@@ -5,7 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ValidationMessages, FeedbackMessages } from '@app/core/messages';
-import { ProfileService, CommonService, VimeoService, AnalyticsService } from '@app/core';
+import { AuthenticationService, ProfileService, CommonService, VimeoService, AnalyticsService } from '@app/core';
 import { ProfileForm } from '@app/core/models';
 import { Observable, Subscription } from 'rxjs';
 
@@ -147,12 +147,13 @@ export class ProfileLandingComponent implements OnInit {
     private router: Router,
     private analyticsService: AnalyticsService,
     private activatedRoute: ActivatedRoute,
-    private userDataService: UserDataService
+    private userDataService: UserDataService,
+    private authService: AuthenticationService,
   ) {
     this.validationMsgs = ValidationMessages;
   }
 
-  
+
 
   dropdownOptions: any = [];
 
@@ -275,10 +276,13 @@ export class ProfileLandingComponent implements OnInit {
       workpermit: ['', { updateOn: 'blur' }],
     });
     this.initGoogleMapPlaces();
-    this.activatedRoute.params.subscribe((params) => {
-      this.candidateId = params.id;
-      this.getProfileDetails(this.candidateId);
-    });
+    // this.activatedRoute.params.subscribe((params) => {
+    //   this.candidateId = params.id;
+    //   this.getProfileDetails(this.candidateId);
+    // });
+    const user = this.authService.getCurrentUser();
+    this.getProfileDetails(user.u); // Get the candidate data to be populated into the edit page
+
 
 
   }
@@ -624,7 +628,7 @@ export class ProfileLandingComponent implements OnInit {
     }
 
     /*     this.videoForm.get('videoLinkTypeId').setValue(this.profile.videoLinkTypeId ? this.profile.videoLinkTypeId.toString() : '0');
-    
+
         this.videoForm.get('VideoLinkCaption').setValue(this.profile.VideoLinkCaption ? this.profile.VideoLinkCaption : '');
         if (this.profile.videoLink && this.profile.videoLinkTypeId == 1) {
           this.videoLink = this.sanitizer.bypassSecurityTrustResourceUrl(this.profile.videoLink);
@@ -643,7 +647,7 @@ export class ProfileLandingComponent implements OnInit {
         } else {
           this.videoForm.get('uploadVideoLink').setValue(this.profile.videoLink);
         }
-    
+
         this.formChangeSubscription = this.videoForm.valueChanges.subscribe(value => {
           this.saveFormToLocal();
         }); */
@@ -1096,7 +1100,7 @@ export class ProfileLandingComponent implements OnInit {
           'MobileNumber': this.personalDetailsForm.value.mobile,
           'CountryCode': this.personalDetailsForm.value.countryPhoneCode,
         };
-      } 
+      }
       /* else if (formName === 'professionalDetailsForm') {
         if (this.professionalDetailsForm.invalid) {
           return;
@@ -1168,7 +1172,7 @@ export class ProfileLandingComponent implements OnInit {
             }
           ],
         };
-      } 
+      }
       /* else if (formName === 'referenceForm') {
         if (this.referenceForm.invalid ||
           (this.referenceForm.get('referenceList').get('one').value.emailid && this.referenceForm.get('referenceList').get('two').value.emailid &&
@@ -1212,7 +1216,7 @@ export class ProfileLandingComponent implements OnInit {
       } else if (formName === 'additionalSkillsForm') {
 
         reqBody = this.additionalSkillsList;
-        
+
       } else if (formName === 'experiencesForm') {
 
         reqBody = this.experiences;
