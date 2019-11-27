@@ -28,6 +28,10 @@
     }
     // line-height: 0;
   }
+  .ant-select-search--inline .ant-select-search__field {
+      margin-top: 12px;
+      height: 14px;
+  }
   .ant-select-selection--multiple .ant-select-selection__rendered > ul > li {
     margin: 0 0 5px;
     height: 24px;

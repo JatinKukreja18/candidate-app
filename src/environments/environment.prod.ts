@@ -33,6 +33,7 @@ export const environment = {
     editTrainings: 'candidateeditpage/edittrainingdetails/',
     editSkills: 'candidateeditpage/EditCandidateSkills/',
     editPersonalDetails: 'candidateeditpage/EditCandidateProfileDetails/',
-    editSocialDetails: 'candidateeditpage/EditSocialDetails/'
+    editSocialDetails: 'candidateeditpage/EditSocialDetails/',
+    searchSkill: 'common/skillList?searchText='
   }
 };

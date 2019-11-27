@@ -602,13 +602,13 @@
           <form [formGroup]="primarySkillsForm" class="flex primarySkillsContent">
             <input type="hidden" formControlName="primarySkillId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
-                class="form-control not-mandate" />
-                <!-- <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+              <!-- <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
+                class="form-control not-mandate" /> -->
+                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
-                (nzOnSearch)="search($event)" >
-                <nz-option [nzValue]="skill" [nzLabel]="skill" *ngFor="let skill of skills"></nz-option>
-              </nz-select> -->
+                (nzOnSearch)="searchSkill($event)" >
+                <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
+              </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
                 Name</label>
@@ -688,8 +688,11 @@
           <form [formGroup]="additionalSkillsForm" class="flex primarySkillsContent">
             <input type="hidden" formControlName="additionalSkillId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #skillName tabindex="36" type="text" id="skillName" formControlName="skillName"
-                class="form-control not-mandate" />
+                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+                nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
+                (nzOnSearch)="searchSkill($event)" >
+                <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
+              </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': additionalSkills.skillName.value, 'inactive': !additionalSkills.skillName.value }">Skill
                 Name</label>

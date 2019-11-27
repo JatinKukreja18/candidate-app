@@ -59,6 +59,7 @@ export class ProfileLandingComponent implements OnInit {
   additionalProjectsList = [];
   educationsList = [];
   trainingsList = [];
+  skills = [];
   selectedFile: {
     profileImage: string,
     resumeName: string,
@@ -1313,6 +1314,17 @@ export class ProfileLandingComponent implements OnInit {
         this.message.remove(loading);
       });
     }
+  }
+
+  searchSkill(searchTerm){
+    if(searchTerm !== '' && searchTerm !== null && searchTerm.length >=3){
+      this.profileService.searchSkill(searchTerm).subscribe(response => {
+        if(response['code'] === 200 && response['data']) {
+          this.skills = response['data']
+        }
+      });
+    }
+    
   }
 
   /**
