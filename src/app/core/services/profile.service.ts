@@ -99,6 +99,13 @@ export class ProfileService {
         }
         
     }
+
+    searchSkill(skillName) {
+        return this.http.get(apiUrl + environment.apiPaths.searchSkill + skillName).pipe(tap(response => {
+            console.log(response);
+            
+        })); 
+    }
     /* getProfileDetails():Observable<Response>{
         return this.http.get<Response>('profile/detail').pipe(tap((response) => {
             if (response && response.code === 200 && response.data) {

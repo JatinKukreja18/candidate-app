@@ -67,14 +67,14 @@
               </nz-radio-group>
               <label for="gender" class="form-control-placeholder">Gender</label>
             </div>
-            <div class="form-group" id="dob-group">
+            <!-- <div class="form-group" id="dob-group">
               <nz-date-picker formControlName="dob" tabindex="6" id="dob" class="form-control not-mandate"
                 [nzDisabledDate]="disabledDate" [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'"
                 [nzFormat]="'dd MMM yyyy'" [nzPlaceHolder]="'Date of Birth'"
                 [ngClass]="{ 'is-invalid': pers.lastName.touched &&  pers.lastName.errors }"></nz-date-picker>
               <label for="dob" class="form-control-placeholder">DOB</label>
               <span class="calendar-icon"><img src="/assets/images/ic-calendar-copy.svg" alt="" /></span>
-            </div>
+            </div> -->
             <div class="flex" id="phone">
               <div class="form-group">
                 <label for="countryCode" class="form-control-placeholder country-code-placeholder"
@@ -100,14 +100,14 @@
             <div class="form-group"  #videoLink>
                 <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId"
                   (ngModelChange)="onChange($event)">
-                  <label tabindex="19" nz-radio nzValue="1"><span class="radio-label">YouTube</span></label>
-                  <label tabindex="20" nz-radio nzValue="2"><span class="radio-label">Vimeo</span></label>
+                  <label tabindex="19" nz-radio [nzValue]="videoTypes.youtube"><span class="radio-label">YouTube</span></label>
+                  <label tabindex="20" nz-radio [nzValue]="videoTypes.vimeo"><span class="radio-label">Vimeo</span></label>
                 </nz-radio-group>
                 <label for="video-type" class="form-control-placeholder">Video Type</label>
               </div>
               <div class="form-group" >
                 <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink"
-                  class="form-control not-mandate" />
+                  class="form-control not-mandate" [placeholder]="videoPlaceholder" />
                 <label for="vidUrl" class="form-control-placeholder"
                   [ngClass]="{'active': pers.videoLink.value, 'inactive': !pers.videoLink.value }">Video URL</label>
                 <!-- <div *ngIf="pers.videoLink.touched && pers.videoLink.errors" class="invalid-feedback">
@@ -602,13 +602,13 @@
           <form [formGroup]="primarySkillsForm" class="flex primarySkillsContent">
             <input type="hidden" formControlName="primarySkillId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
-                class="form-control not-mandate" />
-                <!-- <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+              <!-- <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
+                class="form-control not-mandate" /> -->
+                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
-                (nzOnSearch)="search($event)" >
-                <nz-option [nzValue]="skill" [nzLabel]="skill" *ngFor="let skill of skills"></nz-option>
-              </nz-select> -->
+                (nzOnSearch)="searchSkill($event)" >
+                <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
+              </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
                 Name</label>
@@ -688,8 +688,11 @@
           <form [formGroup]="additionalSkillsForm" class="flex primarySkillsContent">
             <input type="hidden" formControlName="additionalSkillId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #skillName tabindex="36" type="text" id="skillName" formControlName="skillName"
-                class="form-control not-mandate" />
+                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+                nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
+                (nzOnSearch)="searchSkill($event)" >
+                <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
+              </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': additionalSkills.skillName.value, 'inactive': !additionalSkills.skillName.value }">Skill
                 Name</label>

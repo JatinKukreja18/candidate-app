@@ -59,6 +59,12 @@ export class ProfileLandingComponent implements OnInit {
   additionalProjectsList = [];
   educationsList = [];
   trainingsList = [];
+  skills = [];
+  videoPlaceholder = 'Please enter full youtube link';
+  videoTypes = {
+    youtube: 1,
+    vimeo: 2
+  };
   selectedFile: {
     profileImage: string,
     resumeName: string,
@@ -1106,7 +1112,7 @@ export class ProfileLandingComponent implements OnInit {
           'Gender': this.personalDetailsForm.value.gender,
           'MobileNumber': this.personalDetailsForm.value.mobile,
           'CountryCode': this.personalDetailsForm.value.countryPhoneCode,
-          'VedioLinkTypeId': this.personalDetailsForm.value.videoLinkTypeId,
+          'VideoLinkTypeId': Number(this.personalDetailsForm.value.videoLinkTypeId),
           'VideoLink': this.personalDetailsForm.value.videoLink
         };
       }
@@ -1315,12 +1321,28 @@ export class ProfileLandingComponent implements OnInit {
     }
   }
 
+  searchSkill(searchTerm){
+    if(searchTerm !== '' && searchTerm !== null && searchTerm.length >=3){
+      this.profileService.searchSkill(searchTerm).subscribe(response => {
+        if(response['code'] === 200 && response['data']) {
+          this.skills = response['data']
+        }
+      });
+    }
+    
+  }
+
   /**
    * On change method for radio input of Video Profile
    * @param value Selected radio value
    */
   onChange(value) {
     const youtubeUrlRegex = /(http(s)?:\/\/.)?(www\.)?\byoutube\b/i;
+    if(value === 1){
+      this.videoPlaceholder = 'Please enter full youtube link';
+    } else if(value === 2){
+      this.videoPlaceholder = 'Please enter valid vimeo ID';
+    }
     /* setTimeout(() => {
       if (document.querySelector('.vimeo-video')) document.querySelector('.vimeo-video').remove();
       if (value == 2 && this.profile && (!this.profile.videoLink || youtubeUrlRegex.test(this.profile.videoLink)) && !this.loading) {
