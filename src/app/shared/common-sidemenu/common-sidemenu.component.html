@@ -1,8 +1,8 @@
 <div class="sidemenu">
     <div class="user-profile">
         <div class="profile-pic">
-            <img *ngIf="socialUserDetails" [src]="socialUserDetails?.image ? socialUserDetails?.image : '/assets/images/profile-image.png'" alt="">
-            <img *ngIf="currentUserDetails && !socialUserDetails" [src]="currentUserDetails?.image ? currentUserDetails?.image : '/assets/images/profile-image.png'" alt="">
+            <img *ngIf="socialUserDetails" [src]="socialUserDetails?.image ? socialUserDetails?.image : 'assets/images/profile-image.png'" alt="">
+            <img *ngIf="currentUserDetails && !socialUserDetails" [src]="currentUserDetails?.image ? currentUserDetails?.image : 'assets/images/profile-image.png'" alt="">
         </div>
         <p *ngIf="currentUserDetails && currentUserDetails.firstname">{{currentUserDetails.firstname}} {{currentUserDetails.lastname}}</p>
         <p *ngIf="currentUserDetails && currentUserDetails.firstName">{{currentUserDetails.firstName}} {{currentUserDetails.lastName}}</p>
@@ -10,33 +10,33 @@
     </div>
     <ul>
         <li [routerLink]="['/dashboard']" routerLinkActive="active" (click)="toggleSideMenu(1)">
-            <a><img src="/assets/images/drawermenu-ic-dashboard.svg" alt="">Dashboard</a>
+            <a><img src="assets/images/drawermenu-ic-dashboard.svg" alt="">Dashboard</a>
         </li>
         <!-- <li [routerLink]="['/search']" routerLinkActive="active" (click)="toggleSideMenu(2)">
-            <a><img src="/assets/images/drawermenu-ic-search.svg" alt="">Search Jobs</a>
+            <a><img src="assets/images/drawermenu-ic-search.svg" alt="">Search Jobs</a>
         </li> -->
-        <!-- <li [routerLink]="['/search/matching']" routerLinkActive="active" (click)="toggleSideMenu(3)"><a><img src="/assets/images/ic-matching-jobs-white.svg" alt="">Matching Jobs</a></li>
-        <li [routerLink]="['/myjobs']" routerLinkActive="active" (click)="toggleSideMenu(4)"><a><img src="/assets/images/drawermenu-ic-myjobs-white.svg" alt="">My Jobs</a></li>
+        <!-- <li [routerLink]="['/search/matching']" routerLinkActive="active" (click)="toggleSideMenu(3)"><a><img src="assets/images/ic-matching-jobs-white.svg" alt="">Matching Jobs</a></li>
+        <li [routerLink]="['/myjobs']" routerLinkActive="active" (click)="toggleSideMenu(4)"><a><img src="assets/images/drawermenu-ic-myjobs-white.svg" alt="">My Jobs</a></li>
         <li [routerLink]="['/assessments']" routerLinkActive="active" (click)="toggleSideMenu(5)">
-            <a><img src="/assets/images/drawermenu-ic-assessments.svg" alt="">Assessments</a>
+            <a><img src="assets/images/drawermenu-ic-assessments.svg" alt="">Assessments</a>
         </li>-->
         <li [routerLink]="editProfileLink" routerLinkActive="active" (click)="toggleSideMenu(6)">
-            <a><img src="/assets/images/drawermenu-ic-myprofile.svg" alt="">My Profile</a>
+            <a><img src="assets/images/drawermenu-ic-myprofile.svg" alt="">My Profile</a>
         </li>
         <!-- <li (click)="showModal()" routerLinkActive="active">
-            <a><img src="/assets/images/drawermenu-ic-feedback.svg" alt="">Feedback</a>
+            <a><img src="assets/images/drawermenu-ic-feedback.svg" alt="">Feedback</a>
         </li> -->
         <li [routerLink]="['/settings']" routerLinkActive="active" (click)="toggleSideMenu(7)">
-            <a><img src="/assets/images/ic-settings.svg" alt="">Settings</a>
+            <a><img src="assets/images/ic-settings.svg" alt="">Settings</a>
         </li>
         <li [routerLink]="['/company/aboutus']" routerLinkActive="active" (click)="toggleSideMenu(8)">
-            <a><img src="/assets/images/ic-drawermenu-aboutus.svg" alt="">About Us</a>
+            <a><img src="assets/images/ic-drawermenu-aboutus.svg" alt="">About Us</a>
         </li>
         <li (click)="openShareModal()">
-            <a><img src="/assets/images/ic-drawermenu-share.svg" alt="">Share</a>
+            <a><img src="assets/images/ic-drawermenu-share.svg" alt="">Share</a>
         </li>
         <li (click)="openLogoutConfirmationModal()">
-            <a><img src="/assets/images/drawermenu-ic-logout.svg" alt="">Logout</a>
+            <a><img src="assets/images/drawermenu-ic-logout.svg" alt="">Logout</a>
         </li>
 
     </ul>
