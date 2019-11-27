@@ -50,11 +50,11 @@
           </div>
       </div>
       <div class="other-info">
-          <div class="trained-on" *ngIf='candidateData?.Trainings?.length'>
+          <div class="trained-on" >
               <div class="heading">
                   <span>Trained On</span>
               </div>
-              <div class="training-list">
+              <div class="training-list" *ngIf='candidateData?.Trainings?.length'>
                   <div *ngFor="let training of candidateData.Trainings">
                       <div class="bullet"></div>
                       <div class="item">{{training.Training}}</div>
@@ -137,24 +137,24 @@
               </div>
           </div>
       </div>
-      <div class="education-certification" *ngIf="candidateData.EducationDetails?.length">
+      <div class="education-certification" >
           <div class="heading">
               <span>Education & Certification</span>
           </div>
-          <div class="content">
+          <div class="content" *ngIf="candidateData.CandidateEducationDetails?.length">
 
-              <div *ngFor="let education of candidateData.EducationDetails?.InstituteDetails">
+              <div *ngFor="let education of candidateData.CandidateEducationDetails">
                   <app-details-list-card [is-editable]="isEditable" class="education-certification-card">
                       <div title class="card-title">
-                          <span>{{education.SchoolName}}</span>
-                          <span style="font-weight: normal"> ({{education.Degree[0]?.DegreeDate[0]}})</span>
+                          <span>{{education.School_Name}}</span>
+                          <!-- <span style="font-weight: normal"> (</span><span>{{education.Degree[0]?.DegreeDate[0]}}</span> <span>)</span> -->
                       </div>
                       <div content class="card-content">
                           <div *ngFor="let item of education.Degree" class="items">
                               <div class="bullet"></div>
                               <div class="item">
-                                  <span>{{item.DegreeType}}: </span>
-                                  <span>{{item.DegreeName}}</span>
+                                  <span>{{item.degreeType}}: </span>
+                                  <span>{{item.Degree_Name}}</span>
                               </div>
                           </div>
                       </div>

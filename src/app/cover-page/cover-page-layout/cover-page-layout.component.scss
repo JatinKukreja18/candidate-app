@@ -127,14 +127,18 @@ $heading-color-2: rgb(43, 189, 225);
         margin-left: auto;
         .skill-circle{
             // padding: 0 32px;
+            padding-right: 40px;
             margin-bottom: 60px;
+            &:last-child{
+              padding-right:0;
+            }
         }
     }
     .skills-row{
       display: flex;
       -ms-flex-wrap: wrap;
       flex-wrap: wrap;
-      justify-content: space-between;
+      justify-content: flex-start;
       width: 100%;
       // margin-right: -40px;
       // margin-left: -40px;

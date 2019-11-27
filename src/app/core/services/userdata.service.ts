@@ -15,12 +15,12 @@ export class UserDataService {
   public userEmitter: Observable<any>;
   public userData = {};
 
-   constructor( private httpService: HttpClient) { 
+   constructor( private httpService: HttpClient) {
     this.userEmitter = this.userSubject.asObservable();
    }
 
    getUserData(id): Observable<any> {
-    return this.httpService.get(apiUrl + environment.apiPaths.coverPage + id).pipe(tap(response => {
+    return this.httpService.get(apiUrl + environment.apiPaths.viewProfile + id).pipe(tap(response => {
       console.log(response);
       this.userData = response;
       this.refreshUserData(response);
