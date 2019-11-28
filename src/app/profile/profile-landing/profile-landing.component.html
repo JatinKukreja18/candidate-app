@@ -39,24 +39,26 @@
         <div class="card-content">
           <form [formGroup]="personalDetailsForm" name="personalDetailsForm"
             (ngSubmit)="onSubmit(false, 'personalDetailsForm')">
-            <div class="form-group">
-              <input #firstName tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control"
-                [ngClass]="{ 'is-invalid':pers.firstName.touched && pers.firstName.errors }" />
-              <label for="firstName" class="form-control-placeholder"
-                [ngClass]="{'active': pers.firstName.value, 'inactive': !pers.firstName.value }">First Name<span
-                  class="required-star">*</span></label>
-              <div *ngIf="submitted && pers.firstName.errors" class="invalid-feedback">
-                <div class="error" *ngIf="pers.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
-                <div class="error" *ngIf="pers.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
-                <div class="error" *ngIf="pers.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
-              </div>
-            </div>
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('LAST_NAME') >= 0 }">
-              <input #lastName tabindex="2" type="text" id="lastName" formControlName="lastName"
-                class="form-control not-mandate"
-                [ngClass]="{ 'is-invalid':pers.lastName.touched &&  pers.lastName.errors }" />
-              <label for="lastName" class="form-control-placeholder"
-                [ngClass]="{'active': pers.lastName.value, 'inactive': !pers.lastName.value }">Last Name</label>
+            <div class="flex" style="justify-content: space-between;">
+                <div class="form-group" style="width: 43%;">
+                    <input #firstName tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control"
+                      [ngClass]="{ 'is-invalid':pers.firstName.touched && pers.firstName.errors }" />
+                    <label for="firstName" class="form-control-placeholder"
+                      [ngClass]="{'active': pers.firstName.value, 'inactive': !pers.firstName.value }">First Name<span
+                        class="required-star">*</span></label>
+                    <div *ngIf="submitted && pers.firstName.errors" class="invalid-feedback">
+                      <div class="error" *ngIf="pers.firstName.errors.required">{{validationMsgs.FirstNameRequired}}</div>
+                      <div class="error" *ngIf="pers.firstName.errors.minlength">{{validationMsgs.FirstNameMinlength}}</div>
+                      <div class="error" *ngIf="pers.firstName.errors.maxlength">{{validationMsgs.FirstNameMaxlength}}</div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('LAST_NAME') >= 0 }" style="width: 50%;">
+                    <input #lastName tabindex="2" type="text" id="lastName" formControlName="lastName"
+                      class="form-control not-mandate"
+                      [ngClass]="{ 'is-invalid':pers.lastName.touched &&  pers.lastName.errors }" />
+                    <label for="lastName" class="form-control-placeholder"
+                      [ngClass]="{'active': pers.lastName.value, 'inactive': !pers.lastName.value }">Last Name</label>
+                  </div>
             </div>
             <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('GENDER') >= 0 }" #gender>
               <label for="gender" class="form-control-placeholder  radio-label">Gender</label>
@@ -115,7 +117,7 @@
                 </div> -->
               </div>
             <div class="submit-button">
-              <button class="orange-button">Submit</button>
+              <button class="orange-button">Save</button>
             </div>
           </form>
         </div>
@@ -205,7 +207,7 @@
             </div> -->
 
             <div class="submit-button">
-              <button class="orange-button">Submit</button>
+              <button class="orange-button">Save</button>
             </div>
 
           </form>
@@ -259,39 +261,41 @@
                 [src]="social.linkedin.value && social.github.value && social.stack.value ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'" alt="Profile completed" />
             </span> -->
         </div>
-        <div class="card-content">
+        <div class="card-content" style="margin-top: 15px;">
           <form [formGroup]="socialForm" (ngSubmit)="onSubmit(false, 'socialForm')">
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #linkedIn tabindex="17" type="text" id="linkedin" formControlName="linkedin"
-                class="form-control not-mandate" />
-              <label for="linkedin" class="form-control-placeholder"
-                [ngClass]="{'active': social.linkedin.value, 'inactive': !social.linkedin.value }">Linkedin</label>
-              <div *ngIf=" social.linkedin.errors" class="invalid-feedback">
-                <div class="error" *ngIf="social.linkedin.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
-              </div>
-            </div>
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="18" type="text" id="github" formControlName="github" class="form-control not-mandate" />
-              <label for="github" class="form-control-placeholder"
-                [ngClass]="{'active': social.github.value, 'inactive': !social.github.value }">Github</label>
-              <div *ngIf=" social.github.errors" class="invalid-feedback">
-                <div class="error" *ngIf="social.github.errors.pattern">{{validationMsgs.ValidGithubLink}}</div>
-              </div>
-            </div>
-            <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="19" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
-              <label for="stack" class="form-control-placeholder"
-                [ngClass]="{'active': social.stack.value, 'inactive': !social.stack.value }">Stack Overflow</label>
-              <div *ngIf=" social.stack.errors" class="invalid-feedback">
-                <div class="error" *ngIf="social.stack.errors.pattern">{{validationMsgs.ValidStackLink}}</div>
-              </div>
+            <div class="flex" style="justify-content: space-between;">
+                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+                    <input #linkedIn tabindex="17" type="text" id="linkedin" formControlName="linkedin"
+                      class="form-control not-mandate" />
+                    <label for="linkedin" class="form-control-placeholder"
+                      [ngClass]="{'active': social.linkedin.value, 'inactive': !social.linkedin.value }">Linkedin</label>
+                    <div *ngIf=" social.linkedin.errors" class="invalid-feedback">
+                      <div class="error" *ngIf="social.linkedin.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+                    <input tabindex="18" type="text" id="github" formControlName="github" class="form-control not-mandate" />
+                    <label for="github" class="form-control-placeholder"
+                      [ngClass]="{'active': social.github.value, 'inactive': !social.github.value }">Github</label>
+                    <div *ngIf=" social.github.errors" class="invalid-feedback">
+                      <div class="error" *ngIf="social.github.errors.pattern">{{validationMsgs.ValidGithubLink}}</div>
+                    </div>
+                  </div>
+                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
+                    <input tabindex="19" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
+                    <label for="stack" class="form-control-placeholder"
+                      [ngClass]="{'active': social.stack.value, 'inactive': !social.stack.value }">Stack Overflow</label>
+                    <div *ngIf=" social.stack.errors" class="invalid-feedback">
+                      <div class="error" *ngIf="social.stack.errors.pattern">{{validationMsgs.ValidStackLink}}</div>
+                    </div>
+                  </div>
             </div>
             <!-- <div class="form-group">
                   <input tabindex="19" type="text" id="others" formControlName="others" class="form-control not-mandate"/>
                   <label for="others" class="form-control-placeholder">Others</label>
                 </div> -->
             <div class="submit-button">
-              <button class="orange-button">Submit</button>
+              <button class="orange-button">Save</button>
             </div>
           </form>
         </div>
@@ -361,8 +365,9 @@
               <label for="training" class="form-control-placeholder"
                 [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training</label>
             </div>
-            <button nz-button (click)="addTraining()" nzShape="circle" style="margin-top: 20px;"><i nz-icon
-                nzType="plus" nzTheme="outline"></i></button>
+            <button nz-button (click)="addTraining()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Training'" [nzPlacement]="'bottom'">
+              <i nz-icon nzType="plus" nzTheme="outline"></i></button>
 
           </form>
           <div style="height: 175px;overflow-y: scroll;">
@@ -389,7 +394,7 @@
             </nz-list>
           </div>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'trainingsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'trainingsForm')">Save</button>
           </div>
         </div>
       </div>
@@ -641,7 +646,8 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="margin-top: 20px;"><i nz-icon
+            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -672,7 +678,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'primarySkillsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'primarySkillsForm')">Save</button>
           </div>
         </div>
       </div>
@@ -724,7 +730,8 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="margin-top: 20px;"><i nz-icon
+            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -755,7 +762,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'additionalSkillsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'additionalSkillsForm')">Save</button>
           </div>
         </div>
       </div>
@@ -819,7 +826,8 @@
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
             </div>
-            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="margin-top: 20px;"><i nz-icon
+            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Experience'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -856,7 +864,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'experiencesForm')">Save</button>
           </div>
         </div>
       </div>
@@ -870,7 +878,7 @@
               alt="Profile completed" />
           </span> -->
         </div>
-        <div class="card-content">
+        <div class="card-content" style="margin-top: 10px;">
           <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
             <input type="hidden" formControlName="additionalProjectId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
@@ -900,7 +908,8 @@
             <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
           </div> -->
             </div>
-            <button nz-button (click)="addAdditionalProject()" nzShape="circle"><i nz-icon nzType="plus"
+            <button nz-button (click)="addAdditionalProject()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
           </form>
@@ -931,7 +940,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'additionalProjectsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'additionalProjectsForm')">Save</button>
           </div>
         </div>
       </div>
@@ -980,7 +989,8 @@
                 style="top: 8px;">End Date</label>
             </div>
 
-            <button nz-button (click)="addEducation()" nzShape="circle" style="margin-top: 20px;"><i nz-icon
+            <button nz-button (click)="addEducation()" nzShape="circle" style="margin-top: 20px;"
+            nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -1015,7 +1025,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'educationForm')">Save</button>
           </div>
         </div>
       </div>
