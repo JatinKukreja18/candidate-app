@@ -8,5 +8,7 @@
       <button (click)="zoomIt(0.75)" [ngClass]="zoomValue == 0.75?'active':''" >75%</button>
       <button (click)="zoomIt(1.0)" [ngClass]="zoomValue == 1.0?'active':''">100%</button>
   </div>
+  <div style="position:relative">
     <app-cover-page-layout [candidateData]="candidateData"></app-cover-page-layout>
+  </div>
 </div>

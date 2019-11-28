@@ -3,23 +3,23 @@
   <div class="profile-forms-container">
     <div class="profile-card flex" id="profile-head">
       <div class="info flex">
-        <div class="user-image" *ngIf="profile?.basicInfo?.imageUrl">
+        <!-- <div class="user-image" *ngIf="profile?.basicInfo?.imageUrl">
           <img class="profile-image" [src]="profile?.basicInfo?.imageUrl" alt="Profile picture" />
           <img class="delete-cross" src="/assets/images/ic-delete-cross.svg" alt="red cross"
             (click)="openDeleteResourceConfirmationModal(202)" />
-        </div>
-        <form [formGroup]="profileForm" *ngIf="!profile?.basicInfo?.imageUrl">
+        </div> -->
+        <!-- <p *ngIf="selectedFile.profileImage">{{selectedFile.profileImage}}</p> -->
+        <!-- <form [formGroup]="profileForm" *ngIf="!profile?.basicInfo?.imageUrl">
           <div class="form-group">
-            <!-- <p *ngIf="selectedFile.profileImage">{{selectedFile.profileImage}}</p> -->
             <button class="upload-button">Upload Image</button>
             <input type="file" class="form-control not-mandate fileUpload" accept=".png, .jpg, .jpeg"
               (change)="fileChange($event, 202)" />
           </div>
-        </form>
-        <div class="user-info">
+        </form> -->
+        <!-- <div class="user-info">
           <p class="user-name">{{profile?.basicInfo?.firstName}} {{profile?.basicInfo?.lastName}}</p>
           <p class="user-desig">{{profile?.professionalInfo?.designation}}</p>
-        </div>
+        </div> -->
       </div>
       <!-- <form [formGroup]="profileForm" id="submit-button">
         <button class="orange-button" (click)="onSubmit(false)">Submit</button>
@@ -130,7 +130,7 @@
             <div class="form-group" >
               <!-- <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
                 class="form-control not-mandate" /> -->
-                <textarea #summary tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary" 
+                <textarea #summary tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary"
                 formControlName="summary" style="margin-top: 30px;"></textarea>
               <label for="summary" class="form-control-placeholder"
                 [ngClass]="{'active': prof.summary.value, 'inactive': !prof.summary.value }">Personal
@@ -614,7 +614,7 @@
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
                 Name</label>
-                
+
               <!-- <div *ngIf=" primarySkills.skillName.errors" class="invalid-feedback">
                   <div class="error" *ngIf="primarySkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
                 </div> -->
@@ -1015,7 +1015,7 @@
             </tbody>
           </nz-table>
           <div class="submit-button">
-            <button class="orange-button" (click)="onSubmit(false, 'primaryProjectsForm')">Submit</button>
+            <button class="orange-button" (click)="onSubmit(false, 'educationForm')">Submit</button>
           </div>
         </div>
       </div>

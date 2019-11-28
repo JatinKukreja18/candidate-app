@@ -1,6 +1,6 @@
 <div class="row outer-container">
     <app-common-sidemenu [hidden]="!showHeader" [ngClass]="sideMenu ? 'open' : '' " (toggle)="toggleSidemenu()"></app-common-sidemenu>
-    <div class="page-content" [ngClass]="sideMenu ? 'shift' : '' " #scrollTarget>
+    <div class="page-content" [ngClass]="{'shift': sideMenu,'relative' :currentActivePage == 'Cover Page'} " #scrollTarget>
         <app-common-header [hidden]="!showHeader" [pageTitle]="currentActivePage" (toggle)="toggleSidemenu()"></app-common-header>
         <router-outlet></router-outlet>
     </div>

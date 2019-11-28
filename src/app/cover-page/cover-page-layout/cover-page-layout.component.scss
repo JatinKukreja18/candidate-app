@@ -59,10 +59,10 @@ $heading-color-2: rgb(43, 189, 225);
   box-shadow: 2px 2px 13px -4px #bbb;
   margin-bottom: 20px;
 }
-.page-section.page-1{
+.page-section{
   position: relative;
 }
-.page-section.page-1::before{
+.page-section::before{
   position: absolute;
   top:0;
   content:"";

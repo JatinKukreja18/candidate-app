@@ -71,11 +71,11 @@
                       allowfullscreen></iframe>
               </div>
           </div>
-          <div class="feedback" *ngIf='candidateData?.InstructorFeedback'>
+          <div class="feedback" >
               <div class="heading">
                   <span>Jump Instructor Feedback</span>
               </div>
-              <div class="content">
+              <div class="content" *ngIf='candidateData?.InstructorFeedback'>
                   <span>" {{candidateData.InstructorFeedback}} "</span>
               </div>
           </div>
@@ -127,12 +127,11 @@
                       <div title class="card-title">
                           <span>{{project.Project_Title}}</span>
                       </div>
-                      <div content class="card-content">
+                      <div content class="card-content" [innerHtml]="project.Project_Description">
                           <!-- <div *ngFor="let item of project.keyPoints" class="items">
                               <div class="bullet"></div>
                               <div class="item">{{item}}</div>
                           </div> -->
-                          {{project.Project_Description}}
                       </div>
                   </app-details-list-card>
               </div>
@@ -147,15 +146,15 @@
               <div *ngFor="let education of candidateData.CandidateEducationDetails">
                   <app-details-list-card [is-editable]="isEditable" class="education-certification-card">
                       <div title class="card-title">
-                          <span>{{education.School_Name}}</span>
+                          <span>{{education.School_Name}} {{education.Start_Date | date}} - {{education.End_Date | date}}</span>
                           <!-- <span style="font-weight: normal"> (</span><span>{{education.Degree[0]?.DegreeDate[0]}}</span> <span>)</span> -->
                       </div>
                       <div content class="card-content">
-                          <div *ngFor="let item of education.Degree" class="items">
+                          <div class="items">
                               <div class="bullet"></div>
                               <div class="item">
-                                  <span>{{item.degreeType}}: </span>
-                                  <span>{{item.Degree_Name}}</span>
+                                  <span>{{education.degreeType}}<span *ngIf="education.degreeType">:</span> </span>
+                                  <span>{{education.Degree_Name}}</span>
                               </div>
                           </div>
                       </div>

@@ -49,6 +49,10 @@ export class CoverPageHeaderComponent implements OnInit, OnChanges {
               item.icon = 'assets/icons/github.svg';
               item.site = 'Github';
               break;
+          case 6:
+              item.icon = 'assets/icons/stack-overflow.svg';
+              item.site = 'StackOverflow';
+              break;
           default:
 
             break;

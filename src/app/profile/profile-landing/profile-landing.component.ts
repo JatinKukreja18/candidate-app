@@ -47,6 +47,7 @@ export class ProfileLandingComponent implements OnInit {
   date = null;
   videoLink: any;
   videoData: any;
+  inputValue:any;
   checked = false;
   profilePic = false;
   formData: FormData;
@@ -60,7 +61,7 @@ export class ProfileLandingComponent implements OnInit {
   educationsList = [];
   trainingsList = [];
   skills = [];
-  videoPlaceholder = 'Please enter full youtube link';
+  videoPlaceholder = 'Please enter youtube embed link';
   videoTypes = {
     youtube: 1,
     vimeo: 2
@@ -670,8 +671,8 @@ export class ProfileLandingComponent implements OnInit {
     this.trainingsList = this.profile.Trainings ? this.profile.Trainings : [];
 
     if (this.profile.CandidateSkills) {
-      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => index % 2 === 0/* skill. === 'Primary' */);
-      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => index % 2 !== 0/* skill.SkillType === 'Additional' */);
+      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == true)
+      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == false);
     }
 
     this.experiences = this.profile.CandidateExperienceDetails ? this.profile.CandidateExperienceDetails : [];
@@ -1151,7 +1152,7 @@ export class ProfileLandingComponent implements OnInit {
         } else if (reqBody['professionalInfo'] && reqBody['professionalInfo'].preferredJobTypeId === 3) {
           reqBody['professionalInfo'].expectedPayUnitSymbol = '$';
         } */
-      } 
+      }
       else if (formName === 'videoForm') {
         if (this.videoForm.invalid) {
           return;
@@ -1191,7 +1192,7 @@ export class ProfileLandingComponent implements OnInit {
               typeid: 7
             } */
           ];
-        
+
       }
       /* else if (formName === 'referenceForm') {
         if (this.referenceForm.invalid ||
@@ -1332,7 +1333,7 @@ export class ProfileLandingComponent implements OnInit {
         }
       });
     }
-    
+
   }
 
   /**

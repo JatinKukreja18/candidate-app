@@ -48,6 +48,9 @@ export class CoverPageLayoutComponent implements OnInit, AfterViewInit {
           if (item.SkillIcon === null || item.SkillIcon.length === 0) {
             item.SkillIcon = 'assets/icons/skill-default.png';
           }
+          else{
+            item.SkillIcon = item.SkillIcon.slice(1,item.SkillIcon.length)
+          }
           return item.SkillType === 'Primary';
           });
 

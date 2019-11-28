@@ -3,7 +3,7 @@
     &:after{
         display: block;
         clear: both;
-        content: "";   
+        content: "";
     }
     .col{
         float: left;
@@ -32,7 +32,7 @@
 ** Style for main header
 */
 
-   
+
 .outer-container {
     width: 100%;
     display: block;
@@ -75,22 +75,22 @@
             padding-left: 6%;
         }
     }
-   
+
     ul {
       padding: 0;
     }
-   
+
     li {
       width: 100%;
       padding: 0 25px;
       font-size: 18px;
       list-style: none;
       color: #fff;
-   
+
       img {
         margin-right: 20px;
       }
-   
+
       a {
         display: block;
         padding: 22px 20px;
@@ -99,13 +99,13 @@
         font-family: SourceSansProLight;
         text-decoration: none !important;
       }
-   
+
       &.active,
       &:hover {
         background: #3a4491;
       }
     }
-   
+
 }
 .page-content {
     position: fixed;
@@ -116,7 +116,9 @@
     height: 100%;
     overflow-y: auto;
     transition: 0.3s linear left;
-
+    &.relative{
+      position: relative;
+    }
     &.fix-height {
         height: 100vh;
         overflow-y: hidden;
@@ -146,20 +148,20 @@ app-common-sidemenu {
     z-index: 99;
     transition: 0.3s linear left;
     overflow-y: scroll;
-    
+
     &.open{
         left: 0;
         transition: 0.3s linear left;
     }
 }
 @media screen and (max-width: 767px){
-    app-common-sidemenu { 
+    app-common-sidemenu {
         position: relative;
         float: left;
         top: 0;
         left: -55%;
         width: 55%;
-        
+
     }
     .page-content {
         &.shift{
