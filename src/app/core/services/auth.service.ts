@@ -197,10 +197,12 @@ export class AuthenticationService {
     /**
      * Logout current user from server i.e invalidate the auth token
      */
-    logout(): Observable<Response> {
-        return this.http.get<Response>('/account/logout').pipe(tap((res) => {
-            this.clearLocalStorage();
-        }));
+    // Observable<Response>
+    logout() {
+      this.clearLocalStorage();
+        // return this.http.get<Response>(apiUrl + environment.apiPaths.logout).pipe(tap((res) => {
+        //     this.clearLocalStorage();
+        // }));
     }
 
     /**

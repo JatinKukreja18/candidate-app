@@ -132,22 +132,26 @@ export class CommonSidemenuComponent implements OnInit {
    */
   logout(){
     const loading = this.message.loading(FeedbackMessages.loading.Logout, {nzDuration: 0}).messageId;
-    this.authService.logout().subscribe((response) => {
-      this.message.remove(loading);
-      if (response.code === 200) {
-        this.socialAuthService.signOut().then((res) => {
-        }).catch((error) => {
-          console.log("Not logged in using social", error);
-        });
-        this.message.success(response.message, {nzDuration: 1500});
-        this.analyticsService.eventEmitter('DashBoardScreen', 'menuLogout', 'menuLogout');
-        this.router.navigateByUrl('/');
-        window.location.reload();
-      };
-    }, (err) => {
-      console.log("Error while logging out!");
-      this.message.remove(loading);
-    });
+    this.authService.logout();
+    this.router.navigateByUrl('/');
+    this.message.success(FeedbackMessages.loading.LoggedOut, {nzDuration: 1500});
+
+  //   .subscribe((response) => {
+  //     this.message.remove(loading);
+  //     if (response.code === 200) {
+  //       this.socialAuthService.signOut().then((res) => {
+  //       }).catch((error) => {
+  //         console.log("Not logged in using social", error);
+  //       });
+  //       this.message.success(response.message, {nzDuration: 1500});
+  //       this.analyticsService.eventEmitter('DashBoardScreen', 'menuLogout', 'menuLogout');
+  //       this.router.navigateByUrl('/');
+  //       window.location.reload();
+  //     };
+  //   }, (err) => {
+  //     console.log("Error while logging out!");
+  //     this.message.remove(loading);
+  //   });
   }
 
   /**

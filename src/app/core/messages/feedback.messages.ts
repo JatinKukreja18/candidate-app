@@ -48,6 +48,7 @@ export const FeedbackMessages = {
         VideoUploadPrepare: 'Please wait ...',
         ProfileFetch: 'Please wait ...',
         DashboardDetailsFetch: 'Loading ...',
-        Logout: 'Logging out ...'
+        Logout: 'Logging out ...',
+        LoggedOut:'Logged out'
     }
 }

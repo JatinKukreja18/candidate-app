@@ -23,6 +23,7 @@ export const environment = {
     // coverPage: '../assets/cp_video.json',
     // allUsers: '../assets/user-list.json'
     login: 'registration/login',
+    logout: 'Account/Logout',
     register: 'registration/registerrequest',
     validateOtp :'registration/validateregotp',
     countries: 'common/countrylist',
