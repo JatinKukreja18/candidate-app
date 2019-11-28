@@ -671,8 +671,8 @@ export class ProfileLandingComponent implements OnInit {
     this.trainingsList = this.profile.Trainings ? this.profile.Trainings : [];
 
     if (this.profile.CandidateSkills) {
-      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == true)
-      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == false);
+      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill/* skill. === 'Primary' */);
+      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => !skill.IsPrimarySkill/* skill.SkillType === 'Additional' */);
     }
 
     this.experiences = this.profile.CandidateExperienceDetails ? this.profile.CandidateExperienceDetails : [];
