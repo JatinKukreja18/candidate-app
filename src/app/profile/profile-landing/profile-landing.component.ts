@@ -429,7 +429,7 @@ export class ProfileLandingComponent implements OnInit {
       this.experiencesForm.get('startDate').setValue(data.Start_Date);
       this.experiencesForm.get('endDate').setValue(data.End_Date);
       this.experiencesForm.get('description').setValue(data.Job_Description);
-      this.experiencesForm.get('experienceId').setValue(data.Id);
+      this.experiencesForm.get('experienceId').setValue(data.ID);
 
       this.experiences.splice(index, 1);
       this.experiences = [...this.experiences]; // need to update reference for nz-table to update
@@ -450,6 +450,7 @@ export class ProfileLandingComponent implements OnInit {
     this.educationForm.get('speciality').setValue(data.Speciality_In);
     this.educationForm.get('startDate').setValue(data.Start_Date);
     this.educationForm.get('endDate').setValue(data.End_Date);
+    this.educationForm.get('educationId').setValue(data.ID);
 
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
@@ -1260,8 +1261,29 @@ export class ProfileLandingComponent implements OnInit {
       this.profileService.updateProfileDetails(formName, reqBody, this.candidateId).subscribe((response) => {
         this.loading = false;
         this.message.remove(loading);
+        let succesMessage = ''
         // this.analyticsService.eventEmitter('MyProfileScreen', 'ProfileSubmit', 'ProfileSubmit');
-        this.message.success(isVideoUpdate ? FeedbackMessages.success.VideoUploaded : FeedbackMessages.success.ProfileUpdated, { nzDuration: 1500 });
+        switch(formName) {
+          case 'personalDetailsForm': succesMessage = 'Personal Details Saved Successfully';
+            break;
+          case 'primarySkillsForm': succesMessage = 'Primary Skills Saved Successfully';
+            break;
+          case 'additionalProjectsForm': succesMessage = 'Project Details Saved Successfully';
+            break;
+          case 'experiencesForm': succesMessage = 'Experience Details Saved Successfully';
+            break;
+          case 'additionalSkillsForm': succesMessage = 'Additional Skills Saved Successfully';
+            break;
+          case 'educationForm': succesMessage = 'Education Details Saved Successfully';
+            break;
+          case 'trainingsForm': succesMessage = 'Training Details Saved Successfully';
+            break;
+          case 'socialForm': succesMessage = 'Social Details Saved Successfully';
+            break;
+          case 'professionalDetailsForm': succesMessage = 'Professional Details Saved Successfully';
+            break;
+        }
+        this.message.success(succesMessage, { nzDuration: 1500 });
         /* this.profile = response;
         this.initForm();
         this.highlightSection(); */
@@ -1597,5 +1619,8 @@ export class ProfileLandingComponent implements OnInit {
         a.click();
       });
   }
-
+  GoToSection(target){
+    console.log(target)
+    target.scrollIntoView({behavior: 'smooth'});
+  }
 }

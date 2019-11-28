@@ -1,3 +1,27 @@
+.profile-card{
+  &.scrolled{
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 2;
+  }
+}
+
+.anchor-list{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  width: 100%;
+  a{
+    padding: 0 10px;
+    color:#4752b8;
+    border-right:1px solid #ccc;
+    &:last-child{
+      border: none;
+    }
+  }
+}
 .page-container {
   background: #fafafd;
 
@@ -257,7 +281,9 @@
     align-items: center;
     justify-content: space-between;
     .info {
-      width: 75%;
+      width: 100%;
+      max-width: 1440px;
+      margin: auto;
     }
     input {
       border: 0;
