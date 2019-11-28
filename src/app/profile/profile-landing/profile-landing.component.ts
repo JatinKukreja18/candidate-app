@@ -1260,8 +1260,29 @@ export class ProfileLandingComponent implements OnInit {
       this.profileService.updateProfileDetails(formName, reqBody, this.candidateId).subscribe((response) => {
         this.loading = false;
         this.message.remove(loading);
+        let succesMessage = ''
         // this.analyticsService.eventEmitter('MyProfileScreen', 'ProfileSubmit', 'ProfileSubmit');
-        this.message.success(isVideoUpdate ? FeedbackMessages.success.VideoUploaded : FeedbackMessages.success.ProfileUpdated, { nzDuration: 1500 });
+        switch(formName) {
+          case 'personalDetailsForm': succesMessage = 'Personal Details Saved Successfully';
+            break;
+          case 'primarySkillsForm': succesMessage = 'Primary Skills Saved Successfully';
+            break;
+          case 'additionalProjectsForm': succesMessage = 'Project Details Saved Successfully';
+            break;
+          case 'experiencesForm': succesMessage = 'Experience Details Saved Successfully';
+            break;
+          case 'additionalSkillsForm': succesMessage = 'Additional Skills Saved Successfully';
+            break;
+          case 'educationForm': succesMessage = 'Education Details Saved Successfully';
+            break;
+          case 'trainingsForm': succesMessage = 'Training Details Saved Successfully';
+            break;
+          case 'socialForm': succesMessage = 'Social Details Saved Successfully';
+            break;
+          case 'professionalDetailsForm': succesMessage = 'Professional Details Saved Successfully';
+            break;
+        }
+        this.message.success(succesMessage, { nzDuration: 1500 });
         /* this.profile = response;
         this.initForm();
         this.highlightSection(); */
