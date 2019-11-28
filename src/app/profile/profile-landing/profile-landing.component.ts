@@ -428,7 +428,7 @@ export class ProfileLandingComponent implements OnInit {
       this.experiencesForm.get('startDate').setValue(data.Start_Date);
       this.experiencesForm.get('endDate').setValue(data.End_Date);
       this.experiencesForm.get('description').setValue(data.Job_Description);
-      this.experiencesForm.get('experienceId').setValue(data.Id);
+      this.experiencesForm.get('experienceId').setValue(data.ID);
 
       this.experiences.splice(index, 1);
       this.experiences = [...this.experiences]; // need to update reference for nz-table to update
@@ -449,6 +449,7 @@ export class ProfileLandingComponent implements OnInit {
     this.educationForm.get('speciality').setValue(data.Speciality_In);
     this.educationForm.get('startDate').setValue(data.Start_Date);
     this.educationForm.get('endDate').setValue(data.End_Date);
+    this.educationForm.get('educationId').setValue(data.ID);
 
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
