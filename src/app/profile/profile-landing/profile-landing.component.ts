@@ -1245,11 +1245,11 @@ export class ProfileLandingComponent implements OnInit {
       }  */
       else if (formName === 'primarySkillsForm') {
 
-        reqBody = this.primarySkillsList;
+        reqBody = this.primarySkillsList.concat(this.additionalSkillsList) ;
 
       } else if (formName === 'additionalSkillsForm') {
 
-        reqBody = this.additionalSkillsList;
+        reqBody = this.additionalSkillsList.concat(this.primarySkillsList);
 
       } else if (formName === 'experiencesForm') {
 

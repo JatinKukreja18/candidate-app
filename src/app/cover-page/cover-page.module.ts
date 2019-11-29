@@ -1,3 +1,4 @@
+import { NzToolTipModule } from 'ng-zorro-antd/tooltip';
 import { SafePipe } from './../shared/pipes/safe.pipe';
 import { CoverPageComponent } from './cover-page/cover-page.component';
 import { NgModule } from '@angular/core';
@@ -23,7 +24,7 @@ const routes: Routes = [
         MatButtonModule,
         MatIconModule,
         MatProgressSpinnerModule,
-        NgZorroAntdModule,
+        NgZorroAntdModule,NzToolTipModule,
         RouterModule.forChild(routes)
     ],
     declarations: [
