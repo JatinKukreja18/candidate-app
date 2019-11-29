@@ -249,26 +249,26 @@ export class ProfileLandingComponent implements OnInit {
 
     this.primarySkillsForm = this.formBuilder.group({
       primarySkillId: [''],
-      skillName: ['', { updateOn: 'blur' }],
-      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/)], updateOn: 'blur' }],
-      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
+      skillName: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/), Validators.required], updateOn: 'blur' }],
+      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/), Validators.required], updateOn: 'blur' }],
     });
 
     this.additionalSkillsForm = this.formBuilder.group({
       additionalSkillId: [''],
-      skillName: ['', { updateOn: 'blur' }],
-      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/)], updateOn: 'blur' }],
-      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
+      skillName: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/), Validators.required], updateOn: 'blur' }],
+      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/), Validators.required], updateOn: 'blur' }],
     });
 
     this.experiencesForm = this.formBuilder.group({
       experienceId: [''],
-      companyName: ['', { updateOn: 'blur' }],
-      location: ['', { updateOn: 'blur' }],
-      jobTitle: ['', { updateOn: 'blur' }],
+      companyName: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      location: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      jobTitle: ['', { updateOn: 'blur', validators: [Validators.required] }],
       startDate: [''],
       endDate: [''],
-      description: [''],
+      description: ['', {validators: [Validators.required]}],
     });
 
     this.additionalProjectsForm = this.formBuilder.group({
@@ -281,16 +281,16 @@ export class ProfileLandingComponent implements OnInit {
 
     this.educationForm = this.formBuilder.group({
       educationId: [''],
-      degreeName: ['', { updateOn: 'blur' }],
-      speciality: ['', { updateOn: 'blur' }],
-      schoolName: ['', { updateOn: 'blur' }],
+      degreeName: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      speciality: ['', { updateOn: 'blur', validators: [Validators.required] }],
+      schoolName: ['', { updateOn: 'blur', validators: [Validators.required] }],
       startDate: [''],
       endDate: [''],
     });
 
     this.trainingsForm = this.formBuilder.group({
       trainingId: [''],
-      training: [''],
+      training: ['', { validators: [Validators.required]}],
     });
 
     this.profileForm = this.formBuilder.group({
