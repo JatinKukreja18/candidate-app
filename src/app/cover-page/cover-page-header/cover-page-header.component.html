@@ -16,7 +16,7 @@
           </a>
     </div> -->
     <div class="social" *ngIf="!exporting">
-        <div *ngFor=" let link of socialLinks" [matTooltip]="link.site" [hidden]="!link.icon">
+        <div *ngFor=" let link of socialLinks" [matTooltip]="link.site" [hidden]="link.ProfileLink.length == 0">
             <a [href]="link.ProfileLink" class="link" target="_blank">
               <i [ngClass]="link.icon" class="fa"></i>
               <img [src]="link.icon" alt="" srcset="">
