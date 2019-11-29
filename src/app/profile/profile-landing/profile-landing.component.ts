@@ -158,6 +158,13 @@ export class ProfileLandingComponent implements OnInit {
     private authService: AuthenticationService,
   ) {
     this.validationMsgs = ValidationMessages;
+    document.querySelector('.page-content').addEventListener('scroll',function(){
+        if(document.querySelector('.page-content').scrollTop > 60){
+          document.querySelector('#profile-head').classList.add('scrolled')
+        }else{
+          document.querySelector('#profile-head').classList.remove('scrolled')
+        }
+      });
   }
 
 
@@ -166,9 +173,14 @@ export class ProfileLandingComponent implements OnInit {
 
   dropdownOptions1: Array<any> = ['Africa', 'England', 'Russa', 'Bangladesh', 'ok', 'China', '', '', ''];
 
-
+  _checkScroll(){
+    console.log(this);
+    
+  }
   ngOnInit() {
-
+    if (typeof window !== undefined) {
+      window.addEventListener('scroll', () => this._checkScroll());
+    }
     this.getCountryList();
     // this.options.push({id: 34, ;
     if (window.navigator) {
