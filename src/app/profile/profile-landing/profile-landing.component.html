@@ -38,6 +38,45 @@
       </form> -->
     </div>
     <div class="profile-content flex">
+      <!-- Resume upload form -->
+      <div class="profile-card" #anchor9 id="resume" [ngClass]="{'active': activeSection.resume}"
+      (click)="highlightSectionOnClick(3)">
+      <div class="card-title">Resume
+        <!-- <span class="card-status">
+          <img
+            [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
+            alt="Profile completed" />
+        </span> -->
+        <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply
+            for jobs.</i></p>
+      </div>
+      <div class="card-content flex">
+        <div class="resume-image" *ngIf="profile && profile.resumeUrl">
+          <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
+
+          <!-- -->
+          <a>
+            <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
+          </a>
+          <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
+          <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
+            alt="red cross" (click)="openDeleteResourceConfirmationModal(201)" />
+          <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the
+              original resume by clicking on it.</i></p>
+        </div>
+        <form [formGroup]="resumeForm" *ngIf="!profile || !profile.resumeUrl">
+          <div class="form-group">
+            <!-- <p *ngIf="selectedFile.resumeName">{{selectedFile.resumeName}}</p> -->
+            <button class="upload-button">Upload Resume</button>
+            <!-- <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
+                "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
+                text/plain, application/pdf, .docx, .doc" (change)="fileChange($event, 201)"/> -->
+            <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload"
+              accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" />
+          </div>
+        </form>
+      </div>
+    </div>
       <!-- Personal details form -->
       <div class="profile-card" #anchor1 id="personal" [ngClass]="{'active': activeSection.personal}"
         (click)="highlightSectionOnClick(1)">
@@ -128,9 +167,12 @@
                   <div class="error" *ngIf="pers.videoLink.errors.pattern">{{validationMsgs.YoutubeLinkInvalid}}</div>
                 </div> -->
               </div>
-            <div class="submit-button">
+              <button class="submit-button" nz-button nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+            <!-- <div class="submit-button">
               <button class="orange-button">Save</button>
-            </div>
+            </div> -->
           </form>
         </div>
       </div>
@@ -185,7 +227,7 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -216,9 +258,12 @@
               </tr>
             </tbody>
           </nz-table>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'primarySkillsForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'primarySkillsForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Additional Skills -->
@@ -269,7 +314,7 @@
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -300,9 +345,12 @@
               </tr>
             </tbody>
           </nz-table>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'additionalSkillsForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'additionalSkillsForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- tranings form-->
@@ -319,7 +367,7 @@
               <label for="training" class="form-control-placeholder"
                 [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training</label>
             </div>
-            <button nz-button (click)="addTraining()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addTraining()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Training'" [nzPlacement]="'bottom'">
               <i nz-icon nzType="plus" nzTheme="outline"></i></button>
 
@@ -347,9 +395,12 @@
 
             </nz-list>
           </div>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'trainingsForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'trainingsForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Professional details form -->
@@ -436,9 +487,9 @@
               </div>
             </div> -->
 
-            <div class="submit-button">
-              <button class="orange-button">Save</button>
-            </div>
+            <button class="submit-button" nz-button nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
 
           </form>
         </div>
@@ -737,13 +788,13 @@
             <div class="form-group horizontal" style="margin-top: 2px;">
               <nz-date-picker formControlName="startDate" tabindex="36" id="startDate" class="form-control not-mandate"
                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
-                [nzPlaceHolder]="'Start Date'" style="margin-top: 25px;"></nz-date-picker>
+                style="margin-top: 25px;"></nz-date-picker>
               <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date</label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
               <nz-date-picker formControlName="endDate" tabindex="37" id="endDate" class="form-control not-mandate"
                 [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
-                [nzPlaceHolder]="'End Date'" style="margin-top: 25px;"></nz-date-picker>
+                 style="margin-top: 25px;"></nz-date-picker>
               <label for="endDate" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.endDate.value, 'inactive': !primaryProjects.endDate.value }"
                 style="top: 8px;">End Date</label>
@@ -755,7 +806,7 @@
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
             </div>
-            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Experience'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -792,9 +843,12 @@
               </tr>
             </tbody>
           </nz-table>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'experiencesForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'experiencesForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Additional Projects -->
@@ -837,7 +891,7 @@
             <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
           </div> -->
             </div>
-            <button nz-button (click)="addAdditionalProject()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
@@ -868,9 +922,12 @@
               </tr>
             </tbody>
           </nz-table>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'additionalProjectsForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'additionalProjectsForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
       <!-- Educations & Certifications -->
@@ -918,7 +975,7 @@
                 style="top: 8px;">End Date</label>
             </div>
 
-            <button nz-button (click)="addEducation()" nzShape="circle" style="margin-top: 20px;"
+            <button nz-button (click)="addEducation()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -953,50 +1010,14 @@
               </tr>
             </tbody>
           </nz-table>
-          <div class="submit-button">
+          <button class="submit-button" nz-button (click)="onSubmit(false, 'educationForm')" nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+          <!-- <div class="submit-button">
             <button class="orange-button" (click)="onSubmit(false, 'educationForm')">Save</button>
-          </div>
+          </div> -->
         </div>
       </div>
-       <!-- Resume upload form -->
-       <div class="profile-card" #anchor9 id="resume" [ngClass]="{'active': activeSection.resume}"
-       (click)="highlightSectionOnClick(3)">
-       <div class="card-title">Resume
-         <!-- <span class="card-status">
-           <img
-             [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
-             alt="Profile completed" />
-         </span> -->
-         <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply
-             for jobs.</i></p>
-       </div>
-       <div class="card-content flex">
-         <div class="resume-image" *ngIf="profile && profile.resumeUrl">
-           <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
-
-           <!-- -->
-           <a>
-             <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
-           </a>
-           <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
-           <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
-             alt="red cross" (click)="openDeleteResourceConfirmationModal(201)" />
-           <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the
-               original resume by clicking on it.</i></p>
-         </div>
-         <form [formGroup]="resumeForm" *ngIf="!profile || !profile.resumeUrl">
-           <div class="form-group">
-             <!-- <p *ngIf="selectedFile.resumeName">{{selectedFile.resumeName}}</p> -->
-             <button class="upload-button">Upload Resume</button>
-             <!-- <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
-                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
-                 text/plain, application/pdf, .docx, .doc" (change)="fileChange($event, 201)"/> -->
-             <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload"
-               accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" />
-           </div>
-         </form>
-       </div>
-     </div>
        <!-- Social details form -->
        <div class="profile-card" #anchor10 id="social" [ngClass]="{'active': activeSection.social}"
        (click)="highlightSectionOnClick(4)">
@@ -1039,9 +1060,12 @@
                  <input tabindex="19" type="text" id="others" formControlName="others" class="form-control not-mandate"/>
                  <label for="others" class="form-control-placeholder">Others</label>
                </div> -->
-           <div class="submit-button">
+               <button class="submit-button" nz-button nzShape="circle" style=""
+            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                nzTheme="outline"></i></button>
+           <!-- <div class="submit-button">
              <button class="orange-button">Save</button>
-           </div>
+           </div> -->
          </form>
        </div>
      </div>
