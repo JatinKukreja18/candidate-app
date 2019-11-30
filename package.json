@@ -43,6 +43,7 @@
     "helmet-csp": "^2.7.1",
     "html2canvas": "^1.0.0-rc.5",
     "jspdf": "^1.5.3",
+    "lodash": "^4.17.15",
     "ng-zorro-antd": "^7.5.1",
     "ngx-quill": "7.3.1",
     "ngx-select-dropdown": "^1.2.0",

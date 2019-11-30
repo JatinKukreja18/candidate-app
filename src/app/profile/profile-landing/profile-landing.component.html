@@ -14,6 +14,8 @@
             <a (click)="GoToSection(anchor8)" >Education and Certifications</a>
             <!-- <a (click)="GoToSection(anchor9)" >Resume</a> -->
             <a (click)="GoToSection(anchor10)" >Social Profiles</a>
+            <!-- <a > <i class="fa fa-home" style="font-size:30px;color:red"></i></a> -->
+            <a [routerLink]="['/dashboard']" ><button class = "dashboard-btn">Dashboard</button></a>
         </ul>
         <!-- <div class="user-image" *ngIf="profile?.basicInfo?.imageUrl">
           <img class="profile-image" [src]="profile?.basicInfo?.imageUrl" alt="Profile picture" />
@@ -95,7 +97,7 @@
             <div class="flex" style="justify-content: space-between;">
                 <div class="form-group" style="width: 43%;">
                     <input #firstName tabindex="1" type="text" id="firstName" formControlName="firstName" class="form-control"
-                      [ngClass]="{ 'is-invalid':pers.firstName.touched && pers.firstName.errors }" />
+                      [ngClass]="{ 'is-invalid':pers.firstName.touched && pers.firstName.errors }"  />
                     <label for="firstName" class="form-control-placeholder"
                       [ngClass]="{'active': pers.firstName.value, 'inactive': !pers.firstName.value }">First Name<span
                         class="required-star">*</span></label>

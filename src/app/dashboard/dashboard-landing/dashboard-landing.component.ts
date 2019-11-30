@@ -5,6 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { FeedbackMessages } from '@app/core/messages';
 import { UserDataService } from './../../core/services/userdata.service';
+var _ = require('lodash');
 @Component({
   selector: 'app-dashboard-landing',
   templateUrl: './dashboard-landing.component.html',
@@ -67,7 +68,10 @@ export class DashboardLandingComponent implements OnInit {
 
   private getCandidateData(userId) {
     this.userDataService.getUserData(userId).subscribe(res => {
+      _.sortBy(res['CandidateExperienceDetails'], 'Start_Date');
+      // res['CandidateExperienceDetails'].sort(function(a,b){return a.getTime() - b.getTime()});
       this.candidateData = res;
+
       // this.handleSkills(this.candidateData.CandidateSkills);
       const skills = this.candidateData.CandidateSkills;
       for (let i = 0; i < skills.length; i++) {
