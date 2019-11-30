@@ -72,7 +72,7 @@
             <!-- <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload" accept=
                 "application/msword, application/vnd.ms-excel, application/vnd.ms-powerpoint,
                 text/plain, application/pdf, .docx, .doc" (change)="fileChange($event, 201)"/> -->
-            <input type="file" tabindex="16" formControlName="resume" class="form-control not-mandate fileUpload"
+            <input type="file" tabindex="" formControlName="resume" class="form-control not-mandate fileUpload"
               accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" />
           </div>
         </form>
@@ -135,7 +135,7 @@
                 <label for="countryCode" class="form-control-placeholder country-code-placeholder"
                   [ngClass]="{'active': pers.countryPhoneCode.value, 'inactive': !pers.countryPhoneCode.value }">Country
                   Code<span class="required-star">*</span></label>
-                <ngx-select-dropdown (change)="selectionChanged($event,'one')" formControlName="countryPhoneCode"
+                <ngx-select-dropdown tabindex="6" (change)="selectionChanged($event,'one')" formControlName="countryPhoneCode"
                   [multiple]="false" [config]="config" [options]="dropdownOptions"></ngx-select-dropdown>
                 <!-- <div *ngIf="pers.countryPhoneCode.value && pers.countryPhoneCode.errors" class="invalid-feedback">
                   <div class="error">{{validationMsgs.CountryRequired}}</div>
@@ -143,7 +143,7 @@
               </div>
 
               <div class="form-group">
-                <input app-phone-field type="number" tabindex="8" id="phoneNumber" formControlName="mobile"
+                <input app-phone-field type="number" tabindex="7" id="phoneNumber" formControlName="mobile"
                   class="form-control not-mandate" />
                 <label for="phoneNumber" class="form-control-placeholder"
                   [ngClass]="{'active': pers.mobile.value, 'inactive': !pers.mobile.value }">Contact Number</label>
@@ -155,13 +155,13 @@
             <div class="form-group"  #videoLink>
                 <nz-radio-group id="video-type" class="choose-slot not-mandate flex" formControlName="videoLinkTypeId"
                   (ngModelChange)="onChange($event)">
-                  <label tabindex="19" nz-radio [nzValue]="videoTypes.youtube"><span class="radio-label">YouTube</span></label>
-                  <label tabindex="20" nz-radio [nzValue]="videoTypes.vimeo"><span class="radio-label">Vimeo</span></label>
+                  <label tabindex="8" nz-radio [nzValue]="videoTypes.youtube"><span class="radio-label">YouTube</span></label>
+                  <label tabindex="9" nz-radio [nzValue]="videoTypes.vimeo"><span class="radio-label">Vimeo</span></label>
                 </nz-radio-group>
                 <label for="video-type" class="form-control-placeholder">Video Type</label>
               </div>
               <div class="form-group" >
-                <input tabindex="21" type="text" id="videoUrl" formControlName="videoLink"
+                <input tabindex="10" type="text" id="videoUrl" formControlName="videoLink"
                   class="form-control not-mandate" [placeholder]="videoPlaceholder" />
                 <label for="vidUrl" class="form-control-placeholder"
                   [ngClass]="{'active': pers.videoLink.value, 'inactive': !pers.videoLink.value }">Video URL</label>
@@ -195,7 +195,7 @@
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <!-- <input #skillName tabindex="33" type="text" id="skillName" formControlName="skillName"
                 class="form-control not-mandate" /> -->
-                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+                <nz-select tabindex="11" id="skillName" class="form-control not-mandate" formControlName="skillName"
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
                 (nzOnSearch)="searchSkill($event)" >
                 <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
@@ -209,7 +209,7 @@
                 </div> -->
             </div>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <nz-select tabindex="34" id="rating" class="form-control not-mandate" formControlName="rating"
+              <nz-select tabindex="12" id="rating" class="form-control not-mandate" formControlName="rating"
                 style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                 <nz-option [nzValue]="rate" [nzLabel]="rate" *ngFor="let rate of ratings"></nz-option>
               </nz-select>
@@ -221,7 +221,7 @@
               </div>
             </div>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="35" type="text" id="experience" formControlName="experience"
+              <input tabindex="13" type="text" id="experience" formControlName="experience"
                 class="form-control not-mandate"  />
                 <!-- placeholder="In Months" -->
               <label for="experience" class="form-control-placeholder"
@@ -287,7 +287,7 @@
             <input type="hidden" formControlName="additionalSkillId" />
 
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
+                <nz-select tabindex="14" id="skillName" class="form-control not-mandate" formControlName="skillName"
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
                 (nzOnSearch)="searchSkill($event)" >
                 <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
@@ -301,7 +301,7 @@
             </div>
 
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <nz-select tabindex="37" id="rating" class="form-control not-mandate" formControlName="rating"
+              <nz-select tabindex="15" id="rating" class="form-control not-mandate" formControlName="rating"
                 style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
                 <nz-option [nzValue]="rate" [nzLabel]="rate" *ngFor="let rate of ratings"></nz-option>
               </nz-select>
@@ -314,7 +314,7 @@
             </div>
 
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="38" type="text" id="experience" formControlName="experience"
+              <input tabindex="16" type="text" id="experience" formControlName="experience"
                 class="form-control not-mandate"  />
                 <!-- placeholder="In Months" -->
               <label for="experience" class="form-control-placeholder" [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }" >Experience (In Months)</label>
@@ -426,7 +426,7 @@
             <div class="form-group" >
               <!-- <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
                 class="form-control not-mandate" /> -->
-                <textarea #summary maxlength="500"  tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary"
+                <textarea #summary maxlength="500"  tabindex="18" rows="8" nz-input [(ngModel)]="inputValue" id="summary"
                 formControlName="summary" style="margin-top: 30px;"></textarea>
               <label for="summary" class="form-control-placeholder"
                 [ngClass]="{'active': prof.summary.value, 'inactive': !prof.summary.value }">Personal
@@ -774,7 +774,7 @@
           <form [formGroup]="experiencesForm" class="flex primaryProjectsContent">
             <input type="hidden" formControlName="experienceId" />
             <div class="form-group horizontal">
-              <input #companyName tabindex="33" type="text" id="companyName" formControlName="companyName"
+              <input #companyName tabindex="19" type="text" id="companyName" formControlName="companyName"
                 class="form-control not-mandate" />
               <label for="companyName" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.companyName.value, 'inactive': !primaryProjects.companyName.value }">Company
@@ -784,7 +784,7 @@
             </div> -->
             </div>
             <div class="form-group horizontal">
-              <input tabindex="34" type="text" id="location" formControlName="location"
+              <input tabindex="20" type="text" id="location" formControlName="location"
                 class="form-control not-mandate" />
               <label for="location" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.location.value, 'inactive': !primaryProjects.location.value }">Location</label>
@@ -793,20 +793,20 @@
             </div> -->
             </div>
             <div class="form-group horizontal">
-              <input tabindex="35" type="text" id="jobTitle" formControlName="jobTitle"
+              <input tabindex="21" type="text" id="jobTitle" formControlName="jobTitle"
                 class="form-control not-mandate" />
               <label for="jobTitle" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.jobTitle.value, 'inactive': !primaryProjects.jobTitle.value }">Job
                 Title</label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
-              <nz-date-picker formControlName="startDate" tabindex="36" id="startDate" class="form-control not-mandate"
+              <nz-date-picker formControlName="startDate" tabindex="22" id="startDate" class="form-control not-mandate"
                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
                 style="margin-top: 25px;"></nz-date-picker>
               <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date</label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
-              <nz-date-picker formControlName="endDate" tabindex="37" id="endDate" class="form-control not-mandate"
+              <nz-date-picker formControlName="endDate" tabindex="23" id="endDate" class="form-control not-mandate"
                 [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
                  style="margin-top: 25px;"></nz-date-picker>
               <label for="endDate" class="form-control-placeholder"
@@ -814,7 +814,7 @@
                 style="top: 8px;">End Date</label>
             </div>
             <div class="form-group horizontal" style="width: 48%;">
-              <quill-editor id="description" tabindex="38" style="display: block;margin-top: 30px;"
+              <quill-editor id="description" tabindex="24" style="display: block;margin-top: 30px;"
                 formControlName="description" class="form-control not-mandate" [styles]="editorStyle"
                 [modules]="editorConfig"></quill-editor>
               <label for="description" class="form-control-placeholder"
@@ -878,7 +878,7 @@
         </div>
         <div class="card-content" style="margin-top: 10px;">
           <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
-            <input type="hidden" formControlName="additionalProjectId" />
+            <input tabindex="24" type="hidden" formControlName="additionalProjectId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input #name tabindex="39" type="text" id="name" formControlName="name"
                 class="form-control not-mandate" />
@@ -886,7 +886,7 @@
                 [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name</label>
             </div>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="40" type="text" id="year" formControlName="year" class="form-control not-mandate" />
+              <input tabindex="25" type="text" id="year" formControlName="year" class="form-control not-mandate" />
               <label for="year" class="form-control-placeholder"
                 [ngClass]="{'active': additionalProjects.year.value, 'inactive': !additionalProjects.year.value }">Year</label>
               <div *ngIf=" additionalProjects.year.errors" class="invalid-feedback">
@@ -897,7 +897,7 @@
               [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <!-- <input tabindex="35" type="text" id="description" formControlName="description"
                 class="form-control not-mandate" /> -->
-              <quill-editor id="description" tabindex="41" style="display: block;margin-top: 30px;"
+              <quill-editor id="description" tabindex="26" style="display: block;margin-top: 30px;"
                 formControlName="description" class="form-control not-mandate" [styles]="editorStyle"
                 [modules]="editorConfig"></quill-editor>
               <label for="description" class="form-control-placeholder"
@@ -955,7 +955,7 @@
           <form [formGroup]="educationForm" class="flex educationsContent">
             <input type="hidden" formControlName="educationId" />
             <div class="form-group horizontal">
-              <input #degreeName tabindex="42" type="text" id="degreeName" formControlName="degreeName"
+              <input #degreeName tabindex="27" type="text" id="degreeName" formControlName="degreeName"
                 class="form-control not-mandate" />
               <label for="degreeName" class="form-control-placeholder"
                 [ngClass]="{'active': educations.degreeName.value, 'inactive': !educations.degreeName.value }">Degree
@@ -963,27 +963,27 @@
 
             </div>
             <div class="form-group horizontal">
-              <input tabindex="43" type="text" id="speciality" formControlName="speciality"
+              <input tabindex="28" type="text" id="speciality" formControlName="speciality"
                 class="form-control not-mandate" />
               <label for="speciality" class="form-control-placeholder"
                 [ngClass]="{'active': educations.speciality.value, 'inactive': !educations.speciality.value }">Speciality</label>
 
             </div>
             <div class="form-group horizontal">
-              <input tabindex="44" type="text" id="schoolName" formControlName="schoolName"
+              <input tabindex="29" type="text" id="schoolName" formControlName="schoolName"
                 class="form-control not-mandate" />
               <label for="schoolName" class="form-control-placeholder"
                 [ngClass]="{'active': educations.schoolName.value, 'inactive': !educations.schoolName.value }">Institution
                 Name</label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
-              <nz-date-picker formControlName="startDate" tabindex="45" id="startDate" class="form-control not-mandate"
+              <nz-date-picker formControlName="startDate" tabindex="30" id="startDate" class="form-control not-mandate"
                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
                 [nzPlaceHolder]="'Start Date'" style="margin-top: 25px;"></nz-date-picker>
               <label for="startDate" class="form-control-placeholder" style="top: 8px;">Start Date</label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
-              <nz-date-picker formControlName="endDate" tabindex="46" id="endDate" class="form-control not-mandate"
+              <nz-date-picker formControlName="endDate" tabindex="31" id="endDate" class="form-control not-mandate"
                 [[nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
                 [nzPlaceHolder]="'End Date'" style="margin-top: 25px;"></nz-date-picker>
               <label for="endDate" class="form-control-placeholder"
@@ -1048,7 +1048,7 @@
          <form [formGroup]="socialForm" (ngSubmit)="onSubmit(false, 'socialForm')">
            <div class="flex" style="justify-content: space-between;">
                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input #linkedIn tabindex="17" type="text" id="linkedin" formControlName="linkedin"
+                   <input #linkedIn tabindex="32" type="text" id="linkedin" formControlName="linkedin"
                      class="form-control not-mandate" />
                    <label for="linkedin" class="form-control-placeholder"
                      [ngClass]="{'active': social.linkedin.value, 'inactive': !social.linkedin.value }">Linkedin</label>
@@ -1057,7 +1057,7 @@
                    </div>
                  </div>
                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input tabindex="18" type="text" id="github" formControlName="github" class="form-control not-mandate" />
+                   <input tabindex="33" type="text" id="github" formControlName="github" class="form-control not-mandate" />
                    <label for="github" class="form-control-placeholder"
                      [ngClass]="{'active': social.github.value, 'inactive': !social.github.value }">Github</label>
                    <div *ngIf=" social.github.errors" class="invalid-feedback">
@@ -1065,7 +1065,7 @@
                    </div>
                  </div>
                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input tabindex="19" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
+                   <input tabindex="34" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
                    <label for="stack" class="form-control-placeholder"
                      [ngClass]="{'active': social.stack.value, 'inactive': !social.stack.value }">Stack Overflow</label>
                    <div *ngIf=" social.stack.errors" class="invalid-feedback">
