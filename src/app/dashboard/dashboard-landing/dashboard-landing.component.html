@@ -76,7 +76,7 @@
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(5)">
             <img [src]="candidateData?.Summary?.length > 0 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" />
-             <span [ngClass]="{'completed': candidateData?.Summary.length > 0}">Personal Summary</span>
+             <span [ngClass]="{'completed': candidateData?.Summary?.length > 0}">Personal Summary</span>
             <!-- <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p> -->
           </div>
         </div>

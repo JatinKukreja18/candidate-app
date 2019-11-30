@@ -1566,45 +1566,7 @@ export class ProfileLandingComponent implements OnInit {
               typeid: 7
             } */
         ];
-      } else if (formName === "primarySkillsForm") {
-        /* else if (formName === 'referenceForm') {
-        if (this.referenceForm.invalid ||
-          (this.referenceForm.get('referenceList').get('one').value.emailid && this.referenceForm.get('referenceList').get('two').value.emailid &&
-            this.referenceForm.get('referenceList').get('one').value.emailid == this.referenceForm.get('referenceList').get('two').value.emailid) ||
-          (this.referenceForm.get('referenceList').get('one').value.mobilenumber && this.referenceForm.get('referenceList').get('two').value.mobilenumber &&
-            this.referenceForm.get('referenceList').get('one').value.mobilenumber == this.referenceForm.get('referenceList').get('two').value.mobilenumber)
-        ) {
-          return;
-        }
-        reqBody = {
-          'referenceList': []
-        };
-        if (this.profile && this.profile.referenceList instanceof Array && this.profile.referenceList.length > 0) {
-          reqBody['referenceList'] = this.profile.referenceList;
-
-          if (!this.profile.referenceList[0] || !this.profile.referenceList[0]['comment']) {
-            if (this.referenceForm.get('referenceList').get('one').value.name && this.referenceForm.get('referenceList').get('one').value.emailid) {
-              reqBody['referenceList'][0] = this.referenceForm.get('referenceList').get('one').value;
-            }
-            // reqBody.referenceList.push(this.profileForm.get('referenceList').get('one').value);
-          }
-          if (!this.profile.referenceList[1] || !this.profile.referenceList[1]['comment']) {
-            if (this.referenceForm.get('referenceList').get('two').value.name && this.referenceForm.get('referenceList').get('two').value.emailid) {
-              reqBody['referenceList'][1] = this.profileForm.get('referenceList').get('two').value;
-            }
-          }
-        } else if (this.profile && this.profile.referenceList instanceof Array && this.profile.referenceList.length == 0) {
-          reqBody['referenceList'] = [];
-          if (this.referenceForm.get('referenceList').get('one').value.name) {
-            reqBody['referenceList'].push(this.profileForm.get('referenceList').get('one').value);
-          }
-          if (this.referenceForm.get('referenceList').get('two').value.name) {
-            reqBody['referenceList'].push(this.profileForm.get('referenceList').get('two').value);
-          }
-        }
-      }  */
-    }
-      else if (formName === 'primarySkillsForm') {
+      } else if (formName === 'primarySkillsForm') {
 
         reqBody = this.primarySkillsList.concat(this.additionalSkillsList) ;
 
@@ -2116,5 +2078,5 @@ export class ProfileLandingComponent implements OnInit {
     }
     return false;
   }
-  
+
 }
