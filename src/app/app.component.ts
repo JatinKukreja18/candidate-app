@@ -89,6 +89,8 @@ export class AppComponent {
         break;
       case 'myjobs': this.currentActivePage = 'My Jobs';
         break;
+      case 'edit': this.currentActivePage = 'Edit Profile';
+        break;
       default: this.currentActivePage = '';
         break;
     }

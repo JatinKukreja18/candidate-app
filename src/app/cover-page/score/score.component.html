@@ -1,4 +1,4 @@
-<div class='score-container'>
+<div class='score-container' nz-tooltip [nzTitle]="skillTemplate" >
     <div class="radial-progress">
         <div class="circle">
             <div class="mask full" [@rotatedState]="{value: state, params: { rotDeg: fillRotation}}">
@@ -18,3 +18,6 @@
     </div>
     <div class="text" *ngIf="months"><span >{{months}} Months</span></div>
 </div>
+<ng-template #skillTemplate>
+  {{skill}}
+</ng-template>
