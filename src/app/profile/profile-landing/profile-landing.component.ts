@@ -425,11 +425,14 @@ export class ProfileLandingComponent implements OnInit {
 
     this.additionalProjectsForm = this.formBuilder.group({
       additionalProjectId: [""],
-      name: ["", { updateOn: "blur" }],
+      name: ["", { updateOn: "blur", validators: [Validators.required] }],
       role: ["", { updateOn: "blur" }],
       year: [
         "",
-        { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: "blur" }
+        {
+          validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
+          updateOn: "blur"
+        }
       ],
       description: [""]
     });

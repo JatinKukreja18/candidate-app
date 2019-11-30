@@ -39,44 +39,44 @@
     <div class="row flex">
       <!-- Profile section side div -->
       <aside class="profile-progress">
-        <p class="section-title">Profile {{ candidate?.overallprofilestatus ? candidate.overallprofilestatus: 0}}% Completed</p>
+        <!-- <p class="section-title">Profile {{ candidate?.overallprofilestatus ? candidate.overallprofilestatus: 0}}% Completed</p> -->
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(1)">
             <img [src]="candidate?.profile?.basicinfo == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /><span [ngClass]="{'completed': candidate?.profile?.basicinfo == 100}">Basic Info</span>
-            <p class="progress-pc">{{candidate?.profile?.basicinfo ? candidate.profile.basicinfo : 0}}%</p>
+            <!-- <p class="progress-pc">{{candidate?.profile?.basicinfo ? candidate.profile.basicinfo : 0}}%</p> -->
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(2)">
             <img [src]="candidate?.profile?.professionalinfo == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.professionalinfo == 100}">Professional Info</span>
-            <p class="progress-pc">{{candidate?.profile?.professionalinfo ? candidate.profile.professionalinfo : 0}}%</p>
+            <!-- <p class="progress-pc">{{candidate?.profile?.professionalinfo ? candidate.profile.professionalinfo : 0}}%</p> -->
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(3)">
             <img [src]="candidate?.profile?.resumeupload == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.resumeupload == 100}">Resume Upload</span>
-            <p class="progress-pc">{{candidate?.profile?.resumeupload ? candidate.profile.resumeupload : 0}}%</p>
+            <!-- <p class="progress-pc">{{candidate?.profile?.resumeupload ? candidate.profile.resumeupload : 0}}%</p> -->
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(4)">
             <img [src]="candidate?.profile?.sociallinks == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.sociallinks == 100}">Social Profiles</span>
-            <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p>
+            <!-- <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p> -->
           </div>
         </div>
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(5)">
             <img [src]="candidate?.profile?.videoprofile == 100 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" /> <span [ngClass]="{'completed': candidate?.profile?.videoprofile == 100}">Video Profile</span>
-            <p class="progress-pc">{{candidate?.profile?.videoprofile ? candidate.profile.videoprofile : 0}}%</p>
+            <!-- <p class="progress-pc">{{candidate?.profile?.videoprofile ? candidate.profile.videoprofile : 0}}%</p> -->
           </div>
           <button class="orange-button" [routerLink]="['/profile']" *ngIf="candidate && candidate?.overallprofilestatus != 100" (click)="completeProfileNavigation()">Complete Profile</button>
           <div class="row profile-tips">
             <p class="tip-icon"><img src="assets/images/tip-icon.svg" alt="" /></p>
-            <p class="tip-text" title="{{candidate?.profileTips[0]['tips']}}">{{candidate?.profileTips[0]['tips']}}</p>
+            <!-- <p class="tip-text" title="{{candidate?.profileTips[0]['tips']}}">{{candidate?.profileTips[0]['tips']}}</p> -->
           </div>
           <!-- <p class="tip-text">Having updated Resumes will fetch you better jobs</p> -->
         </div>
