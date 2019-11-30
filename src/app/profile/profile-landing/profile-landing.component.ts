@@ -234,7 +234,7 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.professionalDetailsForm = this.formBuilder.group({
-      summary: ["", { updateOn: "blur" }]
+      summary: ["",[Validators.required]]
       /* designation: ['', { updateOn: 'blur' }],
       expectedpayrate: ['', { validators: [Validators.pattern(/^[0-9]{1,4}$/)], updateOn: 'blur' }],
       expectedAnnual: ['', { validators: [Validators.pattern(/^[0-9]{1,7}$/)], updateOn: 'blur' }],
@@ -1473,6 +1473,7 @@ export class ProfileLandingComponent implements OnInit {
    * @return return null if inputs are invalid else submits form
    */
   onSubmit(isVideoUpdate: boolean, formName) {
+    console.log("dddd",formName);
     this.submitted = true;
     if (!this.loading) {
       let reqBody = {};
@@ -1493,9 +1494,13 @@ export class ProfileLandingComponent implements OnInit {
           VideoLink: this.personalDetailsForm.value.videoLink
         };
       } else if (formName === "professionalDetailsForm") {
+        // console.log("ddddddddd",this.professionalDetailsForm.invalid,this.professionalDetailsForm);
+        // console.log("this.professionalDetailsForm.value.summary;",this.professionalDetailsForm.value.summary);
+
         if (this.professionalDetailsForm.invalid) {
           return;
         }
+        // console.log("this.professionalDetailsForm.value.summary;",this.professionalDetailsForm.value.summary);
         reqBody = this.professionalDetailsForm.value.summary;
         /* reqBody = {
           'designation': this.professionalDetailsForm.value.designation,
