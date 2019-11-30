@@ -24,8 +24,10 @@ export class DashboardLandingComponent implements OnInit {
   showConfirmationModal = false;
   missingFields: string[];
   showPreInterviewModal = false;
-  candidateData = {};
+  candidateData:any  = {};
   loading = true;
+  hasPrimary: boolean;
+  hasAdditional: boolean;
 
   constructor(
     private dashboardService: DashboardService,
@@ -67,6 +69,16 @@ export class DashboardLandingComponent implements OnInit {
     this.userDataService.getUserData(userId).subscribe(res => {
       this.candidateData = res;
       // this.handleSkills(this.candidateData.CandidateSkills);
+      const skills = this.candidateData.CandidateSkills;
+      for (let i = 0; i < skills.length; i++) {
+        if(skills[i].IsPrimarySkill){
+          this.hasPrimary = true
+        }else if(!skills[i].IsPrimarySkill){
+          this.hasAdditional= true
+
+        }
+
+      }
       this.loading = false;
     }, err => {
       console.log(err.message);
@@ -337,7 +349,7 @@ export class DashboardLandingComponent implements OnInit {
    */
   gotoProfile(profileSection: number) {
     // forcing to do to edit
-    this.router.navigate(['/profile/edit']);
+    this.router.navigateByUrl('/profile/edit' +'#' + profileSection );
     // this.router.navigate(['/profile'], {queryParams: {active: profileSection}});
   }
 

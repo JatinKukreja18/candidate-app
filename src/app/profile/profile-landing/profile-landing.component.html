@@ -8,7 +8,7 @@
             <a (click)="GoToSection(anchor2)" >Primary Skills</a>
             <a (click)="GoToSection(anchor3)" >Additional Skills</a>
             <a (click)="GoToSection(anchor4)">Trainings</a>
-            <a (click)="GoToSection(anchor5)">Professional Details</a>
+            <a (click)="GoToSection(anchor5)">Personal Summary</a>
             <a (click)="GoToSection(anchor6)">Experience</a>
             <a (click)="GoToSection(anchor7)">Additional Projects</a>
             <a (click)="GoToSection(anchor8)" >Education and Certifications</a>
@@ -78,7 +78,7 @@
       </div>
     </div>
       <!-- Personal details form -->
-      <div class="profile-card" #anchor1 id="personal" [ngClass]="{'active': activeSection.personal}"
+      <div class="profile-card anchor1" #anchor1 id="personal" [ngClass]="{'active': activeSection.personal}"
         (click)="highlightSectionOnClick(1)">
         <div class="card-title">Personal Details
           <!-- <span class="card-status">
@@ -177,7 +177,7 @@
         </div>
       </div>
       <!-- Primary Skills -->
-      <div class="profile-card" #anchor2 id="primarySkills" [ngClass]="{'active': activeSection.primarySkills}"
+      <div class="profile-card anchor2" #anchor2 id="primarySkills" [ngClass]="{'active': activeSection.primarySkills}"
         (click)="highlightSectionOnClick(7)">
         <div class="card-title">Primary Skills
           <!-- <span class="card-status">
@@ -200,7 +200,7 @@
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
                 Name</label>
-                
+
               <!-- <div *ngIf=" primarySkills.skillName.errors" class="invalid-feedback">
                   <div class="error" *ngIf="primarySkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
                 </div> -->
@@ -267,7 +267,7 @@
         </div>
       </div>
       <!-- Additional Skills -->
-      <div class="profile-card" #anchor3 id="additionalSkills" [ngClass]="{'active': activeSection.additionalSkills}"
+      <div class="profile-card anchor3" #anchor3 id="additionalSkills" [ngClass]="{'active': activeSection.additionalSkills}"
         (click)="highlightSectionOnClick(8)">
         <div class="card-title">Additional Skills
           <!-- <span class="card-status">
@@ -354,7 +354,7 @@
         </div>
       </div>
       <!-- tranings form-->
-      <div class="profile-card" #anchor4 id="trainings" [ngClass]="{'active': activeSection.trainings}"
+      <div class="profile-card anchor4" #anchor4 id="trainings" [ngClass]="{'active': activeSection.trainings}"
         (click)="highlightSectionOnClick(11)">
         <div class="card-title">Trainings
         </div>
@@ -404,16 +404,16 @@
         </div>
       </div>
       <!-- Professional details form -->
-      <div class="profile-card" #anchor5 id="professional" [ngClass]="{'active': activeSection.professional}"
+      <div class="profile-card anchor5" #anchor5 id="professional" [ngClass]="{'active': activeSection.professional}"
         (click)="highlightSectionOnClick(2)">
-        <div class="card-title">Professional Details
+        <div class="card-title">Personal Summary
         </div>
         <div class="card-content">
           <form [formGroup]="professionalDetailsForm" (ngSubmit)="onSubmit(false, 'professionalDetailsForm')">
             <div class="form-group" >
               <!-- <input #designation tabindex="9" type="text" id="preferDesignation" formControlName="designation"
                 class="form-control not-mandate" /> -->
-                <textarea #summary tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary"
+                <textarea #summary maxlength="500"  tabindex="9" rows="8" nz-input [(ngModel)]="inputValue" id="summary"
                 formControlName="summary" style="margin-top: 30px;"></textarea>
               <label for="summary" class="form-control-placeholder"
                 [ngClass]="{'active': prof.summary.value, 'inactive': !prof.summary.value }">Personal
@@ -494,7 +494,7 @@
           </form>
         </div>
       </div>
-     
+
       <!-- Video upload form -->
      <!--  <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}"
         (click)="highlightSectionOnClick(5)">
@@ -547,7 +547,7 @@
           </form>
         </div>
       </div> -->
-      
+
       <!-- Reference form -->
       <!-- <div class="profile-card col col-12" id="references" [ngClass]="{'active': activeSection.reference}"
         (click)="highlightSectionOnClick(6)">
@@ -747,7 +747,7 @@
       </div> -->
 
       <!-- Experience -->
-      <div class="profile-card" #anchor6 id="primaryProjects" [ngClass]="{'active': activeSection.primaryProjects}"
+      <div class="profile-card anchor6" #anchor6 id="primaryProjects" [ngClass]="{'active': activeSection.primaryProjects}"
         (click)="highlightSectionOnClick(9)">
         <div class="card-title">Experiences
           <!-- <span class="card-status">
@@ -852,7 +852,7 @@
         </div>
       </div>
       <!-- Additional Projects -->
-      <div class="profile-card" #anchor7 id="additionalProjects" [ngClass]="{'active': activeSection.additionalProjects}"
+      <div class="profile-card anchor7" #anchor7 id="additionalProjects" [ngClass]="{'active': activeSection.additionalProjects}"
         (click)="highlightSectionOnClick(10)">
         <div class="card-title">Additional Projects
           <!-- <span class="card-status">
@@ -931,7 +931,7 @@
         </div>
       </div>
       <!-- Educations & Certifications -->
-      <div class="profile-card" #anchor8 id="educations" [ngClass]="{'active': activeSection.educations}"
+      <div class="profile-card anchor8" #anchor8 id="educations" [ngClass]="{'active': activeSection.educations}"
         (click)="highlightSectionOnClick(11)">
         <div class="card-title">Educations & Certifications
         </div>
@@ -1019,7 +1019,7 @@
         </div>
       </div>
        <!-- Social details form -->
-       <div class="profile-card" #anchor10 id="social" [ngClass]="{'active': activeSection.social}"
+       <div class="profile-card anchor10" #anchor10 id="social" [ngClass]="{'active': activeSection.social}"
        (click)="highlightSectionOnClick(4)">
        <div class="card-title">Social Profiles
          <!-- <span class="card-status">

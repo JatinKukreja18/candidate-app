@@ -8,6 +8,8 @@ import { ValidationMessages, FeedbackMessages } from '@app/core/messages';
 import { AuthenticationService, ProfileService, CommonService, VimeoService, AnalyticsService } from '@app/core';
 import { ProfileForm } from '@app/core/models';
 import { Observable, Subscription } from 'rxjs';
+import { Inject, Injectable } from '@angular/core';
+import { DOCUMENT } from '@angular/common';
 
 @Component({
   selector: 'app-profile-landing',
@@ -156,6 +158,7 @@ export class ProfileLandingComponent implements OnInit {
     private activatedRoute: ActivatedRoute,
     private userDataService: UserDataService,
     private authService: AuthenticationService,
+    @Inject(DOCUMENT) private document: Document
   ) {
     this.validationMsgs = ValidationMessages;
     document.querySelector('.page-content').addEventListener('scroll',function(){
@@ -175,9 +178,11 @@ export class ProfileLandingComponent implements OnInit {
 
   _checkScroll(){
     console.log(this);
-    
+
   }
   ngOnInit() {
+    // console.log(this.document.location.hash);
+
     if (typeof window !== undefined) {
       window.addEventListener('scroll', () => this._checkScroll());
     }
@@ -325,7 +330,12 @@ export class ProfileLandingComponent implements OnInit {
     this.primarySkillsList = [...this.primarySkillsList, skill];
     this.primarySkillsForm.reset();
   }
-
+  ngAfterViewInit(){
+    if(this.document.location.hash){
+      const el = this.document.querySelector('.anchor'+ this.document.location.hash.slice(1,2));
+      this.GoToSection(el);
+   }
+  }
   addAdditionalSkill() {
     if (this.additionalSkillsForm.invalid) {
       return;
@@ -1632,7 +1642,15 @@ export class ProfileLandingComponent implements OnInit {
       });
   }
   GoToSection(target){
-    console.log(target)
-    target.scrollIntoView({behavior: 'smooth'});
+    console.log(target.id)
+    const topOfElement :any = this.document.querySelector('#'+target.id);
+    if(this.document.querySelector('#profile-head').classList.contains('scrolled')){
+      this.document.querySelector('#'+target.id)
+      this.document.querySelector('.page-content').scrollTop = topOfElement.offsetTop - 80;
+    }else{
+      this.document.querySelector('#'+target.id)
+      this.document.querySelector('.page-content').scrollTop = topOfElement.offsetTop - 200;
+    }
+    // target.scrollIntoView({behavior: 'smooth',block:'end'});
   }
 }
