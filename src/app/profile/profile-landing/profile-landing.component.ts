@@ -1,32 +1,46 @@
-import { UserDataService } from '@app/core/services/userdata.service';
-import { Component, OnInit, ViewChild, ElementRef, HostListener, ViewEncapsulation } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router, NavigationEnd } from '@angular/router';
-import { NzMessageService } from 'ng-zorro-antd';
-import { ValidationMessages, FeedbackMessages } from '@app/core/messages';
-import { AuthenticationService, ProfileService, CommonService, VimeoService, AnalyticsService } from '@app/core';
-import { ProfileForm } from '@app/core/models';
-import { Observable, Subscription } from 'rxjs';
+import { UserDataService } from "@app/core/services/userdata.service";
+import {
+  Component,
+  OnInit,
+  ViewChild,
+  ElementRef,
+  HostListener,
+  ViewEncapsulation
+} from "@angular/core";
+import { DomSanitizer } from "@angular/platform-browser";
+import { FormBuilder, FormGroup, Validators } from "@angular/forms";
+import { ActivatedRoute, Router, NavigationEnd } from "@angular/router";
+import { NzMessageService } from "ng-zorro-antd";
+import { ValidationMessages, FeedbackMessages } from "@app/core/messages";
+import {
+  AuthenticationService,
+  ProfileService,
+  CommonService,
+  VimeoService,
+  AnalyticsService
+} from "@app/core";
+import { ProfileForm } from "@app/core/models";
+import { Observable, Subscription } from "rxjs";
 
 @Component({
-  selector: 'app-profile-landing',
-  templateUrl: './profile-landing.component.html',
-  styleUrls: ['./profile-landing.component.scss'],
+  selector: "app-profile-landing",
+  templateUrl: "./profile-landing.component.html",
+  styleUrls: ["./profile-landing.component.scss"],
   encapsulation: ViewEncapsulation.None
 })
 export class ProfileLandingComponent implements OnInit {
-
-  @ViewChild('firstName', { read: ElementRef }) firstNameField: ElementRef;
-  @ViewChild('lastName', { read: ElementRef }) lastNameField: ElementRef;
-  @ViewChild('gender', { read: ElementRef }) genderField: ElementRef;
-  @ViewChild('preferredLocation', { read: ElementRef }) preferredLocationField: ElementRef;
-  @ViewChild('city', { read: ElementRef }) searchCityInput: ElementRef;
-  @ViewChild('videoLink', { read: ElementRef }) videoLinkField: ElementRef;
-  @ViewChild('resume', { read: ElementRef }) resumeField: ElementRef;
-  @ViewChild('expectedPayRate', { read: ElementRef }) expectedPayRateField: ElementRef;
-  @ViewChild('designation', { read: ElementRef }) designationField: ElementRef;
-  @ViewChild('linkedIn', { read: ElementRef }) linkedInField: ElementRef;
+  @ViewChild("firstName", { read: ElementRef }) firstNameField: ElementRef;
+  @ViewChild("lastName", { read: ElementRef }) lastNameField: ElementRef;
+  @ViewChild("gender", { read: ElementRef }) genderField: ElementRef;
+  @ViewChild("preferredLocation", { read: ElementRef })
+  preferredLocationField: ElementRef;
+  @ViewChild("city", { read: ElementRef }) searchCityInput: ElementRef;
+  @ViewChild("videoLink", { read: ElementRef }) videoLinkField: ElementRef;
+  @ViewChild("resume", { read: ElementRef }) resumeField: ElementRef;
+  @ViewChild("expectedPayRate", { read: ElementRef })
+  expectedPayRateField: ElementRef;
+  @ViewChild("designation", { read: ElementRef }) designationField: ElementRef;
+  @ViewChild("linkedIn", { read: ElementRef }) linkedInField: ElementRef;
   profileForm: FormGroup;
   personalDetailsForm: FormGroup;
   professionalDetailsForm: FormGroup;
@@ -47,7 +61,7 @@ export class ProfileLandingComponent implements OnInit {
   date = null;
   videoLink: any;
   videoData: any;
-  inputValue:any;
+  inputValue: any;
   checked = false;
   profilePic = false;
   formData: FormData;
@@ -61,54 +75,54 @@ export class ProfileLandingComponent implements OnInit {
   educationsList = [];
   trainingsList = [];
   skills = [];
-  videoPlaceholder = 'Please enter youtube embed link';
+  videoPlaceholder = "Please enter youtube embed link";
   videoTypes = {
     youtube: 1,
     vimeo: 2
   };
   selectedFile: {
-    profileImage: string,
-    resumeName: string,
-    videoname: string
+    profileImage: string;
+    resumeName: string;
+    videoname: string;
   } = {
-      profileImage: '',
-      resumeName: '',
-      videoname: ''
-    }
+    profileImage: "",
+    resumeName: "",
+    videoname: ""
+  };
   activeSection: {
-    personal: boolean,
-    professional: boolean,
-    resume: boolean,
-    social: boolean,
-    video: boolean,
-    reference: boolean,
-    primarySkills: boolean,
-    additionalSkills: boolean,
-    primaryProjects: boolean,
-    additionalProjects: boolean,
-    educations: boolean,
-    trainings: boolean
+    personal: boolean;
+    professional: boolean;
+    resume: boolean;
+    social: boolean;
+    video: boolean;
+    reference: boolean;
+    primarySkills: boolean;
+    additionalSkills: boolean;
+    primaryProjects: boolean;
+    additionalProjects: boolean;
+    educations: boolean;
+    trainings: boolean;
   } = {
-      personal: false,
-      professional: false,
-      resume: false,
-      social: false,
-      video: false,
-      reference: false,
-      primarySkills: false,
-      additionalSkills: false,
-      primaryProjects: false,
-      additionalProjects: false,
-      educations: false,
-      trainings: false
-    }
+    personal: false,
+    professional: false,
+    resume: false,
+    social: false,
+    video: false,
+    reference: false,
+    primarySkills: false,
+    additionalSkills: false,
+    primaryProjects: false,
+    additionalProjects: false,
+    educations: false,
+    trainings: false
+  };
   expandedComment: {
-    one: boolean,
-    two: boolean
+    one: boolean;
+    two: boolean;
   } = {
-      one: false,
-      two: false
-    };
+    one: false,
+    two: false
+  };
   missingFields: string[] = [];
   playVideoModal = false;
   deleteConfirmationModal = false;
@@ -118,29 +132,29 @@ export class ProfileLandingComponent implements OnInit {
   isEmbedVideo: boolean;
   ratings = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
   editorStyle = {
-    height: '80px'
+    height: "80px"
   };
   editorConfig = {
     toolbar: [
-      ['bold', 'italic', 'underline'],
-      [{ 'size': ['small', false, 'large', 'huge'] }],
-      [{ list: 'ordered' }, { list: 'bullet' }],
-      ['link', 'blockquote'],
+      ["bold", "italic", "underline"],
+      [{ size: ["small", false, "large", "huge"] }],
+      [{ list: "ordered" }, { list: "bullet" }],
+      ["link", "blockquote"],
       /* [{ 'color': [] }, { 'background': [] }], */
-      ['clean']
+      ["clean"]
     ]
   };
   config = {
-    displayKey: 'description', //if objects array passed which key to be displayed defaults to description
+    displayKey: "description", //if objects array passed which key to be displayed defaults to description
     search: true, //true/false for the search functionlity defaults to false,
-    height: 'auto', //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
-    placeholder: 'Country Code', // text to be displayed when no item is selected defaults to Select,
-    customComparator: () => { }, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
-    moreText: 'more', // text to be displayed whenmore than one items are selected like Option 1 + 5 more
-    noResultsFound: 'No results found!', // text to be displayed when no items are found while searching
-    searchPlaceholder: 'Search', // label thats displayed in search input,
-    searchOnKey: 'Name' // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
-  }
+    height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
+    placeholder: "Country Code", // text to be displayed when no item is selected defaults to Select,
+    customComparator: () => {}, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    moreText: "more", // text to be displayed whenmore than one items are selected like Option 1 + 5 more
+    noResultsFound: "No results found!", // text to be displayed when no items are found while searching
+    searchPlaceholder: "Search", // label thats displayed in search input,
+    searchOnKey: "Name" // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
+  };
   candidateId: string;
 
   constructor(
@@ -155,51 +169,80 @@ export class ProfileLandingComponent implements OnInit {
     private analyticsService: AnalyticsService,
     private activatedRoute: ActivatedRoute,
     private userDataService: UserDataService,
-    private authService: AuthenticationService,
+    private authService: AuthenticationService
   ) {
     this.validationMsgs = ValidationMessages;
-    document.querySelector('.page-content').addEventListener('scroll',function(){
-        if(document.querySelector('.page-content').scrollTop > 60){
-          document.querySelector('#profile-head').classList.add('scrolled')
-        }else{
-          document.querySelector('#profile-head').classList.remove('scrolled')
+    document
+      .querySelector(".page-content")
+      .addEventListener("scroll", function() {
+        if (document.querySelector(".page-content").scrollTop > 60) {
+          document.querySelector("#profile-head").classList.add("scrolled");
+        } else {
+          document.querySelector("#profile-head").classList.remove("scrolled");
         }
       });
   }
 
-
-
   dropdownOptions: any = [];
 
-  dropdownOptions1: Array<any> = ['Africa', 'England', 'Russa', 'Bangladesh', 'ok', 'China', '', '', ''];
+  dropdownOptions1: Array<any> = [
+    "Africa",
+    "England",
+    "Russa",
+    "Bangladesh",
+    "ok",
+    "China",
+    "",
+    "",
+    ""
+  ];
 
-  _checkScroll(){
+  _checkScroll() {
     console.log(this);
-    
   }
   ngOnInit() {
     if (typeof window !== undefined) {
-      window.addEventListener('scroll', () => this._checkScroll());
+      window.addEventListener("scroll", () => this._checkScroll());
     }
     this.getCountryList();
     // this.options.push({id: 34, ;
     if (window.navigator) {
-      if (this.vimeoService.getBrowserVersion() == 'Safari 12') this.isEmbedVideo = true;
+      if (this.vimeoService.getBrowserVersion() == "Safari 12")
+        this.isEmbedVideo = true;
       else this.isEmbedVideo = false;
     }
     this.personalDetailsForm = this.formBuilder.group({
-      firstName: ['', { validators: [Validators.required, Validators.minLength(2), Validators.maxLength(25)], updateOn: 'blur' }],
-      lastName: ['', { validators: [Validators.maxLength(25)], updateOn: 'blur' }],
-      countryPhoneCode: ['', { validators: [Validators.required], updateOn: 'blur' }],
-      mobile: ['', { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: 'blur' }],
+      firstName: [
+        "",
+        {
+          validators: [
+            Validators.required,
+            Validators.minLength(2),
+            Validators.maxLength(25)
+          ],
+          updateOn: "blur"
+        }
+      ],
+      lastName: [
+        "",
+        { validators: [Validators.maxLength(25)], updateOn: "blur" }
+      ],
+      countryPhoneCode: [
+        "",
+        { validators: [Validators.required], updateOn: "blur" }
+      ],
+      mobile: [
+        "",
+        { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: "blur" }
+      ],
       /* dob : [''], */
-      videoLink: ['', { updateOn: 'blur' }],
+      videoLink: ["", { updateOn: "blur" }],
       videoLinkTypeId: [1],
-      gender: [''],
+      gender: [""]
     });
 
     this.professionalDetailsForm = this.formBuilder.group({
-      summary: ['', { updateOn: 'blur' }],
+      summary: ["", { updateOn: "blur" }]
       /* designation: ['', { updateOn: 'blur' }],
       expectedpayrate: ['', { validators: [Validators.pattern(/^[0-9]{1,4}$/)], updateOn: 'blur' }],
       expectedAnnual: ['', { validators: [Validators.pattern(/^[0-9]{1,7}$/)], updateOn: 'blur' }],
@@ -209,93 +252,205 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.resumeForm = this.formBuilder.group({
-      resume: ['', { updateOn: 'blur' }],
+      resume: ["", { updateOn: "blur" }]
     });
 
     this.socialForm = this.formBuilder.group({
-      linkedin: ['', { validators: [Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\blinkedin\b/i)], updateOn: 'blur' }],
-      github: ['', { validators: [Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\bgithub\b/i)], updateOn: 'blur' }],
-      stack: ['', { validators: [Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\bstackoverflow\b/i)], updateOn: 'blur' }],
-      others: ['', { updateOn: 'blur' }]
+      linkedin: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\blinkedin\b/i)
+          ],
+          updateOn: "blur"
+        }
+      ],
+      github: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\bgithub\b/i)
+          ],
+          updateOn: "blur"
+        }
+      ],
+      stack: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\bstackoverflow\b/i)
+          ],
+          updateOn: "blur"
+        }
+      ],
+      others: ["", { updateOn: "blur" }]
     });
 
     this.videoForm = this.formBuilder.group({
-      uploadType: ['', { updateOn: 'blur' }],
-      videoLink: ['', { validators: [Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\byoutube\b/i)], updateOn: 'blur' }],
-      uploadVideoLink: ['', { updateOn: 'blur' }],
+      uploadType: ["", { updateOn: "blur" }],
+      videoLink: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/(http(s)?:\/\/.)?(www\.)?\byoutube\b/i)
+          ],
+          updateOn: "blur"
+        }
+      ],
+      uploadVideoLink: ["", { updateOn: "blur" }],
       videoLinkTypeId: [0],
-      VideoLinkCaption: ['', { updateOn: 'blur' }],
+      VideoLinkCaption: ["", { updateOn: "blur" }]
     });
 
     this.referenceForm = this.formBuilder.group({
       referenceList: this.formBuilder.group({
         one: this.formBuilder.group({
-          name: ['', { validators: [Validators.minLength(2), Validators.maxLength(25)], updateOn: 'blur' }],
-          emailid: ['', { validators: [Validators.maxLength(40), Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)], updateOn: 'blur' }],
-          capacity: [''],
-          selectData: [''],
-          countryPhoneCode: [''],
-          mobilenumber: ['', { validators: [Validators.pattern(/^[0-9]{10}$/)] }]
+          name: [
+            "",
+            {
+              validators: [Validators.minLength(2), Validators.maxLength(25)],
+              updateOn: "blur"
+            }
+          ],
+          emailid: [
+            "",
+            {
+              validators: [
+                Validators.maxLength(40),
+                Validators.pattern(
+                  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+                )
+              ],
+              updateOn: "blur"
+            }
+          ],
+          capacity: [""],
+          selectData: [""],
+          countryPhoneCode: [""],
+          mobilenumber: [
+            "",
+            { validators: [Validators.pattern(/^[0-9]{10}$/)] }
+          ]
         }),
         two: this.formBuilder.group({
-          name: ['', { validators: [Validators.minLength(2), Validators.maxLength(25)], updateOn: 'blur' }],
-          emailid: ['', { validators: [Validators.maxLength(40), Validators.pattern(/^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/)], updateOn: 'blur' }],
-          capacity: ['', { updateOn: 'blur' }],
-          countryPhoneCode: ['', { updateOn: 'blur' }],
-          mobilenumber: ['', { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: 'blur' }]
+          name: [
+            "",
+            {
+              validators: [Validators.minLength(2), Validators.maxLength(25)],
+              updateOn: "blur"
+            }
+          ],
+          emailid: [
+            "",
+            {
+              validators: [
+                Validators.maxLength(40),
+                Validators.pattern(
+                  /^[a-zA-Z0-9._-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,6}$/
+                )
+              ],
+              updateOn: "blur"
+            }
+          ],
+          capacity: ["", { updateOn: "blur" }],
+          countryPhoneCode: ["", { updateOn: "blur" }],
+          mobilenumber: [
+            "",
+            {
+              validators: [Validators.pattern(/^[0-9]{10}$/)],
+              updateOn: "blur"
+            }
+          ]
         })
       })
     });
 
     this.primarySkillsForm = this.formBuilder.group({
-      primarySkillId: [''],
-      skillName: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/), Validators.required], updateOn: 'blur' }],
-      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/), Validators.required], updateOn: 'blur' }],
+      primarySkillId: [""],
+      skillName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      rating: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/),
+            Validators.required
+          ],
+          updateOn: "blur"
+        }
+      ],
+      experience: [
+        "",
+        {
+          validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
+          updateOn: "blur"
+        }
+      ]
     });
 
     this.additionalSkillsForm = this.formBuilder.group({
-      additionalSkillId: [''],
-      skillName: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      rating: ['', { validators: [Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/), Validators.required], updateOn: 'blur' }],
-      experience: ['', { validators: [Validators.pattern(/^[0-9]*$/), Validators.required], updateOn: 'blur' }],
+      additionalSkillId: [""],
+      skillName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      rating: [
+        "",
+        {
+          validators: [
+            Validators.pattern(/^(?:[1-9]|0[1-9]|10)$/),
+            Validators.required
+          ],
+          updateOn: "blur"
+        }
+      ],
+      experience: [
+        "",
+        {
+          validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
+          updateOn: "blur"
+        }
+      ]
     });
 
     this.experiencesForm = this.formBuilder.group({
-      experienceId: [''],
-      companyName: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      location: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      jobTitle: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      startDate: [''],
-      endDate: [''],
-      description: ['', {validators: [Validators.required]}],
+      experienceId: [""],
+      companyName: [
+        "",
+        { updateOn: "blur", validators: [Validators.required] }
+      ],
+      location: ["", { updateOn: "blur", validators: [Validators.required] }],
+      jobTitle: ["", { updateOn: "blur", validators: [Validators.required] }],
+      startDate: [""],
+      endDate: [""],
+      description: [""]
+      // { validators: [Validators.required] }
     });
 
     this.additionalProjectsForm = this.formBuilder.group({
-      additionalProjectId: [''],
-      name: ['', { updateOn: 'blur' }],
-      role: ['', { updateOn: 'blur' }],
-      year: ['', { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: 'blur' }],
-      description: [''],
+      additionalProjectId: [""],
+      name: ["", { updateOn: "blur" }],
+      role: ["", { updateOn: "blur" }],
+      year: [
+        "",
+        { validators: [Validators.pattern(/^[0-9]*$/)], updateOn: "blur" }
+      ],
+      description: [""]
     });
 
     this.educationForm = this.formBuilder.group({
-      educationId: [''],
-      degreeName: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      speciality: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      schoolName: ['', { updateOn: 'blur', validators: [Validators.required] }],
-      startDate: [''],
-      endDate: [''],
+      educationId: [""],
+      degreeName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      speciality: ["", { updateOn: "blur", validators: [Validators.required] }],
+      schoolName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      startDate: [""],
+      endDate: [""]
     });
 
     this.trainingsForm = this.formBuilder.group({
-      trainingId: [''],
-      training: ['', { validators: [Validators.required]}],
+      trainingId: [""],
+      training: ["", { validators: [Validators.required] }]
     });
 
     this.profileForm = this.formBuilder.group({
-      imageUrl: ['', { updateOn: 'blur' }],
-      workpermit: ['', { updateOn: 'blur' }],
+      imageUrl: ["", { updateOn: "blur" }],
+      workpermit: ["", { updateOn: "blur" }]
     });
     this.initGoogleMapPlaces();
     // this.activatedRoute.params.subscribe((params) => {
@@ -305,9 +460,7 @@ export class ProfileLandingComponent implements OnInit {
     const user = this.authService.getCurrentUser();
     this.candidateId = user.u;
     this.getProfileDetails(user.u); // Get the candidate data to be populated into the edit page
-
-
-
+    // this.abc();
   }
 
   addPrimarySkill() {
@@ -315,7 +468,9 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const skill = {
-      ID: this.primarySkillsForm.value.primarySkillId ? this.primarySkillsForm.value.primarySkillId : 0,
+      ID: this.primarySkillsForm.value.primarySkillId
+        ? this.primarySkillsForm.value.primarySkillId
+        : 0,
       Skill: this.primarySkillsForm.value.skillName,
       Proficiency: this.primarySkillsForm.value.rating,
       Experience: this.primarySkillsForm.value.experience,
@@ -331,7 +486,9 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const skill = {
-      ID: this.additionalSkillsForm.value.additionalSkillId ? this.additionalSkillsForm.value.additionalSkillId : 0,
+      ID: this.additionalSkillsForm.value.additionalSkillId
+        ? this.additionalSkillsForm.value.additionalSkillId
+        : 0,
       Skill: this.additionalSkillsForm.value.skillName,
       Proficiency: this.additionalSkillsForm.value.rating,
       Experience: this.additionalSkillsForm.value.experience,
@@ -347,13 +504,15 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const project = {
-      ID: this.experiencesForm.value.experienceId ? this.experiencesForm.value.experienceId : 0,
+      ID: this.experiencesForm.value.experienceId
+        ? this.experiencesForm.value.experienceId
+        : 0,
       Company_Name: this.experiencesForm.value.companyName,
       Location: this.experiencesForm.value.location,
       Job_Title: this.experiencesForm.value.jobTitle,
       Start_Date: this.experiencesForm.value.startDate,
       End_Date: this.experiencesForm.value.endDate,
-      Job_Description: this.experiencesForm.value.description,
+      Job_Description: this.experiencesForm.value.description
     };
     // this.primaryProjectsList.push(project);
     this.experiences = [...this.experiences, project];
@@ -365,10 +524,12 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const project = {
-      ID: this.additionalProjectsForm.value.additionalProjectId ? this.additionalProjectsForm.value.additionalProjectId : 0,
+      ID: this.additionalProjectsForm.value.additionalProjectId
+        ? this.additionalProjectsForm.value.additionalProjectId
+        : 0,
       Project_Title: this.additionalProjectsForm.value.name,
       year: this.additionalProjectsForm.value.year,
-      Project_Description: this.additionalProjectsForm.value.description,
+      Project_Description: this.additionalProjectsForm.value.description
     };
     console.log(this.additionalProjectsForm.value.description);
     // this.additionalProjectsList.push(project);
@@ -381,12 +542,14 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const education = {
-      ID: this.educationForm.value.educationId ? this.educationForm.value.educationId : 0,
+      ID: this.educationForm.value.educationId
+        ? this.educationForm.value.educationId
+        : 0,
       Degree_Name: this.educationForm.value.degreeName,
       School_Name: this.educationForm.value.schoolName,
       Speciality_In: this.educationForm.value.speciality,
       Start_Date: this.educationForm.value.startDate,
-      End_Date: this.educationForm.value.endDate,
+      End_Date: this.educationForm.value.endDate
     };
     this.educationsList = [...this.educationsList, education];
     this.educationForm.reset();
@@ -397,27 +560,29 @@ export class ProfileLandingComponent implements OnInit {
       return;
     }
     const training = {
-      ID: this.trainingsForm.value.trainingId ? this.trainingsForm.value.trainingId : 0,
-      Training: this.trainingsForm.value.training,
+      ID: this.trainingsForm.value.trainingId
+        ? this.trainingsForm.value.trainingId
+        : 0,
+      Training: this.trainingsForm.value.training
     };
     this.trainingsList = [...this.trainingsList, training];
     this.trainingsForm.reset();
   }
 
   editSkill(type, data, index) {
-    if (type === 'primary') {
-      this.primarySkillsForm.get('primarySkillId').setValue(data.ID);
-      this.primarySkillsForm.get('skillName').setValue(data.Skill);
-      this.primarySkillsForm.get('rating').setValue(data.Proficiency);
-      this.primarySkillsForm.get('experience').setValue(data.Experience);
+    if (type === "primary") {
+      this.primarySkillsForm.get("primarySkillId").setValue(data.ID);
+      this.primarySkillsForm.get("skillName").setValue(data.Skill);
+      this.primarySkillsForm.get("rating").setValue(data.Proficiency);
+      this.primarySkillsForm.get("experience").setValue(data.Experience);
 
       this.primarySkillsList.splice(index, 1);
       this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
-    } else if (type === 'additional') {
-      this.additionalSkillsForm.get('additionalSkillId').setValue(data.ID);
-      this.additionalSkillsForm.get('skillName').setValue(data.Skill);
-      this.additionalSkillsForm.get('rating').setValue(data.Proficiency);
-      this.additionalSkillsForm.get('experience').setValue(data.Experience);
+    } else if (type === "additional") {
+      this.additionalSkillsForm.get("additionalSkillId").setValue(data.ID);
+      this.additionalSkillsForm.get("skillName").setValue(data.Skill);
+      this.additionalSkillsForm.get("rating").setValue(data.Proficiency);
+      this.additionalSkillsForm.get("experience").setValue(data.Experience);
 
       this.additionalSkillsList.splice(index, 1);
       this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
@@ -425,8 +590,8 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   editTraining(data, index) {
-    this.trainingsForm.get('training').setValue(data.Training);
-    this.trainingsForm.get('trainingId').setValue(data.ID);
+    this.trainingsForm.get("training").setValue(data.Training);
+    this.trainingsForm.get("trainingId").setValue(data.ID);
     console.log(data.ID);
 
     this.trainingsList.splice(index, 1);
@@ -434,22 +599,24 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   editProject(type, data, index) {
-    if (type === 'primary') {
-      this.experiencesForm.get('companyName').setValue(data.Company_Name);
-      this.experiencesForm.get('location').setValue(data.Location);
-      this.experiencesForm.get('jobTitle').setValue(data.Job_Title);
-      this.experiencesForm.get('startDate').setValue(data.Start_Date);
-      this.experiencesForm.get('endDate').setValue(data.End_Date);
-      this.experiencesForm.get('description').setValue(data.Job_Description);
-      this.experiencesForm.get('experienceId').setValue(data.ID);
+    if (type === "primary") {
+      this.experiencesForm.get("companyName").setValue(data.Company_Name);
+      this.experiencesForm.get("location").setValue(data.Location);
+      this.experiencesForm.get("jobTitle").setValue(data.Job_Title);
+      this.experiencesForm.get("startDate").setValue(data.Start_Date);
+      this.experiencesForm.get("endDate").setValue(data.End_Date);
+      this.experiencesForm.get("description").setValue(data.Job_Description);
+      this.experiencesForm.get("experienceId").setValue(data.ID);
 
       this.experiences.splice(index, 1);
       this.experiences = [...this.experiences]; // need to update reference for nz-table to update
-    } else if (type === 'additional') {
-      this.additionalProjectsForm.get('name').setValue(data.Project_Title);
-      this.additionalProjectsForm.get('year').setValue(data.year);
-      this.additionalProjectsForm.get('description').setValue(data.Project_Description);
-      this.additionalProjectsForm.get('additionalProjectId').setValue(data.ID);
+    } else if (type === "additional") {
+      this.additionalProjectsForm.get("name").setValue(data.Project_Title);
+      this.additionalProjectsForm.get("year").setValue(data.year);
+      this.additionalProjectsForm
+        .get("description")
+        .setValue(data.Project_Description);
+      this.additionalProjectsForm.get("additionalProjectId").setValue(data.ID);
 
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
@@ -457,32 +624,32 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   editEducation(data, index) {
-    this.educationForm.get('degreeName').setValue(data.Degree_Name);
-    this.educationForm.get('schoolName').setValue(data.School_Name);
-    this.educationForm.get('speciality').setValue(data.Speciality_In);
-    this.educationForm.get('startDate').setValue(data.Start_Date);
-    this.educationForm.get('endDate').setValue(data.End_Date);
-    this.educationForm.get('educationId').setValue(data.ID);
+    this.educationForm.get("degreeName").setValue(data.Degree_Name);
+    this.educationForm.get("schoolName").setValue(data.School_Name);
+    this.educationForm.get("speciality").setValue(data.Speciality_In);
+    this.educationForm.get("startDate").setValue(data.Start_Date);
+    this.educationForm.get("endDate").setValue(data.End_Date);
+    this.educationForm.get("educationId").setValue(data.ID);
 
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
   }
 
   deleteProject(type, index) {
-    if (type === 'primary') {
+    if (type === "primary") {
       this.experiences.splice(index, 1);
       this.experiences = [...this.experiences]; // need to update reference for nz-table to update
-    } else if (type === 'additional') {
+    } else if (type === "additional") {
       this.additionalProjectsList.splice(index, 1);
       this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
     }
   }
 
   deleteSkill(type, index) {
-    if (type === 'primary') {
+    if (type === "primary") {
       this.primarySkillsList.splice(index, 1);
       this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
-    } else if (type === 'additional') {
+    } else if (type === "additional") {
       this.additionalSkillsList.splice(index, 1);
       this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
     }
@@ -506,37 +673,50 @@ export class ProfileLandingComponent implements OnInit {
       for (let i in this.activeSection) {
         this.activeSection[i] = false;
       }
-      if (result && result['params']) {
-        if (result['params']['active']) {
-          switch (parseInt(result['params']['active'])) {
-            case 1: this.activeSection.personal = true;
+      if (result && result["params"]) {
+        if (result["params"]["active"]) {
+          switch (parseInt(result["params"]["active"])) {
+            case 1:
+              this.activeSection.personal = true;
               this.firstNameField.nativeElement.focus();
               break;
-            case 2: this.activeSection.professional = true;
+            case 2:
+              this.activeSection.professional = true;
               this.designationField.nativeElement.focus();
               break;
-            case 3: this.activeSection.resume = true;
+            case 3:
+              this.activeSection.resume = true;
               break;
-            case 4: this.activeSection.social = true;
+            case 4:
+              this.activeSection.social = true;
               this.linkedInField.nativeElement.focus();
               break;
-            case 5: this.activeSection.video = true;
+            case 5:
+              this.activeSection.video = true;
               break;
-            case 6: this.activeSection.reference = true;
+            case 6:
+              this.activeSection.reference = true;
               break;
-            case 7: this.activeSection.primarySkills = true;
+            case 7:
+              this.activeSection.primarySkills = true;
               break;
-            case 8: this.activeSection.additionalSkills = true;
+            case 8:
+              this.activeSection.additionalSkills = true;
               break;
-            case 9: this.activeSection.primaryProjects = true;
+            case 9:
+              this.activeSection.primaryProjects = true;
               break;
-            case 10: this.activeSection.additionalProjects = true;
+            case 10:
+              this.activeSection.additionalProjects = true;
               break;
-            case 11: this.activeSection.educations = true;
+            case 11:
+              this.activeSection.educations = true;
               break;
-            case 12: this.activeSection.trainings = true;
+            case 12:
+              this.activeSection.trainings = true;
               break;
-            default: this.activeSection.personal = true;
+            default:
+              this.activeSection.personal = true;
               break;
           }
         } else {
@@ -553,42 +733,54 @@ export class ProfileLandingComponent implements OnInit {
    * @param sectionNumber
    */
   highlightSectionOnClick(sectionNumber: number) {
-
     // console.log("ok",sectionNumber);
 
     for (let key in this.activeSection) {
       this.activeSection[key] = false;
     }
     switch (sectionNumber) {
-      case 1: this.activeSection.personal = true;
+      case 1:
+        this.activeSection.personal = true;
         // this.firstNameField.nativeElement.focus();
         break;
-      case 2: this.activeSection.professional = true;
+      case 2:
+        this.activeSection.professional = true;
         // this.designationField.nativeElement.focus();
         break;
-      case 3: this.activeSection.resume = true;
-        console.log('ok', this.activeSection.resume);
+      case 3:
+        this.activeSection.resume = true;
+        console.log("ok", this.activeSection.resume);
         break;
-      case 4: this.activeSection.social = true;
+      case 4:
+        this.activeSection.social = true;
         // this.linkedInField.nativeElement.focus();
         break;
-      case 5: this.activeSection.video = true;
+      case 5:
+        this.activeSection.video = true;
         break;
-      case 6: this.activeSection.reference = true;
+      case 6:
+        this.activeSection.reference = true;
         break;
-      case 7: this.activeSection.primarySkills = true;
+      case 7:
+        this.activeSection.primarySkills = true;
         break;
-      case 8: this.activeSection.additionalSkills = true;
+      case 8:
+        this.activeSection.additionalSkills = true;
         break;
-      case 9: this.activeSection.primaryProjects = true;
+      case 9:
+        this.activeSection.primaryProjects = true;
         break;
-      case 10: this.activeSection.additionalProjects = true;
+      case 10:
+        this.activeSection.additionalProjects = true;
         break;
-      case 11: this.activeSection.educations = true;
+      case 11:
+        this.activeSection.educations = true;
         break;
-      case 12: this.activeSection.trainings = true;
+      case 12:
+        this.activeSection.trainings = true;
         break;
-      default: this.activeSection.personal = true;
+      default:
+        this.activeSection.personal = true;
         break;
     }
   }
@@ -597,29 +789,48 @@ export class ProfileLandingComponent implements OnInit {
    * Initialize the form with already existing values
    */
   initForm() {
-
     if (this.formChangeSubscription) {
       this.formChangeSubscription.unsubscribe();
     }
     // Pre-Populate the Personal Details form
-    this.personalDetailsForm.get('firstName').setValue(this.profile.FirstName ? this.profile.FirstName : '');
-    this.personalDetailsForm.get('lastName').setValue(this.profile.LastName ? this.profile.LastName : '');
-    this.personalDetailsForm.get('countryPhoneCode').setValue(this.profile.CountryCode ? parseInt(this.profile.CountryCode) : '');
-    this.personalDetailsForm.get('mobile').setValue(this.profile.MobileNumber ? this.profile.MobileNumber : '');
-    this.personalDetailsForm.get('gender').setValue(this.profile.Gender ? this.profile.Gender : '');
-    this.personalDetailsForm.get('videoLinkTypeId').setValue(this.profile.VedioLinkTypeId ? this.profile.VedioLinkTypeId : '');
-    this.personalDetailsForm.get('videoLink').setValue(this.profile.VideoLink ? this.profile.VideoLink : '');
+    this.personalDetailsForm
+      .get("firstName")
+      .setValue(this.profile.FirstName ? this.profile.FirstName : "");
+    this.personalDetailsForm
+      .get("lastName")
+      .setValue(this.profile.LastName ? this.profile.LastName : "");
+    this.personalDetailsForm
+      .get("countryPhoneCode")
+      .setValue(
+        this.profile.CountryCode ? parseInt(this.profile.CountryCode) : ""
+      );
+    this.personalDetailsForm
+      .get("mobile")
+      .setValue(this.profile.MobileNumber ? this.profile.MobileNumber : "");
+    this.personalDetailsForm
+      .get("gender")
+      .setValue(this.profile.Gender ? this.profile.Gender : "");
+    this.personalDetailsForm
+      .get("videoLinkTypeId")
+      .setValue(
+        this.profile.VedioLinkTypeId ? this.profile.VedioLinkTypeId : ""
+      );
+    this.personalDetailsForm
+      .get("videoLink")
+      .setValue(this.profile.VideoLink ? this.profile.VideoLink : "");
     /* this.personalDetailsForm.get('dob').setValue(this.profile.DOB ? new Date(this.profile.DOB) : null); */
     // this.profileForm.get('imageUrl').setValue(this.profile.basicInfo.imageUrl ? this.profile.basicInfo.imageUrl : '');
 
     // Pre-Populate the Professional Details form
     // if (this.profile.professionalInfo) {
-      this.professionalDetailsForm.get('summary').setValue(this.profile.Summary ? this.profile.Summary : '');
-      /* this.professionalDetailsForm.get('designation').setValue(this.profile.professionalInfo.designation ? this.profile.professionalInfo.designation : '');
+    this.professionalDetailsForm
+      .get("summary")
+      .setValue(this.profile.Summary ? this.profile.Summary : "");
+    /* this.professionalDetailsForm.get('designation').setValue(this.profile.professionalInfo.designation ? this.profile.professionalInfo.designation : '');
       this.professionalDetailsForm.get('preferredLocation').setValue(this.profile.professionalInfo.preferredLocation ? this.profile.professionalInfo.preferredLocation : '');
       this.professionalDetailsForm.get('preferredJobTypeId').setValue(this.profile.professionalInfo.preferredJobTypeId ? this.profile.professionalInfo.preferredJobTypeId.toString() : '0'); */
 
-      /* if (this.profile.professionalInfo.preferredJobTypeId == '1') {
+    /* if (this.profile.professionalInfo.preferredJobTypeId == '1') {
         this.professionalDetailsForm.get('expectedAnnual').setValue(this.profile.professionalInfo.expectedpay ? this.profile.professionalInfo.expectedpay : '');
       } else if (this.profile.professionalInfo.preferredJobTypeId == '2') {
         this.professionalDetailsForm.get('expectedpayrate').setValue(this.profile.professionalInfo.expectedpay ? this.profile.professionalInfo.expectedpay : '');
@@ -632,27 +843,92 @@ export class ProfileLandingComponent implements OnInit {
     // }
 
     if (this.profile.referenceList && this.profile.referenceList[0]) {
-      this.referenceForm.get('referenceList').get('one').get('name').setValue(this.profile.referenceList[0]['name']);
-      this.referenceForm.get('referenceList').get('one').get('emailid').setValue(this.profile.referenceList[0]['emailid']);
-      this.referenceForm.get('referenceList').get('one').get('capacity').setValue(this.profile.referenceList[0]['capacity'] ? this.profile.referenceList[0]['capacity'] : 0);
-      this.referenceForm.get('referenceList').get('one').get('countryPhoneCode').setValue(this.profile.referenceList[0]['countryPhoneCode'] ? parseInt(this.profile.referenceList[0]['countryPhoneCode'].phonecode) : '');
-      this.referenceForm.get('referenceList').get('one').get('mobilenumber').setValue(this.profile.referenceList[0]['mobilenumber']);
+      this.referenceForm
+        .get("referenceList")
+        .get("one")
+        .get("name")
+        .setValue(this.profile.referenceList[0]["name"]);
+      this.referenceForm
+        .get("referenceList")
+        .get("one")
+        .get("emailid")
+        .setValue(this.profile.referenceList[0]["emailid"]);
+      this.referenceForm
+        .get("referenceList")
+        .get("one")
+        .get("capacity")
+        .setValue(
+          this.profile.referenceList[0]["capacity"]
+            ? this.profile.referenceList[0]["capacity"]
+            : 0
+        );
+      this.referenceForm
+        .get("referenceList")
+        .get("one")
+        .get("countryPhoneCode")
+        .setValue(
+          this.profile.referenceList[0]["countryPhoneCode"]
+            ? parseInt(
+                this.profile.referenceList[0]["countryPhoneCode"].phonecode
+              )
+            : ""
+        );
+      this.referenceForm
+        .get("referenceList")
+        .get("one")
+        .get("mobilenumber")
+        .setValue(this.profile.referenceList[0]["mobilenumber"]);
     }
 
     if (this.profile.referenceList && this.profile.referenceList[1]) {
-      this.referenceForm.get('referenceList').get('two').get('name').setValue(this.profile.referenceList[1]['name']);
-      this.referenceForm.get('referenceList').get('two').get('emailid').setValue(this.profile.referenceList[1]['emailid']);
-      this.referenceForm.get('referenceList').get('two').get('capacity').setValue(this.profile.referenceList[1]['capacity'] ? this.profile.referenceList[1]['capacity'] : 0);
-      this.referenceForm.get('referenceList').get('two').get('countryPhoneCode').setValue(this.profile.referenceList[1]['countryPhoneCode'] ? parseInt(this.profile.referenceList[1]['countryPhoneCode']) : '');
-      this.referenceForm.get('referenceList').get('two').get('mobilenumber').setValue(this.profile.referenceList[1]['mobilenumber']);
+      this.referenceForm
+        .get("referenceList")
+        .get("two")
+        .get("name")
+        .setValue(this.profile.referenceList[1]["name"]);
+      this.referenceForm
+        .get("referenceList")
+        .get("two")
+        .get("emailid")
+        .setValue(this.profile.referenceList[1]["emailid"]);
+      this.referenceForm
+        .get("referenceList")
+        .get("two")
+        .get("capacity")
+        .setValue(
+          this.profile.referenceList[1]["capacity"]
+            ? this.profile.referenceList[1]["capacity"]
+            : 0
+        );
+      this.referenceForm
+        .get("referenceList")
+        .get("two")
+        .get("countryPhoneCode")
+        .setValue(
+          this.profile.referenceList[1]["countryPhoneCode"]
+            ? parseInt(this.profile.referenceList[1]["countryPhoneCode"])
+            : ""
+        );
+      this.referenceForm
+        .get("referenceList")
+        .get("two")
+        .get("mobilenumber")
+        .setValue(this.profile.referenceList[1]["mobilenumber"]);
     }
 
-    if (this.profile.CandidateSocialProfileDetails && this.profile.CandidateSocialProfileDetails.length > 0) {
+    if (
+      this.profile.CandidateSocialProfileDetails &&
+      this.profile.CandidateSocialProfileDetails.length > 0
+    ) {
       this.profile.CandidateSocialProfileDetails.forEach((element, idx) => {
-        if (element['SocialSiteId'] === 3) this.socialForm.get('linkedin').setValue(element['ProfileLink']);
-        if (element['SocialSiteId'] === 5) this.socialForm.get('github').setValue(element['ProfileLink']);
-        if (element['SocialSiteId'] === 6) this.socialForm.get('stack').setValue(element['ProfileLink']);
-        if (element['SocialSiteId'] === 7) this.socialForm.get('others').setValue(element['ProfileLink']);
+        if (element["SocialSiteId"] === 3)
+          this.socialForm.get("linkedin").setValue(element["ProfileLink"]);
+        if (element["SocialSiteId"] === 5)
+          this.socialForm.get("github").setValue(element["ProfileLink"]);
+        if (element["SocialSiteId"] === 6)
+          this.socialForm.get("stack").setValue(element["ProfileLink"]);
+        if (element["SocialSiteId"] === 7)
+          this.socialForm.get("others").setValue(element["ProfileLink"]);
       });
     }
 
@@ -684,23 +960,35 @@ export class ProfileLandingComponent implements OnInit {
     this.trainingsList = this.profile.Trainings ? this.profile.Trainings : [];
 
     if (this.profile.CandidateSkills) {
-      this.primarySkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == true)
-      this.additionalSkillsList = this.profile.CandidateSkills.filter((skill, index) => skill.IsPrimarySkill == false);
+      this.primarySkillsList = this.profile.CandidateSkills.filter(
+        (skill, index) => skill.IsPrimarySkill == true
+      );
+      this.additionalSkillsList = this.profile.CandidateSkills.filter(
+        (skill, index) => skill.IsPrimarySkill == false
+      );
     }
 
-    this.experiences = this.profile.CandidateExperienceDetails ? this.profile.CandidateExperienceDetails : [];
+    this.experiences = this.profile.CandidateExperienceDetails
+      ? this.profile.CandidateExperienceDetails
+      : [];
 
-    this.additionalProjectsList = this.profile.ProjectDetails ? this.profile.ProjectDetails : [];
-    console.log(this.additionalProjectsList)
+    this.additionalProjectsList = this.profile.ProjectDetails
+      ? this.profile.ProjectDetails
+      : [];
+    console.log(this.additionalProjectsList);
 
-    this.educationsList = this.profile.CandidateEducationDetails ? this.profile.CandidateEducationDetails : [];
+    this.educationsList = this.profile.CandidateEducationDetails
+      ? this.profile.CandidateEducationDetails
+      : [];
   }
 
   /**
    * Return Sanaitized external url from youtube and vimeo
    */
   safeUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(this.videoData.files[0]['link']);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(
+      this.videoData.files[0]["link"]
+    );
   }
 
   /**
@@ -714,12 +1002,12 @@ export class ProfileLandingComponent implements OnInit {
       let file: File = fileList[0];
       let fileName = file.name;
       this.formData = new FormData();
-      this.formData.append('resourceTypeId', resourceType);
-      this.formData.append('', file);
+      this.formData.append("resourceTypeId", resourceType);
+      this.formData.append("", file);
 
       this.uploadFile(resourceType);
     } else {
-      event.target.value = '';
+      event.target.value = "";
     }
   }
 
@@ -728,78 +1016,90 @@ export class ProfileLandingComponent implements OnInit {
    */
   uploadFile(resourceType) {
     this.loading = true;
-    const loading = this.message.loading(FeedbackMessages.loading.ProfileUploadFile, { nzDuration: 0 }).messageId;
-    this.profileService.uploadFile(this.formData).subscribe((response) => {
-      this.loading = false;
-      this.message.remove(loading);
-      if (response && response.code === 200 && response.data) {
-        let localProfileData = this.profileService.localProfileDetails();
-        console.log('localProfileData', localProfileData);
+    const loading = this.message.loading(
+      FeedbackMessages.loading.ProfileUploadFile,
+      { nzDuration: 0 }
+    ).messageId;
+    this.profileService.uploadFile(this.formData).subscribe(
+      response => {
+        this.loading = false;
+        this.message.remove(loading);
+        if (response && response.code === 200 && response.data) {
+          let localProfileData = this.profileService.localProfileDetails();
+          console.log("localProfileData", localProfileData);
 
-        if (localProfileData) {
-          this.profile = this.profileService.localProfileDetails();
+          if (localProfileData) {
+            this.profile = this.profileService.localProfileDetails();
+          }
+
+          console.log(" this.profile", this.profile);
+
+          this.profile.resumeUrl = response.data["resumeUrl"];
+
+          console.log("localProfileData", this.profile.resumeUrl);
+
+          this.profile.basicInfo.imageUrl =
+            response.data["basicInfo"]["imageUrl"];
+          this.profile.resourceId = response.data["resourceId"];
+          this.profile.resumeId = response.data["resumeId"];
+          this.profile.videoLink = response.data["videoLink"];
+          this.profile.VideoLinkCaption = response.data["VideoLinkCaption"];
+          this.profile.videoLinkTypeId = response.data["videoLinkTypeId"];
+          this.initForm();
         }
-
-        console.log(' this.profile', this.profile);
-
-        this.profile.resumeUrl = response.data['resumeUrl'];
-
-        console.log('localProfileData', this.profile.resumeUrl);
-
-
-        this.profile.basicInfo.imageUrl = response.data['basicInfo']['imageUrl'];
-        this.profile.resourceId = response.data['resourceId'];
-        this.profile.resumeId = response.data['resumeId'];
-        this.profile.videoLink = response.data['videoLink'];
-        this.profile.VideoLinkCaption = response.data['VideoLinkCaption'];
-        this.profile.videoLinkTypeId = response.data['videoLinkTypeId'];
-        this.initForm();
+      },
+      () => {
+        this.loading = false;
+        this.message.remove(loading);
       }
-    }, () => {
-      this.loading = false;
-      this.message.remove(loading);
-    });
+    );
   }
 
   /**
-    * Initializes google map places for auto-complete city search
-  */
+   * Initializes google map places for auto-complete city search
+   */
   initGoogleMapPlaces() {
     try {
-      const autocomplete = new google.maps.places.Autocomplete(this.searchCityInput.nativeElement);
+      const autocomplete = new google.maps.places.Autocomplete(
+        this.searchCityInput.nativeElement
+      );
       //Event listener to monitor place changes in the input
-      google.maps.event.addListener(autocomplete, 'place_changed', () => {
+      google.maps.event.addListener(autocomplete, "place_changed", () => {
         //Emit the new address object for the updated place
-        this.selectedAddress = this.getFormattedAddress(autocomplete.getPlace());
+        this.selectedAddress = this.getFormattedAddress(
+          autocomplete.getPlace()
+        );
         this.saveFormToLocal();
       });
     } catch (error) {
-      this.message.info(FeedbackMessages.info.GoogleMapNotLoaded, { nzDuration: 1500 });
+      this.message.info(FeedbackMessages.info.GoogleMapNotLoaded, {
+        nzDuration: 1500
+      });
     }
   }
 
   /**
-    * Gets the formatted address
-    * @param place Google Autocomplete place object
-    * @return location_obj An address object in human readable format
-  */
+   * Gets the formatted address
+   * @param place Google Autocomplete place object
+   * @return location_obj An address object in human readable format
+   */
   getFormattedAddress(place) {
     let location_obj: any = {};
     for (let i in place.address_components) {
       let item = place.address_components[i];
-      location_obj['formatted_address'] = place.formatted_address;
-      if (item['types'].indexOf('locality') > -1) {
-        location_obj['locality'] = item['long_name']
-      } else if (item['types'].indexOf('administrative_area_level_1') > -1) {
-        location_obj['admin_area_l1'] = item['short_name']
-      } else if (item['types'].indexOf('street_number') > -1) {
-        location_obj['street_number'] = item['short_name']
-      } else if (item['types'].indexOf('route') > -1) {
-        location_obj['route'] = item['long_name']
-      } else if (item['types'].indexOf('country') > -1) {
-        location_obj['country'] = item['long_name']
-      } else if (item['types'].indexOf('postal_code') > -1) {
-        location_obj['postal_code'] = item['short_name']
+      location_obj["formatted_address"] = place.formatted_address;
+      if (item["types"].indexOf("locality") > -1) {
+        location_obj["locality"] = item["long_name"];
+      } else if (item["types"].indexOf("administrative_area_level_1") > -1) {
+        location_obj["admin_area_l1"] = item["short_name"];
+      } else if (item["types"].indexOf("street_number") > -1) {
+        location_obj["street_number"] = item["short_name"];
+      } else if (item["types"].indexOf("route") > -1) {
+        location_obj["route"] = item["long_name"];
+      } else if (item["types"].indexOf("country") > -1) {
+        location_obj["country"] = item["long_name"];
+      } else if (item["types"].indexOf("postal_code") > -1) {
+        location_obj["postal_code"] = item["short_name"];
       }
     }
     if (place.geometry.location) {
@@ -814,18 +1114,18 @@ export class ProfileLandingComponent implements OnInit {
    */
 
   getCountryList() {
-    this.commonService.getCountryList().subscribe((response) => {
+    this.commonService.getCountryList().subscribe(response => {
       if (response.code && response.code === 200) {
-        console.log('response', response);
+        console.log("response", response);
         // let countrylist = response
         this.countryList = response.data;
         this.countryList.forEach(data => {
           data.description = `${data.Name} ( + ${data.PhoneCode})`;
           this.dropdownOptions.push(data);
         });
-        this.dropdownOptions = [... this.dropdownOptions];
+        this.dropdownOptions = [...this.dropdownOptions];
       }
-    })
+    });
   }
 
   /**
@@ -833,7 +1133,10 @@ export class ProfileLandingComponent implements OnInit {
    */
   getProfileDetails(candidateId) {
     this.loading = true;
-    const loading = this.message.loading(FeedbackMessages.loading.ProfileFetch, { nzDuration: 0 }).messageId;
+    const loading = this.message.loading(
+      FeedbackMessages.loading.ProfileFetch,
+      { nzDuration: 0 }
+    ).messageId;
     /*     this.profileService.getProfileDetails().subscribe((response) => {
           this.message.remove(loading);
           this.loading = false;
@@ -855,42 +1158,42 @@ export class ProfileLandingComponent implements OnInit {
           this.message.remove(loading);
           this.loading = false;
         }) */
-    this.profileService.getProfileDetails(candidateId).subscribe(candidateData => {
+    this.profileService
+      .getProfileDetails(candidateId)
+      .subscribe(candidateData => {
+        this.profile = candidateData;
+        this.message.remove(loading);
+        this.initForm();
+        this.highlightSection();
+        this.highlightMissingFields();
+        this.loading = false;
 
-      this.profile = candidateData;
-      this.message.remove(loading);
-      this.initForm();
-      this.highlightSection();
-      this.highlightMissingFields();
-      this.loading = false;
-
-      /* } else {
+        /* } else {
         this.userDataService.getUserData(this.candidateId).subscribe(response => {
         this.message.remove(loading);
         this.profile = response;
         });
       } */
-
-    });
+      });
   }
 
   /**
-  * getter funtion for easy form controls
-  * @return form control values
-  */
+   * getter funtion for easy form controls
+   * @return form control values
+   */
   get f() {
     // console.log('-->',this.profileForm);
 
     if (this.profileForm) return this.profileForm.controls;
 
-    console.log('=>', this.profileForm);
-
+    console.log("=>", this.profileForm);
   }
   get pers() {
     if (this.personalDetailsForm) return this.personalDetailsForm.controls;
   }
   get prof() {
-    if (this.professionalDetailsForm) return this.professionalDetailsForm.controls;
+    if (this.professionalDetailsForm)
+      return this.professionalDetailsForm.controls;
   }
   get res() {
     if (this.resumeForm) return this.resumeForm.controls;
@@ -914,7 +1217,8 @@ export class ProfileLandingComponent implements OnInit {
     if (this.experiencesForm) return this.experiencesForm.controls;
   }
   get additionalProjects() {
-    if (this.additionalProjectsForm) return this.additionalProjectsForm.controls;
+    if (this.additionalProjectsForm)
+      return this.additionalProjectsForm.controls;
   }
   get educations() {
     if (this.educationForm) return this.educationForm.controls;
@@ -924,7 +1228,7 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   log(value: string[]): void {
-    console.log('value', value);
+    console.log("value", value);
   }
 
   /**
@@ -934,54 +1238,61 @@ export class ProfileLandingComponent implements OnInit {
   deleteFile(resourceType: number) {
     if (!this.loading) {
       this.loading = true;
-      const loading = this.message.loading(FeedbackMessages.loading.ProfileRemoveFile, { nzDuration: 0 }).messageId;
+      const loading = this.message.loading(
+        FeedbackMessages.loading.ProfileRemoveFile,
+        { nzDuration: 0 }
+      ).messageId;
       let resourceId = 0;
       if (resourceType === 202) {
-        resourceId = this.profile['resourceId'];
+        resourceId = this.profile["resourceId"];
       } else if (resourceType === 201) {
-        resourceId = this.profile['resumeId'];
+        resourceId = this.profile["resumeId"];
       }
-      this.profileService.deleteFile(resourceType, resourceId).subscribe((response) => {
-        this.loading = false;
-        this.message.remove(loading);
-        if (response && response.code === 200 && response.data) {
-          let localProfileData = this.profileService.localProfileDetails();
-          if (localProfileData) {
-            this.profile = this.profileService.localProfileDetails();
+      this.profileService.deleteFile(resourceType, resourceId).subscribe(
+        response => {
+          this.loading = false;
+          this.message.remove(loading);
+          if (response && response.code === 200 && response.data) {
+            let localProfileData = this.profileService.localProfileDetails();
+            if (localProfileData) {
+              this.profile = this.profileService.localProfileDetails();
+            }
+            this.profile.resourceId = response.data["resourceId"];
+            if (resourceType === 202) {
+              this.profile.basicInfo.imageUrl =
+                response.data["basicInfo"]["imageUrl"];
+            } else if (resourceType === 201) {
+              this.profile.resumeUrl = response.data["resumeUrl"];
+              this.profile.resumeId = response.data["resumeId"];
+            } else if (resourceType === 203) {
+              this.profile.videoLink = response.data["videoLink"];
+              this.profile.VideoLinkCaption = response.data["VideoLinkCaption"];
+              this.profile.videoLinkTypeId = response.data["videoLinkTypeId"];
+              this.videoForm.get("videoLink").setValue(null);
+              this.videoForm.get("VideoLinkCaption").setValue(null);
+              this.videoForm.get("videoLinkTypeId").setValue(null);
+              this.saveFormToLocal();
+            }
+            this.initForm();
+            // this.setVideoLinkToVimeoId();
           }
-          this.profile.resourceId = response.data['resourceId'];
-          if (resourceType === 202) {
-            this.profile.basicInfo.imageUrl = response.data['basicInfo']['imageUrl'];
-          } else if (resourceType === 201) {
-            this.profile.resumeUrl = response.data['resumeUrl'];
-            this.profile.resumeId = response.data['resumeId'];
-          } else if (resourceType === 203) {
-            this.profile.videoLink = response.data['videoLink'];
-            this.profile.VideoLinkCaption = response.data['VideoLinkCaption'];
-            this.profile.videoLinkTypeId = response.data['videoLinkTypeId'];
-            this.videoForm.get('videoLink').setValue(null);
-            this.videoForm.get('VideoLinkCaption').setValue(null);
-            this.videoForm.get('videoLinkTypeId').setValue(null);
-            this.saveFormToLocal();
-          }
-          this.initForm();
-          // this.setVideoLinkToVimeoId();
+        },
+        () => {
+          this.loading = false;
+          this.message.remove(loading);
         }
-      }, () => {
-        this.loading = false;
-        this.message.remove(loading);
-      });
+      );
     }
   }
 
-
   selectionChanged(e, form) {
-    console.log('e', e.value.PhoneCode);
+    console.log("e", e.value.PhoneCode);
 
-    if (form === 'one') {
-      this.personalDetailsForm.controls.countryPhoneCode.setValue(e.value.PhoneCode);
-      console.log('1');
-
+    if (form === "one") {
+      this.personalDetailsForm.controls.countryPhoneCode.setValue(
+        e.value.PhoneCode
+      );
+      console.log("1");
     }
 
     /* else if (form === 'two') {
@@ -993,7 +1304,6 @@ export class ProfileLandingComponent implements OnInit {
       this.referenceForm.controls.referenceList.value.two.countryPhoneCode = e.value.phonecode;
       console.log('3', this.profileForm.controls.referenceList.value.two.countryPhoneCode);
     } */
-
   }
   /**
    * Save the current form in the memory
@@ -1003,27 +1313,35 @@ export class ProfileLandingComponent implements OnInit {
 
   saveFormToLocal() {
     let reqBody: any = {
-      'basicInfo': {
-        'firstName': this.profileForm.value.firstName,
-        'lastName': this.profileForm.value.lastName,
+      basicInfo: {
+        firstName: this.profileForm.value.firstName,
+        lastName: this.profileForm.value.lastName,
         /* 'dob': this.profileForm.value.dob, */
-        'gender': this.profileForm.value.gender,
-        'mobile': this.profileForm.value.mobile,
-        'countryPhoneCode': this.profileForm.value.countryPhoneCode,
+        gender: this.profileForm.value.gender,
+        mobile: this.profileForm.value.mobile,
+        countryPhoneCode: this.profileForm.value.countryPhoneCode
       },
-      'professionalInfo': {
-        'designation': this.profileForm.value.designation,
-        'expectedpay': 0,
-        'expectedPayUnitSymbol': '$',
-        'preferredLocation': this.selectedAddress ? this.selectedAddress.formatted_address : this.profile.professionalInfo.preferredLocation,
-        'preferredJobTypeId': this.profileForm.value.preferredJobTypeId,
-        'lat': this.selectedAddress ? this.selectedAddress.lat : this.profile.professionalInfo.lat,
-        'lng': this.selectedAddress ? this.selectedAddress.lng : this.profile.professionalInfo.lng,
+      professionalInfo: {
+        designation: this.profileForm.value.designation,
+        expectedpay: 0,
+        expectedPayUnitSymbol: "$",
+        preferredLocation: this.selectedAddress
+          ? this.selectedAddress.formatted_address
+          : this.profile.professionalInfo.preferredLocation,
+        preferredJobTypeId: this.profileForm.value.preferredJobTypeId,
+        lat: this.selectedAddress
+          ? this.selectedAddress.lat
+          : this.profile.professionalInfo.lat,
+        lng: this.selectedAddress
+          ? this.selectedAddress.lng
+          : this.profile.professionalInfo.lng
       },
-      'videoLinkTypeId': this.profileForm.value.videoLinkTypeId,
-      'videoLink': this.profileForm.value.videoLink,
-      'VideoLinkCaption': this.profileForm.value.VideoLinkCaption ? this.profileForm.value.VideoLinkCaption : '',
-      'socialLink': [
+      videoLinkTypeId: this.profileForm.value.videoLinkTypeId,
+      videoLink: this.profileForm.value.videoLink,
+      VideoLinkCaption: this.profileForm.value.VideoLinkCaption
+        ? this.profileForm.value.VideoLinkCaption
+        : "",
+      socialLink: [
         {
           link: this.profileForm.value.linkedin,
           typeid: 3
@@ -1037,15 +1355,17 @@ export class ProfileLandingComponent implements OnInit {
           typeid: 6
         },
         {
-          link: this.profileForm.value.others ? this.profileForm.value.others : '',
+          link: this.profileForm.value.others
+            ? this.profileForm.value.others
+            : "",
           typeid: 7
         }
       ],
-      'visastatus': []
-    }
+      visastatus: []
+    };
     // Forming request body for 'Visa Status'
     if (this.profile && this.profile.visastatus instanceof Array) {
-      this.profile.visastatus.forEach((elem) => {
+      this.profile.visastatus.forEach(elem => {
         if (elem.visastatusid == this.profileForm.value.visastatus) {
           elem.selected = true;
         } else {
@@ -1055,14 +1375,23 @@ export class ProfileLandingComponent implements OnInit {
       });
     }
     // Forming request body for 'Preferred Job Type'
-    if (reqBody.professionalInfo && reqBody.professionalInfo.preferredJobTypeId == 1) {
-      reqBody.professionalInfo.expectedPayUnitSymbol = '$/pa';
+    if (
+      reqBody.professionalInfo &&
+      reqBody.professionalInfo.preferredJobTypeId == 1
+    ) {
+      reqBody.professionalInfo.expectedPayUnitSymbol = "$/pa";
       reqBody.professionalInfo.expectedpay = this.profileForm.value.expectedAnnual;
-    } else if (reqBody.professionalInfo && reqBody.professionalInfo.preferredJobTypeId == 2) {
-      reqBody.professionalInfo.expectedPayUnitSymbol = '$/hr';
+    } else if (
+      reqBody.professionalInfo &&
+      reqBody.professionalInfo.preferredJobTypeId == 2
+    ) {
+      reqBody.professionalInfo.expectedPayUnitSymbol = "$/hr";
       reqBody.professionalInfo.expectedpay = this.profileForm.value.expectedpayrate;
-    } else if (reqBody.professionalInfo && reqBody.professionalInfo.preferredJobTypeId == 3) {
-      reqBody.professionalInfo.expectedPayUnitSymbol = '$';
+    } else if (
+      reqBody.professionalInfo &&
+      reqBody.professionalInfo.preferredJobTypeId == 3
+    ) {
+      reqBody.professionalInfo.expectedPayUnitSymbol = "$";
     }
     // Forming request body for 'Video Link Type Id'
     if (this.profileForm.value.videoLinkTypeId == 1) {
@@ -1076,28 +1405,58 @@ export class ProfileLandingComponent implements OnInit {
     }
 
     // Forming request body for 'Reference List'
-    if (this.profile && this.profile.referenceList instanceof Array && this.profile.referenceList.length > 0) {
+    if (
+      this.profile &&
+      this.profile.referenceList instanceof Array &&
+      this.profile.referenceList.length > 0
+    ) {
       reqBody.referenceList = this.profile.referenceList;
-      if (!this.profile.referenceList[0] || !this.profile.referenceList[0]['comment']) {
-        if (this.profileForm.get('referenceList').get('one').value.name && this.profileForm.get('referenceList').get('one').value.emailid) {
-          reqBody.referenceList[0] = this.profileForm.get('referenceList').get('one').value;
-          reqBody.referenceList[0]['countryPhoneCode'] = this.profileForm.get('referenceList').get('one').value.countryPhoneCode.toString();
-
+      if (
+        !this.profile.referenceList[0] ||
+        !this.profile.referenceList[0]["comment"]
+      ) {
+        if (
+          this.profileForm.get("referenceList").get("one").value.name &&
+          this.profileForm.get("referenceList").get("one").value.emailid
+        ) {
+          reqBody.referenceList[0] = this.profileForm
+            .get("referenceList")
+            .get("one").value;
+          reqBody.referenceList[0]["countryPhoneCode"] = this.profileForm
+            .get("referenceList")
+            .get("one")
+            .value.countryPhoneCode.toString();
         }
         // reqBody.referenceList.push(this.profileForm.get('referenceList').get('one').value);
       }
-      if (!this.profile.referenceList[1] || !this.profile.referenceList[1]['comment']) {
-        if (this.profileForm.get('referenceList').get('two').value.name && this.profileForm.get('referenceList').get('two').value.emailid) {
-          reqBody.referenceList[1] = this.profileForm.get('referenceList').get('two').value;
+      if (
+        !this.profile.referenceList[1] ||
+        !this.profile.referenceList[1]["comment"]
+      ) {
+        if (
+          this.profileForm.get("referenceList").get("two").value.name &&
+          this.profileForm.get("referenceList").get("two").value.emailid
+        ) {
+          reqBody.referenceList[1] = this.profileForm
+            .get("referenceList")
+            .get("two").value;
         }
       }
-    } else if (this.profile && this.profile.referenceList instanceof Array && this.profile.referenceList.length == 0) {
+    } else if (
+      this.profile &&
+      this.profile.referenceList instanceof Array &&
+      this.profile.referenceList.length == 0
+    ) {
       reqBody.referenceList = [];
-      if (this.profileForm.get('referenceList').get('one').value.name) {
-        reqBody.referenceList.push(this.profileForm.get('referenceList').get('one').value);
+      if (this.profileForm.get("referenceList").get("one").value.name) {
+        reqBody.referenceList.push(
+          this.profileForm.get("referenceList").get("one").value
+        );
       }
-      if (this.profileForm.get('referenceList').get('two').value.name) {
-        reqBody.referenceList.push(this.profileForm.get('referenceList').get('two').value);
+      if (this.profileForm.get("referenceList").get("two").value.name) {
+        reqBody.referenceList.push(
+          this.profileForm.get("referenceList").get("two").value
+        );
       }
     }
 
@@ -1117,22 +1476,23 @@ export class ProfileLandingComponent implements OnInit {
     this.submitted = true;
     if (!this.loading) {
       let reqBody = {};
-      if (formName === 'personalDetailsForm') {
+      if (formName === "personalDetailsForm") {
         if (this.personalDetailsForm.invalid) {
           return;
         }
         reqBody = {
-          'FirstName': this.personalDetailsForm.value.firstName,
-          'LastName': this.personalDetailsForm.value.lastName,
+          FirstName: this.personalDetailsForm.value.firstName,
+          LastName: this.personalDetailsForm.value.lastName,
           /* 'DOB': this.personalDetailsForm.value.dob, */
-          'Gender': this.personalDetailsForm.value.gender,
-          'MobileNumber': this.personalDetailsForm.value.mobile,
-          'CountryCode': this.personalDetailsForm.value.countryPhoneCode,
-          'VideoLinkTypeId': Number(this.personalDetailsForm.value.videoLinkTypeId),
-          'VideoLink': this.personalDetailsForm.value.videoLink
+          Gender: this.personalDetailsForm.value.gender,
+          MobileNumber: this.personalDetailsForm.value.mobile,
+          CountryCode: this.personalDetailsForm.value.countryPhoneCode,
+          VideoLinkTypeId: Number(
+            this.personalDetailsForm.value.videoLinkTypeId
+          ),
+          VideoLink: this.personalDetailsForm.value.videoLink
         };
-      }
-      else if (formName === 'professionalDetailsForm') {
+      } else if (formName === "professionalDetailsForm") {
         if (this.professionalDetailsForm.invalid) {
           return;
         }
@@ -1165,49 +1525,49 @@ export class ProfileLandingComponent implements OnInit {
         } else if (reqBody['professionalInfo'] && reqBody['professionalInfo'].preferredJobTypeId === 3) {
           reqBody['professionalInfo'].expectedPayUnitSymbol = '$';
         } */
-      }
-      else if (formName === 'videoForm') {
+      } else if (formName === "videoForm") {
         if (this.videoForm.invalid) {
           return;
         }
         reqBody = {
-          'videoLinkTypeId': this.videoForm.value.videoLinkTypeId,
-          'videoLink': this.videoForm.value.videoLink,
-          'VideoLinkCaption': this.videoForm.value.VideoLinkCaption ? this.videoForm.value.VideoLinkCaption : '',
+          videoLinkTypeId: this.videoForm.value.videoLinkTypeId,
+          videoLink: this.videoForm.value.videoLink,
+          VideoLinkCaption: this.videoForm.value.VideoLinkCaption
+            ? this.videoForm.value.VideoLinkCaption
+            : ""
         };
         if (this.profileForm.value.videoLinkTypeId === 1) {
-          reqBody['videoLink'] = this.profileForm.value.videoLink;
+          reqBody["videoLink"] = this.profileForm.value.videoLink;
         } else if (this.profileForm.value.videoLinkTypeId === 2) {
-          reqBody['videoLink'] = this.profileForm.value.uploadVideoLink;
+          reqBody["videoLink"] = this.profileForm.value.uploadVideoLink;
         }
-      } else if (formName === 'socialForm') {
+      } else if (formName === "socialForm") {
         if (this.socialForm.invalid) {
           return;
         }
         reqBody = [
-            {
-              ID: 0,
-              ProfileLink: this.socialForm.value.linkedin,
-              SocialSiteId: 3
-            },
-            {
-              ID: 0,
-              ProfileLink: this.socialForm.value.github,
-              SocialSiteId: 5
-            },
-            {
-              ID: 0,
-              ProfileLink: this.socialForm.value.stack,
-              SocialSiteId: 6
-            },
-            /* {
+          {
+            ID: 0,
+            ProfileLink: this.socialForm.value.linkedin,
+            SocialSiteId: 3
+          },
+          {
+            ID: 0,
+            ProfileLink: this.socialForm.value.github,
+            SocialSiteId: 5
+          },
+          {
+            ID: 0,
+            ProfileLink: this.socialForm.value.stack,
+            SocialSiteId: 6
+          }
+          /* {
               link: this.socialForm.value.others ? this.socialForm.value.others : '',
               typeid: 7
             } */
-          ];
-
-      }
-      /* else if (formName === 'referenceForm') {
+        ];
+      } else if (formName === "primarySkillsForm") {
+        /* else if (formName === 'referenceForm') {
         if (this.referenceForm.invalid ||
           (this.referenceForm.get('referenceList').get('one').value.emailid && this.referenceForm.get('referenceList').get('two').value.emailid &&
             this.referenceForm.get('referenceList').get('one').value.emailid == this.referenceForm.get('referenceList').get('two').value.emailid) ||
@@ -1243,70 +1603,73 @@ export class ProfileLandingComponent implements OnInit {
           }
         }
       }  */
-      else if (formName === 'primarySkillsForm') {
-
         reqBody = this.primarySkillsList;
-
-      } else if (formName === 'additionalSkillsForm') {
-
+      } else if (formName === "additionalSkillsForm") {
         reqBody = this.additionalSkillsList;
-
-      } else if (formName === 'experiencesForm') {
-
+      } else if (formName === "experiencesForm") {
         reqBody = this.experiences;
-
-      } else if (formName === 'additionalProjectsForm') {
-
-        reqBody = this.additionalProjectsList ;
-
-      } else if (formName === 'educationForm') {
-
+      } else if (formName === "additionalProjectsForm") {
+        reqBody = this.additionalProjectsList;
+      } else if (formName === "educationForm") {
         reqBody = this.educationsList;
-
-      } else if (formName === 'trainingsForm') {
-
+      } else if (formName === "trainingsForm") {
         reqBody = this.trainingsList;
-
       }
       this.loading = true;
-      const loading = this.message.loading(FeedbackMessages.loading.ProfileUpdate, { nzDuration: 0 }).messageId;
-      this.profileService.updateProfileDetails(formName, reqBody, this.candidateId).subscribe((response) => {
-        this.loading = false;
-        this.message.remove(loading);
-        let succesMessage = ''
-        // this.analyticsService.eventEmitter('MyProfileScreen', 'ProfileSubmit', 'ProfileSubmit');
-        switch(formName) {
-          case 'personalDetailsForm': succesMessage = 'Personal Details Saved Successfully';
-            break;
-          case 'primarySkillsForm': succesMessage = 'Primary Skills Saved Successfully';
-            break;
-          case 'additionalProjectsForm': succesMessage = 'Project Details Saved Successfully';
-            break;
-          case 'experiencesForm': succesMessage = 'Experience Details Saved Successfully';
-            break;
-          case 'additionalSkillsForm': succesMessage = 'Additional Skills Saved Successfully';
-            break;
-          case 'educationForm': succesMessage = 'Education Details Saved Successfully';
-            break;
-          case 'trainingsForm': succesMessage = 'Training Details Saved Successfully';
-            break;
-          case 'socialForm': succesMessage = 'Social Details Saved Successfully';
-            break;
-          case 'professionalDetailsForm': succesMessage = 'Professional Details Saved Successfully';
-            break;
-        }
-        this.message.success(succesMessage, { nzDuration: 1500 });
-        /* this.profile = response;
+      const loading = this.message.loading(
+        FeedbackMessages.loading.ProfileUpdate,
+        { nzDuration: 0 }
+      ).messageId;
+      this.profileService
+        .updateProfileDetails(formName, reqBody, this.candidateId)
+        .subscribe(
+          response => {
+            this.loading = false;
+            this.message.remove(loading);
+            let succesMessage = "";
+            // this.analyticsService.eventEmitter('MyProfileScreen', 'ProfileSubmit', 'ProfileSubmit');
+            switch (formName) {
+              case "personalDetailsForm":
+                succesMessage = "Personal Details Saved Successfully";
+                break;
+              case "primarySkillsForm":
+                succesMessage = "Primary Skills Saved Successfully";
+                break;
+              case "additionalProjectsForm":
+                succesMessage = "Project Details Saved Successfully";
+                break;
+              case "experiencesForm":
+                succesMessage = "Experience Details Saved Successfully";
+                break;
+              case "additionalSkillsForm":
+                succesMessage = "Additional Skills Saved Successfully";
+                break;
+              case "educationForm":
+                succesMessage = "Education Details Saved Successfully";
+                break;
+              case "trainingsForm":
+                succesMessage = "Training Details Saved Successfully";
+                break;
+              case "socialForm":
+                succesMessage = "Social Details Saved Successfully";
+                break;
+              case "professionalDetailsForm":
+                succesMessage = "Professional Details Saved Successfully";
+                break;
+            }
+            this.message.success(succesMessage, { nzDuration: 1500 });
+            /* this.profile = response;
         this.initForm();
         this.highlightSection(); */
-        this.profileService.refreshProfileData(this.profile);
-      }, (error) => {
-        this.loading = false;
-        this.message.remove(loading);
-      });
+            this.profileService.refreshProfileData(this.profile);
+          },
+          error => {
+            this.loading = false;
+            this.message.remove(loading);
+          }
+        );
     }
   }
-
 
   /**
    * Get vimeo video upload form Vimeo API to upload the video file.
@@ -1315,59 +1678,79 @@ export class ProfileLandingComponent implements OnInit {
     // let videoCaption = this.profileForm.value.VideoLinkCaption ? this.profileForm.value.VideoLinkCaption : ''
     if (!this.loading) {
       this.loading = true;
-      const loading = this.message.loading(FeedbackMessages.loading.VideoUploadPrepare, { nzDuration: 0 }).messageId;
-      this.vimeoService.createNewVideo('profile').subscribe((response) => {
-        this.loading = false;
-        this.message.remove(loading);
-        if (response) {
-          let vimeoUploadDiv = document.createElement('div');
-          vimeoUploadDiv.className = 'vimeo-video';
-          vimeoUploadDiv.innerHTML = response['upload']['form'];
-          vimeoUploadDiv.querySelector('label').innerText = 'Upload Video';
-          vimeoUploadDiv.querySelector('input[type=\'submit\']').nodeValue = 'Upload';
-          vimeoUploadDiv.querySelector('input[type=\'file\']').setAttribute('accept', 'video/mp4,video/x-m4v,video/*');
-          document.querySelector('#video').appendChild(vimeoUploadDiv);
-          document.querySelector('#video input[type="file"]').addEventListener('change', (event) => {
-            if (event && event.target && event.target['files'] && event.target['files'][0]) {
-              if (event.target['files'][0]['size'] > 100000000) {
-                let alertWindow = confirm('Please select file less than 100MB.');
-                if (alertWindow === true) event.target['files'] = null;
-                else event.target['files'] = null;
-              } else {
-                if (document.querySelector('.filename-text')) {
-                  document.querySelector('.filename-text').remove();
+      const loading = this.message.loading(
+        FeedbackMessages.loading.VideoUploadPrepare,
+        { nzDuration: 0 }
+      ).messageId;
+      this.vimeoService.createNewVideo("profile").subscribe(
+        response => {
+          this.loading = false;
+          this.message.remove(loading);
+          if (response) {
+            let vimeoUploadDiv = document.createElement("div");
+            vimeoUploadDiv.className = "vimeo-video";
+            vimeoUploadDiv.innerHTML = response["upload"]["form"];
+            vimeoUploadDiv.querySelector("label").innerText = "Upload Video";
+            vimeoUploadDiv.querySelector("input[type='submit']").nodeValue =
+              "Upload";
+            vimeoUploadDiv
+              .querySelector("input[type='file']")
+              .setAttribute("accept", "video/mp4,video/x-m4v,video/*");
+            document.querySelector("#video").appendChild(vimeoUploadDiv);
+            document
+              .querySelector('#video input[type="file"]')
+              .addEventListener("change", event => {
+                if (
+                  event &&
+                  event.target &&
+                  event.target["files"] &&
+                  event.target["files"][0]
+                ) {
+                  if (event.target["files"][0]["size"] > 100000000) {
+                    let alertWindow = confirm(
+                      "Please select file less than 100MB."
+                    );
+                    if (alertWindow === true) event.target["files"] = null;
+                    else event.target["files"] = null;
+                  } else {
+                    if (document.querySelector(".filename-text")) {
+                      document.querySelector(".filename-text").remove();
+                    }
+                    let fileName = document.createElement("p");
+                    fileName.className = "filename-text";
+                    fileName.innerText = event.target["files"][0]["name"];
+                    vimeoUploadDiv.appendChild(fileName);
+                  }
                 }
-                let fileName = document.createElement('p');
-                fileName.className = 'filename-text';
-                fileName.innerText = event.target['files'][0]['name'];
-                vimeoUploadDiv.appendChild(fileName);
-              }
-
-            }
-          });
-          document.querySelector('#video .vimeo-video form').addEventListener('submit', (event) => {
-            let selectedFile = document.querySelector('#video .filename-text');
-            if (!selectedFile) {
-              event.preventDefault();
-            }
-          });
+              });
+            document
+              .querySelector("#video .vimeo-video form")
+              .addEventListener("submit", event => {
+                let selectedFile = document.querySelector(
+                  "#video .filename-text"
+                );
+                if (!selectedFile) {
+                  event.preventDefault();
+                }
+              });
+          }
+        },
+        () => {
+          this.loading = false;
+          this.message.remove(loading);
         }
-      }, () => {
-        this.loading = false;
-        this.message.remove(loading);
-      });
+      );
     }
   }
 
-  searchSkill(searchTerm){
-    if(searchTerm !== '' && searchTerm !== null && searchTerm.length >=3){
+  searchSkill(searchTerm) {
+    if (searchTerm !== "" && searchTerm !== null && searchTerm.length >= 3) {
       this.profileService.searchSkill(searchTerm).subscribe(response => {
-        if(response['code'] === 200 && response['data']) {
-          this.skills = response['data']
+        if (response["code"] === 200 && response["data"]) {
+          this.skills = response["data"];
         }
       });
     }
-
   }
 
   /**
@@ -1376,10 +1759,10 @@ export class ProfileLandingComponent implements OnInit {
    */
   onChange(value) {
     const youtubeUrlRegex = /(http(s)?:\/\/.)?(www\.)?\byoutube\b/i;
-    if(value === 1){
-      this.videoPlaceholder = 'Please enter full youtube link';
-    } else if(value === 2){
-      this.videoPlaceholder = 'Please enter valid vimeo ID';
+    if (value === 1) {
+      this.videoPlaceholder = "Please enter full youtube link";
+    } else if (value === 2) {
+      this.videoPlaceholder = "Please enter valid vimeo ID";
     }
     /* setTimeout(() => {
       if (document.querySelector('.vimeo-video')) document.querySelector('.vimeo-video').remove();
@@ -1394,13 +1777,17 @@ export class ProfileLandingComponent implements OnInit {
    */
   setVideoLinkToVimeoId() {
     this.route.queryParamMap.subscribe(params => {
-      let videoUrl = params.get('video_uri');
-      let videoCaption = params.get('videoCaption');
+      let videoUrl = params.get("video_uri");
+      let videoCaption = params.get("videoCaption");
       if (videoUrl) {
-        this.profileForm.get('videoLinkTypeId').setValue(2);
-        this.profileForm.get('uploadVideoLink').setValue(videoUrl.split('/')[2]);
-        this.profileForm.get('VideoLinkCaption').setValue(videoCaption ? videoCaption : '');
-        this.onSubmit(true, 'videoForm');
+        this.profileForm.get("videoLinkTypeId").setValue(2);
+        this.profileForm
+          .get("uploadVideoLink")
+          .setValue(videoUrl.split("/")[2]);
+        this.profileForm
+          .get("VideoLinkCaption")
+          .setValue(videoCaption ? videoCaption : "");
+        this.onSubmit(true, "videoForm");
       }
     });
   }
@@ -1408,10 +1795,10 @@ export class ProfileLandingComponent implements OnInit {
   /**
    * Check if url is youtube url
    */
-  testYoutubeUrl = (url) => {
+  testYoutubeUrl = url => {
     const youtubeUrlRegex = /(http(s)?:\/\/.)?(www\.)?\byoutube\b/i;
     return youtubeUrlRegex.test(url);
-  }
+  };
 
   /**
    * Disable future dates
@@ -1420,7 +1807,7 @@ export class ProfileLandingComponent implements OnInit {
     // Can not select days before today and today
     let todayDate = new Date().getTime() - 86400000;
     return current.getTime() > todayDate;
-  }
+  };
 
   /**
    * Expand/Collapse comment section
@@ -1445,15 +1832,20 @@ export class ProfileLandingComponent implements OnInit {
    */
   highlightMissingFields() {
     this.route.queryParamMap.subscribe(result => {
-      let fields: string[] = result.get('fields') ? result.get('fields').split(',') : [];
-      let fieldsString = result.get('fields') ? result.get('fields') : '';
+      let fields: string[] = result.get("fields")
+        ? result.get("fields").split(",")
+        : [];
+      let fieldsString = result.get("fields") ? result.get("fields") : "";
       if (fields && fields.length > 0) {
         this.missingFields = fields;
-        let sectionOneRegex = new RegExp('(GENDER|LAST_NAME)', 'i');
-        let sectionTwoRegex = new RegExp('(DESIRED_DESIGNATION|PREFERRED_LOCATION|EXPECTED_PAY_RATE|ANNUAL_SALARY|EMPLOYMENT_TYPE)', 'i');
-        let sectionThreeRegex = new RegExp('(RESUME)', 'i');
-        let sectionFourRegex = new RegExp('(SOCIAL_LINKS)', 'i');
-        let sectionFiveRegex = new RegExp('(VIDEO_LINK)', 'i');
+        let sectionOneRegex = new RegExp("(GENDER|LAST_NAME)", "i");
+        let sectionTwoRegex = new RegExp(
+          "(DESIRED_DESIGNATION|PREFERRED_LOCATION|EXPECTED_PAY_RATE|ANNUAL_SALARY|EMPLOYMENT_TYPE)",
+          "i"
+        );
+        let sectionThreeRegex = new RegExp("(RESUME)", "i");
+        let sectionFourRegex = new RegExp("(SOCIAL_LINKS)", "i");
+        let sectionFiveRegex = new RegExp("(VIDEO_LINK)", "i");
 
         if (sectionOneRegex.test(fieldsString)) {
           this.highlightSectionOnClick(1);
@@ -1474,28 +1866,28 @@ export class ProfileLandingComponent implements OnInit {
    * Event handler for 'TAB' key
    * @param event
    */
-  @HostListener('keyup.tab', ['$event'])
+  @HostListener("keyup.tab", ["$event"])
   tabEvent(event: KeyboardEvent) {
-    let activeSection = document.activeElement.closest('.profile-card');
-    if (activeSection.id == 'personal') {
+    let activeSection = document.activeElement.closest(".profile-card");
+    if (activeSection.id == "personal") {
       this.highlightSectionOnClick(1);
-    } else if (activeSection.id == 'professional') {
+    } else if (activeSection.id == "professional") {
       this.highlightSectionOnClick(2);
-    } else if (activeSection.id == 'resume') {
+    } else if (activeSection.id == "resume") {
       this.highlightSectionOnClick(3);
-    } else if (activeSection.id == 'social') {
+    } else if (activeSection.id == "social") {
       this.highlightSectionOnClick(4);
-    } else if (activeSection.id == 'video') {
+    } else if (activeSection.id == "video") {
       this.highlightSectionOnClick(5);
-    } else if (activeSection.id == 'references') {
+    } else if (activeSection.id == "references") {
       this.highlightSectionOnClick(6);
-    } else if (activeSection.id == 'primarySkills') {
+    } else if (activeSection.id == "primarySkills") {
       this.highlightSectionOnClick(7);
-    } else if (activeSection.id == 'additionalSkills') {
+    } else if (activeSection.id == "additionalSkills") {
       this.highlightSectionOnClick(8);
-    } else if (activeSection.id == 'primaryProjects') {
+    } else if (activeSection.id == "primaryProjects") {
       this.highlightSectionOnClick(9);
-    } else if (activeSection.id == 'additionalProjects') {
+    } else if (activeSection.id == "additionalProjects") {
       this.highlightSectionOnClick(10);
     }
   }
@@ -1504,28 +1896,28 @@ export class ProfileLandingComponent implements OnInit {
    * Event handler for 'SHIFT' + 'TAB' key
    * @param event
    */
-  @HostListener('keyup.shift.tab', ['$event'])
+  @HostListener("keyup.shift.tab", ["$event"])
   tabAndShiftEvent(event: KeyboardEvent) {
-    let activeSection = document.activeElement.closest('.profile-card');
-    if (activeSection.id == 'personal') {
+    let activeSection = document.activeElement.closest(".profile-card");
+    if (activeSection.id == "personal") {
       this.highlightSectionOnClick(1);
-    } else if (activeSection.id == 'professional') {
+    } else if (activeSection.id == "professional") {
       this.highlightSectionOnClick(2);
-    } else if (activeSection.id == 'resume') {
+    } else if (activeSection.id == "resume") {
       this.highlightSectionOnClick(3);
-    } else if (activeSection.id == 'social') {
+    } else if (activeSection.id == "social") {
       this.highlightSectionOnClick(4);
-    } else if (activeSection.id == 'video') {
+    } else if (activeSection.id == "video") {
       this.highlightSectionOnClick(5);
-    } else if (activeSection.id == 'references') {
+    } else if (activeSection.id == "references") {
       this.highlightSectionOnClick(6);
-    } else if (activeSection.id == 'primarySkills') {
+    } else if (activeSection.id == "primarySkills") {
       this.highlightSectionOnClick(7);
-    } else if (activeSection.id == 'additionalSkills') {
+    } else if (activeSection.id == "additionalSkills") {
       this.highlightSectionOnClick(8);
-    } else if (activeSection.id == 'primaryProjects') {
+    } else if (activeSection.id == "primaryProjects") {
       this.highlightSectionOnClick(9);
-    } else if (activeSection.id == 'additionalProjects') {
+    } else if (activeSection.id == "additionalProjects") {
       this.highlightSectionOnClick(10);
     }
   }
@@ -1534,30 +1926,43 @@ export class ProfileLandingComponent implements OnInit {
    * Get vimeo video meta data using video id
    */
   getVideoData(videoId) {
-    this.vimeoService.getVideoDataById(videoId).subscribe((response) => {
-      if (response && response['pictures']) {
+    this.vimeoService.getVideoDataById(videoId).subscribe(response => {
+      if (response && response["pictures"]) {
         this.videoData = response;
       }
-      if (response && response.files && response.files instanceof Array && response.files.length > 0 && response['embed'] && response['embed']['html']) {
+      if (
+        response &&
+        response.files &&
+        response.files instanceof Array &&
+        response.files.length > 0 &&
+        response["embed"] &&
+        response["embed"]["html"]
+      ) {
         if (this.isEmbedVideo) {
-          if (document.querySelector('#iframeBody .flex iframe')) {
-            document.querySelector('#iframeBody .flex iframe').remove();
+          if (document.querySelector("#iframeBody .flex iframe")) {
+            document.querySelector("#iframeBody .flex iframe").remove();
           }
-          document.querySelector('#iframeBody .flex').innerHTML = response['embed']['html'];
-          document.querySelector('#iframeBody .flex iframe')['style']['width'] = '500px';
-          document.querySelector('#iframeBody .flex iframe')['style']['height'] = '250px';
-          document.querySelector('#iframeBody .flex iframe')['style']['background'] = '#404040';
+          document.querySelector("#iframeBody .flex").innerHTML =
+            response["embed"]["html"];
+          document.querySelector("#iframeBody .flex iframe")["style"]["width"] =
+            "500px";
+          document.querySelector("#iframeBody .flex iframe")["style"][
+            "height"
+          ] = "250px";
+          document.querySelector("#iframeBody .flex iframe")["style"][
+            "background"
+          ] = "#404040";
         } else {
-          if (document.querySelector('#iframeBody .flex video')) {
-            document.querySelector('#iframeBody .flex video').remove();
+          if (document.querySelector("#iframeBody .flex video")) {
+            document.querySelector("#iframeBody .flex video").remove();
           }
-          let videoElement = document.createElement('video');
-          videoElement.src = response.files[0]['link'];
+          let videoElement = document.createElement("video");
+          videoElement.src = response.files[0]["link"];
           videoElement.controls = true;
           videoElement.autoplay = false;
-          videoElement.style.width = '500px';
-          videoElement.style.height = '250px';
-          videoElement.style.background = '#404040';
+          videoElement.style.width = "500px";
+          videoElement.style.height = "250px";
+          videoElement.style.background = "#404040";
           // document.querySelector("#iframeBody .flex").appendChild(videoElement);
         }
       }
@@ -1576,11 +1981,13 @@ export class ProfileLandingComponent implements OnInit {
    */
   handlePlayVideoModalCancel() {
     this.playVideoModal = false;
-    if (document.querySelector('#iframeBody .flex video')) {
-      document.querySelector('#iframeBody .flex video')['pause']();
+    if (document.querySelector("#iframeBody .flex video")) {
+      document.querySelector("#iframeBody .flex video")["pause"]();
     }
-    if (document.querySelector('#iframeBody .flex iframe')) {
-      document.querySelector('#iframeBody .flex iframe')['src'] = document.querySelector('#iframeBody .flex iframe')['src'];
+    if (document.querySelector("#iframeBody .flex iframe")) {
+      document.querySelector("#iframeBody .flex iframe")[
+        "src"
+      ] = document.querySelector("#iframeBody .flex iframe")["src"];
     }
   }
 
@@ -1617,11 +2024,11 @@ export class ProfileLandingComponent implements OnInit {
   countrycodeFilter = (input, option) => {
     // console.log("input", input);
     // console.log("option", option.template);
-  }
+  };
 
   // Download the resume file
   downloadResume() {
-    let a = document.createElement('a');
+    let a = document.createElement("a");
     fetch(this.profile.resumeUrl)
       .then(res => res.blob()) // Gets the response and returns it as a blob
       .then(blob => {
@@ -1631,8 +2038,69 @@ export class ProfileLandingComponent implements OnInit {
         a.click();
       });
   }
-  GoToSection(target){
-    console.log(target)
-    target.scrollIntoView({behavior: 'smooth'});
+  GoToSection(target) {
+    console.log(target);
+    target.scrollIntoView({ behavior: "smooth" });
+  }
+
+  // abc() {
+  //   this.primarySkillsForm.valueChanges.subscribe(res => {
+  //     console.log("res", res);
+  //   });
+  // }
+
+  checkForDisableBtn(type) {
+    // console.log("type", type);
+    if (type === "primarySkills") {
+      // console.log("thiss.s.", this.primarySkillsForm.value);
+      let keys = Object.keys(this.primarySkillsForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.primarySkillsForm.value[keys[i]]) {
+          return true;
+        }
+      }
+      // return false;
+    }
+    if (type === "additionalSkills") {
+      let keys = Object.keys(this.additionalSkillsForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.additionalSkillsForm.value[keys[i]]) {
+          return true;
+        }
+      }
+    }
+    if (type === "trainings") {
+      let keys = Object.keys(this.trainingsForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.trainingsForm.value[keys[i]]) {
+          return true;
+        }
+      }
+    }
+    if (type === "experiences") {
+      let keys = Object.keys(this.experiencesForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.experiencesForm.value[keys[i]]) {
+          return true;
+        }
+      }
+    }
+    if (type === "additionalProjects") {
+      let keys = Object.keys(this.additionalProjectsForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.additionalProjectsForm.value[keys[i]]) {
+          return true;
+        }
+      }
+    }
+    if (type === "educationAndCertifications") {
+      let keys = Object.keys(this.educationForm.value);
+      for (let i = 0; i < keys.length; i++) {
+        if (this.educationForm.value[keys[i]]) {
+          return true;
+        }
+      }
+    }
+    return false;
   }
 }

@@ -38,6 +38,7 @@
       </form> -->
     </div>
     <div class="profile-content flex">
+
       <!-- Resume upload form -->
       <div class="profile-card" #anchor9 id="resume" [ngClass]="{'active': activeSection.resume}"
       (click)="highlightSectionOnClick(3)">
@@ -76,7 +77,8 @@
           </div>
         </form>
       </div>
-    </div>
+      </div>
+
       <!-- Personal details form -->
       <div class="profile-card" #anchor1 id="personal" [ngClass]="{'active': activeSection.personal}"
         (click)="highlightSectionOnClick(1)">
@@ -168,7 +170,7 @@
                 </div> -->
               </div>
               <button class="submit-button" nz-button nzShape="circle" style=""
-            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+                 nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
             <!-- <div class="submit-button">
               <button class="orange-button">Save</button>
@@ -176,6 +178,7 @@
           </form>
         </div>
       </div>
+
       <!-- Primary Skills -->
       <div class="profile-card" #anchor2 id="primarySkills" [ngClass]="{'active': activeSection.primarySkills}"
         (click)="highlightSectionOnClick(7)">
@@ -196,7 +199,7 @@
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
                 (nzOnSearch)="searchSkill($event)" >
                 <nz-option [nzValue]="skill.Skill" [nzLabel]="skill.Skill" *ngFor="let skill of skills"></nz-option>
-              </nz-select>
+                </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
                 Name</label>
@@ -219,9 +222,10 @@
             </div>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input tabindex="35" type="text" id="experience" formControlName="experience"
-                class="form-control not-mandate" placeholder="In Months" />
+                class="form-control not-mandate"  />
+                <!-- placeholder="In Months" -->
               <label for="experience" class="form-control-placeholder"
-                [ngClass]="{'active': primarySkills.experience.value, 'inactive': !primarySkills.experience.value }">Experience</label>
+                [ngClass]="{'active': primarySkills.experience.value, 'inactive': !primarySkills.experience.value }">Experience (In Months)</label>
               <div *ngIf=" primarySkills.experience.errors" class="invalid-feedback">
                 <div class="error" *ngIf="primarySkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
                 </div>
@@ -237,7 +241,7 @@
               <tr>
                 <th>Skill</th>
                 <th>Rating</th>
-                <th>Experience</th>
+                <th>Experience (In Months)</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -258,7 +262,7 @@
               </tr>
             </tbody>
           </nz-table>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'primarySkillsForm')" nzShape="circle" style=""
+          <button [disabled]="checkForDisableBtn('primarySkills')" class="submit-button" nz-button (click)="onSubmit(false, 'primarySkillsForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
@@ -266,6 +270,7 @@
           </div> -->
         </div>
       </div>
+
       <!-- Additional Skills -->
       <div class="profile-card" #anchor3 id="additionalSkills" [ngClass]="{'active': activeSection.additionalSkills}"
         (click)="highlightSectionOnClick(8)">
@@ -279,6 +284,7 @@
         <div class="card-content">
           <form [formGroup]="additionalSkillsForm" class="flex primarySkillsContent">
             <input type="hidden" formControlName="additionalSkillId" />
+
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
                 <nz-select tabindex="34" id="skillName" class="form-control not-mandate" formControlName="skillName"
                 nzShowSearch nzServerSearch style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;"
@@ -292,6 +298,7 @@
                 <div class="error" *ngIf="additionalSkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
               </div> -->
             </div>
+
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <nz-select tabindex="37" id="rating" class="form-control not-mandate" formControlName="rating"
                 style="width: 100%; border-bottom: 1px solid #5050e2; padding-top: 20px;">
@@ -304,11 +311,12 @@
                 <div class="error" *ngIf="additionalSkills.rating.errors.pattern">{{validationMsgs.ValidRating}}</div>
               </div>
             </div>
+
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <input tabindex="38" type="text" id="experience" formControlName="experience"
-                class="form-control not-mandate" placeholder="In Months" />
-              <label for="experience" class="form-control-placeholder"
-                [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }">Experience</label>
+                class="form-control not-mandate"  />
+                <!-- placeholder="In Months" -->
+              <label for="experience" class="form-control-placeholder" [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }" >Experience (In Months)</label>
               <div *ngIf=" additionalSkills.experience.errors" class="invalid-feedback">
                 <div class="error" *ngIf="additionalSkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
                 </div>
@@ -324,7 +332,7 @@
               <tr>
                 <th>Skill</th>
                 <th>Rating</th>
-                <th>Experience</th>
+                <th>Experience (In Months)</th>
                 <th>Actions</th>
               </tr>
             </thead>
@@ -345,7 +353,7 @@
               </tr>
             </tbody>
           </nz-table>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'additionalSkillsForm')" nzShape="circle" style=""
+          <button [disabled]="checkForDisableBtn('additionalSkills')" class="submit-button" nz-button (click)="onSubmit(false, 'additionalSkillsForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
@@ -353,6 +361,7 @@
           </div> -->
         </div>
       </div>
+
       <!-- tranings form-->
       <div class="profile-card" #anchor4 id="trainings" [ngClass]="{'active': activeSection.trainings}"
         (click)="highlightSectionOnClick(11)">
@@ -395,7 +404,7 @@
 
             </nz-list>
           </div>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'trainingsForm')" nzShape="circle" style=""
+          <button [disabled]="checkForDisableBtn('trainings')" class="submit-button" nz-button (click)="onSubmit(false, 'trainingsForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
@@ -403,6 +412,7 @@
           </div> -->
         </div>
       </div>
+
       <!-- Professional details form -->
       <div class="profile-card" #anchor5 id="professional" [ngClass]="{'active': activeSection.professional}"
         (click)="highlightSectionOnClick(2)">
@@ -494,6 +504,7 @@
           </form>
         </div>
       </div>
+
      
       <!-- Video upload form -->
      <!--  <div class="profile-card" id="video" [ngClass]="{'active': activeSection.video}"
@@ -843,7 +854,7 @@
               </tr>
             </tbody>
           </nz-table>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'experiencesForm')" nzShape="circle" style=""
+          <button [disabled]="checkForDisableBtn('experiences')" class="submit-button" nz-button (click)="onSubmit(false, 'experiencesForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
@@ -891,7 +902,7 @@
             <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
           </div> -->
             </div>
-            <button nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button  nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
@@ -922,7 +933,7 @@
               </tr>
             </tbody>
           </nz-table>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'additionalProjectsForm')" nzShape="circle" style=""
+          <button [disabled]="checkForDisableBtn('additionalProjects')" class="submit-button" nz-button (click)="onSubmit(false, 'additionalProjectsForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
@@ -1010,7 +1021,7 @@
               </tr>
             </tbody>
           </nz-table>
-          <button class="submit-button" nz-button (click)="onSubmit(false, 'educationForm')" nzShape="circle" style=""
+          <button  [disabled]="checkForDisableBtn('educationAndCertifications')" class="submit-button" nz-button (click)="onSubmit(false, 'educationForm')" nzShape="circle" style=""
             nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
           <!-- <div class="submit-button">
