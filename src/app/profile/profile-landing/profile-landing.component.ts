@@ -374,7 +374,7 @@ export class ProfileLandingComponent implements OnInit {
         "",
         {
           validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
-          updateOn: "blur"
+          // updateOn: "blur"
         }
       ]
     });
@@ -396,7 +396,7 @@ export class ProfileLandingComponent implements OnInit {
         "",
         {
           validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
-          updateOn: "blur"
+          // updateOn: "blur"
         }
       ]
     });
@@ -409,8 +409,8 @@ export class ProfileLandingComponent implements OnInit {
       ],
       location: ["", { updateOn: "blur", validators: [Validators.required] }],
       jobTitle: ["", { updateOn: "blur", validators: [Validators.required] }],
-      startDate: [""],
-      endDate: [""],
+      startDate: ["",[Validators.required]],
+      endDate: ["",[Validators.required]],
       description: [""]
       // { validators: [Validators.required] }
     });

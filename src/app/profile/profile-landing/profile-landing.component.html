@@ -202,7 +202,7 @@
                 </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.skillName.value, 'inactive': !primarySkills.skillName.value }">Skill
-                Name</label>
+                Name<span class="required-star">*</span></label>
 
               <!-- <div *ngIf=" primarySkills.skillName.errors" class="invalid-feedback">
                   <div class="error" *ngIf="primarySkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
@@ -215,7 +215,7 @@
               </nz-select>
               <label for="rating" class="form-control-placeholder"
                 [ngClass]="{'active': primarySkills.rating.value, 'inactive': !primarySkills.rating.value }">Self
-                Assessment</label>
+                Assessment<span class="required-star">*</span></label>
               <div *ngIf=" primarySkills.rating.errors" class="invalid-feedback">
                 <div class="error" *ngIf="primarySkills.rating.errors.pattern">{{validationMsgs.ValidRating}}</div>
               </div>
@@ -225,13 +225,13 @@
                 class="form-control not-mandate"  />
                 <!-- placeholder="In Months" -->
               <label for="experience" class="form-control-placeholder"
-                [ngClass]="{'active': primarySkills.experience.value, 'inactive': !primarySkills.experience.value }">Experience (In Months)</label>
+                [ngClass]="{'active': primarySkills.experience.value, 'inactive': !primarySkills.experience.value }">Experience (In Months)<span class="required-star">*</span></label>
               <div *ngIf=" primarySkills.experience.errors" class="invalid-feedback">
                 <div class="error" *ngIf="primarySkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addPrimarySkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!primarySkillsForm.valid" nz-button (click)="addPrimarySkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -294,7 +294,7 @@
               </nz-select>
               <label for="skillName" class="form-control-placeholder"
                 [ngClass]="{'active': additionalSkills.skillName.value, 'inactive': !additionalSkills.skillName.value }">Skill
-                Name</label>
+                Name <span class="required-star">*</span> </label>
               <!-- <div *ngIf=" additionalSkills.skillName.errors" class="invalid-feedback">
                 <div class="error" *ngIf="additionalSkills.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
               </div> -->
@@ -307,7 +307,7 @@
               </nz-select>
               <label for="rating" class="form-control-placeholder"
                 [ngClass]="{'active': additionalSkills.rating.value, 'inactive': !additionalSkills.rating.value }">Self
-                Assessment</label>
+                Assessment <span class="required-star">*</span></label>
               <div *ngIf=" additionalSkills.rating.errors" class="invalid-feedback">
                 <div class="error" *ngIf="additionalSkills.rating.errors.pattern">{{validationMsgs.ValidRating}}</div>
               </div>
@@ -317,13 +317,13 @@
               <input tabindex="16" type="text" id="experience" formControlName="experience"
                 class="form-control not-mandate"  />
                 <!-- placeholder="In Months" -->
-              <label for="experience" class="form-control-placeholder" [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }" >Experience (In Months)</label>
+              <label for="experience" class="form-control-placeholder" [ngClass]="{'active': additionalSkills.experience.value, 'inactive': !additionalSkills.experience.value }" >Experience (In Months) <span class="required-star">*</span></label>
               <div *ngIf=" additionalSkills.experience.errors" class="invalid-feedback">
                 <div class="error" *ngIf="additionalSkills.experience.errors.pattern">{{validationMsgs.ValidExperience}}
                 </div>
               </div>
             </div>
-            <button nz-button (click)="addAdditionalSkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!additionalSkillsForm.valid" nz-button (click)="addAdditionalSkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -376,9 +376,9 @@
               <input #training tabindex="17" type="text" id="training" formControlName="training"
                 class="form-control not-mandate" />
               <label for="training" class="form-control-placeholder"
-                [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training</label>
+                [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training<span class="required-star">*</span></label>
             </div>
-            <button nz-button (click)="addTraining()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!trainingsForm.valid" nz-button (click)="addTraining()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Training'" [nzPlacement]="'bottom'">
               <i nz-icon nzType="plus" nzTheme="outline"></i></button>
 
@@ -419,7 +419,7 @@
       <!-- Professional details form -->
       <div class="profile-card anchor5" #anchor5 id="professional" [ngClass]="{'active': activeSection.professional}"
         (click)="highlightSectionOnClick(2)">
-        <div class="card-title">Personal Summary
+        <div class="card-title">Personal Summary<span class="required-star">*</span>
         </div>
         <div class="card-content">
           <form [formGroup]="professionalDetailsForm" (ngSubmit)="onSubmit(false, 'professionalDetailsForm')">
@@ -778,7 +778,7 @@
                 class="form-control not-mandate" />
               <label for="companyName" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.companyName.value, 'inactive': !primaryProjects.companyName.value }">Company
-                Name</label>
+                Name <span class="required-star">*</span></label>
               <!-- <div *ngIf=" primaryProjects.skillName.errors" class="invalid-feedback">
               <div class="error" *ngIf="primaryProjects.skillName.errors.pattern">{{validationMsgs.ValidLinkedinLink}}</div>
             </div> -->
@@ -787,7 +787,7 @@
               <input tabindex="20" type="text" id="location" formControlName="location"
                 class="form-control not-mandate" />
               <label for="location" class="form-control-placeholder"
-                [ngClass]="{'active': primaryProjects.location.value, 'inactive': !primaryProjects.location.value }">Location</label>
+                [ngClass]="{'active': primaryProjects.location.value, 'inactive': !primaryProjects.location.value }">Location<span class="required-star">*</span></label>
               <!-- <div *ngIf=" primaryProjects.role.errors" class="invalid-feedback">
               <div class="error" *ngIf="primaryProjects.role.errors.pattern">{{validationMsgs.ValidRating}}</div>
             </div> -->
@@ -797,13 +797,13 @@
                 class="form-control not-mandate" />
               <label for="jobTitle" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.jobTitle.value, 'inactive': !primaryProjects.jobTitle.value }">Job
-                Title</label>
+                Title<span class="required-star">*</span></label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
               <nz-date-picker formControlName="startDate" tabindex="22" id="startDate" class="form-control not-mandate"
                 [nzStyle]="'border: none; border-bottom: 1px solid blue; width:100%;'" [nzFormat]="'dd MMM yyyy'"
                 style="margin-top: 25px;"></nz-date-picker>
-              <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date</label>
+              <label for="dob" class="form-control-placeholder" style="top: 8px;">Start Date<span class="required-star">*</span></label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
               <nz-date-picker formControlName="endDate" tabindex="23" id="endDate" class="form-control not-mandate"
@@ -811,7 +811,7 @@
                  style="margin-top: 25px;"></nz-date-picker>
               <label for="endDate" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.endDate.value, 'inactive': !primaryProjects.endDate.value }"
-                style="top: 8px;">End Date</label>
+                style="top: 8px;">End Date<span class="required-star">*</span></label>
             </div>
             <div class="form-group horizontal" style="width: 48%;">
               <quill-editor id="description" tabindex="24" style="display: block;margin-top: 30px;"
@@ -820,7 +820,7 @@
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
             </div>
-            <button nz-button (click)="addPrimaryProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!experiencesForm.valid" nz-button (click)="addPrimaryProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Experience'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
@@ -880,15 +880,15 @@
           <form [formGroup]="additionalProjectsForm" class="flex primaryProjectsContent">
             <input tabindex="24" type="hidden" formControlName="additionalProjectId" />
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input #name tabindex="39" type="text" id="name" formControlName="name"
+              <input #name tabindex="25" type="text" id="name" formControlName="name"
                 class="form-control not-mandate" />
               <label for="name" class="form-control-placeholder"
-                [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name</label>
+                [ngClass]="{'active': additionalProjects.name.value, 'inactive': !additionalProjects.name.value }">Name<span class="required-star">*</span></label>
             </div>
             <div class="form-group horizontal" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-              <input tabindex="25" type="text" id="year" formControlName="year" class="form-control not-mandate" />
+              <input tabindex="26" type="text" id="year" formControlName="year" class="form-control not-mandate" />
               <label for="year" class="form-control-placeholder"
-                [ngClass]="{'active': additionalProjects.year.value, 'inactive': !additionalProjects.year.value }">Year</label>
+                [ngClass]="{'active': additionalProjects.year.value, 'inactive': !additionalProjects.year.value }">Year<span class="required-star">*</span></label>
               <div *ngIf=" additionalProjects.year.errors" class="invalid-feedback">
                 <div class="error" *ngIf="additionalProjects.year.errors.pattern">{{validationMsgs.ValidYear}}</div>
               </div>
@@ -897,7 +897,7 @@
               [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
               <!-- <input tabindex="35" type="text" id="description" formControlName="description"
                 class="form-control not-mandate" /> -->
-              <quill-editor id="description" tabindex="26" style="display: block;margin-top: 30px;"
+              <quill-editor id="description" tabindex="27" style="display: block;margin-top: 30px;"
                 formControlName="description" class="form-control not-mandate" [styles]="editorStyle"
                 [modules]="editorConfig"></quill-editor>
               <label for="description" class="form-control-placeholder"
@@ -906,7 +906,7 @@
             <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
           </div> -->
             </div>
-            <button  nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!additionalProjectsForm.valid"  nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'"><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
@@ -959,14 +959,14 @@
                 class="form-control not-mandate" />
               <label for="degreeName" class="form-control-placeholder"
                 [ngClass]="{'active': educations.degreeName.value, 'inactive': !educations.degreeName.value }">Degree
-                Name</label>
+                Name <span class="required-star">*</span></label>
 
             </div>
             <div class="form-group horizontal">
               <input tabindex="28" type="text" id="speciality" formControlName="speciality"
                 class="form-control not-mandate" />
               <label for="speciality" class="form-control-placeholder"
-                [ngClass]="{'active': educations.speciality.value, 'inactive': !educations.speciality.value }">Speciality</label>
+                [ngClass]="{'active': educations.speciality.value, 'inactive': !educations.speciality.value }">Speciality <span class="required-star">*</span></label>
 
             </div>
             <div class="form-group horizontal">
@@ -974,7 +974,7 @@
                 class="form-control not-mandate" />
               <label for="schoolName" class="form-control-placeholder"
                 [ngClass]="{'active': educations.schoolName.value, 'inactive': !educations.schoolName.value }">Institution
-                Name</label>
+                Name<span class="required-star">*</span></label>
             </div>
             <div class="form-group horizontal" style="margin-top: 2px;">
               <nz-date-picker formControlName="startDate" tabindex="30" id="startDate" class="form-control not-mandate"
@@ -991,7 +991,7 @@
                 style="top: 8px;">End Date</label>
             </div>
 
-            <button nz-button (click)="addEducation()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
+            <button [disabled]="!educationForm.valid" nz-button (click)="addEducation()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'"><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
