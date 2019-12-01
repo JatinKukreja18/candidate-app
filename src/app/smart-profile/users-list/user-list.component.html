@@ -73,7 +73,7 @@
             Skills
           </button>
             <ng-template #contentTemplate>
-                <div style="width: 250px;max-height: 209px; overflow-y: scroll" *ngIf="user.CandidateSkills.length != 0">
+                <div style="width: 250px;max-height: 166px; overflow-y: scroll" *ngIf="user.CandidateSkills.length != 0">
                     <p class="skill-title">Primary</p>
                     <div *ngFor="let skill of user.CandidateSkills">
                       <label *ngIf="skill.SkillType == 'Primary'">
@@ -82,7 +82,7 @@
                       </label>
                     </div>
                 </div>
-                <div style="width: 250px;max-height: 209px; overflow-y: scroll" *ngIf="user.CandidateSkills.length != 0">
+                <div style="width: 250px;max-height: 166px; overflow-y: scroll" *ngIf="user.CandidateSkills.length != 0">
                     <nz-divider></nz-divider>
                     <p class="skill-title" style="margin-top:15px">Additional</p>
                     <div *ngFor="let skill of user.CandidateSkills">
