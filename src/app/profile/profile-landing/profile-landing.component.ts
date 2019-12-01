@@ -10,6 +10,7 @@ import { ProfileForm } from '@app/core/models';
 import { Observable, Subscription } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
+import Swal from 'sweetalert2'
 
 @Component({
   selector: "app-profile-landing",
@@ -74,10 +75,10 @@ export class ProfileLandingComponent implements OnInit {
     resumeName: string;
     videoname: string;
   } = {
-    profileImage: "",
-    resumeName: "",
-    videoname: ""
-  };
+      profileImage: "",
+      resumeName: "",
+      videoname: ""
+    };
   activeSection: {
     personal: boolean;
     professional: boolean;
@@ -92,26 +93,26 @@ export class ProfileLandingComponent implements OnInit {
     educations: boolean;
     trainings: boolean;
   } = {
-    personal: false,
-    professional: false,
-    resume: false,
-    social: false,
-    video: false,
-    reference: false,
-    primarySkills: false,
-    additionalSkills: false,
-    primaryProjects: false,
-    additionalProjects: false,
-    educations: false,
-    trainings: false
-  };
+      personal: false,
+      professional: false,
+      resume: false,
+      social: false,
+      video: false,
+      reference: false,
+      primarySkills: false,
+      additionalSkills: false,
+      primaryProjects: false,
+      additionalProjects: false,
+      educations: false,
+      trainings: false
+    };
   expandedComment: {
     one: boolean;
     two: boolean;
   } = {
-    one: false,
-    two: false
-  };
+      one: false,
+      two: false
+    };
   missingFields: string[] = [];
   playVideoModal = false;
   deleteConfirmationModal = false;
@@ -138,7 +139,7 @@ export class ProfileLandingComponent implements OnInit {
     search: true, //true/false for the search functionlity defaults to false,
     height: "auto", //height of the list so that if there are more no of items it can show a scroll defaults to auto. With auto height scroll will never appear
     placeholder: "Country Code", // text to be displayed when no item is selected defaults to Select,
-    customComparator: () => {}, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
+    customComparator: () => { }, // a custom function using which user wants to sort the items. default is undefined and Array.sort() will be used in that case,
     moreText: "more", // text to be displayed whenmore than one items are selected like Option 1 + 5 more
     noResultsFound: "No results found!", // text to be displayed when no items are found while searching
     searchPlaceholder: "Search", // label thats displayed in search input,
@@ -164,7 +165,7 @@ export class ProfileLandingComponent implements OnInit {
     this.validationMsgs = ValidationMessages;
     document
       .querySelector(".page-content")
-      .addEventListener("scroll", function() {
+      .addEventListener("scroll", function () {
         if (document.querySelector(".page-content").scrollTop > 60) {
           document.querySelector("#profile-head").classList.add("scrolled");
         } else {
@@ -234,7 +235,7 @@ export class ProfileLandingComponent implements OnInit {
     });
 
     this.professionalDetailsForm = this.formBuilder.group({
-      summary: ["",[Validators.required]]
+      summary: ["", [Validators.required]]
       /* designation: ['', { updateOn: 'blur' }],
       expectedpayrate: ['', { validators: [Validators.pattern(/^[0-9]{1,4}$/)], updateOn: 'blur' }],
       expectedAnnual: ['', { validators: [Validators.pattern(/^[0-9]{1,7}$/)], updateOn: 'blur' }],
@@ -409,8 +410,8 @@ export class ProfileLandingComponent implements OnInit {
       ],
       location: ["", { updateOn: "blur", validators: [Validators.required] }],
       jobTitle: ["", { updateOn: "blur", validators: [Validators.required] }],
-      startDate: ["",[Validators.required]],
-      endDate: ["",[Validators.required]],
+      startDate: ["", [Validators.required]],
+      endDate: ["", [Validators.required]],
       description: [""]
       // { validators: [Validators.required] }
     });
@@ -419,13 +420,7 @@ export class ProfileLandingComponent implements OnInit {
       additionalProjectId: [""],
       name: ["", { updateOn: "blur", validators: [Validators.required] }],
       role: ["", { updateOn: "blur" }],
-      year: [
-        "",
-        {
-          validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
-          updateOn: "blur"
-        }
-      ],
+      year: [ "", { validators: [Validators.pattern(/^[0-9]*$/), Validators.required] }],
       description: [""]
     });
 
@@ -475,11 +470,11 @@ export class ProfileLandingComponent implements OnInit {
     this.primarySkillsList = [...this.primarySkillsList, skill];
     this.primarySkillsForm.reset();
   }
-  ngAfterViewInit(){
-    if(this.document.location.hash){
-      const el = this.document.querySelector('.anchor'+ this.document.location.hash.slice(1,2));
+  ngAfterViewInit() {
+    if (this.document.location.hash) {
+      const el = this.document.querySelector('.anchor' + this.document.location.hash.slice(1, 2));
       this.GoToSection(el);
-   }
+    }
   }
   addAdditionalSkill() {
     if (this.additionalSkillsForm.invalid) {
@@ -636,33 +631,137 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   deleteProject(type, index) {
-    if (type === "primary") {
-      this.experiences.splice(index, 1);
-      this.experiences = [...this.experiences]; // need to update reference for nz-table to update
-    } else if (type === "additional") {
-      this.additionalProjectsList.splice(index, 1);
-      this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      cancelButtonColor: "#239223",
+      confirmButtonColor: "#FF0000"
+    }).then((result) => {
+      if (result.value) {
+        if (type === "primary") {
+          this.experiences.splice(index, 1);
+          this.experiences = [...this.experiences]; // need to update reference for nz-table to update
+          this.onSubmit(false, 'experiencesForm');
+        } else if (type === "additional") {
+          this.additionalProjectsList.splice(index, 1);
+          this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
+          this.onSubmit(false, 'additionalProjectsForm');
+        }
+        
+        Swal.fire(
+          'Deleted!',
+          'Your data file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your  data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   deleteSkill(type, index) {
-    if (type === "primary") {
-      this.primarySkillsList.splice(index, 1);
-      this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
-    } else if (type === "additional") {
-      this.additionalSkillsList.splice(index, 1);
-      this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
-    }
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      cancelButtonColor: "#239223",
+      confirmButtonColor: "#FF0000"
+    }).then((result) => {
+      if (result.value) {
+        if (type === "primary") {
+          this.primarySkillsList.splice(index, 1);
+          this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
+          this.onSubmit(false, 'primarySkillsForm');
+        } else if (type === "additional") {
+          this.additionalSkillsList.splice(index, 1);
+          this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
+          this.onSubmit(false, 'additionalSkillsForm')
+        }
+        Swal.fire(
+          'Deleted!',
+          'Your data file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your  data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   deleteEducation(index) {
-    this.educationsList.splice(index, 1);
-    this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
+    console.log("*****",index);
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      cancelButtonColor: "#239223",
+      confirmButtonColor: "#FF0000"
+    }).then((result) => {
+      if (result.value) {
+        this.educationsList.splice(index, 1);
+        this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
+        this.onSubmit(false, 'educationForm');
+        Swal.fire(
+          'Deleted!',
+          'Your data file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your  data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   deleteTraining(index) {
-    this.trainingsList.splice(index, 1);
-    this.trainingsList = [...this.trainingsList]; // need to update reference for nz-table to update
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You will not be able to recover this data',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonText: 'Yes, delete it!',
+      cancelButtonText: 'No, keep it',
+      cancelButtonColor: "#239223",
+      confirmButtonColor: "#FF0000"
+    }).then((result) => {
+      if (result.value) {
+        this.trainingsList.splice(index, 1);
+        this.trainingsList = [...this.trainingsList]; // need to update reference for nz-table to update
+        this.onSubmit(false, 'trainingsForm')    
+        Swal.fire(
+          'Deleted!',
+          'Your data file has been deleted.',
+          'success'
+        )
+      } else if (result.dismiss === Swal.DismissReason.cancel) {
+        Swal.fire(
+          'Cancelled',
+          'Your  data is safe :)',
+          'error'
+        )
+      }
+    })
   }
 
   /**
@@ -733,7 +832,7 @@ export class ProfileLandingComponent implements OnInit {
    * @param sectionNumber
    */
   highlightSectionOnClick(sectionNumber: number) {
-    console.log("ok",sectionNumber);
+    console.log("ok", sectionNumber);
 
     for (let key in this.activeSection) {
       this.activeSection[key] = false;
@@ -869,8 +968,8 @@ export class ProfileLandingComponent implements OnInit {
         .setValue(
           this.profile.referenceList[0]["countryPhoneCode"]
             ? parseInt(
-                this.profile.referenceList[0]["countryPhoneCode"].phonecode
-              )
+              this.profile.referenceList[0]["countryPhoneCode"].phonecode
+            )
             : ""
         );
       this.referenceForm
@@ -1473,7 +1572,7 @@ export class ProfileLandingComponent implements OnInit {
    * @return return null if inputs are invalid else submits form
    */
   onSubmit(isVideoUpdate: boolean, formName) {
-    console.log("dddd",formName);
+    console.log("dddd", formName);
     this.submitted = true;
     if (!this.loading) {
       let reqBody = {};
@@ -1573,7 +1672,7 @@ export class ProfileLandingComponent implements OnInit {
         ];
       } else if (formName === 'primarySkillsForm') {
 
-        reqBody = this.primarySkillsList.concat(this.additionalSkillsList) ;
+        reqBody = this.primarySkillsList.concat(this.additionalSkillsList);
 
       } else if (formName === 'additionalSkillsForm') {
 
@@ -2012,14 +2111,14 @@ export class ProfileLandingComponent implements OnInit {
         a.click();
       });
   }
-  GoToSection(target){
+  GoToSection(target) {
     console.log(target.id)
-    const topOfElement :any = this.document.querySelector('#'+target.id);
-    if(this.document.querySelector('#profile-head').classList.contains('scrolled')){
-      this.document.querySelector('#'+target.id)
+    const topOfElement: any = this.document.querySelector('#' + target.id);
+    if (this.document.querySelector('#profile-head').classList.contains('scrolled')) {
+      this.document.querySelector('#' + target.id)
       this.document.querySelector('.page-content').scrollTop = topOfElement.offsetTop - 80;
-    }else{
-      this.document.querySelector('#'+target.id)
+    } else {
+      this.document.querySelector('#' + target.id)
       this.document.querySelector('.page-content').scrollTop = topOfElement.offsetTop - 200;
     }
   }

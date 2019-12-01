@@ -45,7 +45,7 @@
     "jspdf": "^1.5.3",
     "lodash": "^4.17.15",
     "ng-zorro-antd": "^7.5.1",
-    "ngx-quill": "7.3.1",
+    "ngx-quill": "^7.3.1",
     "ngx-select-dropdown": "^1.2.0",
     "node-sass": "^4.10.0",
     "nyc": "^14.1.1",
@@ -57,6 +57,7 @@
     "rxjs": "~6.3.3",
     "secure-ls": "^1.2.5",
     "smoothscroll-polyfill": "^0.4.4",
+    "sweetalert2": "^9.4.0",
     "tslib": "^1.10.0",
     "typescript": "~3.2.4",
     "zone.js": "^0.8.29"
