@@ -68,7 +68,9 @@ export class DashboardLandingComponent implements OnInit {
 
   private getCandidateData(userId) {
     this.userDataService.getUserData(userId).subscribe(res => {
-      _.sortBy(res['CandidateExperienceDetails'], 'Start_Date');
+      res['CandidateExperienceDetails'] = _.sortBy(res['CandidateExperienceDetails'], 'Start_Date').reverse();
+      // console.log("abc",abc);
+      console.log("res",res['CandidateExperienceDetails']);
       // res['CandidateExperienceDetails'].sort(function(a,b){return a.getTime() - b.getTime()});
       this.candidateData = res;
 
