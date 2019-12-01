@@ -411,7 +411,7 @@ export class ProfileLandingComponent implements OnInit {
       location: ["", { updateOn: "blur", validators: [Validators.required] }],
       jobTitle: ["", { updateOn: "blur", validators: [Validators.required] }],
       startDate: ["", [Validators.required]],
-      endDate: ["", [Validators.required]],
+      endDate: [""],
       description: [""]
       // { validators: [Validators.required] }
     });
@@ -704,7 +704,6 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   deleteEducation(index) {
-    console.log("*****",index);
     Swal.fire({
       title: 'Are you sure?',
       text: 'You will not be able to recover this data',
