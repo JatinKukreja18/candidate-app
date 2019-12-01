@@ -733,7 +733,7 @@ export class ProfileLandingComponent implements OnInit {
    * @param sectionNumber
    */
   highlightSectionOnClick(sectionNumber: number) {
-    // console.log("ok",sectionNumber);
+    console.log("ok",sectionNumber);
 
     for (let key in this.activeSection) {
       this.activeSection[key] = false;
