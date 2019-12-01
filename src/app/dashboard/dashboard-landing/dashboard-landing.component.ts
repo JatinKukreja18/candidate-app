@@ -5,7 +5,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 import { NzMessageService } from 'ng-zorro-antd';
 import { FeedbackMessages } from '@app/core/messages';
 import { UserDataService } from './../../core/services/userdata.service';
-var _ = require('lodash');
+import * as _ from 'lodash';
 @Component({
   selector: 'app-dashboard-landing',
   templateUrl: './dashboard-landing.component.html',
