@@ -233,9 +233,9 @@
                 </div>
               </div>
             </div>
+            <!-- nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!primarySkillsForm.valid" nz-button (click)="addPrimarySkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
-                nzType="plus" nzTheme="outline"></i></button>
+             ><i nz-icon nzType="plus" nzTheme="outline"></i></button>
 
           </form>
           <nz-table #primarySkillsTable [nzData]="primarySkillsList" style="margin-top: 30px;">
@@ -325,8 +325,9 @@
                 </div>
               </div>
             </div>
+            <!-- nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!additionalSkillsForm.valid" nz-button (click)="addAdditionalSkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'"><i nz-icon
+            ><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -380,8 +381,9 @@
               <label for="training" class="form-control-placeholder"
                 [ngClass]="{'active': trainings.training.value, 'inactive': !trainings.training.value }">Training<span class="required-star">*</span></label>
             </div>
+            <!-- nz-tooltip [nzTitle]="'Add Training'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!trainingsForm.valid" nz-button (click)="addTraining()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Training'" [nzPlacement]="'bottom'">
+            >
               <i nz-icon nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -822,8 +824,9 @@
               <label for="description" class="form-control-placeholder"
                 [ngClass]="{'active': primaryProjects.description.value, 'inactive': !primaryProjects.description.value }">Description</label>
             </div>
+            <!-- nz-tooltip [nzTitle]="'Add Experience'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!experiencesForm.valid" nz-button (click)="addPrimaryProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Experience'" [nzPlacement]="'bottom'"><i nz-icon
+            ><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -939,8 +942,9 @@
               </tr>
             </tbody>
           </nz-table>
+          <!-- nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'" -->
           <button [disabled]="checkForDisableBtn('additionalProjects')" class="submit-button" nz-button (click)="onSubmit(false, 'additionalProjectsForm')" nzShape="circle" style=""
-            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+            ><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
                 <span class="section-info"><i  class="fa">&#xf05a;</i> Add first to save changes</span>
           <!-- <div class="submit-button">
@@ -992,9 +996,9 @@
                 [ngClass]="{'active': educations.endDate.value, 'inactive': !educations.endDate.value }"
                 style="top: 8px;">End Date</label>
             </div>
-
+            <!-- nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!educationForm.valid" nz-button (click)="addEducation()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'"><i nz-icon
+            ><i nz-icon
                 nzType="plus" nzTheme="outline"></i></button>
 
           </form>
@@ -1079,8 +1083,9 @@
                  <input tabindex="19" type="text" id="others" formControlName="others" class="form-control not-mandate"/>
                  <label for="others" class="form-control-placeholder">Others</label>
                </div> -->
+               <!-- nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'" -->
                <button class="submit-button" nz-button nzShape="circle" style=""
-            nz-tooltip [nzTitle]="'Save'" [nzPlacement]="'bottom'"><i nz-icon nzType="check"
+            ><i nz-icon nzType="check"
                 nzTheme="outline"></i></button>
            <!-- <div class="submit-button">
              <button class="orange-button">Save</button>

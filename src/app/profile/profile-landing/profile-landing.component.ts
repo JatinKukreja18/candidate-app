@@ -464,7 +464,7 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.primarySkillsForm.value.skillName,
       Proficiency: this.primarySkillsForm.value.rating,
       Experience: this.primarySkillsForm.value.experience,
-      IsPrimarySkill: 1
+      IsPrimarySkill: true
     };
     // this.primarySkillsList.push(skill);
     this.primarySkillsList = [...this.primarySkillsList, skill];
@@ -487,7 +487,7 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.additionalSkillsForm.value.skillName,
       Proficiency: this.additionalSkillsForm.value.rating,
       Experience: this.additionalSkillsForm.value.experience,
-      IsPrimarySkill: 0
+      IsPrimarySkill: false
     };
     // this.additionalSkillsList.push(skill);
     this.additionalSkillsList = [...this.additionalSkillsList, skill];
@@ -1671,11 +1671,13 @@ export class ProfileLandingComponent implements OnInit {
         ];
       } else if (formName === 'primarySkillsForm') {
 
-        reqBody = this.primarySkillsList.concat(this.additionalSkillsList);
+        reqBody = this.primarySkillsList
+        // .concat(this.additionalSkillsList);
 
       } else if (formName === 'additionalSkillsForm') {
 
-        reqBody = this.additionalSkillsList.concat(this.primarySkillsList);
+        reqBody = this.additionalSkillsList
+        // .concat(this.primarySkillsList);
 
       } else if (formName === 'experiencesForm') {
 
