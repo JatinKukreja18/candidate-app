@@ -576,6 +576,7 @@ export class ProfileLandingComponent implements OnInit {
     } else if (type === "additional") {
       this.additionalSkillsForm.get("additionalSkillId").setValue(data.ID);
       this.additionalSkillsForm.get("skillName").setValue(data.Skill);
+      console.log("The skills will be:",this.additionalSkillsForm.value);
       this.additionalSkillsForm.get("rating").setValue(data.Proficiency);
       this.additionalSkillsForm.get("experience").setValue(data.Experience);
 
@@ -1064,6 +1065,7 @@ export class ProfileLandingComponent implements OnInit {
       this.additionalSkillsList = this.profile.CandidateSkills.filter(
         (skill, index) => skill.IsPrimarySkill == false
       );
+      this.skills = this.profile.CandidateSkills;
     }
 
     this.experiences = this.profile.CandidateExperienceDetails

@@ -99,8 +99,8 @@
         <p class="vertical-ruler"></p>
         <div class="progress">
           <div class="max-content" (click)="gotoProfile(8)">
-            <img [src]="candidateData?.EducationDetails?.length > 0 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" />
-             <span [ngClass]="{'completed': candidateData?.EducationDetails?.length > 0}">Education and Certifications</span>
+            <img [src]="candidateData?.CandidateEducationDetails?.length > 0 ? 'assets/images/stepper-enable-copy-5.svg' : 'assets/images/stepper-disable.svg'" alt="" />
+             <span [ngClass]="{'completed': candidateData?.CandidateEducationDetails?.length > 0}">Education and Certifications</span>
             <!-- <p class="progress-pc">{{candidate?.profile?.sociallinks ? candidate.profile.sociallinks : 0}}%</p> -->
           </div>
         </div>
