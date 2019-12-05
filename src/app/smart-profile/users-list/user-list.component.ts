@@ -100,4 +100,16 @@ export class UserListComponent  implements OnInit {
     this.currentPageIndex = '1';
     this.getUserList();
   }
+  skillFunction(data){
+    let tempArray = [];
+    data.map((el)=>{
+      tempArray.push(el['Skill']);
+    });
+    let tempStr = tempArray.join(',');
+    if(tempStr){
+      return tempStr.slice(0,10)+'...';
+    }
+    return '';
+    
+  }
 }

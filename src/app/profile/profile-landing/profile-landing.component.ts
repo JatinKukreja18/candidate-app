@@ -431,7 +431,8 @@ export class ProfileLandingComponent implements OnInit {
       speciality: ["", { updateOn: "blur", validators: [Validators.required] }],
       schoolName: ["", { updateOn: "blur", validators: [Validators.required] }],
       startDate: [""],
-      endDate: [""]
+      endDate: [""],
+      degree_certificate:["",Validators.required],
     });
 
     this.trainingsForm = this.formBuilder.group({
@@ -534,6 +535,7 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   addEducation() {
+    console.log("eeeeeeee",this.educationForm.value);
     if (this.educationForm.invalid) {
       return;
     }
@@ -545,7 +547,8 @@ export class ProfileLandingComponent implements OnInit {
       School_Name: this.educationForm.value.schoolName,
       Speciality_In: this.educationForm.value.speciality,
       Start_Date: this.educationForm.value.startDate,
-      End_Date: this.educationForm.value.endDate
+      End_Date: this.educationForm.value.endDate,
+      degree_certificate:this.educationForm.value.degree_certificate
     };
     this.educationsList = [...this.educationsList, education];
     this.educationForm.reset();
@@ -627,6 +630,7 @@ export class ProfileLandingComponent implements OnInit {
     this.educationForm.get("startDate").setValue(data.Start_Date);
     this.educationForm.get("endDate").setValue(data.End_Date);
     this.educationForm.get("educationId").setValue(data.ID);
+    this.educationForm.get('degree_certificate').setValue(data.degree_certificate);
 
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update

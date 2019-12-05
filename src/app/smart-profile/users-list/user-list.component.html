@@ -3,9 +3,9 @@
 
 <div class="user-list-wrapper" >
 
-  <pre>
+  <!-- <pre>
     {{users.length | json}}
-  </pre>
+  </pre> -->
 
   <nz-table
         #basicTable
@@ -20,11 +20,11 @@
         >
     <thead>
       <tr>
-        <th>Candidate Name</th>
+        <th style="width:15%">Candidate Name</th>
         <th>Email</th>
         <th style="width:30%">Jump Instructor Feedback</th>
-        <th>Skills</th>
-        <th>Profile Actions</th>
+        <th style="width:15%">Skills</th>
+        <th style="width:18%">Profile Actions</th>
       </tr>
     </thead>
     <tbody>
@@ -73,9 +73,11 @@
 
         </td>
         <td>
-          <button  nzType="default" nz-button nz-popover nzTitle="Skills"  [nzContent]="contentTemplate"  nzTrigger="hover">
-            Skills
-          </button>
+            <!-- {{user.CandidateSkills | json}} -->
+          <span  nzType="default"  nz-popover nzTitle="Skills"  [nzContent]="contentTemplate"  nzTrigger="hover">
+            <!-- Skills -->
+            {{skillFunction(user.CandidateSkills)}}
+          </span>
             <ng-template #contentTemplate>
                 <div style="width: 250px;max-height: 166px; overflow-y: scroll" *ngIf="user.CandidateSkills.length != 0">
                     <p class="skill-title">Primary</p>

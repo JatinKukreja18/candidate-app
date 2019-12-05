@@ -997,6 +997,21 @@
                 [ngClass]="{'active': educations.endDate.value, 'inactive': !educations.endDate.value }"
                 style="top: 8px;">End Date</label>
             </div>
+
+            <div class="form-group horizontal" style="margin-top: 2px;">
+                <div class="form-group">
+                    <label for="gender" class="form-control-placeholder  radio-label">Degree/Certificate<span class="required-star">*</span></label>
+                    <nz-radio-group class="choose-slot flex not-mandate" formControlName="degree_certificate" id="gender">
+                      <label nz-radio nzValue="Education"><span class="radio-label" tabindex="32">Degree</span></label>
+                      <label nz-radio nzValue="Certificate"><span class="radio-label" tabindex="33">Certificate</span></label>
+                      <!-- <label nz-radio nzValue="Other"><span class="radio-label" tabindex="5">Other</span></label> -->
+                    </nz-radio-group>
+                    <!-- <label for="gender" class="form-control-placeholder">Genderf</label> -->
+                  </div>
+            </div>
+
+            
+
             <!-- nz-tooltip [nzTitle]="'Add Education'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!educationForm.valid" nz-button (click)="addEducation()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
             ><i nz-icon
@@ -1055,7 +1070,7 @@
          <form [formGroup]="socialForm" (ngSubmit)="onSubmit(false, 'socialForm')">
            <div class="flex" style="justify-content: space-between;">
                <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input #linkedIn tabindex="32" type="text" id="linkedin" formControlName="linkedin"
+                   <input #linkedIn tabindex="34" type="text" id="linkedin" formControlName="linkedin"
                      class="form-control not-mandate" />
                    <label for="linkedin" class="form-control-placeholder"
                      [ngClass]="{'active': social.linkedin.value, 'inactive': !social.linkedin.value }">Linkedin</label>
@@ -1064,7 +1079,7 @@
                    </div>
                  </div>
                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input tabindex="33" type="text" id="github" formControlName="github" class="form-control not-mandate" />
+                   <input tabindex="35" type="text" id="github" formControlName="github" class="form-control not-mandate" />
                    <label for="github" class="form-control-placeholder"
                      [ngClass]="{'active': social.github.value, 'inactive': !social.github.value }">Github</label>
                    <div *ngIf=" social.github.errors" class="invalid-feedback">
@@ -1072,7 +1087,7 @@
                    </div>
                  </div>
                  <div class="form-group" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                   <input tabindex="34" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
+                   <input tabindex="36" type="text" id="stack" formControlName="stack" class="form-control not-mandate" />
                    <label for="stack" class="form-control-placeholder"
                      [ngClass]="{'active': social.stack.value, 'inactive': !social.stack.value }">Stack Overflow</label>
                    <div *ngIf=" social.stack.errors" class="invalid-feedback">
