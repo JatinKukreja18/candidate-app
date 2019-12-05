@@ -10,7 +10,8 @@ import { ProfileForm } from '@app/core/models';
 import { Observable, Subscription } from 'rxjs';
 import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
-import Swal from 'sweetalert2'
+import Swal from 'sweetalert2';
+import axios from 'axios';
 
 @Component({
   selector: "app-profile-landing",
@@ -1097,18 +1098,152 @@ export class ProfileLandingComponent implements OnInit {
    * @param resourceType 201/202 depending on the profile/resume
    */
   fileChange(event, resourceType) {
+    console.log("resolurce file",resourceType);
     let fileList: FileList = event.target.files;
     if (fileList.length > 0 && fileList[0].size <= 2097152) {
       let file: File = fileList[0];
+      console.log("file",file);
       let fileName = file.name;
-      this.formData = new FormData();
-      this.formData.append("resourceTypeId", resourceType);
-      this.formData.append("", file);
 
-      this.uploadFile(resourceType);
+      this.formData = new FormData();
+      // this.formData.append("resourceTypeId", resourceType);
+      this.formData.append("file", file);
+
+      try {
+        this.resumeUploadPostReq().then((res)=>{
+          console.log("The res will be:",res);
+          this.updateFormDataFromResum(res['data']);
+        })
+      } catch (error) {
+        console.log("The error will be:",error);
+      }
+
+      // this.profileService.uploadFile(this.formData).subscribe((res)=>{
+      //   console.log('fffffffffffffff',res.data);
+      // })
+
+      // this.uploadFile(resourceType);
+      // this.profileService.uploadResume(this.formData).subscribe((res)=>{
+      //   console.log(res.data);
+      // },error=>{
+      //   console.log("errror",error);
+      // })
+
     } else {
       event.target.value = "";
     }
+  }
+
+
+  // this.personalDetailsForm = this.formBuilder.group({
+  //   firstName: [
+  //     "",
+  //     {
+  //       validators: [
+  //         Validators.required,
+  //         Validators.minLength(2),
+  //         Validators.maxLength(25)
+  //       ],
+  //       updateOn: "blur"
+  //     }
+  //   ],
+  //   lastName: [
+  //     "",
+  //     { validators: [Validators.maxLength(25)], updateOn: "blur" }
+  //   ],
+  //   countryPhoneCode: [
+  //     "",
+  //     { validators: [Validators.required], updateOn: "blur" }
+  //   ],
+  //   mobile: [
+  //     "",
+  //     { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: "blur" }
+  //   ],
+  //   /* dob : [''], */
+  //   videoLink: ["", { updateOn: "blur" }],
+  //   videoLinkTypeId: [1],
+  //   gender: [""]
+  // });
+
+  updateFormDataFromResum(parsedData: any) {
+    console.log(parsedData);
+
+    if (parsedData.basicInfo) {
+      let bInfo = parsedData.basicInfo;
+      console.log(bInfo);
+      if(bInfo.firstName){
+        this.personalDetailsForm.get('firstName').setValue(bInfo.firstName ? bInfo.firstName : this.profile.basicInfo.firstName)
+      }
+      if(bInfo.lastName){
+        this.personalDetailsForm.get('lastName').setValue(bInfo.lastName ? bInfo.lastName : this.profile.basicInfo.lastName)
+      }
+      if(bInfo.gender){
+        this.personalDetailsForm.get('gender').setValue(bInfo.gender ? bInfo.gender : this.profile.basicInfo.gender)
+      }
+      if(bInfo.mobile){
+        this.personalDetailsForm.get('mobile').setValue(bInfo.mobile ? bInfo.mobile : this.profile.basicInfo.mobile);
+      }
+      // this.personalDetailsForm.get('middleName').setValue(bInfo.middleName ? bInfo.middleName : this.profile.middleName)
+      // this.personalDetailsForm.get('address').setValue(bInfo.address ? bInfo.address : this.profile.basicInfo.address)
+      // this.personalDetailsForm.get('dob').setValue(bInfo.dob ? bInfo.dob : this.profile.basicInfo.dob)
+      // this.personalDetailsForm.get('emailId').setValue(bInfo.emailId ? bInfo.emailId : this.profile.basicInfo.emailId)
+      // this.personalDetailsForm.get('phoneNumber').setValue(bInfo.phoneNumber ? bInfo.phoneNumber : this.profile.basicInfo.phoneNumber)
+    }
+    if (parsedData.candidateEducationalHistory && parsedData.candidateEducationalHistory.length) {
+      parsedData.candidateEducationalHistory.map((el)=>{
+        el['Degree_Name']=el['degreeName'];
+        el['Speciality_In']= el['speciality'];
+        el['School_Name']=el['schoolName'];
+        el['Start_Date'] = el['startDate'];
+        el['End_Date'] = el['endDate']
+      });
+      this.educationsList = this.educationsList.concat(parsedData.candidateEducationalHistory);
+      this.onSubmit(false, 'educationForm');
+    }
+    if (parsedData.candidateWorkExperience && parsedData.candidateWorkExperience.length) {
+      console.log("passssssss",parsedData.candidateWorkExperience,this.experiences);
+      parsedData.candidateWorkExperience.map((el)=>{
+        el['Company_Name']=el['companyName'];
+        el['Location'] = el['location'];
+        el['Job_Title'] = el['jobTitle'];
+        el['Start_Date'] = el['startDate'];
+        el['End_Date'] = el['endDate'];
+        el['Job_Description'] = el['jobDescription'];
+      })
+      this.experiences = this.experiences.concat(parsedData.candidateWorkExperience);
+      this.onSubmit(false, 'experiencesForm');
+      // while (this.candidateWorkExperienceArray.length > 0) { this.removeWork(0) }
+      // parsedData.candidateWorkExperience.forEach(work => {
+      //   console.log(work);
+      //   const control = <FormArray>this.profileForm.get('candidateWorkExperience');
+      //   control.push(this.addcandidateWorkExperienceGroup(work))
+      // });
+    }
+
+    // if (parsedData.additionalInfo && parsedData.additionalInfo.technicalSkills && parsedData.additionalInfo.technicalSkills.length) {
+    //   this.profileForm.get('technicalSkills').setValue(parsedData.additionalInfo.technicalSkills)
+    // }
+
+  }
+
+  resumeUploadPostReq(){
+    return new Promise((resolve,reject)=>{
+      axios({
+        method: 'post',
+        url: 'http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',
+        data: this.formData,
+        headers: {'Content-Type': 'multipart/form-data' }
+        })
+        .then(function (response) {
+            //handle success
+            console.log("The response was",response.data);
+            resolve(response.data);
+        })
+        .catch(function (response) {
+            //handle error
+            reject(response);
+        });
+    })
   }
 
   /**

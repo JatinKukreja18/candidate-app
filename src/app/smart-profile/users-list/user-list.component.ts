@@ -14,7 +14,7 @@ export class UserListComponent  implements OnInit {
   users: [];
   validateForm: FormGroup;
   currentPageIndex = '1';
-  currentPageSize = '10';
+  currentPageSize = '2000';
   isLoading= false
   constructor(private userService: UserDataService,
     private router: Router,private fb: FormBuilder){
@@ -38,6 +38,7 @@ export class UserListComponent  implements OnInit {
   }
 
   getUserList(){
+    // this.isLoading = true;
     const options = '&pagenumber=' + this.currentPageIndex + '&pagesize=' + this.currentPageSize;
     this.userService.getAllUsers(options).subscribe(res => {
       this.users = res.map(v=>{
@@ -91,11 +92,12 @@ export class UserListComponent  implements OnInit {
   pageChanged(index){
     if(index != 0){
       this.currentPageIndex = index;
-      this.getUserList();
+      // this.getUserList();
     }
   }
   pageSizeChanged(size){
-    this.currentPageSize = size;
+    // this.currentPageSize = size;
+    this.currentPageIndex = '1';
     this.getUserList();
   }
 }

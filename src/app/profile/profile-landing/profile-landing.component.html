@@ -911,8 +911,9 @@
             <div class="error" *ngIf="additionalProjects.experience.errors.pattern">{{validationMsgs.ValidExperience}}</div>
           </div> -->
             </div>
+            <!-- nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!additionalProjectsForm.valid"  nz-button (click)="addAdditionalProject()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
-            nz-tooltip [nzTitle]="'Add Project'" [nzPlacement]="'bottom'"><i nz-icon nzType="plus"
+            ><i nz-icon nzType="plus"
                 nzTheme="outline"></i></button>
 
           </form>
