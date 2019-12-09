@@ -16,7 +16,7 @@ export class DashboardLandingComponent implements OnInit {
   isVisible = false;
   isVisibleresume = false;
   // Element refrence for the city dropdown and map element
-  @ViewChild('city', { read: ElementRef }) searchCityInput:ElementRef;
+  @ViewChild('city', { read: ElementRef }) searchCityInput: ElementRef;
   candidate: any;
   submitted = false;
   searchForm: FormGroup;
@@ -25,7 +25,7 @@ export class DashboardLandingComponent implements OnInit {
   showConfirmationModal = false;
   missingFields: string[];
   showPreInterviewModal = false;
-  candidateData:any  = {};
+  candidateData: any = {};
   loading = true;
   hasPrimary: boolean;
   hasAdditional: boolean;
@@ -51,6 +51,7 @@ export class DashboardLandingComponent implements OnInit {
       skills: [null, [Validators.required]]
     });
     const user = this.authService.getCurrentUser();
+    console.log("user ", user);
     this.getCandidateData(user.u); // Get the candidate data to be populated into the cover page
 
     // this.getDashboardData(true);
@@ -70,17 +71,17 @@ export class DashboardLandingComponent implements OnInit {
     this.userDataService.getUserData(userId).subscribe(res => {
       res['CandidateExperienceDetails'] = _.sortBy(res['CandidateExperienceDetails'], 'Start_Date').reverse();
       // console.log("abc",abc);
-      console.log("res",res['CandidateExperienceDetails']);
+      console.log("res", res['CandidateExperienceDetails']);
       // res['CandidateExperienceDetails'].sort(function(a,b){return a.getTime() - b.getTime()});
       this.candidateData = res;
 
       // this.handleSkills(this.candidateData.CandidateSkills);
       const skills = this.candidateData.CandidateSkills;
       for (let i = 0; i < skills.length; i++) {
-        if(skills[i].IsPrimarySkill){
+        if (skills[i].IsPrimarySkill) {
           this.hasPrimary = true
-        }else if(!skills[i].IsPrimarySkill){
-          this.hasAdditional= true
+        } else if (!skills[i].IsPrimarySkill) {
+          this.hasAdditional = true
 
         }
 
@@ -97,21 +98,23 @@ export class DashboardLandingComponent implements OnInit {
    */
   getDashboardData(showLoading: boolean) {
     let loading;
-    if (showLoading) loading = this.message.loading(FeedbackMessages.loading.DashboardDetailsFetch, {nzDuration: 0}).messageId;
-    this.dashboardService.getCandidateDashboard().subscribe((response) => {
-      if (showLoading) this.message.remove(loading);
-      if (response.code && response.code === 200) {
+    if (showLoading) loading = this.message.loading(FeedbackMessages.loading.DashboardDetailsFetch, { nzDuration: 0 }).messageId;
+    this.dashboardService
+      .getCandidateDashboard()
+      .subscribe((response) => {
+        if (showLoading) this.message.remove(loading);
+        if (response.code && response.code === 200) {
 
-        console.log('data response',response);
+          console.log('data response', response);
 
-        this.candidate = response.data;
-        setTimeout(() => {
-          this.gotoSlide(0, false);
-        }, 200);
-      }
-    }, () => {
-      if (showLoading) this.message.remove(loading);
-    });
+          this.candidate = response.data;
+          setTimeout(() => {
+            this.gotoSlide(0, false);
+          }, 200);
+        }
+      }, () => {
+        if (showLoading) this.message.remove(loading);
+      });
   }
 
   /**
@@ -139,7 +142,7 @@ export class DashboardLandingComponent implements OnInit {
       let item = place.address_components[i];
 
       location_obj['formatted_address'] = place.formatted_address;
-      if(item['types'].indexOf("locality") > -1) {
+      if (item['types'].indexOf("locality") > -1) {
         location_obj['locality'] = item['long_name']
       } else if (item['types'].indexOf("administrative_area_level_1") > -1) {
         location_obj['admin_area_l1'] = item['short_name']
@@ -164,7 +167,7 @@ export class DashboardLandingComponent implements OnInit {
     * Fetch suggested skill for job search
     * @return skillset to be filled in slection box
   */
-  getSuggestedSkills(){
+  getSuggestedSkills() {
     this.commonService.getSkillsList().subscribe((response) => {
       if (response.code == 200) {
         if (response.data && response.data instanceof Array && response.data.length > 0) {
@@ -183,13 +186,13 @@ export class DashboardLandingComponent implements OnInit {
     let reqBody = {
       referrenceId: jobReferenceId,
       status: isApplied ? 18 : 1,
-      bucketId:this.searchService.getSelectedJob().bucket_Id
+      bucketId: this.searchService.getSelectedJob().bucket_Id
     }
-    const loading = this.message.loading(FeedbackMessages.loading.JobShortlist, {nzDuration: 0}).messageId;
+    const loading = this.message.loading(FeedbackMessages.loading.JobShortlist, { nzDuration: 0 }).messageId;
     this.jobService.takeAction(reqBody).subscribe((response) => {
       this.message.remove(loading);
-      if(response.code && response.code === 200 && response.data) {
-        this.message.success(response.message, {nzDuration: 1500});
+      if (response.code && response.code === 200 && response.data) {
+        this.message.success(response.message, { nzDuration: 1500 });
         if (this.candidate['matchJob'] && this.candidate['matchJob']['results'] instanceof Array) {
           let selectedMatchJob = this.candidate['matchJob']['results'].find((element) => {
             return element.referrenceId = response.data['referrenceId'];
@@ -235,7 +238,7 @@ export class DashboardLandingComponent implements OnInit {
     const scrollX = document.querySelector('nz-select .ant-select-selection--multiple .ant-select-selection__rendered ul input.ant-select-search__field')['offsetLeft'];
     this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardJobSearchInputBox', 'dashBoardJobSearchInputBox');
     setTimeout(() => {
-      element.parentElement.scrollTo({left: scrollX, top: 0, behavior: 'smooth'});
+      element.parentElement.scrollTo({ left: scrollX, top: 0, behavior: 'smooth' });
     }, 200);
   }
 
@@ -253,12 +256,12 @@ export class DashboardLandingComponent implements OnInit {
         location: this.selectedAddress.locality,
         query: this.searchForm.value.skills.toString(),
         searchtype: 'Query',
-        fullAddress: this.selectedAddress.formatted_address ? this.selectedAddress.formatted_address: ''
+        fullAddress: this.selectedAddress.formatted_address ? this.selectedAddress.formatted_address : ''
       }
       this.searchService.setSearchLocation(reqBody);
       this.submitted = false;
       this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardJobSearchIcon', 'dashBoardJobSearchIcon');
-      this.router.navigate(['/search/results'], {queryParams: {page: 1}});
+      this.router.navigate(['/search/results'], { queryParams: { page: 1 } });
     }
   }
 
@@ -273,10 +276,9 @@ export class DashboardLandingComponent implements OnInit {
    * Close Modal
   */
 
- handleOkres():void
- {
-  this.isVisibleresume = false;
- }
+  handleOkres(): void {
+    this.isVisibleresume = false;
+  }
   handleOk(): void {
     console.log('data modal');
     this.isVisible = false;
@@ -294,7 +296,7 @@ export class DashboardLandingComponent implements OnInit {
       if (index == dots.length - 1) {
         index = 0;
       } else {
-        index ++;
+        index++;
       }
     }, 3000);
   }
@@ -314,7 +316,7 @@ export class DashboardLandingComponent implements OnInit {
     if (slides[index]) {
       let slideScrollY = 0, slideScrollX = slides[index]['clientWidth'];
       // slides[index].parentElement['scrollTo']({left: slideScrollX * index, top: slideScrollY, behavior: 'smooth'});
-      if (isScroll) slides[index].scrollIntoView({behavior: 'auto', block: 'nearest', inline: 'center'});
+      if (isScroll) slides[index].scrollIntoView({ behavior: 'auto', block: 'nearest', inline: 'center' });
     }
   }
 
@@ -322,7 +324,7 @@ export class DashboardLandingComponent implements OnInit {
    * Go to My Jobs and activate a tab
    */
   gotoMyJobs(tab: number) {
-    switch(tab) {
+    switch (tab) {
       case 1: this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardMyJobsShortlisted', 'dashBoardMyJobsShortlisted');
         break;
       case 2: this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardMyJobsApplied', 'dashBoardMyJobsApplied');
@@ -332,7 +334,7 @@ export class DashboardLandingComponent implements OnInit {
       case 4: this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardMyJobsGoodToHire', 'dashBoardMyJobsGoodToHire');
         break;
     }
-    this.router.navigate(['myjobs'], {queryParams: { tab: tab }});
+    this.router.navigate(['myjobs'], { queryParams: { tab: tab } });
   }
 
   /**
@@ -343,9 +345,8 @@ export class DashboardLandingComponent implements OnInit {
     skillsInput['click']();
   }
 
-  Searchus(data)
-  {
-    console.log('data',data);
+  Searchus(data) {
+    console.log('data', data);
 
   }
 
@@ -355,7 +356,7 @@ export class DashboardLandingComponent implements OnInit {
    */
   gotoProfile(profileSection: number) {
     // forcing to do to edit
-    this.router.navigateByUrl('/profile/edit' +'#' + profileSection );
+    this.router.navigateByUrl('/profile/edit' + '#' + profileSection);
     // this.router.navigate(['/profile'], {queryParams: {active: profileSection}});
   }
 
@@ -370,7 +371,7 @@ export class DashboardLandingComponent implements OnInit {
    * Ok handler for confirmation popup
    */
   handleConfirmOk() {
-    this.router.navigate(['profile'], {queryParams: {fields: this.missingFields.toString()}});
+    this.router.navigate(['profile'], { queryParams: { fields: this.missingFields.toString() } });
   }
 
   handleCancel(): void {
@@ -378,8 +379,7 @@ export class DashboardLandingComponent implements OnInit {
     this.isVisible = false;
   }
 
-  showModal1()
-  {
+  showModal1() {
     this.isVisible = true;
   }
   /**
@@ -437,7 +437,7 @@ export class DashboardLandingComponent implements OnInit {
    * Handler for My assessment navigation
    */
   gotoMyAssessmentsHandler(tab: number) {
-    switch(tab) {
+    switch (tab) {
       case 1: this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardCompletedAssessments', 'dashBoardCompletedAssessments');
         break;
       case 2: this.analyticsService.eventEmitter('DashBoardScreen', 'dashBoardPendingAssessments', 'dashBoardPendingAssessments');
