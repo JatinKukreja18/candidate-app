@@ -18,6 +18,7 @@ import { environment } from '../environments/environment';
 import { SafePipe } from './shared/pipes/safe.pipe';
 import { SmartProfileModule } from './smart-profile/smart-profile.module';
 import { UserDataService } from './core/services/userdata.service';
+// import {NgxDocViewerModule} from 'ngx-doc-viewer';
 const fbLoginOptions: LoginOpt = {
   scope: 'pages_messaging,pages_messaging_subscriptions,email,pages_show_list,manage_pages',
   return_scopes: true,
@@ -60,7 +61,8 @@ registerLocaleData(en);
     HttpClientModule,
     BrowserAnimationsModule,
     SocialLoginModule,
-    SmartProfileModule
+    SmartProfileModule,
+    // NgxDocViewerModule
     // serviceworkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [

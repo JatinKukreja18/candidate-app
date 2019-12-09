@@ -44,29 +44,31 @@
       <!-- Resume upload form -->
       <div class="profile-card anchor1" #anchor9 id="resume" [ngClass]="{'active': activeSection.resume}"
       (click)="highlightSectionOnClick(3)">
+
       <div class="card-title">Resume
         <!-- <span class="card-status">
           <img
             [src]="profile && profile.resumeUrl ? '/assets/images/stepper-enable-copy-5.svg' : '/assets/images/stepper-disable-copy-7.svg'"
             alt="Profile completed" />
         </span> -->
-        <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply
-            for jobs.</i></p>
+        <!-- <p *ngIf="missingFields.indexOf('RESUME') >= 0" class="note"><i>Note: Please upload resume to be able to apply -->
+            <!-- for jobs.</i></p> -->
       </div>
-      <div class="card-content flex">
-        <div class="resume-image" *ngIf="profile && profile.resumeUrl">
+
+      <div class="card-content flex" style="height:180px">
+        <!-- <div class="resume-image" *ngIf="profile && profile.resumeUrl"> -->
           <!-- <iframe width="181" height="107" [src]="safeUrl(profile?.resumeUrl)"></iframe> -->
 
           <!-- -->
-          <a>
-            <!-- <ngx-doc-viewer [url]="profile.resumeUrl" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer> -->
-          </a>
+          <!-- <a> -->
+          <!-- </a> -->
           <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
-          <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
+          <!-- <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
             alt="red cross" (click)="openDeleteResourceConfirmationModal(201)" />
           <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the
-              original resume by clicking on it.</i></p>
-        </div>
+              original resume by clicking on it.</i></p> -->
+        <!-- </div> -->
+
         <form [formGroup]="resumeForm" *ngIf="!profile || !profile.resumeUrl">
           <div class="form-group">
             <!-- <p *ngIf="selectedFile.resumeName">{{selectedFile.resumeName}}</p> -->
@@ -78,6 +80,12 @@
               accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" />
           </div>
         </form>
+        <div style="position:absolute;right:0px">
+          <ngx-doc-viewer [url]="doc" viewer="google" style="width:100%; height:50vh;"></ngx-doc-viewer>
+        </div>
+        
+
+
       </div>
       </div>
 
@@ -1139,3 +1147,6 @@
     </div>
   </div>
 </nz-modal>
+
+
+

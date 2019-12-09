@@ -46,6 +46,7 @@
     "jspdf": "^1.5.3",
     "lodash": "^4.17.15",
     "ng-zorro-antd": "^7.5.1",
+    "ngx-doc-viewer": "^0.1.24",
     "ngx-quill": "^7.3.1",
     "ngx-select-dropdown": "^1.2.0",
     "node-sass": "^4.10.0",

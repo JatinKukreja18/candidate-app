@@ -5,7 +5,7 @@ import { NgZorroAntdModule, NZ_MESSAGE_CONFIG } from 'ng-zorro-antd';
 import { ProfileLandingComponent } from './profile-landing/profile-landing.component';
 import { ProfileRoutingModule } from './profile-routing.module';
 import { SharedModule } from './../shared/shared.module';
-// import {NgxDocViewerModule} from 'ngx-doc-viewer';
+import {NgxDocViewerModule} from 'ngx-doc-viewer';
 import { SelectDropDownModule } from 'ngx-select-dropdown';
 import { ProfileviewComponent } from './profileview/profileview.component';
 import { ProfileEditComponent } from './profile-edit/profile-edit.component';
@@ -19,6 +19,7 @@ import { QuillModule } from 'ngx-quill';
     NgZorroAntdModule,
     SharedModule,
     SelectDropDownModule,
+    NgxDocViewerModule,
     QuillModule.forRoot()
   ],
   providers: [

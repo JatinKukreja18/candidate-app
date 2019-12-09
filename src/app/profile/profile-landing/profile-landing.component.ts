@@ -147,6 +147,7 @@ export class ProfileLandingComponent implements OnInit {
     searchOnKey: "Name" // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
   };
   candidateId: string;
+  doc:string = 'appst.cliksource.com//JumpProfessionalAPI//UserResume//Data%20Analyst%20Resume%20Sample.docx';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -421,7 +422,7 @@ export class ProfileLandingComponent implements OnInit {
       additionalProjectId: [""],
       name: ["", { updateOn: "blur", validators: [Validators.required] }],
       role: ["", { updateOn: "blur" }],
-      year: [ "", { validators: [Validators.pattern(/^[0-9]*$/), Validators.required] }],
+      year: ["", { validators: [Validators.pattern(/^[0-9]*$/), Validators.required] }],
       description: [""]
     });
 
@@ -432,7 +433,7 @@ export class ProfileLandingComponent implements OnInit {
       schoolName: ["", { updateOn: "blur", validators: [Validators.required] }],
       startDate: [""],
       endDate: [""],
-      degree_certificate:["",Validators.required],
+      degree_certificate: ["", Validators.required],
     });
 
     this.trainingsForm = this.formBuilder.group({
@@ -535,7 +536,7 @@ export class ProfileLandingComponent implements OnInit {
   }
 
   addEducation() {
-    console.log("eeeeeeee",this.educationForm.value);
+    console.log("eeeeeeee", this.educationForm.value);
     if (this.educationForm.invalid) {
       return;
     }
@@ -548,7 +549,7 @@ export class ProfileLandingComponent implements OnInit {
       Speciality_In: this.educationForm.value.speciality,
       Start_Date: this.educationForm.value.startDate,
       End_Date: this.educationForm.value.endDate,
-      degree_certificate:this.educationForm.value.degree_certificate
+      degree_certificate: this.educationForm.value.degree_certificate
     };
     this.educationsList = [...this.educationsList, education];
     this.educationForm.reset();
@@ -580,7 +581,7 @@ export class ProfileLandingComponent implements OnInit {
     } else if (type === "additional") {
       this.additionalSkillsForm.get("additionalSkillId").setValue(data.ID);
       this.additionalSkillsForm.get("skillName").setValue(data.Skill);
-      console.log("The skills will be:",this.additionalSkillsForm.value);
+      console.log("The skills will be:", this.additionalSkillsForm.value);
       this.additionalSkillsForm.get("rating").setValue(data.Proficiency);
       this.additionalSkillsForm.get("experience").setValue(data.Experience);
 
@@ -657,7 +658,7 @@ export class ProfileLandingComponent implements OnInit {
           this.additionalProjectsList = [...this.additionalProjectsList]; // need to update reference for nz-table to update
           this.onSubmit(false, 'additionalProjectsForm');
         }
-        
+
         Swal.fire(
           'Deleted!',
           'Your data file has been deleted.',
@@ -753,7 +754,7 @@ export class ProfileLandingComponent implements OnInit {
       if (result.value) {
         this.trainingsList.splice(index, 1);
         this.trainingsList = [...this.trainingsList]; // need to update reference for nz-table to update
-        this.onSubmit(false, 'trainingsForm')    
+        this.onSubmit(false, 'trainingsForm')
         Swal.fire(
           'Deleted!',
           'Your data file has been deleted.',
@@ -1102,11 +1103,11 @@ export class ProfileLandingComponent implements OnInit {
    * @param resourceType 201/202 depending on the profile/resume
    */
   fileChange(event, resourceType) {
-    console.log("resolurce file",resourceType);
+    console.log("resolurce file", resourceType);
     let fileList: FileList = event.target.files;
     if (fileList.length > 0 && fileList[0].size <= 2097152) {
       let file: File = fileList[0];
-      console.log("file",file);
+      console.log("file", file);
       let fileName = file.name;
 
       this.formData = new FormData();
@@ -1114,12 +1115,12 @@ export class ProfileLandingComponent implements OnInit {
       this.formData.append("file", file);
 
       try {
-        this.resumeUploadPostReq().then((res)=>{
-          console.log("The res will be:",res);
+        this.resumeUploadPostReq().then((res) => {
+          console.log("The res will be:", res);
           this.updateFormDataFromResum(res['data']);
         })
       } catch (error) {
-        console.log("The error will be:",error);
+        console.log("The error will be:", error);
       }
 
       // this.profileService.uploadFile(this.formData).subscribe((res)=>{
@@ -1175,16 +1176,16 @@ export class ProfileLandingComponent implements OnInit {
     if (parsedData.basicInfo) {
       let bInfo = parsedData.basicInfo;
       console.log(bInfo);
-      if(bInfo.firstName){
+      if (bInfo.firstName) {
         this.personalDetailsForm.get('firstName').setValue(bInfo.firstName ? bInfo.firstName : this.profile.basicInfo.firstName)
       }
-      if(bInfo.lastName){
+      if (bInfo.lastName) {
         this.personalDetailsForm.get('lastName').setValue(bInfo.lastName ? bInfo.lastName : this.profile.basicInfo.lastName)
       }
-      if(bInfo.gender){
+      if (bInfo.gender) {
         this.personalDetailsForm.get('gender').setValue(bInfo.gender ? bInfo.gender : this.profile.basicInfo.gender)
       }
-      if(bInfo.mobile){
+      if (bInfo.mobile) {
         this.personalDetailsForm.get('mobile').setValue(bInfo.mobile ? bInfo.mobile : this.profile.basicInfo.mobile);
       }
       // this.personalDetailsForm.get('middleName').setValue(bInfo.middleName ? bInfo.middleName : this.profile.middleName)
@@ -1194,10 +1195,10 @@ export class ProfileLandingComponent implements OnInit {
       // this.personalDetailsForm.get('phoneNumber').setValue(bInfo.phoneNumber ? bInfo.phoneNumber : this.profile.basicInfo.phoneNumber)
     }
     if (parsedData.candidateEducationalHistory && parsedData.candidateEducationalHistory.length) {
-      parsedData.candidateEducationalHistory.map((el)=>{
-        el['Degree_Name']=el['degreeName'];
-        el['Speciality_In']= el['speciality'];
-        el['School_Name']=el['schoolName'];
+      parsedData.candidateEducationalHistory.map((el) => {
+        el['Degree_Name'] = el['degreeName'];
+        el['Speciality_In'] = el['speciality'];
+        el['School_Name'] = el['schoolName'];
         el['Start_Date'] = el['startDate'];
         el['End_Date'] = el['endDate']
       });
@@ -1205,9 +1206,9 @@ export class ProfileLandingComponent implements OnInit {
       this.onSubmit(false, 'educationForm');
     }
     if (parsedData.candidateWorkExperience && parsedData.candidateWorkExperience.length) {
-      console.log("passssssss",parsedData.candidateWorkExperience,this.experiences);
-      parsedData.candidateWorkExperience.map((el)=>{
-        el['Company_Name']=el['companyName'];
+      console.log("passssssss", parsedData.candidateWorkExperience, this.experiences);
+      parsedData.candidateWorkExperience.map((el) => {
+        el['Company_Name'] = el['companyName'];
         el['Location'] = el['location'];
         el['Job_Title'] = el['jobTitle'];
         el['Start_Date'] = el['startDate'];
@@ -1230,22 +1231,22 @@ export class ProfileLandingComponent implements OnInit {
 
   }
 
-  resumeUploadPostReq(){
-    return new Promise((resolve,reject)=>{
+  resumeUploadPostReq() {
+    return new Promise((resolve, reject) => {
       axios({
         method: 'post',
         url: 'http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',
         data: this.formData,
-        headers: {'Content-Type': 'multipart/form-data' }
-        })
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
         .then(function (response) {
-            //handle success
-            console.log("The response was",response.data);
-            resolve(response.data);
+          //handle success
+          console.log("The response was", response.data);
+          resolve(response.data);
         })
         .catch(function (response) {
-            //handle error
-            reject(response);
+          //handle error
+          reject(response);
         });
     })
   }
