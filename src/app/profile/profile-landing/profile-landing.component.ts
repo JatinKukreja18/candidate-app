@@ -147,7 +147,8 @@ export class ProfileLandingComponent implements OnInit {
     searchOnKey: "Name" // key on which search should be performed this will be selective search. if undefined this will be extensive search on all keys
   };
   candidateId: string;
-  doc:string = 'appst.cliksource.com//JumpProfessionalAPI//UserResume//Data%20Analyst%20Resume%20Sample.docx';
+  doc:string = '';
+  //  = 'appst.cliksource.com//JumpProfessionalAPI//UserResume//Data%20Analyst%20Resume%20Sample.docx';
 
   constructor(
     private formBuilder: FormBuilder,
@@ -433,7 +434,8 @@ export class ProfileLandingComponent implements OnInit {
       schoolName: ["", { updateOn: "blur", validators: [Validators.required] }],
       startDate: [""],
       endDate: [""],
-      degree_certificate: ["", Validators.required],
+      IsDegreeOrCertification: ["", Validators.required],
+      // IsDegreeOrCertification
     });
 
     this.trainingsForm = this.formBuilder.group({
@@ -549,7 +551,7 @@ export class ProfileLandingComponent implements OnInit {
       Speciality_In: this.educationForm.value.speciality,
       Start_Date: this.educationForm.value.startDate,
       End_Date: this.educationForm.value.endDate,
-      degree_certificate: this.educationForm.value.degree_certificate
+      IsDegreeOrCertification: this.educationForm.value.IsDegreeOrCertification
     };
     this.educationsList = [...this.educationsList, education];
     this.educationForm.reset();
@@ -631,7 +633,7 @@ export class ProfileLandingComponent implements OnInit {
     this.educationForm.get("startDate").setValue(data.Start_Date);
     this.educationForm.get("endDate").setValue(data.End_Date);
     this.educationForm.get("educationId").setValue(data.ID);
-    this.educationForm.get('degree_certificate').setValue(data.degree_certificate);
+    this.educationForm.get('IsDegreeOrCertification').setValue(data.IsDegreeOrCertification);
 
     this.educationsList.splice(index, 1);
     this.educationsList = [...this.educationsList]; // need to update reference for nz-table to update
@@ -1103,72 +1105,44 @@ export class ProfileLandingComponent implements OnInit {
    * @param resourceType 201/202 depending on the profile/resume
    */
   fileChange(event, resourceType) {
-    console.log("resolurce file", resourceType);
+    // console.log("resolurce file", resourceType);
     let fileList: FileList = event.target.files;
     if (fileList.length > 0 && fileList[0].size <= 2097152) {
       let file: File = fileList[0];
-      console.log("file", file);
+      // console.log("file", file);
       let fileName = file.name;
-
       this.formData = new FormData();
-      // this.formData.append("resourceTypeId", resourceType);
       this.formData.append("file", file);
 
       try {
         this.resumeUploadPostReq().then((res) => {
-          console.log("The res will be:", res);
+          // console.log("The res will be:", res);
           this.updateFormDataFromResum(res['data']);
+        })
+
+        this.findResumeUrl(this.formData).then((url)=>{
+          // console.log("************************",url);
+          this.doc = url+'';
         })
       } catch (error) {
         console.log("The error will be:", error);
       }
-
-      // this.profileService.uploadFile(this.formData).subscribe((res)=>{
-      //   console.log('fffffffffffffff',res.data);
-      // })
-
-      // this.uploadFile(resourceType);
-      // this.profileService.uploadResume(this.formData).subscribe((res)=>{
-      //   console.log(res.data);
-      // },error=>{
-      //   console.log("errror",error);
-      // })
-
     } else {
       event.target.value = "";
     }
   }
 
-
-  // this.personalDetailsForm = this.formBuilder.group({
-  //   firstName: [
-  //     "",
-  //     {
-  //       validators: [
-  //         Validators.required,
-  //         Validators.minLength(2),
-  //         Validators.maxLength(25)
-  //       ],
-  //       updateOn: "blur"
-  //     }
-  //   ],
-  //   lastName: [
-  //     "",
-  //     { validators: [Validators.maxLength(25)], updateOn: "blur" }
-  //   ],
-  //   countryPhoneCode: [
-  //     "",
-  //     { validators: [Validators.required], updateOn: "blur" }
-  //   ],
-  //   mobile: [
-  //     "",
-  //     { validators: [Validators.pattern(/^[0-9]{10}$/)], updateOn: "blur" }
-  //   ],
-  //   /* dob : [''], */
-  //   videoLink: ["", { updateOn: "blur" }],
-  //   videoLinkTypeId: [1],
-  //   gender: [""]
-  // });
+  findResumeUrl(formData){
+    return new Promise((resolve,reject)=>{
+      const currentUser = this.authService.getCurrentUser();
+      console.log("The current user will be::",currentUser);
+      this.resumeUploadUrlGet(currentUser.u).then((res)=>{
+        resolve(res['File Path']);
+      },error=>{
+        reject(error);
+      });
+    })
+  }
 
   updateFormDataFromResum(parsedData: any) {
     console.log(parsedData);
@@ -1203,10 +1177,10 @@ export class ProfileLandingComponent implements OnInit {
         el['End_Date'] = el['endDate']
       });
       this.educationsList = this.educationsList.concat(parsedData.candidateEducationalHistory);
-      this.onSubmit(false, 'educationForm');
+      // this.onSubmit(false, 'educationForm');
     }
     if (parsedData.candidateWorkExperience && parsedData.candidateWorkExperience.length) {
-      console.log("passssssss", parsedData.candidateWorkExperience, this.experiences);
+      // console.log("passssssss", parsedData.candidateWorkExperience, this.experiences);
       parsedData.candidateWorkExperience.map((el) => {
         el['Company_Name'] = el['companyName'];
         el['Location'] = el['location'];
@@ -1216,7 +1190,8 @@ export class ProfileLandingComponent implements OnInit {
         el['Job_Description'] = el['jobDescription'];
       })
       this.experiences = this.experiences.concat(parsedData.candidateWorkExperience);
-      this.onSubmit(false, 'experiencesForm');
+      // this.onSubmit(false, 'experiencesForm');
+
       // while (this.candidateWorkExperienceArray.length > 0) { this.removeWork(0) }
       // parsedData.candidateWorkExperience.forEach(work => {
       //   console.log(work);
@@ -1242,6 +1217,26 @@ export class ProfileLandingComponent implements OnInit {
         .then(function (response) {
           //handle success
           console.log("The response was", response.data);
+          resolve(response.data);
+        })
+        .catch(function (response) {
+          //handle error
+          reject(response);
+        });
+    })
+  }
+
+  resumeUploadUrlGet(userId) {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url:'https://appst.cliksource.com/jumpprofessionalapi/api/candidateeditpage/UploadCandidateResume/'+userId,
+        data: this.formData,
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+        .then(function (response) {
+          //handle success
+          console.log("resume upload url will be::", response.data);
           resolve(response.data);
         })
         .catch(function (response) {
