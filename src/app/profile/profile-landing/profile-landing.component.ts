@@ -363,7 +363,7 @@ export class ProfileLandingComponent implements OnInit {
 
     this.primarySkillsForm = this.formBuilder.group({
       primarySkillId: [""],
-      skillName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      skillName: ["", { updateOn: "blur"}],
       rating: [
         "",
         {
@@ -380,12 +380,14 @@ export class ProfileLandingComponent implements OnInit {
           validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
           // updateOn: "blur"
         }
-      ]
+      ],
+      primarySkillCheckBox:[false],
+      otherSkill:[""]
     });
 
     this.additionalSkillsForm = this.formBuilder.group({
       additionalSkillId: [""],
-      skillName: ["", { updateOn: "blur", validators: [Validators.required] }],
+      skillName: ["", { updateOn: "blur"}],
       rating: [
         "",
         {
@@ -402,7 +404,9 @@ export class ProfileLandingComponent implements OnInit {
           validators: [Validators.pattern(/^[0-9]*$/), Validators.required],
           // updateOn: "blur"
         }
-      ]
+      ],
+      additionalSkillCheckBox:[false],
+      otherSkill:[""]
     });
 
     this.experiencesForm = this.formBuilder.group({
