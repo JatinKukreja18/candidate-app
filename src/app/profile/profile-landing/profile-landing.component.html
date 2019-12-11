@@ -280,7 +280,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of primarySkillsTable.data; let i = index">
-                <td>{{data.Skill}}</td>
+                <td>{{data.Skill || data.otherSkill}}</td>
                 <td>{{data.Proficiency}}</td>
                 <td>{{data.Experience}}</td>
                 <td>
@@ -396,7 +396,7 @@
             </thead>
             <tbody>
               <tr *ngFor="let data of additionalSkillsList; let i = index">
-                <td>{{data.Skill}}</td>
+                <td>{{data.Skill || data.otherSkill}}</td>
                 <td>{{data.Proficiency}}</td>
                 <td>{{data.Experience}}</td>
                 <td>

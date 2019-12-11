@@ -473,7 +473,9 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.primarySkillsForm.value.skillName,
       Proficiency: this.primarySkillsForm.value.rating,
       Experience: this.primarySkillsForm.value.experience,
-      IsPrimarySkill: true
+      IsPrimarySkill: true,
+      primarySkillCheckBox:this.primarySkillsForm.value.primarySkillCheckBox,
+      otherSkill:this.primarySkillsForm.value.otherSkill
     };
     // this.primarySkillsList.push(skill);
     this.primarySkillsList = [...this.primarySkillsList, skill];
@@ -496,7 +498,9 @@ export class ProfileLandingComponent implements OnInit {
       Skill: this.additionalSkillsForm.value.skillName,
       Proficiency: this.additionalSkillsForm.value.rating,
       Experience: this.additionalSkillsForm.value.experience,
-      IsPrimarySkill: false
+      IsPrimarySkill: false,
+      additionalSkillCheckBox:this.additionalSkillsForm.value.additionalSkillCheckBox,
+      otherSkill:this.additionalSkillsForm.value.otherSkill
     };
     // this.additionalSkillsList.push(skill);
     this.additionalSkillsList = [...this.additionalSkillsList, skill];
@@ -516,7 +520,8 @@ export class ProfileLandingComponent implements OnInit {
       Job_Title: this.experiencesForm.value.jobTitle,
       Start_Date: this.experiencesForm.value.startDate,
       End_Date: this.experiencesForm.value.endDate,
-      Job_Description: this.experiencesForm.value.description
+      Job_Description: this.experiencesForm.value.description,
+      
     };
     // this.primaryProjectsList.push(project);
     this.experiences = [...this.experiences, project];
