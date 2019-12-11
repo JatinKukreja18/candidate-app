@@ -53,8 +53,10 @@ export class AuthenticationService {
     login(reqBody: LoginForm): Observable<HttpResponse<any>> {
       return this.http.post<Response>(apiUrl + environment.apiPaths.login, reqBody,{observe: 'response'}).pipe(tap(res => {
             const currentUser = {};
+            console.log("The access token",res.headers.get('access_token'))
             if (res.headers.get('access_token')) {
                 currentUser['access_token'] = res.headers.get('access_token');
+                console.log("The currentUser will be::",currentUser);
             }
             if (res.headers.get('refresh_token')) {
                 currentUser['refresh_token'] = res.headers.get('refresh_token');
@@ -64,7 +66,9 @@ export class AuthenticationService {
             }
             if (res.body && res.body.code === 200 && res.body.data){
                 currentUser['u'] = res.body['data'].name;
+                currentUser['token'] = res.body['data'].token;
             }
+            console.log("The currentUser will be::4",currentUser);
             this.currentUserSubject.next(currentUser);
             // Set current user into the local storage
             this.ls.set('currentUser', currentUser)
@@ -242,7 +246,7 @@ export class AuthenticationService {
     getAccessToken() {
         const currentUser = this.ls.get('currentUser');
         if (currentUser != null) {
-            return currentUser.access_token;
+            return currentUser.token;
         }
         return '';
     }
