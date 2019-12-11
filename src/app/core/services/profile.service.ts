@@ -203,4 +203,8 @@ export class ProfileService {
         return this.http.post<any>('http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',formData);
     }
 
+    getResumeFileUrl(formData,userId):Observable<any>{
+        return this.http.post<any>('https://appst.cliksource.com/jumpprofessionalapi/api/candidateeditpage/UploadCandidateResume/'+userId,formData,{headers: { 'Content-Type': 'multipart/form-data' }});
+    }
+
 }

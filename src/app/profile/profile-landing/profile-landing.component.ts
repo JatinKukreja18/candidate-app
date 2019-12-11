@@ -12,6 +12,7 @@ import { Inject, Injectable } from '@angular/core';
 import { DOCUMENT } from '@angular/common';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import { NgxSpinnerService } from "ngx-spinner";
 
 @Component({
   selector: "app-profile-landing",
@@ -159,6 +160,7 @@ export class ProfileLandingComponent implements OnInit {
     private vimeoService: VimeoService,
     private route: ActivatedRoute,
     private router: Router,
+    private spinner: NgxSpinnerService,
     private analyticsService: AnalyticsService,
     private activatedRoute: ActivatedRoute,
     private userDataService: UserDataService,
@@ -1132,19 +1134,20 @@ export class ProfileLandingComponent implements OnInit {
       this.formData.append("file", file);
 
       try {
-        this.loading = true;
+        // this.loading = true;
+        this.spinner.show();
         this.resumeUploadPostReq().then((res) => {
           this.updateFormDataFromResum(res['data']);
           this.findResumeUrl(this.formData).then((url)=>{
             // console.log("************************",url);
             this.doc = url+'';
-            this.loading = false;
+            this.spinner.hide();
           },error=>{
-            this.loading = false;
+            this.spinner.hide();
             Swal.fire('Error','Error in Getting Resume')
           })
         },error=>{
-          this.loading = false;
+          this.spinner.hide();
           Swal.fire('Error','Error in Resume parsing','error');
         })
 
