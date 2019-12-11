@@ -586,6 +586,8 @@ export class ProfileLandingComponent implements OnInit {
       this.primarySkillsForm.get("skillName").setValue(data.Skill);
       this.primarySkillsForm.get("rating").setValue(data.Proficiency);
       this.primarySkillsForm.get("experience").setValue(data.Experience);
+      this.primarySkillsForm.get('primarySkillCheckBox').setValue(data.primarySkillCheckBox);
+      this.primarySkillsForm.get('otherSkill').setValue(data.otherSkill);
 
       this.primarySkillsList.splice(index, 1);
       this.primarySkillsList = [...this.primarySkillsList]; // need to update reference for nz-table to update
@@ -595,6 +597,8 @@ export class ProfileLandingComponent implements OnInit {
       console.log("The skills will be:", this.additionalSkillsForm.value);
       this.additionalSkillsForm.get("rating").setValue(data.Proficiency);
       this.additionalSkillsForm.get("experience").setValue(data.Experience);
+      this.additionalSkillsForm.get('additionalSkillCheckBox').setValue(data.additionalSkillCheckBox);
+      this.additionalSkillsForm.get('otherSkill').setValue(data.otherSkill);
 
       this.additionalSkillsList.splice(index, 1);
       this.additionalSkillsList = [...this.additionalSkillsList]; // need to update reference for nz-table to update
