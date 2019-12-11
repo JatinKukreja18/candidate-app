@@ -49,6 +49,7 @@
     "ngx-doc-viewer": "^0.1.24",
     "ngx-quill": "^7.3.1",
     "ngx-select-dropdown": "^1.2.0",
+    "ngx-spinner": "^7.2.0",
     "node-sass": "^4.10.0",
     "nyc": "^14.1.1",
     "path": "^0.12.7",

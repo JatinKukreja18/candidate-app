@@ -262,7 +262,7 @@
             </div>
 
             <div class="form-group horizontal" style="margin-bottom: 20px" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                <label nz-checkbox formControlName="primarySkillCheckBox">Add Other Skill</label> 
+                <label nz-checkbox formControlName="primarySkillCheckBox">If Skill not found, then check this and enter the skill</label> 
             </div>
             <!-- nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'" -->
             <button [disabled]="!primarySkillsForm.valid" nz-button (click)="addPrimarySkill()" nzShape="circle" style="position: absolute; top: 20px; right: 70px;"
@@ -376,7 +376,7 @@
             </div>
 
             <div class="form-group horizontal" style="margin-bottom: 20px" [ngClass]="{'missing': missingFields.indexOf('SOCIAL_LINKS') >= 0 }">
-                <label nz-checkbox formControlName="additionalSkillCheckBox">Add Other Skill</label> 
+                <label nz-checkbox formControlName="additionalSkillCheckBox">If Skill not found, then check this and enter the skill</label> 
             </div>
 
             <!-- nz-tooltip [nzTitle]="'Add Skill'" [nzPlacement]="'bottom'" -->

@@ -5,6 +5,10 @@ import { AuthService } from 'angularx-social-login';
 import { NzMessageService } from 'ng-zorro-antd';
 import { environment } from '@env/environment';
 import { filter } from 'rxjs/operators';
+import { UserDataService } from '@app/core/services/userdata.service';
+import axios from 'axios';
+import { NgxSpinnerService } from 'ngx-spinner';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-common-sidemenu',
@@ -37,6 +41,9 @@ export class CommonSidemenuComponent implements OnInit {
   }
   editProfileLink: Array<string>;
 
+  profileImageUrl:any;
+  formData:FormData;
+
   constructor(
     private router: Router,
     private authService: AuthenticationService,
@@ -44,9 +51,12 @@ export class CommonSidemenuComponent implements OnInit {
     private profileService: ProfileService,
     private message: NzMessageService,
     private analyticsService: AnalyticsService,
+    private userDataService: UserDataService,
+    private spinner:NgxSpinnerService
   ) {}
 
   ngOnInit() {
+    this.getUserDetails();
     let title = 'ClickSource%20Candidate%20App'
     this.shareLink = {
       facebook: `https://facebook.com/sharer/sharer.php?u=${environment.shareappUrl}`,
@@ -66,18 +76,84 @@ export class CommonSidemenuComponent implements OnInit {
     //     const id = event.url.split('/')[2];
     //   }
     // });
+    
   }
 
   /**
    * Get the User's details from the API
    */
   getUserDetails() {
-    this.authService.getUserDetails().subscribe((response)=>{
-      if (response.code && response.code === 200) {
-        this.currentUserDetails = response.data;
+    console.log("********************************************##########");
+    // this.authService.
+    // this.authService.getUserDetails().subscribe((response)=>{
+    //   console.log("ddddddddddddddddddd",response);
+    //   if (response.code && response.code === 200) {
+    //     console.log("user Detailsss ************************** ",response);
+    //     this.currentUserDetails = response.data;
+    //     console.log("#############",this.currentUserDetails);
+    //   }
+    // });
+    const user = this.authService.getCurrentUser()
+    this.userDataService.getUserData(user.u).subscribe((res)=>{
+      console.log("the res will be:",res);
+      if(res.CandidateImage && res.CandidateImage.FilePath){
+        this.profileImageUrl = res.CandidateImage.FilePath
+        console.log("this.prrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",this.profileImageUrl)
       }
-    });
+    },error=>{
+      console.log("error in get current data");
+    })
+
   }
+
+  fileChange(event) {
+    let fileList: FileList = event.target.files;
+    if (fileList.length > 0 && fileList[0].size <= 2097152) {
+      let file: File = fileList[0];
+      // console.log("file", file);
+      let fileName = file.name;
+      this.formData = new FormData();
+      this.formData.append("file", file);
+
+      try {
+        this.spinner.show();
+           this.profileImageUrlGet().then((res)=>{
+             this.spinner.hide();
+             this.profileImageUrl = res['FilePath'];
+             event.target.value = "";
+           })
+      } catch (error) {
+        this.spinner.hide();
+        event.target.value = "";
+        Swal.fire('Error','Error in profile image upload','error');
+        console.log("The error will be:", error);
+      }
+    } else {
+      event.target.value = "";
+    }
+  }
+
+
+  profileImageUrlGet() {
+    return new Promise((resolve, reject) => {
+      axios({
+        method: 'post',
+        url:'https://appst.cliksource.com/jumpprofessionalapi/api/candidateeditpage/postuserimage/HZIELVB4AKHRFDSL',
+        data: this.formData,
+        headers: { 'Content-Type': 'multipart/form-data' }
+      })
+        .then(function (response) {
+          //handle success
+          console.log("resume upload url will be::", response.data);
+          resolve(response.data);
+        })
+        .catch(function (response) {
+          //handle error
+          reject(response);
+        });
+    })
+  }
+
 
   /**
    * Show/hide Side menu

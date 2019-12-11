@@ -1,8 +1,17 @@
 <div class="sidemenu">
     <div class="user-profile">
         <div class="profile-pic">
-            <img *ngIf="socialUserDetails" [src]="socialUserDetails?.image ? socialUserDetails?.image : 'assets/images/profile-image.png'" alt="">
-            <img *ngIf="currentUserDetails && !socialUserDetails" [src]="currentUserDetails?.image ? currentUserDetails?.image : 'assets/images/profile-image.png'" alt="">
+            <!-- <img *ngIf="socialUserDetails" [src]="socialUserDetails?.image ? socialUserDetails?.image : 'assets/images/profile-image.png'" alt=""> -->
+            <img *ngIf="profileImageUrl" src="http://{{profileImageUrl}}" alt="">
+            <img *ngIf="!profileImageUrl" src="assets/images/profile-image.png" alt="">
+            <!-- {{currentUserDetails | json}} -->
+            <!-- <input type="file" tabindex="" formControlName="resume" class="form-control not-mandate fileUpload"
+              accept="application/pdf, .docx, .doc" (change)="fileChange($event, 201)" /> -->
+        </div>
+        <!-- <button class="upload-button">Upload Resume</button> -->
+        <div class="file-input-wrapper">
+                <button class="btn-file-input">Edit</button>
+                <input type="file"  name="image" id="image" value="" (change)="fileChange($event)" />
         </div>
         <p *ngIf="currentUserDetails && currentUserDetails.firstname">{{currentUserDetails.firstname}} {{currentUserDetails.lastname}}</p>
         <p *ngIf="currentUserDetails && currentUserDetails.firstName">{{currentUserDetails.firstName}} {{currentUserDetails.lastName}}</p>
