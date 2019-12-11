@@ -912,6 +912,10 @@ export class ProfileLandingComponent implements OnInit {
     if (this.formChangeSubscription) {
       this.formChangeSubscription.unsubscribe();
     }
+    //resume url update
+    if(this.profile.CandidateResumeSummary && this.profile.CandidateResumeSummary.ParsedResume){
+      this.doc = this.profile.CandidateResumeSummary.ParsedResume;
+    }
     // Pre-Populate the Personal Details form
     this.personalDetailsForm
       .get("firstName")
@@ -1128,15 +1132,23 @@ export class ProfileLandingComponent implements OnInit {
       this.formData.append("file", file);
 
       try {
+        this.loading = true;
         this.resumeUploadPostReq().then((res) => {
-          // console.log("The res will be:", res);
           this.updateFormDataFromResum(res['data']);
+          this.findResumeUrl(this.formData).then((url)=>{
+            // console.log("************************",url);
+            this.doc = url+'';
+            this.loading = false;
+          },error=>{
+            this.loading = false;
+            Swal.fire('Error','Error in Getting Resume')
+          })
+        },error=>{
+          this.loading = false;
+          Swal.fire('Error','Error in Resume parsing','error');
         })
 
-        this.findResumeUrl(this.formData).then((url)=>{
-          // console.log("************************",url);
-          this.doc = url+'';
-        })
+        
       } catch (error) {
         console.log("The error will be:", error);
       }
@@ -1190,7 +1202,7 @@ export class ProfileLandingComponent implements OnInit {
         el['End_Date'] = el['endDate']
       });
       this.educationsList = this.educationsList.concat(parsedData.candidateEducationalHistory);
-      // this.onSubmit(false, 'educationForm');
+      this.onSubmit(false, 'educationForm');
     }
     if (parsedData.candidateWorkExperience && parsedData.candidateWorkExperience.length) {
       // console.log("passssssss", parsedData.candidateWorkExperience, this.experiences);
@@ -1203,7 +1215,7 @@ export class ProfileLandingComponent implements OnInit {
         el['Job_Description'] = el['jobDescription'];
       })
       this.experiences = this.experiences.concat(parsedData.candidateWorkExperience);
-      // this.onSubmit(false, 'experiencesForm');
+      this.onSubmit(false, 'experiencesForm');
 
       // while (this.candidateWorkExperienceArray.length > 0) { this.removeWork(0) }
       // parsedData.candidateWorkExperience.forEach(work => {
@@ -1410,6 +1422,7 @@ export class ProfileLandingComponent implements OnInit {
       .getProfileDetails(candidateId)
       .subscribe(candidateData => {
         this.profile = candidateData;
+        console.log("The profile will be::",this.profile);
         this.message.remove(loading);
         this.initForm();
         this.highlightSection();
