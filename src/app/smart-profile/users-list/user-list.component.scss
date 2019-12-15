@@ -55,3 +55,16 @@
   }
 
 }
+
+.search-box-container{
+  display: flex;
+  align-items: flex-end;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+.search-box{
+  width: 50%;
+  max-width: 250px;
+  border: none;
+  padding: 15px;
+}

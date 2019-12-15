@@ -2,6 +2,7 @@ import { UserDataService } from '@app/core/services/userdata.service';
 import { Component, ViewChild, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } from '@angular/forms';
+import { debounce, debounceTime } from 'rxjs/operators';
 
 @Component({
   selector: 'app-user-list',
@@ -11,11 +12,13 @@ import { FormBuilder, FormControl, FormGroup, ValidationErrors, Validators } fro
 export class UserListComponent  implements OnInit {
 
   url: String;
-  users: [];
+  users: any[];
+  usersCpy: any[];
   validateForm: FormGroup;
   currentPageIndex = '1';
   currentPageSize = '2000';
-  isLoading= false
+  isLoading= false;
+  search_control:FormControl;
   constructor(private userService: UserDataService,
     private router: Router,private fb: FormBuilder){
 
@@ -29,6 +32,15 @@ export class UserListComponent  implements OnInit {
       this.validateForm = this.fb.group({
         comment: ['', [Validators.required]]
       });
+      this.initializeSearchBox();
+  }
+  initializeSearchBox(){
+    this.search_control = new FormControl("");
+    this.search_control.valueChanges.pipe(debounceTime(500)).subscribe((res)=>{
+      this.users = this.usersCpy.filter((el)=>{
+        return (el['FullName']+"").toLocaleLowerCase().includes(res);
+      })
+    })
   }
   change(value: boolean): void {
     console.log(value);
@@ -45,6 +57,7 @@ export class UserListComponent  implements OnInit {
            v.visible = false;
            return v;
       });
+      this.usersCpy = JSON.parse(JSON.stringify(this.users));
       console.log(this.users);
       this.isLoading = false;
     });
