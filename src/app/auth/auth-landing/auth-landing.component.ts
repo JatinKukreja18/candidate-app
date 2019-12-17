@@ -84,12 +84,15 @@ export class AuthLandingComponent implements OnInit {
         }
 
         this.socialAuthService.signIn(socialPlatformProvider).then((userData) => {
+            console.log("The userdata will be::",userData);
             // Now sign-in with userData
             let socialUserId: string;
             let reqBody = {
-                ProviderId: providerId,
+                UserName:userData.email,
+                Provider: socialPlatform,
                 ExternalAccessToken: userData['idToken']
             }
+            console.log("request body will be:",reqBody);
             if (providerId == 1) {
                 reqBody.ExternalAccessToken = userData['idToken']; //authToken
                 socialUserId = userData.email;
@@ -98,13 +101,21 @@ export class AuthLandingComponent implements OnInit {
                 socialUserId = userData.id;
             } 
             this.authService.externalLogin(reqBody).subscribe((response) => {
+                console.log("req body will be:",reqBody,"The response will be:",response);
                 if (response.body && response.body.data) this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
-                if (response.body.code === 708 && !response.body.data['isRegistered']) {
+                if (response.body.code === 708 && !response.body.data['has_Registered']) {
                     response.body.data['socialProfileDetails']['socialUserId'] = socialUserId;
                     this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
                     this.showSection(null, 'externalRegister');
-                } else if (response.body.code === 200 && response.body.data['isRegistered']){
-                    this.router.navigateByUrl('/dashboard');
+                } else if (response.body.code === 200 ){
+                    if(response.body.data['has_Registered']){
+                        console.log("has register",response.body.data['has_Registered'],'res bodhy',response.body);
+                        this.router.navigateByUrl('/dashboard');
+                    }else{
+                        // this.router.navigateByUrl('/',{queryParams:{register:true}});
+                        this.sections.register = true; 
+                    }
+                    
                 } else {
                     this.messageService.error(FeedbackMessages.error.ExternalRegisterFailure, { nzDuration: 1500 });
                 }
@@ -149,6 +160,7 @@ export class AuthLandingComponent implements OnInit {
             }
         }
         this.sections[sectionName] = true;
+
     }
 }
 

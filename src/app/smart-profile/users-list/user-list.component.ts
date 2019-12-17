@@ -38,7 +38,7 @@ export class UserListComponent  implements OnInit {
     this.search_control = new FormControl("");
     this.search_control.valueChanges.pipe(debounceTime(500)).subscribe((res)=>{
       this.users = this.usersCpy.filter((el)=>{
-        return (el['FullName']+"").toLocaleLowerCase().includes(res);
+        return (el['FullName']+"").toLocaleLowerCase().includes((res).toLocaleLowerCase()) || (el['EmailId']+"").toLocaleLowerCase().includes((res).toLocaleLowerCase()) || (el['InstructorFeedback']+"").toLocaleLowerCase().includes((res).toLocaleLowerCase()) || (el['skillString']+"").toLocaleLowerCase().includes((res).toLocaleLowerCase()) ;
       })
     })
   }
@@ -55,10 +55,19 @@ export class UserListComponent  implements OnInit {
     this.userService.getAllUsers(options).subscribe(res => {
       this.users = res.map(v=>{
            v.visible = false;
+           let arr = [];
+          //  console.log("v['CandidateSkills'].length>",v['CandidateSkills'].length);
+           if(v['CandidateSkills'].length>0){
+             v['CandidateSkills'].map(el=>{
+               arr.push(el['Skill']);
+             })
+            //  console.log("arrr",arr);
+             v.skillString = arr.join("");
+           }
            return v;
       });
       this.usersCpy = JSON.parse(JSON.stringify(this.users));
-      console.log(this.users);
+      // console.log(this.users);
       this.isLoading = false;
     });
   }

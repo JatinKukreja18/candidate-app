@@ -104,8 +104,8 @@ export class AuthenticationService {
      * Login using external provider
      * @param reqBody request body of type ExternalLoginForm
      */
-    externalLogin(reqBody: ExternalLoginForm): Observable<HttpResponse<any>> {
-        return this.http.post<Response>('/account/externallogin', reqBody, {observe: 'response'}).pipe(tap(res => {
+    externalLogin(reqBody: any): Observable<HttpResponse<any>> {
+        return this.http.post<Response>('https://appst.cliksource.com/jumpprofessionalapi/api/account/RegisterExternal', reqBody, {observe: 'response'}).pipe(tap(res => {
             let currentUser = {};
             if (res.body && res.body.code === 200 && res.body['data']){
                 currentUser = res.body['data'];

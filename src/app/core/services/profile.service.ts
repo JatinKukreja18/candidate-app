@@ -168,7 +168,7 @@ export class ProfileService {
      * @param formData 
      */
     uploadFile(formData): Observable<Response> {
-        return this.http.post<Response>('http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume', formData,{headers: {'Content-Type': 'multipart/form-data' }})
+        return this.http.post<Response>('https://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume', formData,{headers: {'Content-Type': 'multipart/form-data' }})
         // .pipe(mergeMap(response => this.getProfileDetails('')));
         // return this.http.post<Response>('profile/upload', formData);
     }
@@ -200,7 +200,7 @@ export class ProfileService {
     }
 
     uploadResume(formData):Observable<any>{
-        return this.http.post<any>('http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',formData);
+        return this.http.post<any>('https://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',formData);
     }
 
     getResumeFileUrl(formData,userId):Observable<any>{

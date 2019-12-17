@@ -30,7 +30,9 @@ export class ApiErrorInterceptor implements HttpInterceptor {
             .pipe(
                 tap((response: HttpResponse<any>) => {
                     if(response && response.body && response.body.code !== 200 && response.body.code !== 0 && response.body.code !== 710 && response.body.code !== 708 && !request.url.includes('vimeo') && !request.url.includes('detail') && !request.url.includes('linkedin') && !request.url.includes('notification') && !request.url.includes('schedule/interview')) {
-                        this.messageService.info(response.body.message, { nzDuration: 1500 });
+                        if(response && response.body && response.body.message){
+                            this.messageService.info(response.body.message, { nzDuration: 1500 });
+                        }
                     } else if (response && response.body && response.body.code !== 200 && response.body.code !== 0 && response.body.code !== 710 && response.body.code !== 708 && !request.url.includes('vimeo') && !request.url.includes('detail') && !request.url.includes('linkedin') && !request.url.includes('notification') && !request.url.includes('schedule/interview')) {
                         this.messageService.success(response.body.message, { nzDuration: 1500 });
                     }
@@ -52,8 +54,11 @@ export class ApiErrorInterceptor implements HttpInterceptor {
                             this.authService.clearLocalStorage();
                             this.router.navigateByUrl('/');
                         }
-                        if (errorMessage === '') errorMessage = 'Something went wrong. Please try again.';
-                        this.messageService.error(errorMessage, { nzDuration: 1500 })
+                        // if (errorMessage === '') errorMessage = 'Something went wrong. Please try again.';
+                        // if (errorMessage === '') errorMessage = '';
+                        if(errorMessage){
+                            this.messageService.error(errorMessage, { nzDuration: 1500 })
+                        }
                     }                    
                     return throwError(errorMessage);
                 })

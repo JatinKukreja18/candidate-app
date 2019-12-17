@@ -1190,6 +1190,7 @@ export class ProfileLandingComponent implements OnInit {
       if (bInfo.mobile) {
         this.personalDetailsForm.get('mobile').setValue(bInfo.mobile ? bInfo.mobile : this.profile.basicInfo.mobile);
       }
+      this.onSubmit(false,'personalDetailsForm');
       // this.personalDetailsForm.get('middleName').setValue(bInfo.middleName ? bInfo.middleName : this.profile.middleName)
       // this.personalDetailsForm.get('address').setValue(bInfo.address ? bInfo.address : this.profile.basicInfo.address)
       // this.personalDetailsForm.get('dob').setValue(bInfo.dob ? bInfo.dob : this.profile.basicInfo.dob)
@@ -1238,7 +1239,7 @@ export class ProfileLandingComponent implements OnInit {
     return new Promise((resolve, reject) => {
       axios({
         method: 'post',
-        url: 'http://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',
+        url: 'https://appst.cliksource.com/uatcandidateapi/api/v1/candidate/profile/parseResume',
         data: this.formData,
         headers: { 'Content-Type': 'multipart/form-data' }
       })
