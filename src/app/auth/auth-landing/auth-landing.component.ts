@@ -42,7 +42,9 @@ export class AuthLandingComponent implements OnInit {
      * Call 'externalLoginLinkedIn' method
      */
     signInWithLinkedIn() {
+        console.log("signin with linkedlin",);
         let url = this.linkedInService.initLinkedInAuth();
+        console.log("url will be:",url);
         this.analyticsService.eventEmitter('SocialLoginScreen', 'LinkedInLogin', 'LinkedInLogin');
         let currentUrl = window.document.URL;
         let consentWindow = window.open(url, 'name','height=700,width=500');
@@ -56,7 +58,9 @@ export class AuthLandingComponent implements OnInit {
                     let url = new URL(consentWindow.document.URL);
                     let authCode = url.searchParams.get('code');
                     consentWindow.close();
+                    console.log("the url will be:",url);
                     this.linkedInService.getAccessToken(authCode).subscribe((response) => {
+                        console.log("the response will be:",response);
                         if (response['id'] && response['authToken']) {
                             this.externalLoginLinkedIn(response);
                         }
@@ -72,6 +76,7 @@ export class AuthLandingComponent implements OnInit {
      * @param socialPlatform platform name : google/facebook
      */
     socialSignIn(socialPlatform: string) {
+        console.log("solical platform:string",socialPlatform);
         let socialPlatformProvider, providerId;
         if(socialPlatform == "facebook"){
             this.analyticsService.eventEmitter('SocialLoginScreen', 'FacebookLogin', 'FacebookLogin');
@@ -89,7 +94,7 @@ export class AuthLandingComponent implements OnInit {
             let socialUserId: string;
             let reqBody = {
                 UserName:userData.email,
-                Provider: socialPlatform,
+                Provider: socialPlatform.charAt(0).toUpperCase() + socialPlatform.slice(1),
                 ExternalAccessToken: userData['idToken']
             }
             console.log("request body will be:",reqBody);
@@ -101,24 +106,29 @@ export class AuthLandingComponent implements OnInit {
                 socialUserId = userData.id;
             } 
             this.authService.externalLogin(reqBody).subscribe((response) => {
-                console.log("req body will be:",reqBody,"The response will be:",response);
-                if (response.body && response.body.data) this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
-                if (response.body.code === 708 && !response.body.data['has_Registered']) {
-                    response.body.data['socialProfileDetails']['socialUserId'] = socialUserId;
-                    this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
-                    this.showSection(null, 'externalRegister');
-                } else if (response.body.code === 200 ){
-                    if(response.body.data['has_Registered']){
-                        console.log("has register",response.body.data['has_Registered'],'res bodhy',response.body);
-                        this.router.navigateByUrl('/dashboard');
-                    }else{
-                        // this.router.navigateByUrl('/',{queryParams:{register:true}});
-                        this.sections.register = true; 
-                    }
-                    
-                } else {
-                    this.messageService.error(FeedbackMessages.error.ExternalRegisterFailure, { nzDuration: 1500 });
+                if(response && response['has_Registered']){
+                    this.router.navigate(['/dashboard']);
+                }else{
+                    this.router.navigate(['/'],{queryParams:{register:true}})
                 }
+                // console.log("req body will be:",reqBody,"The response will be:",response);
+                // if (response.body && response.body.data) this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
+                // if (response.body.code === 708 && !response.body.data['has_Registered']) {
+                //     response.body.data['socialProfileDetails']['socialUserId'] = socialUserId;
+                //     this.authService.setExternalRegisterUser(response.body.data['socialProfileDetails']);
+                //     this.showSection(null, 'externalRegister');
+                // } else if (response.body.code === 200 ){
+                //     if(response.body.data['has_Registered']){
+                //         console.log("has register",response.body.data['has_Registered'],'res bodhy',response.body);
+                //         this.router.navigateByUrl('/dashboard');
+                //     }else{
+                //         this.sections.register = true; 
+                //         // this.sections.alreadyRegister = true;
+                //     }
+                    
+                // } else {
+                //     this.messageService.error(FeedbackMessages.error.ExternalRegisterFailure, { nzDuration: 1500 });
+                // }
             }, (error) => {
                 this.messageService.error(FeedbackMessages.error.ExternalRegisterFailure, { nzDuration: 1500 });
             });

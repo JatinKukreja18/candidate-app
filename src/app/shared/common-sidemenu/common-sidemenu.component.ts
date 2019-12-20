@@ -83,7 +83,6 @@ export class CommonSidemenuComponent implements OnInit {
    * Get the User's details from the API
    */
   getUserDetails() {
-    console.log("********************************************##########");
     // this.authService.
     // this.authService.getUserDetails().subscribe((response)=>{
     //   console.log("ddddddddddddddddddd",response);
@@ -95,10 +94,8 @@ export class CommonSidemenuComponent implements OnInit {
     // });
     const user = this.authService.getCurrentUser()
     this.userDataService.getUserData(user.u).subscribe((res)=>{
-      console.log("the res will be:",res);
       if(res.CandidateImage && res.CandidateImage.FilePath){
         this.profileImageUrl = res.CandidateImage.FilePath
-        console.log("this.prrrrrrrrrrrrrrrrrrrrrrrrrrrrrr",this.profileImageUrl)
       }
     },error=>{
       console.log("error in get current data");

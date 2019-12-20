@@ -2269,6 +2269,7 @@ export class ProfileLandingComponent implements OnInit {
 
   // Download the resume file
   downloadResume() {
+    console.log(this.profile);
     let a = document.createElement("a");
     fetch(this.profile.resumeUrl)
       .then(res => res.blob()) // Gets the response and returns it as a blob

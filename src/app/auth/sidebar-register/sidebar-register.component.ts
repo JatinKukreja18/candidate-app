@@ -3,6 +3,8 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthenticationService, CommonService, AnalyticsService } from '@app/core';
 import { NzMessageService } from 'ng-zorro-antd';
 import { ValidationMessages, FeedbackMessages } from '@app/core/messages';
+import { ActivatedRoute, Router } from '@angular/router';
+import { Observable } from 'rxjs';
 
 @Component({
   selector: 'app-sidebar-register',
@@ -24,17 +26,21 @@ export class SidebarRegisterComponent implements OnInit {
     }
     validationMsgs: any;
     isreadonly:boolean = true;
+    isAllReadyRegister:boolean = false;
     constructor(
         private formBuilder: FormBuilder,
         private authService: AuthenticationService,
         private commonService: CommonService,
         private message: NzMessageService,
-        private analyticsService: AnalyticsService
+        private analyticsService: AnalyticsService,
+        private activatedRoute: ActivatedRoute,
+        private router:Router,
     ) {
         this.validationMsgs = ValidationMessages;
     }
 
     ngOnInit() {
+
         this.analyticsService.eventEmitter('SocialLoginScreen', 'Register', 'Register');
         this.getCountriesList();
         // Initialize the 'registerForm' with validations
@@ -47,6 +53,12 @@ export class SidebarRegisterComponent implements OnInit {
             country: ['', [Validators.required]],
             phone: ['', [Validators.minLength(10), Validators.maxLength(10), Validators.pattern(/^(\+\d{1,3}[- ]?)?\d{10}$/)]]
         });
+        // this.state = 
+        this.activatedRoute.queryParams.subscribe((res)=>{
+            if(res && res.register){
+                this.isAllReadyRegister = res.register;
+            }
+        })
     }
 
     /**
@@ -98,18 +110,37 @@ export class SidebarRegisterComponent implements OnInit {
                 }
                 if (this.registerForm.value.phone) formData['mobile'] = this.registerForm.value.phone;
                 // if (this.registerForm.value.country) formData['countrycode'] = this.registerForm.value.country.split('+')[1].split(')')[0];
-                this.authService.register(formData).subscribe((response) => {
-                    this.submitting = false;
-                    this.message.remove(loading);
-                    if(response.code && response.code === 200) {
-                        this.formSubmit.emit(this.registerForm.value.email);
-                        this.message.success(FeedbackMessages.success.AccountRegistered, {nzDuration: 1500});
-                        this.analyticsService.eventEmitter('RegisterScreen', 'Register', 'Register');
-                    }
-                }, (error) => {
-                    this.submitting = false;
-                    this.message.remove(loading);
-                });
+                
+                if(this.isAllReadyRegister){
+                    this.authService.forAllReadyRegister(formData).subscribe((response)=>{
+                        this.submitting = false;
+                        this.message.remove(loading);
+                        if(response.code && response.code === 200) {
+                            this.formSubmit.emit(this.registerForm.value.email);
+                            this.message.success(FeedbackMessages.success.AccountRegistered, {nzDuration: 1500});
+                            this.analyticsService.eventEmitter('RegisterScreen', 'Register', 'Register');
+                        }
+                        this.router.navigate(['/dashboard']);
+    
+                    }, (error) => {
+                        this.submitting = false;
+                        this.message.remove(loading);
+                    })
+                }else{
+                    this.authService.register(formData).subscribe((response) => {
+                        this.submitting = false;
+                        this.message.remove(loading);
+                        if(response.code && response.code === 200) {
+                            this.formSubmit.emit(this.registerForm.value.email);
+                            this.message.success(FeedbackMessages.success.AccountRegistered, {nzDuration: 1500});
+                            this.analyticsService.eventEmitter('RegisterScreen', 'Register', 'Register');
+                        }
+                    }, (error) => {
+                        this.submitting = false;
+                        this.message.remove(loading);
+                    });
+                }
+
             } else {
                 return; // Return incase of password missmatch
             }

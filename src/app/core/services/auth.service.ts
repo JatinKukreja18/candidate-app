@@ -45,6 +45,9 @@ export class AuthenticationService {
     register(reqBody: RegisterForm): Observable<Response> {
         return this.http.post<Response>(apiUrl + environment.apiPaths.register, reqBody);
     }
+    forAllReadyRegister(reqBody: any): Observable<Response> {
+        return this.http.post<any>(apiUrl + environment.apiPaths.forAllReadyRegister, reqBody);
+    }
 
     /**
      * Login into account

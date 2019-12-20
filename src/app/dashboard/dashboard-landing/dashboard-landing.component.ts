@@ -54,9 +54,20 @@ export class DashboardLandingComponent implements OnInit {
     console.log("user ", user);
     this.getCandidateData(user.u); // Get the candidate data to be populated into the cover page
 
+    // this.activatedRoute.queryParams.subscribe((res)=>{
+    //   console.log("The res",res);
+    // })
+
+    // console.log("************************************");
+
     // this.getDashboardData(true);
     // this.getSuggestedSkills(); // Get the Skills lists from API or from local(if exists)
     // this.initGoogleMapPlaces(); // Initialize the Google places API with the city dropdown element
+    // setTimeout(()=>{
+    //   console.log("after 2 sec");
+    //   this.router.navigate([''],{state:{register:true}});
+    // },2000);
+    
   }
 
   /**
@@ -87,6 +98,7 @@ export class DashboardLandingComponent implements OnInit {
 
       }
       this.loading = false;
+      // this.router.navigate(['/dashboard'],{queryParams:{register:true}})
     }, err => {
       console.log(err.message);
       // this.router.navigate(['pageNotFound']);

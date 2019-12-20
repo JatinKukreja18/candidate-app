@@ -62,7 +62,8 @@
           <!-- -->
           <!-- <a> -->
           <!-- </a> -->
-          <!-- <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a> -->
+          <a  *ngIf="profile && profile.resumeUrl"><img src="assets/images/resume-sample.jpg" alt="Resume thumbnail" (click)="downloadResume()" /></a>
+          <a (click)="downloadResume()">abc</a>
           <!-- <img *ngIf="profile && profile.resumeUrl" class="delete-cross" src="/assets/images/ic-delete-cross.svg"
             alt="red cross" (click)="openDeleteResourceConfirmationModal(201)" />
           <p *ngIf="profile && profile.resumeUrl" class="note"><i>Note: This is a sample resume. Please download the

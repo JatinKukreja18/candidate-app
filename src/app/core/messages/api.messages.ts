@@ -1,7 +1,8 @@
 export const ApiMessages:any = {
     400: 'Bad request',
     401: 'Session has expired. Please login again',
-    404: 'Invalid/Not Found Emails',
+    // 404: 'Invalid/Not Found Emails',
+    404: '',
     500: 'Internal Server Error',
     701: 'Invalid username or password',
     702: 'Invalid username or password',

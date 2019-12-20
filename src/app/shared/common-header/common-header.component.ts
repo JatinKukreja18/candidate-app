@@ -21,11 +21,11 @@ export class CommonHeaderComponent implements OnInit {
 
   ngOnInit() {
     if (this.authService.getAccessToken()) {
-      this.getNotificationCount();
+      // this.getNotificationCount();
     }
     this.notificationService.refreshNotificationCounts.subscribe(isRefresh => {
       if (isRefresh && this.authService.getAccessToken()) {
-        this.getNotificationCount();
+        // this.getNotificationCount();
         this.notificationService.refreshNotificationCounts.next(false);
       }
     });

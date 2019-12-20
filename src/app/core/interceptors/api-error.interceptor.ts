@@ -31,7 +31,9 @@ export class ApiErrorInterceptor implements HttpInterceptor {
                 tap((response: HttpResponse<any>) => {
                     if(response && response.body && response.body.code !== 200 && response.body.code !== 0 && response.body.code !== 710 && response.body.code !== 708 && !request.url.includes('vimeo') && !request.url.includes('detail') && !request.url.includes('linkedin') && !request.url.includes('notification') && !request.url.includes('schedule/interview')) {
                         if(response && response.body && response.body.message){
-                            this.messageService.info(response.body.message, { nzDuration: 1500 });
+                            if(response.body.message){
+                                this.messageService.info(response.body.message, { nzDuration: 1500 });
+                            }
                         }
                     } else if (response && response.body && response.body.code !== 200 && response.body.code !== 0 && response.body.code !== 710 && response.body.code !== 708 && !request.url.includes('vimeo') && !request.url.includes('detail') && !request.url.includes('linkedin') && !request.url.includes('notification') && !request.url.includes('schedule/interview')) {
                         this.messageService.success(response.body.message, { nzDuration: 1500 });
